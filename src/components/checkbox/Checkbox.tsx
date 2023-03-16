@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { Flexbox } from "../flexbox/Flexbox";
+import styles from "./Checkbox.module.css";
 
 interface CheckboxProps {
   checked: boolean;
@@ -10,9 +11,10 @@ interface CheckboxProps {
 
 export const Checkbox: FunctionComponent<CheckboxProps> = ({ checked, label, id, onChange }) => {
   return (
-    <Flexbox>
+    <label htmlFor={id} className={styles.container}>
       <input type="checkbox" id={id} checked={checked} onChange={onChange} />
-      <label htmlFor={id}>{label}</label>
-    </Flexbox>
+      {label}
+      <span className={styles.checkmark}></span>
+    </label>
   );
 };
