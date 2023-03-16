@@ -12,7 +12,19 @@ interface ResponsePageProps {
 }
 
 export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) => {
-  const [state, dispatch] = useReducer(responsePageReducer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(responsePageReducer, {
+    coming: guest.attending,
+    wishes: [
+      { value: "", id: 0 },
+      { value: "", id: 1 },
+      { value: "", id: 2 },
+    ],
+  });
+
+  const handleAttendingChange = () => {
+    guest.attending = !guest.attending;
+    dispatch({ type: ACTION_TYPE.COMING_CHANGED, payload: { coming: !coming } });
+  };
 
   const handleWishChange = (wish: string, index: number) => {
     dispatch({ type: ACTION_TYPE.WISHES_CHANGED, payload: { wish: { value: wish, id: index } } });
@@ -27,9 +39,9 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
         <h1>Hello {guest.name}</h1>
         <Checkbox
           label="Are you coming to our wedding?"
-          id="coming"
-          checked={state.coming}
-          onChange={() => dispatch({ type: ACTION_TYPE.COMING_CHANGED, payload: { coming: !coming } })}
+          id={`${guest.name}-coming`}
+          checked={guest.attending}
+          onChange={handleAttendingChange}
         />
         <h2>Song wishes</h2>
         <h3>

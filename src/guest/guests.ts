@@ -1,6 +1,6 @@
 import {Guest} from "./Guest";
 
 export const Guests: Guest[] = [
-    {name: "Martin", guests: [{name: "Stine"}, {name: "Liv", foodInfo: "Likes milk"},
+    {name: "Martin", attending: false, guests: [{name: "Stine", attending: false}, {name: "Liv", attending: false, foodInfo: "Likes milk"},
     ]},
-    {name: "Søren", foodInfo: "Loves a big beer"}];
+    {name: "Søren", attending: false, foodInfo: "Loves a big beer"}];
