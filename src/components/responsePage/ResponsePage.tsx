@@ -48,9 +48,9 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           🎶 If you have any song wishes, please put them here. We'll make a playlist for the wedding with everyones
           suggestions 🎶
         </h3>
-        <SongWishInput wish={wish1} id="wish1" label="Wish 1" onChange={handleWishChange} />
-        <SongWishInput wish={wish2} id="wish2" label="Wish 2" onChange={handleWishChange} />
-        <SongWishInput wish={wish3} id="wish3" label="Wish 3" onChange={handleWishChange} />
+        <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
+        <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
+        <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
       </Flexbox>
     </div>
   );
