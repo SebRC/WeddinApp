@@ -1,6 +1,8 @@
 .App {
   text-align: center;
-  padding: 20px
+  padding: 20px;
+  background-image: url(/Users/sebastianchristiansen/Desktop/Projects/wedding-app/public/background-image.jpg);
+  height: 100vh;
 }
 
 .App-logo {

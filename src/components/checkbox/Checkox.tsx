@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { Flexbox } from "../flexbox/Flexbox";
 
 interface CheckboxProps {
   checked: boolean;
@@ -9,9 +10,9 @@ interface CheckboxProps {
 
 export const Checkbox: FunctionComponent<CheckboxProps> = ({ checked, label, id, onChange }) => {
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
+    <Flexbox>
       <input type="checkbox" id={id} checked={checked} onChange={onChange} />
-    </>
+      <label htmlFor={id}>{label}</label>
+    </Flexbox>
   );
 };

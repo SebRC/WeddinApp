@@ -26,6 +26,7 @@ interface FlexboxProps {
   height?: any;
   width?: any;
   gap?: string | number;
+  debug?: boolean;
   style?: React.CSSProperties;
   children: ReactNode;
 }
@@ -46,6 +47,7 @@ export const Flexbox: FunctionComponent<FlexboxProps> = ({
   height = "auto",
   width = "auto",
   gap = "normal",
+  debug = false,
   style = {},
   children,
 }) => {
@@ -68,9 +70,9 @@ export const Flexbox: FunctionComponent<FlexboxProps> = ({
         paddingRight: paddingRight,
         paddingLeft: paddingLeft,
         gap: gap && gap,
-        // borderWidth: "2px",
-        // borderStyle: "solid",
-        // borderColor: "red",
+        borderWidth: debug ? "2px" : "0px",
+        borderStyle: debug ? "solid" : "none",
+        borderColor: debug ? "red" : "transparent",
         ...style,
       }}
     >
