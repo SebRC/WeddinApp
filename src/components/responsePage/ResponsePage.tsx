@@ -5,7 +5,7 @@ import { ACTION_TYPE } from "./responsePageActionTypes";
 import { INITIAL_STATE, responsePageReducer } from "./responsePageReducer";
 import { SongWishInput } from "../songWishInput/SongWishInput";
 import styles from "./ResponsePage.module.css";
-import { Guest } from "../../user/Guest";
+import { Guest } from "../../guest/Guest";
 
 interface ResponsePageProps {
   guest: Guest;
