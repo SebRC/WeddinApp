@@ -1,0 +1,15 @@
+
+.pin {
+    background-color: red;
+    width: 6px;
+    height: 15px;
+    border-radius: 5px;
+}
+
+.connector {
+    background-color: var(--secondary-active);
+    width: 100%;
+    height: 4px;
+    margin: 0px 10px 0px 10px;
+    border-radius: 5px;
+}

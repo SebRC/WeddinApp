@@ -1,0 +1,9 @@
+
+.pin {
+    background-color: var(--secondary-active);
+    width: 3px;
+    height: 30px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    align-self: center;
+}
