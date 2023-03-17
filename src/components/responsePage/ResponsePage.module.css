@@ -14,14 +14,24 @@
     transform: scaleY(0.9);
 }
 
+.collapsed:hover {
+    cursor: pointer;
+}
+
 .closeCardButton {
     position: absolute;
     right: 10px;
     top: 10px;
     background-color: transparent;
+    width: 50px;
+    height: 50px;
     border: none;
 }
 
 .closeCardButton h1 {
     margin: 0px;
+}
+
+.closeCardButton:hover {
+    cursor: pointer;
 }

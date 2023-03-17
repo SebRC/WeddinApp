@@ -8,6 +8,7 @@ import { GuestTable } from "./components/table/GuestTable";
 import { Guests } from "./guest/guests";
 import { Title } from "./components/text/Title";
 import { Navbar } from "./components/navigation/Navbar";
+import { AdminLayout } from "./components/adminLayout/AdminLayout";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 const router = createBrowserRouter([
@@ -19,10 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         element: (
-          <div>
+          <AdminLayout>
             <Title title="Admin Center" />
             <GuestTable guests={Guests} />
-          </div>
+          </AdminLayout>
         ),
       },
     ],
