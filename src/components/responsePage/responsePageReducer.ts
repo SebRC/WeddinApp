@@ -6,16 +6,18 @@ export interface Wish {
 interface ResponsePageState {
   coming: boolean;
   wishes: Wish[];
+  foodInfo: string;
 }
 
 interface PageResponseAction {
   type: string;
-  payload: {coming?: boolean, wish?: {value: string, id: number}}
+  payload: {coming?: boolean, wish?: {value: string, id: number}, foodInfo?: string}
 }
 
 export const INITIAL_STATE: ResponsePageState = {
   coming: false,
-  wishes: [{value: '', id: 0}, {value: '', id: 1}, {value: '', id: 2}]
+  wishes: [{value: '', id: 0}, {value: '', id: 1}, {value: '', id: 2}],
+  foodInfo: ''
 };
 
 export const responsePageReducer = (state: ResponsePageState, action: PageResponseAction): ResponsePageState => {
@@ -32,6 +34,11 @@ export const responsePageReducer = (state: ResponsePageState, action: PageRespon
           }
           return w
         })
+      }
+
+    case "FOOD_INFO_CHANGED":
+      return {
+        ...state, foodInfo: action.payload.foodInfo ?? state.foodInfo
       }
   
     default:

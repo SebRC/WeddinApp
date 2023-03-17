@@ -3,11 +3,12 @@ import { Checkbox } from "../checkbox/Checkbox";
 import { Flexbox } from "../flexbox/Flexbox";
 import { ACTION_TYPE } from "./responsePageActionTypes";
 import { responsePageReducer } from "./responsePageReducer";
-import { SongWishInput } from "../songWishInput/SongWishInput";
+import { SongWishInput } from "../input/SongWishInput";
 import styles from "./ResponsePage.module.css";
 import { Guest } from "../../guest/Guest";
 import { Title } from "../text/Title";
 import { Header } from "../text/Header";
+import { FoodInfoInput } from "../input/FoodInfoInput";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -21,6 +22,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
       { value: "", id: 1 },
       { value: "", id: 2 },
     ],
+    foodInfo: "",
   });
   const [name, setName] = useState("");
   const [index, setIndex] = useState(1);
@@ -34,6 +36,10 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
 
   const handleWishChange = (wish: string, index: number) => {
     dispatch({ type: ACTION_TYPE.WISHES_CHANGED, payload: { wish: { value: wish, id: index } } });
+  };
+
+  const handleFoodInfoChange = (foodInfo: string) => {
+    dispatch({ type: ACTION_TYPE.FOOD_INFO_CHANGED, payload: { foodInfo: foodInfo } });
   };
 
   useEffect(() => {
@@ -63,7 +69,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   return (
     <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`} onClick={handleClick}>
       <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
-        <Title title={expanded ? "➖" : "➕"} />
+        <h1>{expanded ? "-" : "+"}</h1>
       </button>
       {expanded ? (
         <Flexbox flexDirection="column" alignItems="flex-start" height="100%" gap={10}>
@@ -82,6 +88,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
           <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
           <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
+          <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>

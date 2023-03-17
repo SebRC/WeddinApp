@@ -11,7 +11,7 @@
 }
 
 .collapsed {
-    transform: scaleY(0.9)
+    transform: scaleY(0.9);
 }
 
 .closeCardButton {
@@ -20,4 +20,8 @@
     top: 10px;
     background-color: transparent;
     border: none;
+}
+
+.closeCardButton h1 {
+    margin: 0px;
 }
