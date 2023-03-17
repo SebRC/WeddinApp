@@ -12,8 +12,8 @@ export const GuestInfo: FunctionComponent<GuestInfoProps> = ({ guest }) => {
     <Flexbox flexDirection="column" gap={20}>
       {guest.guests ? (
         guest.guests
-          .map((g) => {
-            return <ResponsePage guest={g} />;
+          .map((g, index) => {
+            return <ResponsePage guest={g} key={`${g.name}-index`} />;
           })
           .concat(<ResponsePage guest={guest} />)
           .reverse()
