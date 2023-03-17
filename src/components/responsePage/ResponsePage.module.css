@@ -3,4 +3,21 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 10px 10px;
+    position: relative;
+    width: 90%;
+    transition:transform 0.5s ease-out;
+    transform: scaleY(1);
+    transform-origin:top;
+}
+
+.collapsed {
+    transform: scaleY(0.9)
+}
+
+.closeCardButton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: transparent;
+    border: none;
 }

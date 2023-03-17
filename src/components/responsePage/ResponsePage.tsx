@@ -24,6 +24,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   });
   const [name, setName] = useState("");
   const [index, setIndex] = useState(1);
+  const [expanded, setExpanded] = useState(true);
   const phrase = `Hello ${guest.name}`;
 
   const handleAttendingChange = () => {
@@ -51,27 +52,40 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     };
   }, [name]);
 
+  const handleClick = () => {
+    if (!expanded) {
+      setExpanded(true);
+    }
+  };
+
   const { coming, wishes } = state;
   const [wish1, wish2, wish3] = wishes;
   return (
-    <div className={styles.container}>
-      <Flexbox flexDirection="column" alignItems="flex-start" height="100%" gap={10}>
-        <Title title={name} />
-        <Checkbox
-          label="Are you coming to our wedding?"
-          id={`${guest.name}-coming`}
-          checked={guest.attending}
-          onChange={handleAttendingChange}
-        />
-        <Header
-          text="Song wishes"
-          subHeader="🎶 If you have any song wishes, please put them here. We'll make a playlist for the wedding with everyones
+    <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`} onClick={handleClick}>
+      <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
+        <Title title={expanded ? "➖" : "➕"} />
+      </button>
+      {expanded ? (
+        <Flexbox flexDirection="column" alignItems="flex-start" height="100%" gap={10}>
+          <Title title={name} />
+          <Checkbox
+            label="Are you coming to our wedding?"
+            id={`${guest.name}-coming`}
+            checked={guest.attending}
+            onChange={handleAttendingChange}
+          />
+          <Header
+            text="Song wishes"
+            subHeader="🎶 If you have any song wishes, please put them here. We'll make a playlist for the wedding with everyones
           suggestions 🎶"
-        />
-        <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
-        <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
-        <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
-      </Flexbox>
+          />
+          <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
+          <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
+          <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
+        </Flexbox>
+      ) : (
+        <Title title={guest.name}></Title>
+      )}
     </div>
   );
 };
