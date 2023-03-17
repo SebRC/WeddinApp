@@ -1,6 +1,7 @@
 export interface Guest {
     name: string;
-    guests?: Guest[]
+    guests?: Guest[];
     foodInfo?: string;
+    songWishes: string[];
     attending: boolean;
 }
