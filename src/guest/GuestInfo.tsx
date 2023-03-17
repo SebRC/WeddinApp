@@ -15,7 +15,7 @@ export const GuestInfo: FunctionComponent<GuestInfoProps> = ({ guest }) => {
           .map((g, index) => {
             return <ResponsePage guest={g} key={`${g.name}-${index}`} />;
           })
-          .concat(<ResponsePage guest={guest} />)
+          .concat(<ResponsePage guest={guest} key={guest.name} />)
           .reverse()
       ) : (
         <ResponsePage guest={guest} />

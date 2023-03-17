@@ -46,14 +46,12 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     const interval = setInterval(() => {
       if (index <= phrase.length) {
         const sliced = phrase.slice(0, index);
-        console.log("effect run", sliced);
         setName(phrase.slice(0, index));
         setIndex((i) => i + 1);
       }
     }, 100);
 
     return () => {
-      console.count("Cleanup run");
       clearInterval(interval);
     };
   }, [name]);
@@ -88,7 +86,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
           <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
           <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
-          <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
+          <FoodInfoInput value={guest.foodInfo ?? ""} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>

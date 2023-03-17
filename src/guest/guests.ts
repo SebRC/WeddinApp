@@ -22,3 +22,6 @@ export const Guests: Guest[] =
         {name: "Line Sølling Refsbæk", attending: false, songWishes: ["Jonah Blacksmit - House is on fire"]},
     ]},
 ];
+
+export const DEFAULT_GUEST_STATE: Guest =  {name: "NONE", attending: false, songWishes: []}
+      
