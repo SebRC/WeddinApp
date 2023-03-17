@@ -1,7 +1,9 @@
 .header {
-    background-color: var(--primary);
+    background-color: var(--hover);
 }
 
 .header tr th {
     text-align: left;
+    padding: 20px;
+
 }

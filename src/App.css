@@ -1,5 +1,6 @@
 :root {
-  --primary: hsl(350, 100%, 88%)
+  --primary: hsl(350, 100%, 88%);
+  --hover: hsl(350, 100%, 95%);
 }
 
 .App {
