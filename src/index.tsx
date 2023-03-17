@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { GuestTable } from "./components/table/GuestTable";
 import { Guests } from "./guest/guests";
+import { Title } from "./components/text/Title";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 const router = createBrowserRouter([
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     path: "/admin",
     element: (
       <div>
-        Wow, you're an admin!
+        <Title title="Admin Center" />
         <GuestTable guests={Guests} />
       </div>
     ),

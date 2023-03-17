@@ -4,6 +4,8 @@
 
 .header tr th {
     text-align: left;
-    padding: 20px;
+}
 
+.header tr th:first-child {
+    padding: 20px;
 }
