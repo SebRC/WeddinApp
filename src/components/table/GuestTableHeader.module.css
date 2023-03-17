@@ -1,5 +1,5 @@
 .header {
-    background-color: var(--hover);
+    background-color: var(--primary-hover);
 }
 
 .header tr th {
