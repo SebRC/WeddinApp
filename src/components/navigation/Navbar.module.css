@@ -17,6 +17,10 @@
     font-size: 17px;
 }
 
+.active {
+    background-color: var(--secondary-active)
+}
+
 .navbar a:hover {
     background-color: var(--secondary-hover);
 }

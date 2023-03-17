@@ -3,6 +3,7 @@
   --primary-hover: hsl(350, 100%, 95%);
   --secondary: rgb(254, 198, 66);
   --secondary-hover: hsl(30, 56%, 51%);
+  --secondary-active: hsl(30, 95%, 50%);
 }
 
 .App {
