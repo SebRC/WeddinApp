@@ -1,4 +1,5 @@
 import "./App.css";
+import { Navbar } from "./components/navigation/Navbar";
 import { GuestInfo } from "./guest/GuestInfo";
 import { Guests } from "./guest/guests";
 

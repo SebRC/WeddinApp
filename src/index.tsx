@@ -7,21 +7,25 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { GuestTable } from "./components/table/GuestTable";
 import { Guests } from "./guest/guests";
 import { Title } from "./components/text/Title";
+import { Navbar } from "./components/navigation/Navbar";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-  },
-  {
-    path: "/admin",
-    element: (
-      <div>
-        <Title title="Admin Center" />
-        <GuestTable guests={Guests} />
-      </div>
-    ),
+    element: <Navbar />,
+    children: [
+      { path: "/guest", element: <App /> },
+      {
+        path: "/admin",
+        element: (
+          <div>
+            <Title title="Admin Center" />
+            <GuestTable guests={Guests} />
+          </div>
+        ),
+      },
+    ],
   },
 ]);
 root.render(
