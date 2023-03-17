@@ -1,3 +1,7 @@
+:root {
+  --primary: hsl(350, 100%, 88%)
+}
+
 .App {
   padding: 20px;
   background-image: url(/Users/sebastianchristiansen/Desktop/Projects/wedding-app/public/background-image.jpg);

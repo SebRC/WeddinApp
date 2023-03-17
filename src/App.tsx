@@ -3,11 +3,7 @@ import { GuestInfo } from "./guest/GuestInfo";
 import { Guests } from "./guest/guests";
 
 function App() {
-  return (
-    <div className="App">
-      <GuestInfo guest={Guests[0]} />
-    </div>
-  );
+  return <GuestInfo guest={Guests[0]} />;
 }
 
 export default App;

@@ -1,0 +1,7 @@
+.header {
+    background-color: var(--primary);
+}
+
+.header tr th {
+    text-align: left;
+}

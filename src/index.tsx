@@ -3,12 +3,32 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { GuestTable } from "./components/table/GuestTable";
+import { Guests } from "./guest/guests";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/admin",
+    element: (
+      <div>
+        Wow, you're an admin!
+        <GuestTable guests={Guests} />
+      </div>
+    ),
+  },
+]);
 root.render(
   <React.StrictMode>
     <meta name="viewport" content="width=device-width, inital-scale=1"></meta>
-    <App />
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
   </React.StrictMode>
 );
 
