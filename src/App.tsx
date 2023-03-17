@@ -5,7 +5,7 @@ import { Guests } from "./guest/guests";
 function App() {
   return (
     <div className="App">
-      <GuestInfo guest={Guests[2]} />
+      <GuestInfo guest={Guests[0]} />
     </div>
   );
 }
