@@ -5,7 +5,8 @@
     background-color: white;
     border-radius: 5px;
     box-shadow: 2px 5px;
-    padding: 0px 10px 0px 10px;
+    padding-left: 10px;
+    width: 98%;
 }
 
 .label {

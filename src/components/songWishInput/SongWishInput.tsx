@@ -12,7 +12,7 @@ interface SongWishInputProps {
 
 export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange, wish, id, label }) => {
   return (
-    <Flexbox flexDirection="column" alignItems="flex-start">
+    <Flexbox flexDirection="column" alignItems="flex-start" width="100%">
       {label && (
         <label htmlFor={id} className={styles.label}>
           {label}
