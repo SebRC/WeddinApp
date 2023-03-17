@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         path: "/admin",
         element: (
           <PageLayout>
-            <Title title="Admin Center" />
+            {/* <Title title="Admin Center" /> */}
             <GuestTable guests={Guests} />
           </PageLayout>
         ),

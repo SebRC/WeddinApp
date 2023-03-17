@@ -25,9 +25,9 @@ export const TimeTable: FunctionComponent = () => {
   return (
     <>
       <Header text="Tidsplan" />
-      <Flexbox justifyContent="flex-start" gap={15}>
+      <Flexbox justifyContent="center" gap={50}>
         {timeTable.map((tti, index) => {
-          return <TimeTableItem item={tti} key={`${tti.value}-index`} />;
+          return <TimeTableItem item={tti} key={`${tti.value}-${index}`} />;
         })}
       </Flexbox>
       <div className={styles.connector} />

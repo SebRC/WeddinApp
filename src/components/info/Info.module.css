@@ -7,9 +7,3 @@
     box-shadow: var(--box-shadow-large);
     padding: 20px
 }
-
-.map {
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-}
