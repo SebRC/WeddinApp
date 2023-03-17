@@ -10,7 +10,7 @@ const songWishes = ["The Weeknd - Starboy", "Ed Sheeran - Shape of you", "Beyonc
 
 export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) => {
   return (
-    <tr>
+    <tr className={styles.row}>
       <td>{guest.name}</td>
       <td>{guest.attending ? "Yes ✅" : "No ⛔️"}</td>
       <td className={styles.songWishesData}>{songWishes.join(",")}</td>

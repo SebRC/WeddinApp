@@ -1,3 +1,24 @@
+.row {
+    border-radius: 5px;
+}
+
+.row td {
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-right:20px;  
+}
+
+.row td:first-child {
+    padding-left:20px;
+    padding-right:0;
+}
+
+.row:hover {
+    background-color: hsl(350, 100%, 95%);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 .songWishesData {
     max-width: 150px;
     text-overflow: ellipsis;
