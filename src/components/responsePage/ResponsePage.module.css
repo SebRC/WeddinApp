@@ -4,12 +4,12 @@
     padding: 20px;
     box-shadow: 10px 10px;
     position: relative;
-    width: 100%;
     transition:transform 0.5s ease-out;
     transform: scaleY(1);
     transform-origin:top;
     align-items: center;
     width: 90%;
+    margin-top: 40px;
 }
 
 .collapsed {

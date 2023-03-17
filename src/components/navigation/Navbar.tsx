@@ -9,7 +9,9 @@ export const Navbar: FunctionComponent = () => {
         <Link to="guest">Guest</Link>
         <Link to="admin">Admin</Link>
       </div>
-      <Outlet />
+      <div className={styles.outlet}>
+        <Outlet />
+      </div>
     </>
   );
 };
