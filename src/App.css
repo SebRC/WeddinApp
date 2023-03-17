@@ -4,6 +4,9 @@
   --secondary: rgb(254, 198, 66);
   --secondary-hover: hsl(30, 56%, 51%);
   --secondary-active: hsl(30, 95%, 50%);
+
+  --box-shadow-large: 15px 10px;
+  --box-shadow-small: 5px 2.5px;
 }
 
 .App {

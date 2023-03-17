@@ -2,7 +2,7 @@
     width: 100%;
     border-spacing: 0;
     border-radius: 5px;
-    box-shadow: 10px 10px;
+    box-shadow: var(--box-shadow-large);
 }
 
 .table th:first-of-type {
