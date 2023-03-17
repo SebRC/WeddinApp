@@ -8,7 +8,8 @@ import { GuestTable } from "./components/table/GuestTable";
 import { Guests } from "./guest/guests";
 import { Title } from "./components/text/Title";
 import { Navbar } from "./components/navigation/Navbar";
-import { AdminLayout } from "./components/adminLayout/AdminLayout";
+import { PageLayout } from "./components/pageLayout/PageLayout";
+import { Info } from "./components/info/Info";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 const router = createBrowserRouter([
@@ -18,15 +19,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/guest",
-        element: <App />,
+        element: (
+          <PageLayout>
+            <App />
+          </PageLayout>
+        ),
+      },
+      {
+        path: "/info",
+        element: (
+          <PageLayout>
+            <Info />
+          </PageLayout>
+        ),
       },
       {
         path: "/admin",
         element: (
-          <AdminLayout>
+          <PageLayout>
             <Title title="Admin Center" />
             <GuestTable guests={Guests} />
-          </AdminLayout>
+          </PageLayout>
         ),
       },
     ],

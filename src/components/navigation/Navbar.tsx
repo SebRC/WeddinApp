@@ -10,6 +10,9 @@ export const Navbar: FunctionComponent = () => {
         <Link to="guest" className={location.pathname.includes("guest") ? `${styles.active}` : ""}>
           Guest
         </Link>
+        <Link to="info" className={location.pathname.includes("info") ? `${styles.active}` : ""}>
+          Info
+        </Link>
         <Link to="admin" className={location.pathname.includes("admin") ? `${styles.active}` : ""}>
           Admin
         </Link>
