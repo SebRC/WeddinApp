@@ -10,7 +10,7 @@ export const Title: FunctionComponent<TitleProps> = ({ title, subtitle }) => {
   return (
     <>
       <h1 className={styles.title}>{title}</h1>
-      {subtitle && <h3 className={styles.subTitle}>{subtitle}</h3>}
+      {subtitle && <p className={styles.subTitle}>{subtitle}</p>}
     </>
   );
 };
