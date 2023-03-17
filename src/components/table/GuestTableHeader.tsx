@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styles from "./GuestTableHeader.module.css";
 
-export const GuestTabelHeader: FunctionComponent = ({}) => {
+export const GuestTabelHeader: FunctionComponent = () => {
   return (
     <thead className={styles.header}>
       <tr>

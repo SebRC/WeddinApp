@@ -14,18 +14,16 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
       <GuestTabelHeader />
       <tbody>
         {guests.map((g) => {
-          {
-            return g.guests ? (
-              g.guests
-                .map((gg) => {
-                  return <GuestTableRow guest={gg} />;
-                })
-                .concat(<GuestTableRow guest={g} />)
-                .reverse()
-            ) : (
-              <GuestTableRow guest={g} />
-            );
-          }
+          return g.guests ? (
+            g.guests
+              .map((gg) => {
+                return <GuestTableRow guest={gg} />;
+              })
+              .concat(<GuestTableRow guest={g} />)
+              .reverse()
+          ) : (
+            <GuestTableRow guest={g} />
+          );
         })}
       </tbody>
     </table>

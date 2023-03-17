@@ -13,7 +13,7 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
     <tr className={styles.row}>
       <td>{guest.name}</td>
       <td>{guest.attending ? "Yes ✅" : "No ⛔️"}</td>
-      <td className={styles.songWishesData}>{songWishes.join(",")}</td>
+      <td>{songWishes.join(",")}</td>
       <td>{guest.foodInfo}</td>
     </tr>
   );
