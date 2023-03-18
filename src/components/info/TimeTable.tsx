@@ -25,12 +25,14 @@ export const TimeTable: FunctionComponent = () => {
   return (
     <>
       <Header text="Tidsplan" />
-      <Flexbox justifyContent="center" gap={50}>
-        {timeTable.map((tti, index) => {
-          return <TimeTableItem item={tti} key={`${tti.value}-${index}`} />;
-        })}
-      </Flexbox>
-      <div className={styles.connector} />
+      <div className={styles.container}>
+        <Flexbox justifyContent="center" gap={50}>
+          {timeTable.map((tti, index) => {
+            return <TimeTableItem item={tti} key={`${tti.value}-${index}`} />;
+          })}
+        </Flexbox>
+        <div className={styles.connector} />
+      </div>
     </>
   );
 };

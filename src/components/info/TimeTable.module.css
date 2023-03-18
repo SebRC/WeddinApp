@@ -13,3 +13,14 @@
     margin: 0px 10px 0px 10px;
     border-radius: 5px;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .connector {
+      width: 65vmax;
+    }
+}
+
+.container {
+    overflow-x: scroll;
+}

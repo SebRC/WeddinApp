@@ -9,8 +9,8 @@ function App() {
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
   useEffect(() => {
     (async () => {
-      const response = await getUserData();
-      setGuest(response);
+      //const response = await getUserData();
+      setGuest(Guests[0]);
     })();
   }, []);
   return <GuestInfo guest={guest} />;

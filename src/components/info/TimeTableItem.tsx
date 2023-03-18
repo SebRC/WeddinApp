@@ -14,9 +14,9 @@ export const TimeTableItem: FunctionComponent<TimeTableItemProps> = ({ item }) =
       <div style={{ alignSelf: "center" }}>
         <Header text={item.icon} />
       </div>
-      <div style={{ alignSelf: "center" }}>
+      {/* <div style={{ alignSelf: "center" }}>
         <Header text={item.value} />
-      </div>
+      </div> */}
       <div style={{ alignSelf: "center" }}>
         <Header text={item.time} />
       </div>
