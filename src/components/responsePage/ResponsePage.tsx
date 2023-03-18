@@ -18,11 +18,11 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const [state, dispatch] = useReducer(responsePageReducer, {
     coming: guest.attending,
     wishes: [
-      { value: "", id: 0 },
-      { value: "", id: 1 },
-      { value: "", id: 2 },
+      { value: guest.songWishes[0], id: 0 },
+      { value: guest.songWishes[1], id: 1 },
+      { value: guest.songWishes[2], id: 2 },
     ],
-    foodInfo: "",
+    foodInfo: guest.foodInfo ?? "",
   });
   const [name, setName] = useState("");
   const [index, setIndex] = useState(1);
@@ -75,7 +75,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <Checkbox
             label="Are you coming to our wedding?"
             id={`${guest.name}-coming`}
-            checked={guest.attending}
+            checked={state.coming}
             onChange={handleAttendingChange}
           />
           <Header
@@ -86,7 +86,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
           <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
           <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
-          <FoodInfoInput value={guest.foodInfo ?? ""} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
+          <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>

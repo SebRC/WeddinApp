@@ -7,13 +7,18 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const response = await getUserData();
       setGuest(response);
+      setLoading(false);
     })();
   }, []);
-  return <GuestInfo guest={guest} />;
+
+  console.log("loading", loading);
+  return loading ? <>Loading</> : <GuestInfo guest={guest} />;
 }
 
 export default App;

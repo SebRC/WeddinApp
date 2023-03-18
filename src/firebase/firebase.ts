@@ -37,7 +37,7 @@ export const getUserData = async (): Promise<Guest> => {
             const guestDoc = await getDoc(guestRef);
             const guestJson = JSON.stringify(guestDoc.data());
             const guestData = JSON.parse(guestJson);
-            const liv: Guest = {name: guestData.name, attending: guestData.attending, songWishes: guestData.songWishes}
+            const liv: Guest = {name: guestData.name, attending: guestData.attending, songWishes: guestData.songWishes, foodInfo: guestData.foodInfo}
             guestObjects.push(liv);
         }));
         const guest = {name: data.name, attending: data.attending, foodInfo: data.foodInfo, songWishes: data.songWishes, guests: guestObjects}
