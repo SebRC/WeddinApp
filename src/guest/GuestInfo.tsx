@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { Flexbox } from "../components/flexbox/Flexbox";
+import { LoadingPage } from "../components/loading/LoadingPage";
 import { ResponsePage } from "../components/responsePage/ResponsePage";
 import { Guest } from "./Guest";
 
