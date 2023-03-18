@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import { stringify } from "querystring";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -27,33 +28,20 @@ export const getUserData = async (): Promise<Guest> => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
         const json = JSON.stringify(docSnap.data());
-        console.log(JSON.stringify(docSnap.data()))
         var data = JSON.parse(json);
         var guests = data.guests;
-
-        console.log("guests", guests)
-        let guestObjects:any[] = [];
-        guests.map(async (g: any) => {
+        let guestObjects:Guest[] = [];
+        await Promise.all(guests.map(async (g: string) => {
             const guestRef = doc(db, "guests", g);
-            console.log("guest ref", guestRef)
             const guestDoc = await getDoc(guestRef);
-            console.log("guest doc", guestDoc.data())
-            guestObjects.push(guestDoc.data());
-        })
-
-        console.log("guest objects", guestObjects)
-        const guestsJson = JSON.stringify(guestObjects);
-        console.log("guests json", guestsJson)
-
-        const guestsJsonParsed = JSON.parse(guestsJson);
-        console.log("json parsed", guestsJsonParsed)
-
+            const guestJson = JSON.stringify(guestDoc.data());
+            const guestData = JSON.parse(guestJson);
+            const liv: Guest = {name: guestData.name, attending: guestData.attending, songWishes: guestData.songWishes}
+            guestObjects.push(liv);
+        }));
         const guest = {name: data.name, attending: data.attending, foodInfo: data.foodInfo, songWishes: data.songWishes, guests: guestObjects}
-
         console.log("Constructed guest", guest)
-
         return guest;
         
       } else {
