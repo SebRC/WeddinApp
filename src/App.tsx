@@ -13,7 +13,7 @@ function App() {
       setLoading(true);
       // const response = await getUserData();
 
-      setGuest(Guests[2]);
+      setGuest(Guests[0]);
       setLoading(false);
     })();
   }, []);
