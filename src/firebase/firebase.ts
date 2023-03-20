@@ -79,8 +79,8 @@ const auth = getAuth();
 
 export const handleSignIn = async (email: string, password: string): Promise<LoginDetails> => {
   try {
-    const user = await signInWithEmailAndPassword(auth, email, password);
-    return {success: true};
+    const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+    return {success: true, userId: userCredentials.user.uid};
   } catch(error: any){
     return {success: false, errorCode: error.code, errorMessage: error.message}
   }
@@ -88,6 +88,7 @@ export const handleSignIn = async (email: string, password: string): Promise<Log
 
 export interface LoginDetails {
   success: boolean;
+  userId?: string;
   errorCode?: string;
   errorMessage?: string;
 }

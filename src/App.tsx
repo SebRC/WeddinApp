@@ -4,11 +4,13 @@ import { Guests, DEFAULT_GUEST_STATE } from "./guest/guests";
 import { getGuestData } from "./firebase/firebase";
 import { useEffect, useState } from "react";
 import { LoadingPage } from "./components/loading/LoadingPage";
-import { Flexbox } from "./components/flexbox/Flexbox";
+import { useCurrentUser } from "./hooks/useCurrentUser";
 
 function App() {
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
   const [loading, setLoading] = useState(true);
+  const user = useCurrentUser();
+
   const debugLocal = false;
   useEffect(() => {
     (async () => {
@@ -17,7 +19,7 @@ function App() {
       if (debugLocal) {
         response = Guests[0];
       } else {
-        response = await getGuestData("martin");
+        response = await getGuestData(user?.uid ?? "none");
       }
 
       setGuest(response);
