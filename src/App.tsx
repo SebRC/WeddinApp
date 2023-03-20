@@ -7,6 +7,7 @@ import { Navbar } from "./components/navigation/Navbar";
 import { PageLayout } from "./components/pageLayout/PageLayout";
 import { GuestTable } from "./components/table/GuestTable";
 import { GuestContainer } from "./guest/GuestContainer";
+import { LogoutPage } from "./components/authentication/LogoutPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -46,14 +47,14 @@ function App() {
             </PageLayout>
           ),
         },
-        {
-          path: "/logout",
-          element: (
-            <PageLayout>
-              <LoginPage />
-            </PageLayout>
-          ),
-        },
+        // {
+        //   path: "/logout",
+        //   element: (
+        //     <PageLayout>
+        //       <LogoutPage />
+        //     </PageLayout>
+        //   ),
+        // },
       ],
     },
   ]);

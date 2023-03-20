@@ -1,7 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, DocumentSnapshot, getDoc, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -84,6 +86,7 @@ export const handleSignIn = async (email: string, password: string): Promise<Log
 };
 
 export const handleSignOut = async ()  => {
+  console.log("handle signout called")
   try {
     await signOut(auth);
   } catch(error: any){
@@ -97,5 +100,22 @@ export interface LoginDetails {
   errorCode?: string;
   errorMessage?: string;
 }
+
+// let currentuser:any = null;
+
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/firebase.User
+//     currentuser = user;
+//     // ...
+//   } else {
+//     currentuser = null;
+//   }
+// });
+
+// export const useCurrentUser = () => {
+//   return currentuser;
+// }
 
 export default app;
