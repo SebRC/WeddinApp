@@ -6,7 +6,7 @@
     border-radius: 5px;
     box-shadow: var(--box-shadow-small);
     padding-left: 10px;
-    width: 98%;
+    width: 100%;
     resize: vertical;
     min-height: 100px;
 }
@@ -15,6 +15,7 @@
     font-size: 1.5em;
 }
 
-.input[type=text]:focus {
-   outline: none;
+.input:focus {
+    outline: none !important;
+    border: var(--focus-outline)
 }

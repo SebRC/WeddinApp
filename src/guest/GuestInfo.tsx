@@ -9,7 +9,7 @@ interface GuestInfoProps {
 
 export const GuestInfo: FunctionComponent<GuestInfoProps> = ({ guest }) => {
   return (
-    <Flexbox flexDirection="column" gap={20}>
+    <Flexbox flexDirection="column" gap={20} width="100%">
       <ResponsePage guest={guest} />
       {guest.guests &&
         guest.guests.map((g, index) => {

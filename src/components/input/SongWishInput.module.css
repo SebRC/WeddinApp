@@ -6,7 +6,7 @@
     border-radius: 5px;
     box-shadow: var(--box-shadow-small);
     padding-left: 10px;
-    width: 98%;
+    width: 100%;
 }
 
 .label {
@@ -14,5 +14,5 @@
 }
 
 .input[type=text]:focus {
-   outline: none;
+   outline: var(--focus-outline)
 }

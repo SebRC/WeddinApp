@@ -7,6 +7,8 @@
 
   --box-shadow-large: 15px 10px;
   --box-shadow-small: 5px 2.5px;
+
+  --focus-outline: solid 1px var(--secondary)
 }
 
 .App {

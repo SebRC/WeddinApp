@@ -4,6 +4,7 @@ import { Guests, DEFAULT_GUEST_STATE } from "./guest/guests";
 import { getGuestData } from "./firebase/firebase";
 import { useEffect, useState } from "react";
 import { LoadingPage } from "./components/loading/LoadingPage";
+import { Flexbox } from "./components/flexbox/Flexbox";
 
 function App() {
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
