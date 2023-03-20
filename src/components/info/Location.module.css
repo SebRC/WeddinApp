@@ -1,6 +1,6 @@
 .location {
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius-medium);
     width: 100%;
     margin-top: 10px;
 }

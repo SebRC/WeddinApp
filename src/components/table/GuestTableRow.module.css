@@ -1,5 +1,4 @@
 .row {
-    border-radius: 5px;
     background-color: var(--primary);
 }
 
@@ -18,5 +17,4 @@
 .row:hover {
     background-color: var(--primary-hover);
     cursor: pointer;
-    border-radius: 5px;
 }

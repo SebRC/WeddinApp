@@ -1,6 +1,6 @@
 .container {
     background-color: var(--primary);
-    border-radius: 10px;
+    border-radius: var(--border-radius-large);
     padding: 20px;
     box-shadow: var(--box-shadow-large);
     position: relative;
