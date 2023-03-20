@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import { collection, doc, DocumentData, DocumentReference, getDoc, getFirestore } from "firebase/firestore";
 import { stringify } from "querystring";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
@@ -28,17 +28,14 @@ export const getUserData = async (): Promise<Guest> => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-        const json = JSON.stringify(docSnap.data());
+        const docData = docSnap.data();
+        const json = JSON.stringify(docData);
         var data = JSON.parse(json);
         var guests = data.guests;
         let guestObjects:Guest[] = [];
         await Promise.all(guests.map(async (g: string) => {
-            const guestRef = doc(db, "guests", g);
-            const guestDoc = await getDoc(guestRef);
-            const guestJson = JSON.stringify(guestDoc.data());
-            const guestData = JSON.parse(guestJson);
-            const liv: Guest = {name: guestData.name, attending: guestData.attending, songWishes: guestData.songWishes, foodInfo: guestData.foodInfo}
-            guestObjects.push(liv);
+            const convertedGuest = await convertToGuestType(g);
+            guestObjects.push(convertedGuest);
         }));
         const guest = {name: data.name, attending: data.attending, foodInfo: data.foodInfo, songWishes: data.songWishes, guests: guestObjects}
         console.log("Constructed guest", guest)
@@ -49,6 +46,15 @@ export const getUserData = async (): Promise<Guest> => {
         console.log("No such document!");
         return DEFAULT_GUEST_STATE;
       }
+}
+
+const convertToGuestType = async (guestName: string): Promise<Guest> => {
+    const guestRef = doc(db, "guests", guestName);
+    const guestDoc = await getDoc(guestRef);
+    const guestJson = JSON.stringify(guestDoc.data());
+    const guestData = JSON.parse(guestJson);
+    const guest: Guest = {name: guestData.name, attending: guestData.attending, songWishes: guestData.songWishes, foodInfo: guestData.foodInfo}
+    return guest;
 }
 
 export default app;
