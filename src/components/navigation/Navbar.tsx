@@ -34,7 +34,6 @@ export const Navbar: FunctionComponent = () => {
             </Link>
           </>
         )}
-
         <Link to="auth" style={{ float: "right" }} onClick={handleSignOut}>
           <LogoutIcon />
         </Link>

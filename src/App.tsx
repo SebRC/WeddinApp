@@ -7,57 +7,69 @@ import { Navbar } from "./components/navigation/Navbar";
 import { PageLayout } from "./components/pageLayout/PageLayout";
 import { GuestTable } from "./components/table/GuestTable";
 import { GuestContainer } from "./guest/GuestContainer";
-import { LogoutPage } from "./components/authentication/LogoutPage";
+import { useCurrentUser } from "./hooks/useCurrentUser";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Navbar />,
-      children: [
-        {
-          path: "/guest",
-          element: (
-            <PageLayout>
-              <GuestContainer />
-            </PageLayout>
-          ),
-        },
-        {
-          path: "/info",
-          element: (
-            <PageLayout>
-              <Info />
-            </PageLayout>
-          ),
-        },
-        {
-          path: "/admin",
-          element: (
-            <PageLayout>
-              <GuestTable guests={Guests} />
-            </PageLayout>
-          ),
-        },
-        {
-          path: "/auth",
-          element: (
-            <PageLayout>
-              <LoginPage />
-            </PageLayout>
-          ),
-        },
-        // {
-        //   path: "/logout",
-        //   element: (
-        //     <PageLayout>
-        //       <LogoutPage />
-        //     </PageLayout>
-        //   ),
-        // },
-      ],
-    },
-  ]);
+  const user = useCurrentUser();
+  const router = createBrowserRouter(
+    user
+      ? [
+          {
+            path: "/",
+            element: <Navbar />,
+            children: [
+              {
+                path: "/guest",
+                element: (
+                  <PageLayout>
+                    <GuestContainer />
+                  </PageLayout>
+                ),
+              },
+              {
+                path: "/info",
+                element: (
+                  <PageLayout>
+                    <Info />
+                  </PageLayout>
+                ),
+              },
+              {
+                path: "/admin",
+                element: (
+                  <PageLayout>
+                    <GuestTable guests={Guests} />
+                  </PageLayout>
+                ),
+              },
+              {
+                path: "/auth",
+                element: (
+                  <PageLayout>
+                    <LoginPage />
+                  </PageLayout>
+                ),
+              },
+            ],
+          },
+        ]
+      : [
+          {
+            path: "/",
+            element: <Navbar />,
+            children: [
+              {
+                path: "/auth",
+                element: (
+                  <PageLayout>
+                    <LoginPage />
+                  </PageLayout>
+                ),
+              },
+            ],
+          },
+        ]
+  );
 
   return <RouterProvider router={router} />;
 }
