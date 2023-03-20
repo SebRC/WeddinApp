@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import styles from "./Navbar.module.css";
 import { Outlet, Link, useLocation } from "react-router-dom";
+import { LogoutIcon } from "../icons/LogoutIcon";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();
@@ -18,6 +19,9 @@ export const Navbar: FunctionComponent = () => {
         </Link>
         <Link to="auth" className={location.pathname.includes("auth") ? `${styles.active}` : ""}>
           Auth
+        </Link>
+        <Link to="logout" style={{ float: "right" }}>
+          <LogoutIcon />{" "}
         </Link>
       </div>
       <div className={styles.outlet}>
