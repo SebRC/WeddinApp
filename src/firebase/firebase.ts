@@ -28,26 +28,26 @@ export const getUserData = async (guestId: string): Promise<Guest> => {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         let docData = docSnap.data();
-        let guestObjects:Guest[] = [];
+        let guests:Guest[] = [];
         if(docData.guestIds) {
-          guestObjects = await fetchGuestsFromMainGuest(docData.guestIds);
+          guests = await fetchGuestsFromMainGuest(docData.guestIds);
         }
-        return {...docData, guests: guestObjects};
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-        return DEFAULT_GUEST_STATE;
-      }
+        return {...docData, guests: guests};
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+      return DEFAULT_GUEST_STATE;
+    }
 }
 
 const fetchGuestsFromMainGuest = async (guestIds: string[]): Promise<Guest[]> => {
-  let guestObjects: Guest[] = [];
+  let guests: Guest[] = [];
   await Promise.all(guestIds.map(async (g) => {
     const guestRef = doc(db, "guests", g).withConverter(guestConverter);
     const guestDocSnap = await getDoc(guestRef);
-    guestObjects.push(guestDocSnap.data() ?? DEFAULT_GUEST_STATE);
+    guests.push(guestDocSnap.data() ?? DEFAULT_GUEST_STATE);
   }));
-  return guestObjects;
+  return guests;
 }
 
 // Firestore data converter
