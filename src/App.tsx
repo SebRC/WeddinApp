@@ -1,21 +1,14 @@
 import "./App.css";
-import { GuestInfo } from "./guest/GuestInfo";
-import { Guests, DEFAULT_GUEST_STATE } from "./guest/guests";
-import { getGuestData } from "./firebase/firebase";
-import { useEffect, useState } from "react";
-import { useCurrentUser } from "./hooks/useCurrentUser";
+import { Guests } from "./guest/guests";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginPage } from "./components/authentication/LoginPage";
 import { Info } from "./components/info/Info";
 import { Navbar } from "./components/navigation/Navbar";
 import { PageLayout } from "./components/pageLayout/PageLayout";
 import { GuestTable } from "./components/table/GuestTable";
+import { GuestContainer } from "./guest/GuestContainer";
 
 function App() {
-  const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
-  const [loading, setLoading] = useState(true);
-  const user = useCurrentUser();
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -25,7 +18,7 @@ function App() {
           path: "/guest",
           element: (
             <PageLayout>
-              <GuestInfo guest={guest} loading={loading} />
+              <GuestContainer />
             </PageLayout>
           ),
         },
@@ -64,22 +57,6 @@ function App() {
       ],
     },
   ]);
-
-  const debugLocal = false;
-  useEffect(() => {
-    (async () => {
-      setLoading(true);
-      let response = DEFAULT_GUEST_STATE;
-      if (debugLocal) {
-        response = Guests[0];
-      } else {
-        response = await getGuestData(user?.uid ?? "none");
-      }
-
-      setGuest(response);
-      setLoading(false);
-    })();
-  }, []);
 
   return <RouterProvider router={router} />;
 }
