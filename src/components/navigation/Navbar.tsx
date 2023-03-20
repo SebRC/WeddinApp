@@ -16,6 +16,9 @@ export const Navbar: FunctionComponent = () => {
         <Link to="admin" className={location.pathname.includes("admin") ? `${styles.active}` : ""}>
           Admin
         </Link>
+        <Link to="auth" className={location.pathname.includes("auth") ? `${styles.active}` : ""}>
+          Auth
+        </Link>
       </div>
       <div className={styles.outlet}>
         <Outlet />

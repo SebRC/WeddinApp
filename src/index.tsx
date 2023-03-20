@@ -10,6 +10,7 @@ import { Title } from "./components/text/Title";
 import { Navbar } from "./components/navigation/Navbar";
 import { PageLayout } from "./components/pageLayout/PageLayout";
 import { Info } from "./components/info/Info";
+import { LoginPage } from "./components/authentication/LoginPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 const router = createBrowserRouter([
@@ -37,8 +38,15 @@ const router = createBrowserRouter([
         path: "/admin",
         element: (
           <PageLayout>
-            {/* <Title title="Admin Center" /> */}
             <GuestTable guests={Guests} />
+          </PageLayout>
+        ),
+      },
+      {
+        path: "/auth",
+        element: (
+          <PageLayout>
+            <LoginPage />
           </PageLayout>
         ),
       },
