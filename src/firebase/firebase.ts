@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { collection, doc, DocumentData, DocumentReference, getDoc, getFirestore } from "firebase/firestore";
+import { collection, doc, DocumentData, DocumentReference, DocumentSnapshot, getDoc, getFirestore, SnapshotOptions } from "firebase/firestore";
 import { stringify } from "querystring";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
@@ -23,24 +23,16 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export const getUserData = async (): Promise<Guest> => {
-    const docRef = doc(db, "guests", "martin");
+export const getUserData = async (guestId: string): Promise<Guest> => {
+    const docRef = doc(db, "guests", guestId).withConverter(guestConverter);
     const docSnap = await getDoc(docRef);
-
     if (docSnap.exists()) {
-        const docData = docSnap.data();
-        const json = JSON.stringify(docData);
-        var data = JSON.parse(json);
-        var guests = data.guests;
+        let docData = docSnap.data();
         let guestObjects:Guest[] = [];
-        await Promise.all(guests.map(async (g: string) => {
-            const convertedGuest = await convertToGuestType(g);
-            guestObjects.push(convertedGuest);
-        }));
-        const guest = {name: data.name, attending: data.attending, foodInfo: data.foodInfo, songWishes: data.songWishes, guests: guestObjects}
-        console.log("Constructed guest", guest)
-        return guest;
-        
+        if(docData.guestIds) {
+          guestObjects = await fetchGuestsFromMainGuest(docData.guestIds);
+        }
+        return {...docData, guests: guestObjects};
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -48,13 +40,31 @@ export const getUserData = async (): Promise<Guest> => {
       }
 }
 
-const convertToGuestType = async (guestName: string): Promise<Guest> => {
-    const guestRef = doc(db, "guests", guestName);
-    const guestDoc = await getDoc(guestRef);
-    const guestJson = JSON.stringify(guestDoc.data());
-    const guestData = JSON.parse(guestJson);
-    const guest: Guest = {name: guestData.name, attending: guestData.attending, songWishes: guestData.songWishes, foodInfo: guestData.foodInfo}
-    return guest;
+const fetchGuestsFromMainGuest = async (guestIds: string[]): Promise<Guest[]> => {
+  let guestObjects: Guest[] = [];
+  await Promise.all(guestIds.map(async (g) => {
+    const guestRef = doc(db, "guests", g).withConverter(guestConverter);
+    const guestDocSnap = await getDoc(guestRef);
+    guestObjects.push(guestDocSnap.data() ?? DEFAULT_GUEST_STATE);
+  }));
+  return guestObjects;
 }
+
+// Firestore data converter
+const guestConverter = {
+  toFirestore: (guest: Guest) => {
+      return {
+          name: guest.name,
+          attending: guest.attending,
+          foodInfo: guest.foodInfo,
+          songWishes: guest.songWishes,
+          guestIds: guest.guestIds
+          };
+  },
+  fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Guest => {
+      const data = snapshot.data(options);
+      return {name: data?.name, attending: data?.attending, songWishes: data?.songWishes, foodInfo: data?.foodInfo, guestIds: data?.guestIds}
+  }
+};
 
 export default app;

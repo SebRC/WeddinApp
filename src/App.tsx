@@ -11,9 +11,9 @@ function App() {
   useEffect(() => {
     (async () => {
       setLoading(true);
-      // const response = await getUserData();
+      const response = await getUserData("martin");
 
-      setGuest(Guests[0]);
+      setGuest(response);
       setLoading(false);
     })();
   }, []);
