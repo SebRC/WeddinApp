@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { Flexbox } from "../flexbox/Flexbox";
 import { Wish } from "../responsePage/responsePageReducer";
-import styles from "./SongWishInput.module.css";
+import styles from "./Input.module.css";
 
 interface SongWishInputProps {
   onChange: (value: string, id: number) => void;
