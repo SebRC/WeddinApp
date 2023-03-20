@@ -8,7 +8,7 @@ import { LoadingPage } from "./components/loading/LoadingPage";
 function App() {
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
   const [loading, setLoading] = useState(true);
-  const debugLocal = false;
+  const debugLocal = true;
   useEffect(() => {
     (async () => {
       setLoading(true);

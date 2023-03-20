@@ -28,25 +28,28 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const [name, setName] = useState("");
   const [index, setIndex] = useState(1);
   const [expanded, setExpanded] = useState(true);
+  const [editing, setEditing] = useState(false);
   const phrase = `Hello ${guest.name}`;
 
   const handleAttendingChange = () => {
+    setEditing(true);
     guest.attending = !guest.attending;
     dispatch({ type: ACTION_TYPE.COMING_CHANGED, payload: { attending: !attending } });
   };
 
   const handleWishChange = (wish: string, index: number) => {
+    setEditing(true);
     dispatch({ type: ACTION_TYPE.WISHES_CHANGED, payload: { wish: { value: wish, id: index } } });
   };
 
   const handleFoodInfoChange = (foodInfo: string) => {
+    setEditing(true);
     dispatch({ type: ACTION_TYPE.FOOD_INFO_CHANGED, payload: { foodInfo: foodInfo } });
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (index <= phrase.length) {
-        const sliced = phrase.slice(0, index);
         setName(phrase.slice(0, index));
         setIndex((i) => i + 1);
       }
@@ -64,13 +67,14 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   };
 
   const updateState = async (state: ResponsePageState) => {
+    setEditing(false);
     const updatedGuest: Guest = {
       ...guest,
       attending: state.attending,
       foodInfo: state.foodInfo,
       songWishes: state.songWishes.map((sw) => sw.value),
     };
-    await setGuestData(updatedGuest);
+    // await setGuestData(updatedGuest);
   };
 
   const { attending: attending, songWishes: wishes } = state;
@@ -98,7 +102,9 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
           <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
-          <button onClick={async () => await updateState(state)}>Update state</button>
+          <button onClick={async () => await updateState(state)} disabled={!editing}>
+            Update state
+          </button>
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>
