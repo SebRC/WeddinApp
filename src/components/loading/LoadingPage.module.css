@@ -3,7 +3,7 @@
     background: linear-gradient(to right, var(--primary) 4%, var(--primary-hover) 25%, var(--primary) 36%);
     background-size: 1000px 600px;
     min-height: 600px;
-    width: 90%;
+    width: 100%;
     border-radius: 10px;
     opacity: 0.95;
     box-shadow: var(--box-shadow-large);

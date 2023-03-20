@@ -8,7 +8,7 @@
     transform: scaleY(1);
     transform-origin:top;
     align-items: center;
-    width: 90%;
+    width: 100%;
 }
 
 .collapsed {

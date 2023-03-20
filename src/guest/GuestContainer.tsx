@@ -9,7 +9,7 @@ export const GuestContainer: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
   const user = useCurrentUser();
-  const debugLocal = false;
+  const debugLocal = true;
 
   useEffect(() => {
     (async () => {
@@ -20,16 +20,9 @@ export const GuestContainer: FunctionComponent = () => {
       } else {
         response = await getGuestData(user?.uid ?? "none");
       }
-
       setGuest(response);
       setLoading(false);
     })();
   }, []);
-  return loading ? (
-    <LoadingPage />
-  ) : (
-    <>
-      <GuestInfo guest={guest} />
-    </>
-  );
+  return loading ? <LoadingPage /> : <GuestInfo guest={guest} />;
 };
