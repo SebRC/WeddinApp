@@ -21,7 +21,7 @@ export const Navbar: FunctionComponent = () => {
           Auth
         </Link>
         <Link to="logout" style={{ float: "right" }}>
-          <LogoutIcon />{" "}
+          <LogoutIcon />
         </Link>
       </div>
       <div className={styles.outlet}>

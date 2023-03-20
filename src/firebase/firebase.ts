@@ -1,10 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { collection, doc, DocumentData, DocumentReference, DocumentSnapshot, getDoc, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
-import { STATUS_CODES } from "http";
-import { stringify } from "querystring";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { doc, DocumentSnapshot, getDoc, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -83,6 +80,14 @@ export const handleSignIn = async (email: string, password: string): Promise<Log
     return {success: true, userId: userCredentials.user.uid};
   } catch(error: any){
     return {success: false, errorCode: error.code, errorMessage: error.message}
+  }
+};
+
+export const handleSignOut = async ()  => {
+  try {
+    await signOut(auth);
+  } catch(error: any){
+    console.log(error)
   }
 };
 
