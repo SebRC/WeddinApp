@@ -7,8 +7,12 @@ import { Input } from "../input/Input";
 import { useNavigate } from "react-router-dom";
 
 export const LoginPage: FunctionComponent = () => {
-  const [email, setEmail] = useState("martin@ahosrcwedding.com");
-  const [password, setPassword] = useState("Martin");
+  const users = [
+    { email: "larke@ahosrcwedding.com", password: "Laerke" },
+    { email: "martin@ahosrcwedding.com", password: "Martin" },
+  ];
+  const [email, setEmail] = useState(users[0].email);
+  const [password, setPassword] = useState(users[0].password);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
