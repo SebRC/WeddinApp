@@ -24,7 +24,9 @@ interface FlexboxProps {
   paddingRight?: any;
   paddingLeft?: any;
   height?: any;
+  minHeight?: any;
   width?: any;
+  minWidth?: any;
   gap?: string | number;
   debug?: boolean;
   style?: React.CSSProperties;
@@ -45,6 +47,8 @@ export const Flexbox: FunctionComponent<FlexboxProps> = ({
   paddingRight = "0px",
   paddingLeft = "0px",
   height = "auto",
+  minHeight = "auto",
+  minWidth = "auto",
   width = "auto",
   gap = "normal",
   debug = false,
@@ -60,7 +64,9 @@ export const Flexbox: FunctionComponent<FlexboxProps> = ({
         alignItems: alignItems,
         overflow: overflow,
         height: height,
+        minHeight: minHeight,
         width: width,
+        minWidth: minWidth,
         marginBottom: marginBottom,
         marginTop: marginTop,
         marginRight: marginRight,
