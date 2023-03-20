@@ -31,10 +31,6 @@
     border-top-right-radius: 10px;
 }
 
-.outlet {
-    padding: 40px 20px 20px 20px
-}
-
 .logout {
     background-image: url(/Users/sebastianchristiansen/Desktop/Projects/wedding-app/public/logout.png);
     background-size: contain;

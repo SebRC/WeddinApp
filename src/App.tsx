@@ -8,6 +8,7 @@ import { PageLayout } from "./components/pageLayout/PageLayout";
 import { GuestTable } from "./components/table/GuestTable";
 import { GuestContainer } from "./guest/GuestContainer";
 import { useCurrentUser } from "./hooks/useCurrentUser";
+import { ErrorPage } from "./components/error/ErrorPage";
 
 function App() {
   const user = useCurrentUser();
@@ -17,38 +18,23 @@ function App() {
           {
             path: "/",
             element: <Navbar />,
+            errorElement: <ErrorPage />,
             children: [
               {
                 path: "/guest",
-                element: (
-                  <PageLayout>
-                    <GuestContainer />
-                  </PageLayout>
-                ),
+                element: <GuestContainer />,
               },
               {
                 path: "/info",
-                element: (
-                  <PageLayout>
-                    <Info />
-                  </PageLayout>
-                ),
+                element: <Info />,
               },
               {
                 path: "/admin",
-                element: (
-                  <PageLayout>
-                    <GuestTable guests={Guests} />
-                  </PageLayout>
-                ),
+                element: <GuestTable guests={Guests} />,
               },
               {
                 path: "/auth",
-                element: (
-                  <PageLayout>
-                    <LoginPage />
-                  </PageLayout>
-                ),
+                element: <LoginPage />,
               },
             ],
           },
@@ -57,14 +43,11 @@ function App() {
           {
             path: "/",
             element: <Navbar />,
+            errorElement: <ErrorPage />,
             children: [
               {
                 path: "/auth",
-                element: (
-                  <PageLayout>
-                    <LoginPage />
-                  </PageLayout>
-                ),
+                element: <LoginPage />,
               },
             ],
           },

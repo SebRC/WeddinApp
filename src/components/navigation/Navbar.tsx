@@ -4,6 +4,7 @@ import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { LogoutIcon } from "../icons/LogoutIcon";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { handleSignOut } from "../../firebase/firebase";
+import { PageLayout } from "../pageLayout/PageLayout";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();
@@ -38,9 +39,9 @@ export const Navbar: FunctionComponent = () => {
           <LogoutIcon />
         </Link>
       </div>
-      <div className={styles.outlet}>
+      <PageLayout>
         <Outlet />
-      </div>
+      </PageLayout>
     </>
   );
 };
