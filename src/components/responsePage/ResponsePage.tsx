@@ -10,6 +10,7 @@ import { Title } from "../text/Title";
 import { Header } from "../text/Header";
 import { FoodInfoInput } from "../input/FoodInfoInput";
 import { setGuestData } from "../../firebase/firebase";
+import { Button } from "../button/Button";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -74,7 +75,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
       foodInfo: state.foodInfo,
       songWishes: state.songWishes.map((sw) => sw.value),
     };
-    // await setGuestData(updatedGuest);
+    await setGuestData(updatedGuest);
   };
 
   const { attending: attending, songWishes: wishes } = state;
@@ -102,9 +103,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
           <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
-          <button onClick={async () => await updateState(state)} disabled={!editing}>
-            Update state
-          </button>
+          <Button text="Update state" disabled={!editing} onClick={async () => await updateState(state)} />
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>

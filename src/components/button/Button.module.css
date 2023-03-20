@@ -1,0 +1,22 @@
+.button {
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 5px;
+    height: 2rem;
+    width: 100%;
+    box-shadow: var(--box-shadow-small);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.button:active {
+    transform: scale(0.99);
+}
+
+.button[disabled] {
+  pointer-events: none;
+}
