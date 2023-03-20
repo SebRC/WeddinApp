@@ -3,20 +3,20 @@ export interface Wish {
   id: number;
 }
 
-interface ResponsePageState {
-  coming: boolean;
-  wishes: Wish[];
+export interface ResponsePageState {
+  attending: boolean;
+  songWishes: Wish[];
   foodInfo: string;
 }
 
 interface PageResponseAction {
   type: string;
-  payload: {coming?: boolean, wish?: {value: string, id: number}, foodInfo?: string}
+  payload: {attending?: boolean, wish?: {value: string, id: number}, foodInfo?: string}
 }
 
 export const INITIAL_STATE: ResponsePageState = {
-  coming: false,
-  wishes: [{value: '', id: 0}, {value: '', id: 1}, {value: '', id: 2}],
+  attending: false,
+  songWishes: [{value: '', id: 0}, {value: '', id: 1}, {value: '', id: 2}],
   foodInfo: ''
 };
 
@@ -24,11 +24,11 @@ export const responsePageReducer = (state: ResponsePageState, action: PageRespon
   switch (action.type) {
     case "COMING_CHANGED":
       return {
-        ...state, coming: action.payload.coming ?? state.coming
+        ...state, attending: action.payload.attending ?? state.attending
       }
     case "WISHES_CHANGED":
       return {
-        ...state, wishes: state.wishes.map(w => {
+        ...state, songWishes: state.songWishes.map(w => {
           if(w.id === action.payload.wish?.id) {
             return action.payload.wish
           }

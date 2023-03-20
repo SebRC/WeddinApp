@@ -2,13 +2,14 @@ import { FunctionComponent, useEffect, useReducer, useState } from "react";
 import { Checkbox } from "../checkbox/Checkbox";
 import { Flexbox } from "../flexbox/Flexbox";
 import { ACTION_TYPE } from "./responsePageActionTypes";
-import { responsePageReducer } from "./responsePageReducer";
+import { responsePageReducer, ResponsePageState } from "./responsePageReducer";
 import { SongWishInput } from "../input/SongWishInput";
 import styles from "./ResponsePage.module.css";
 import { Guest } from "../../guest/Guest";
 import { Title } from "../text/Title";
 import { Header } from "../text/Header";
 import { FoodInfoInput } from "../input/FoodInfoInput";
+import { setGuestData } from "../../firebase/firebase";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -16,8 +17,8 @@ interface ResponsePageProps {
 
 export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) => {
   const [state, dispatch] = useReducer(responsePageReducer, {
-    coming: guest.attending,
-    wishes: [
+    attending: guest.attending,
+    songWishes: [
       { value: guest.songWishes[0], id: 0 },
       { value: guest.songWishes[1], id: 1 },
       { value: guest.songWishes[2], id: 2 },
@@ -31,7 +32,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
 
   const handleAttendingChange = () => {
     guest.attending = !guest.attending;
-    dispatch({ type: ACTION_TYPE.COMING_CHANGED, payload: { coming: !coming } });
+    dispatch({ type: ACTION_TYPE.COMING_CHANGED, payload: { attending: !attending } });
   };
 
   const handleWishChange = (wish: string, index: number) => {
@@ -56,16 +57,26 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     };
   }, [name]);
 
-  const handleClick = () => {
+  const handleBannerClick = () => {
     if (!expanded) {
       setExpanded(true);
     }
   };
 
-  const { coming, wishes } = state;
+  const updateState = async (state: ResponsePageState) => {
+    const updatedGuest: Guest = {
+      ...guest,
+      attending: state.attending,
+      foodInfo: state.foodInfo,
+      songWishes: state.songWishes.map((sw) => sw.value),
+    };
+    await setGuestData(updatedGuest);
+  };
+
+  const { attending: attending, songWishes: wishes } = state;
   const [wish1, wish2, wish3] = wishes;
   return (
-    <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`} onClick={handleClick}>
+    <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`} onClick={handleBannerClick}>
       <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
         <h1>{expanded ? "-" : "+"}</h1>
       </button>
@@ -74,8 +85,8 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <Title title={name} />
           <Checkbox
             label="Are you coming to our wedding?"
-            id={`${guest.name}-coming`}
-            checked={state.coming}
+            id={`${guest.name}-${attending}`}
+            checked={attending}
             onChange={handleAttendingChange}
           />
           <Header
@@ -87,6 +98,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
           <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
+          <button onClick={async () => await updateState(state)}>Update state</button>
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { collection, doc, DocumentData, DocumentReference, DocumentSnapshot, getDoc, getFirestore, SnapshotOptions } from "firebase/firestore";
+import { collection, doc, DocumentData, DocumentReference, DocumentSnapshot, getDoc, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { stringify } from "querystring";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
@@ -23,7 +23,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export const getUserData = async (guestId: string): Promise<Guest> => {
+export const getGuestData = async (guestId: string): Promise<Guest> => {
     const docRef = doc(db, "guests", guestId).withConverter(guestConverter);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
@@ -40,6 +40,12 @@ export const getUserData = async (guestId: string): Promise<Guest> => {
     }
 }
 
+export const setGuestData = async (guest: Guest) => {
+  const ref = doc(db, "guests", guest.id ?? "undefined").withConverter(guestConverter);
+  const updatedGuest: Guest = {name: guest.name, attending: guest.attending, foodInfo: guest.foodInfo, songWishes: guest.songWishes, guestIds: guest.guestIds}
+  await setDoc(ref, updatedGuest);
+}
+
 const fetchGuestsFromMainGuest = async (guestIds: string[]): Promise<Guest[]> => {
   let guests: Guest[] = [];
   await Promise.all(guestIds.map(async (g) => {
@@ -53,17 +59,16 @@ const fetchGuestsFromMainGuest = async (guestIds: string[]): Promise<Guest[]> =>
 // Firestore data converter
 const guestConverter = {
   toFirestore: (guest: Guest) => {
-      return {
-          name: guest.name,
+      return {...guest, 
           attending: guest.attending,
           foodInfo: guest.foodInfo,
           songWishes: guest.songWishes,
-          guestIds: guest.guestIds
+          guestIds: guest.guestIds ?? null
           };
   },
   fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Guest => {
       const data = snapshot.data(options);
-      return {name: data?.name, attending: data?.attending, songWishes: data?.songWishes, foodInfo: data?.foodInfo, guestIds: data?.guestIds}
+      return {id: snapshot.id, name: data?.name, attending: data?.attending, songWishes: data?.songWishes, foodInfo: data?.foodInfo, guestIds: data?.guestIds}
   }
 };
 

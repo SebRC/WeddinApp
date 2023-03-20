@@ -1,4 +1,5 @@
 export interface Guest {
+    id?: string;
     name: string;
     guests?: Guest[];
     guestIds?: string[];
