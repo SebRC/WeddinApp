@@ -1,12 +1,9 @@
 import { FunctionComponent } from "react";
+import { IconProps, IconSize } from "./iconProps";
 
-interface IconNodeProps {
-  fill?: string;
-}
-
-export const IconNode: FunctionComponent<IconNodeProps> = ({ fill = "white" }) => {
+export const IconNode: FunctionComponent<IconProps> = ({ fill = "white", size = IconSize.Medium }) => {
   return (
-    <svg width="25" height="25" viewBox="0 0 496 602" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={size} height={size} viewBox="0 0 496 602" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M364 504.5C364 558.348 301.768 602 225 602C148.232 602 86 558.348 86 504.5C86 450.652 148.232 407 225 407C301.768 407 364 450.652 364 504.5Z"
         fill={fill}

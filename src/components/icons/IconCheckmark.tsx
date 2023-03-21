@@ -1,12 +1,9 @@
 import { FunctionComponent } from "react";
+import { IconProps, IconSize } from "./iconProps";
 
-interface IconCheckmarkProps {
-  fill?: string;
-}
-
-export const IconCheckmark: FunctionComponent<IconCheckmarkProps> = ({ fill = "white" }) => {
+export const IconCheckmark: FunctionComponent<IconProps> = ({ fill = "white", size = IconSize.Medium }) => {
   return (
-    <svg width="25" height="25" viewBox="0 0 488 488" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={size} height={size} viewBox="0 0 488 488" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d_0_1)">
         <circle cx="244" cy="240" r="225" stroke={fill} stroke-width="30" shape-rendering="crispEdges" />
       </g>

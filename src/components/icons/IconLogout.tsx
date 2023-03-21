@@ -1,12 +1,9 @@
 import { FunctionComponent } from "react";
+import { IconProps, IconSize } from "./iconProps";
 
-interface IconLogoutProps {
-  fill?: string;
-}
-
-export const IconLogout: FunctionComponent<IconLogoutProps> = ({ fill = "white" }) => {
+export const IconLogout: FunctionComponent<IconProps> = ({ fill = "white", size = IconSize.Medium }) => {
   return (
-    <svg width="20" height="18" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="18" height="18" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="32" y="1" width="4" height="18" rx="2" fill={fill} />
       <rect x="10" y="28" width="4" height="38" rx="2" transform="rotate(-90 10 28)" fill={fill} />
       <rect

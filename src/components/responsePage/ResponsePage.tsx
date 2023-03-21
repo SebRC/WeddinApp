@@ -110,7 +110,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           />
           <Flexbox
             maxHeight="350px"
-            height="350px"
+            minHeight="100px"
             width="100%"
             flexDirection="column"
             gap={20}
