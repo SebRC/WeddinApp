@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Flexbox } from "../flexbox/Flexbox";
+import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Header } from "../text/Header";
 import { TimeTableListItem } from "./TimeTable";
 import styles from "./TimeTableItem.module.css";

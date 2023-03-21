@@ -4,7 +4,7 @@ import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { IconLogout } from "../icons/IconLogout";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { handleSignOut } from "../../firebase/firebase";
-import { PageLayout } from "../pageLayout/PageLayout";
+import { PageLayout } from "../layout/pageLayout/PageLayout";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();

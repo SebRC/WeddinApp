@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Flexbox } from "../flexbox/Flexbox";
+import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./FoodInfoInput.module.css";
 
 interface FoodInfoInputProps {

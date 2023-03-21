@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useReducer, useState } from "react";
 import { Checkbox } from "../checkbox/Checkbox";
-import { Flexbox } from "../flexbox/Flexbox";
+import { Flexbox } from "../layout/flexbox/Flexbox";
 import { ACTION_TYPE } from "./responsePageActionTypes";
 import { responsePageReducer, ResponsePageState, Wish } from "./responsePageReducer";
 import { SongWishInput } from "../input/SongWishInput";

@@ -1,5 +1,5 @@
 import { ChangeEventHandler, FunctionComponent } from "react";
-import { Flexbox } from "../flexbox/Flexbox";
+import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Input.module.css";
 
 interface InputProps {

@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { Button } from "../button/Button";
-import { Flexbox } from "../flexbox/Flexbox";
+import { Flexbox } from "../layout/flexbox/Flexbox";
 import { IconTrash } from "../icons/IconTrash";
 import { Wish } from "../responsePage/responsePageReducer";
 import styles from "./Input.module.css";

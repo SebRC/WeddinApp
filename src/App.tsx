@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginPage } from "./components/authentication/LoginPage";
 import { Info } from "./components/info/Info";
 import { Navbar } from "./components/navigation/Navbar";
-import { PageLayout } from "./components/pageLayout/PageLayout";
+import { PageLayout } from "./components/layout/pageLayout/PageLayout";
 import { GuestTable } from "./components/table/GuestTable";
 import { GuestContainer } from "./guest/GuestContainer";
 import { useCurrentUser } from "./hooks/useCurrentUser";

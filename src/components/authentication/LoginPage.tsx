@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
-import { Flexbox } from "../flexbox/Flexbox";
-import { Paper } from "../layout/Paper";
+import { Flexbox } from "../layout/flexbox/Flexbox";
+import { Paper } from "../layout/paper/Paper";
 import { Button } from "../button/Button";
 import { handleSignIn } from "../../firebase/firebase";
 import { Input } from "../input/Input";

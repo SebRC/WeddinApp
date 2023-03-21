@@ -18,7 +18,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   type = "default",
   onClick,
   width = "auto",
-  height = "auto",
+  height = "2.5rem",
   alignSelf = "auto",
   icon,
 }) => {

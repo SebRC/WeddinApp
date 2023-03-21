@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Flexbox } from "../flexbox/Flexbox";
+import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./LoadingPage.module.css";
 
 export const LoadingPage: FunctionComponent = () => {
