@@ -10,6 +10,12 @@ interface GuestTableRowProps {
 }
 
 export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) => {
+  const handleSongsClick = () => {
+    const text = guest.songWishes.filter((s) => s).join(", ");
+    if (text) {
+      navigator.clipboard.writeText(guest.songWishes.filter((s) => s).join(", "));
+    }
+  };
   return (
     <tr className={styles.row}>
       <td>{guest.name}</td>
@@ -24,7 +30,7 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
           </Flexbox>
         )}
       </td>
-      <td>{guest.songWishes.filter((s) => s).join(", ")}</td>
+      <td onClick={handleSongsClick}>{guest.songWishes.filter((s) => s).join(", ")}</td>
       <td>{guest.foodInfo}</td>
     </tr>
   );
