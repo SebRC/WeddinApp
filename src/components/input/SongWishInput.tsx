@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { Button } from "../button/Button";
 import { Flexbox } from "../flexbox/Flexbox";
 import { Wish } from "../responsePage/responsePageReducer";
 import styles from "./Input.module.css";
@@ -18,14 +19,17 @@ export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange,
           {label}
         </label>
       )}
-      <input
-        autoComplete="off"
-        value={wish.value}
-        onChange={(e) => onChange(e.target.value, wish.id)}
-        type="text"
-        id={id}
-        className={styles.input}
-      />
+      <Flexbox alignItems="center" gap={20} marginRight="10px">
+        <input
+          autoComplete="off"
+          value={wish.value}
+          onChange={(e) => onChange(e.target.value, wish.id)}
+          type="text"
+          id={id}
+          className={styles.input}
+        />
+        <Button text="-" onClick={() => {}} width="3rem" type="danger" height="3rem" />
+      </Flexbox>
     </Flexbox>
   );
 };
