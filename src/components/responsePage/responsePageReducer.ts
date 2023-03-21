@@ -41,9 +41,19 @@ export const responsePageReducer = (state: ResponsePageState, action: PageRespon
         ...state, foodInfo: action.payload.foodInfo ?? state.foodInfo
       }
 
-      case "SONG_WISH_ADDED":
+    case "SONG_WISH_ADDED":
       return {
         ...state, songWishes: [...state.songWishes,{value: "", id: action.payload.wish?.id ?? -1}]
+      }
+
+    case "SONG_WISH_REMOVED":
+      const wishToremove = action.payload.wish ?? {value: "", id: -1};
+      const index = state.songWishes.indexOf(wishToremove);
+      if(index > -1) {
+        state.songWishes.splice(index, 1)
+      }
+      return {
+        ...state, songWishes: state.songWishes
       }
   
     default:

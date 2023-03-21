@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useReducer, useState } from "react";
 import { Checkbox } from "../checkbox/Checkbox";
 import { Flexbox } from "../flexbox/Flexbox";
 import { ACTION_TYPE } from "./responsePageActionTypes";
-import { responsePageReducer, ResponsePageState } from "./responsePageReducer";
+import { responsePageReducer, ResponsePageState, Wish } from "./responsePageReducer";
 import { SongWishInput } from "../input/SongWishInput";
 import styles from "./ResponsePage.module.css";
 import { Guest } from "../../guest/Guest";
@@ -70,6 +70,11 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     }
   };
 
+  const handleSongRemove = (wish: Wish) => {
+    setEditing(true);
+    dispatch({ type: ACTION_TYPE.SONG_WISH_REMOVED, payload: { wish: wish } });
+  };
+
   const updateState = async (state: ResponsePageState) => {
     setEditing(false);
     const updatedGuest: Guest = {
@@ -118,6 +123,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
                   id={`${guest.name}-wish${index}`}
                   label={`Wish ${index + 1}`}
                   onChange={handleWishChange}
+                  onSongRemove={() => handleSongRemove(sw)}
                 />
               );
             })}

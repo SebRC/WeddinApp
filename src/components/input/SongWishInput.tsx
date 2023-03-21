@@ -6,12 +6,13 @@ import styles from "./Input.module.css";
 
 interface SongWishInputProps {
   onChange: (value: string, id: number) => void;
+  onSongRemove: () => void;
   wish: Wish;
   id?: string;
   label?: string;
 }
 
-export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange, wish, id, label }) => {
+export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange, onSongRemove, wish, id, label }) => {
   return (
     <Flexbox flexDirection="column" width="100%">
       {label && (
@@ -28,7 +29,7 @@ export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange,
           id={id}
           className={styles.input}
         />
-        <Button text="-" onClick={() => {}} width="3rem" type="danger" height="3rem" />
+        <Button text="-" width="3rem" type="danger" height="3rem" onClick={onSongRemove} />
       </Flexbox>
     </Flexbox>
   );
