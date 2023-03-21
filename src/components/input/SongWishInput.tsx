@@ -30,7 +30,7 @@ export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange,
           id={id}
           className={styles.input}
         />
-        <Button icon={<IconTrash />} width="3rem" type="danger" height="3rem" onClick={onSongRemove} />
+        <Button icon={<IconTrash />} type="danger" minWidth="3rem" minHeight="3rem" onClick={onSongRemove} />
       </Flexbox>
     </Flexbox>
   );

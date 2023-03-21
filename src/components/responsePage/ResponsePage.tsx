@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useReducer, useState } from "react";
+import { FunctionComponent, useEffect, useReducer, useRef, useState } from "react";
 import { Checkbox } from "../checkbox/Checkbox";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { ACTION_TYPE } from "./responsePageActionTypes";
@@ -134,9 +134,9 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             <Button
               icon={<IconNode fill="black" />}
               onClick={handleSongWishAdd}
-              width="3rem"
+              minWidth="3rem"
               alignSelf="flex-end"
-              height="3rem"
+              minHeight="3rem"
             />
           </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
