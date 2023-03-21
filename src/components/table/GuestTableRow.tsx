@@ -3,6 +3,7 @@ import { Guest } from "../../guest/Guest";
 import { IconCheckmark } from "../icons/IconCheckmark";
 import { IconX } from "../icons/IconX";
 import { Flexbox } from "../layout/flexbox/Flexbox";
+import { Tooltip } from "../tooltip/Tooltip";
 import styles from "./GuestTableRow.module.css";
 
 interface GuestTableRowProps {
@@ -30,7 +31,9 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
           </Flexbox>
         )}
       </td>
-      <td onClick={handleSongsClick}>{guest.songWishes.filter((s) => s).join(", ")}</td>
+      <td onClick={handleSongsClick}>
+        <Tooltip text="Click to copy songs to clipboard">{guest.songWishes.filter((s) => s).join(", ")}</Tooltip>
+      </td>
       <td>{guest.foodInfo}</td>
     </tr>
   );

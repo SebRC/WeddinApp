@@ -1,11 +1,10 @@
 .row {
     background-color: var(--primary);
+    min-height: 5rem;
 }
 
 .row td {
-    padding-top:20px;
-    padding-bottom:20px;
-    padding-right:20px;  
+    padding: 20px 20px 20px 0px;
     border-bottom: 1px solid var(--primary-hover);
 }
 
