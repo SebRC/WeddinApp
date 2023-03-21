@@ -1,11 +1,12 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import styles from "./Button.module.css";
 
 interface ButtonProps {
-  text: string;
+  text?: string;
   disabled?: boolean;
   width?: any;
   height?: any;
+  icon?: ReactNode;
   type?: "default" | "danger";
   onClick: () => void;
   alignSelf?: "auto" | "center" | "flex-start" | "flex-end";
@@ -19,6 +20,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   width = "auto",
   height = "auto",
   alignSelf = "auto",
+  icon,
 }) => {
   return (
     <button
@@ -33,6 +35,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
       }}
     >
       {text}
+      {icon}
     </button>
   );
 };

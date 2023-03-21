@@ -47,6 +47,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   };
 
   const handleSongWishAdd = () => {
+    setEditing(true);
     const newIndex = state.songWishes.length;
     dispatch({ type: ACTION_TYPE.SONG_WISH_ADDED, payload: { wish: { value: "", id: newIndex } } });
   };
@@ -115,22 +116,21 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             justifyContent="normal"
             alignItems="normal"
             paddingBottom="10px"
+            paddingRight="10px"
           >
             {state.songWishes.map((sw, index) => {
               return (
                 <SongWishInput
                   wish={sw}
-                  id={`${guest.name}-wish${index}`}
+                  id={`${guest.name}-wish-${index}`}
+                  key={`${guest.name}-wish-${index}`}
                   label={`Wish ${index + 1}`}
                   onChange={handleWishChange}
                   onSongRemove={() => handleSongRemove(sw)}
                 />
               );
             })}
-            {/* <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
-            <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
-            <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} /> */}
-            <Button text="+" onClick={handleSongWishAdd} width="10%" alignSelf="flex-start" />
+            <Button text="+" onClick={handleSongWishAdd} width="3rem" alignSelf="flex-end" height="3rem" />
           </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
           <Button text="Update state" disabled={!editing} onClick={async () => await updateState(state)} width="100%" />

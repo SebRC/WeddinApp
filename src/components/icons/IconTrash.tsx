@@ -6,7 +6,7 @@ interface IconTrashProps {
 
 export const IconTrash: FunctionComponent<IconTrashProps> = ({ fill = "white" }) => {
   return (
-    <svg width="50" height="60" viewBox="0 0 50 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="20" height="20" viewBox="0 0 50 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M6.80723 60C5.64277 60 4.6988 59.0691 4.6988 57.9208C4.6988 56.7725 5.64277 55.8416 6.80723 55.8416H43.1928C44.3572 55.8416 45.3012 56.7725 45.3012 57.9208C45.3012 59.0691 44.3572 60 43.1928 60H6.80723Z"
         fill={fill}
