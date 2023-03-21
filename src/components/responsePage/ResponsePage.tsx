@@ -11,6 +11,7 @@ import { Header } from "../text/Header";
 import { FoodInfoInput } from "../input/FoodInfoInput";
 import { setGuestData } from "../../firebase/firebase";
 import { Button } from "../button/Button";
+import { IconNode } from "../icons/IconNode";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -130,7 +131,13 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
                 />
               );
             })}
-            <Button text="+" onClick={handleSongWishAdd} width="3rem" alignSelf="flex-end" height="3rem" />
+            <Button
+              icon={<IconNode fill="black" />}
+              onClick={handleSongWishAdd}
+              width="3rem"
+              alignSelf="flex-end"
+              height="3rem"
+            />
           </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
           <Button text="Update state" disabled={!editing} onClick={async () => await updateState(state)} width="100%" />
