@@ -109,6 +109,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           suggestions 🎶"
           />
           <Flexbox
+            maxHeight="350px"
             height="350px"
             width="100%"
             flexDirection="column"

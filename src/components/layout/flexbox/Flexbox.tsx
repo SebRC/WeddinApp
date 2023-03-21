@@ -1,3 +1,4 @@
+import { AuthErrorCodes } from "firebase/auth";
 import React, { FunctionComponent, ReactNode } from "react";
 
 interface FlexboxProps {
@@ -26,8 +27,10 @@ interface FlexboxProps {
   paddingLeft?: any;
   height?: any;
   minHeight?: any;
+  maxHeight?: any;
   width?: any;
   minWidth?: any;
+  maxWidth?: any;
   gap?: string | number;
   debug?: boolean;
   style?: React.CSSProperties;
@@ -49,8 +52,10 @@ export const Flexbox: FunctionComponent<FlexboxProps> = ({
   paddingLeft = "0px",
   height = "auto",
   minHeight = "auto",
-  minWidth = "auto",
+  maxHeight = "auto",
   width = "auto",
+  minWidth = "auto",
+  maxWidth = "auto",
   gap = "normal",
   debug = false,
   style = {},
