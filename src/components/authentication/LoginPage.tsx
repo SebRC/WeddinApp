@@ -27,7 +27,7 @@ export const LoginPage: FunctionComponent = () => {
       <Flexbox flexDirection="column" gap={20}>
         <Input label="Email" value={email} type="email" onChange={(e) => setEmail(e.target.value)} />
         <Input label="Password" value={password} type="password" onChange={(e) => setPassword(e.target.value)} />
-        <Button text="Log in" onClick={handleLogin} />
+        <Button text="Log in" onClick={handleLogin} height="3rem" />
       </Flexbox>
     </Paper>
   );

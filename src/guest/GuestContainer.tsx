@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { LoadingPage } from "../components/loading/LoadingPage";
-import { getGuestData } from "../firebase/firebase";
+import { getGuest } from "../firebase/firebase";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { GuestInfo } from "./GuestInfo";
 import { DEFAULT_GUEST_STATE, Guests } from "./guests";
@@ -18,7 +18,7 @@ export const GuestContainer: FunctionComponent = () => {
       if (debugLocal) {
         response = Guests[0];
       } else {
-        response = await getGuestData(user?.uid ?? "none");
+        response = await getGuest(user?.uid ?? "none");
       }
       setGuest(response);
       setLoading(false);

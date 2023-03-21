@@ -10,12 +10,12 @@ export const Navbar: FunctionComponent = () => {
   const location = useLocation();
   const user = useCurrentUser();
   const navigate = useNavigate();
-  console.log("user id", user?.uid);
 
   const handleLogout = async () => {
     await handleSignOut();
     navigate("/auth");
   };
+
   return (
     <>
       <div className={styles.navbar}>
@@ -35,7 +35,7 @@ export const Navbar: FunctionComponent = () => {
             </Link>
           </>
         )}
-        <Link to="auth" style={{ float: "right" }} onClick={handleSignOut}>
+        <Link to="auth" style={{ float: "right" }} onClick={handleLogout}>
           <IconLogout />
         </Link>
       </div>

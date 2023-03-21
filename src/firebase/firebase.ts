@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { doc, DocumentSnapshot, getDoc, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
+import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Guest } from "../guest/Guest";
@@ -25,7 +25,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export const getGuestData = async (guestId: string): Promise<Guest> => {
+export const getGuest = async (guestId: string): Promise<Guest> => {
     const docRef = doc(db, "guests", guestId).withConverter(guestConverter);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
@@ -40,6 +40,15 @@ export const getGuestData = async (guestId: string): Promise<Guest> => {
       console.log("No such document!");
       return DEFAULT_GUEST_STATE;
     }
+}
+
+export const getAllguests = async (): Promise<Guest[]> => {
+  const querySnapshot = await getDocs(collection(db, "guests").withConverter(guestConverter));
+  let guests: Guest[] = []
+  querySnapshot.forEach((doc) => {
+    guests.push(doc.data());
+  });
+  return guests;
 }
 
 export const setGuestData = async (guest: Guest) => {
@@ -86,7 +95,6 @@ export const handleSignIn = async (email: string, password: string): Promise<Log
 };
 
 export const handleSignOut = async ()  => {
-  console.log("handle signout called")
   try {
     await signOut(auth);
   } catch(error: any){
