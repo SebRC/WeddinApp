@@ -1,5 +1,4 @@
-import React, { FunctionComponent } from "react";
-import { Flexbox } from "../layout/flexbox/Flexbox";
+import { FunctionComponent } from "react";
 import styles from "./Checkbox.module.css";
 
 interface CheckboxProps {

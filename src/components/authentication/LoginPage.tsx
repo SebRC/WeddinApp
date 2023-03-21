@@ -19,6 +19,9 @@ export const LoginPage: FunctionComponent = () => {
     const { success, errorCode, errorMessage } = await handleSignIn(email, password);
     if (success) {
       navigate("/guest");
+    } else {
+      console.log("ERROR:", errorMessage);
+      console.log("ERROR CODE:", errorCode);
     }
   };
 

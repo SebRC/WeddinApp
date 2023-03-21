@@ -1,4 +1,3 @@
-import { AuthErrorCodes } from "firebase/auth";
 import React, { FunctionComponent, ReactNode } from "react";
 
 interface FlexboxProps {

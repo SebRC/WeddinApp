@@ -4,7 +4,6 @@ import { Flexbox } from "../layout/flexbox/Flexbox";
 import { IconTrash } from "../icons/IconTrash";
 import { Wish } from "../responsePage/responsePageReducer";
 import styles from "./Input.module.css";
-import { IconX } from "../icons/IconX";
 
 interface SongWishInputProps {
   onChange: (value: string, id: number) => void;
@@ -31,9 +30,7 @@ export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange,
           id={id}
           className={styles.input}
         />
-        <div onClick={onSongRemove}>
-          <IconX />
-        </div>
+        <Button icon={<IconTrash fill="black" />} minWidth="3rem" minHeight="3rem" onClick={onSongRemove} />
       </Flexbox>
     </Flexbox>
   );

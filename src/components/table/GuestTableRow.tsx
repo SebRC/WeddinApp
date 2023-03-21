@@ -3,7 +3,6 @@ import { Guest } from "../../guest/Guest";
 import { IconCheckmark } from "../icons/IconCheckmark";
 import { IconX } from "../icons/IconX";
 import { Flexbox } from "../layout/flexbox/Flexbox";
-import { Tooltip } from "../tooltip/Tooltip";
 import styles from "./GuestTableRow.module.css";
 
 interface GuestTableRowProps {

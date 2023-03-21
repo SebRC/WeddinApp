@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useReducer, useRef, useState } from "react";
+import { FunctionComponent, useEffect, useReducer, useState } from "react";
 import { Checkbox } from "../checkbox/Checkbox";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { ACTION_TYPE } from "./responsePageActionTypes";
@@ -120,7 +120,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             paddingBottom="10px"
             paddingRight="10px"
           >
-            {state.songWishes.map((sw, index) => {
+            {wishes.map((sw, index) => {
               return (
                 <SongWishInput
                   wish={sw}
