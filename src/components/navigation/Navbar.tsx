@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styles from "./Navbar.module.css";
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
-import { LogoutIcon } from "../icons/LogoutIcon";
+import { IconLogout } from "../icons/IconLogout";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { handleSignOut } from "../../firebase/firebase";
 import { PageLayout } from "../pageLayout/PageLayout";
@@ -36,7 +36,7 @@ export const Navbar: FunctionComponent = () => {
           </>
         )}
         <Link to="auth" style={{ float: "right" }} onClick={handleSignOut}>
-          <LogoutIcon />
+          <IconLogout />
         </Link>
       </div>
       <PageLayout>

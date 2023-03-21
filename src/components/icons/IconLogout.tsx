@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 
-interface LogoutIconProps {
+interface IconLogoutProps {
   fill?: string;
 }
 
-export const LogoutIcon: FunctionComponent<LogoutIconProps> = ({ fill = "white" }) => {
+export const IconLogout: FunctionComponent<IconLogoutProps> = ({ fill = "white" }) => {
   return (
     <svg width="20" height="18" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="32" y="1" width="4" height="18" rx="2" fill={fill} />
