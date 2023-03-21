@@ -102,7 +102,6 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           suggestions 🎶"
           />
           <Flexbox
-            debug
             height="350px"
             width="100%"
             flexDirection="column"
@@ -110,6 +109,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             overflow="scroll"
             justifyContent="normal"
             alignItems="normal"
+            paddingBottom="10px"
           >
             {state.songWishes.map((sw, index) => {
               return (

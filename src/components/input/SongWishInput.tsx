@@ -12,7 +12,7 @@ interface SongWishInputProps {
 
 export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange, wish, id, label }) => {
   return (
-    <div style={{ margin: "auto" }}>
+    <Flexbox flexDirection="column" width="100%">
       {label && (
         <label htmlFor={id} className={styles.label}>
           {label}
@@ -26,6 +26,6 @@ export const SongWishInput: FunctionComponent<SongWishInputProps> = ({ onChange,
         id={id}
         className={styles.input}
       />
-    </div>
+    </Flexbox>
   );
 };
