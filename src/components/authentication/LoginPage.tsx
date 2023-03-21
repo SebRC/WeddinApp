@@ -11,8 +11,8 @@ export const LoginPage: FunctionComponent = () => {
     { email: "larke@ahosrcwedding.com", password: "Laerke" },
     { email: "martin@ahosrcwedding.com", password: "Martin" },
   ];
-  const [email, setEmail] = useState(users[0].email);
-  const [password, setPassword] = useState(users[0].password);
+  const [email, setEmail] = useState(users[1].email);
+  const [password, setPassword] = useState(users[1].password);
   const navigate = useNavigate();
 
   const handleLogin = async () => {

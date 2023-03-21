@@ -3,6 +3,7 @@ import React, { FunctionComponent, ReactNode } from "react";
 interface FlexboxProps {
   flexDirection?: "row" | "column" | "row-reverse" | "column-reverse";
   justifyContent?:
+    | "normal"
     | "start"
     | "end"
     | "center"
@@ -13,7 +14,7 @@ interface FlexboxProps {
     | "space-between"
     | "space-around"
     | "space-evenly";
-  alignItems?: "start" | "end" | "center" | "flex-start" | "flex-end" | "stretch";
+  alignItems?: "normal" | "start" | "end" | "center" | "flex-start" | "flex-end" | "stretch";
   overflow?: "visible" | "hidden" | "scroll" | "auto";
   marginBottom?: any;
   marginTop?: any;
@@ -35,8 +36,8 @@ interface FlexboxProps {
 
 export const Flexbox: FunctionComponent<FlexboxProps> = ({
   flexDirection = "row",
-  justifyContent = "center",
-  alignItems = "center",
+  justifyContent = "normal",
+  alignItems = "normal",
   overflow = "visible",
   marginBottom = "0px",
   marginTop = "0px",

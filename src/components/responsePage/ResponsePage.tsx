@@ -19,11 +19,9 @@ interface ResponsePageProps {
 export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) => {
   const [state, dispatch] = useReducer(responsePageReducer, {
     attending: guest.attending,
-    songWishes: [
-      { value: guest.songWishes[0], id: 0 },
-      { value: guest.songWishes[1], id: 1 },
-      { value: guest.songWishes[2], id: 2 },
-    ],
+    songWishes: guest.songWishes.map((sw, index) => {
+      return { value: sw, id: index };
+    }),
     foodInfo: guest.foodInfo ?? "",
   });
   const [name, setName] = useState("");
@@ -46,6 +44,11 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const handleFoodInfoChange = (foodInfo: string) => {
     setEditing(true);
     dispatch({ type: ACTION_TYPE.FOOD_INFO_CHANGED, payload: { foodInfo: foodInfo } });
+  };
+
+  const handleSongWishAdd = () => {
+    const newIndex = state.songWishes.length;
+    dispatch({ type: ACTION_TYPE.SONG_WISH_ADDED, payload: { wish: { value: "", id: newIndex } } });
   };
 
   useEffect(() => {
@@ -79,7 +82,6 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   };
 
   const { attending: attending, songWishes: wishes } = state;
-  const [wish1, wish2, wish3] = wishes;
   return (
     <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`} onClick={handleBannerClick}>
       <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
@@ -99,11 +101,33 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             subHeader="🎶 If you have any song wishes, please put them here. We'll make a playlist for the wedding with everyones
           suggestions 🎶"
           />
-          <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
-          <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
-          <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} />
+          <Flexbox
+            debug
+            height="350px"
+            width="100%"
+            flexDirection="column"
+            gap={20}
+            overflow="scroll"
+            justifyContent="normal"
+            alignItems="normal"
+          >
+            {state.songWishes.map((sw, index) => {
+              return (
+                <SongWishInput
+                  wish={sw}
+                  id={`${guest.name}-wish${index}`}
+                  label={`Wish ${index + 1}`}
+                  onChange={handleWishChange}
+                />
+              );
+            })}
+            {/* <SongWishInput wish={wish1} id={`${guest.name}-wish1`} label="Wish 1" onChange={handleWishChange} />
+            <SongWishInput wish={wish2} id={`${guest.name}-wish2`} label="Wish 2" onChange={handleWishChange} />
+            <SongWishInput wish={wish3} id={`${guest.name}-wish3`} label="Wish 3" onChange={handleWishChange} /> */}
+            <Button text="+" onClick={handleSongWishAdd} width="10%" alignSelf="flex-start" />
+          </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
-          <Button text="Update state" disabled={!editing} onClick={async () => await updateState(state)} />
+          <Button text="Update state" disabled={!editing} onClick={async () => await updateState(state)} width="100%" />
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>

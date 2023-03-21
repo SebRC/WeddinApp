@@ -40,6 +40,11 @@ export const responsePageReducer = (state: ResponsePageState, action: PageRespon
       return {
         ...state, foodInfo: action.payload.foodInfo ?? state.foodInfo
       }
+
+      case "SONG_WISH_ADDED":
+      return {
+        ...state, songWishes: [...state.songWishes,{value: "", id: action.payload.wish?.id ?? -1}]
+      }
   
     default:
       return state;
