@@ -1,5 +1,4 @@
-import { User } from "firebase/auth";
-import { FunctionComponent, ReactNode, useEffect } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/context/UserProvider";
 import { ErrorRoute } from "../../routing/routes";

@@ -14,7 +14,7 @@ export const Navbar: FunctionComponent = () => {
 
   const handleLogout = async () => {
     await handleSignOut();
-    navigate(`/${AuthRoute.path}`);
+    navigate(AuthRoute.path);
   };
 
   return (
