@@ -5,7 +5,7 @@ import { IconLogout } from "../icons/IconLogout";
 import { useCurrentUser } from "../../hooks/context/UserProvider";
 import { handleSignOut } from "../../firebase/firebase";
 import { PageLayout } from "../layout/pageLayout/PageLayout";
-import { AdminRoute, AuthRoute, GuestRoute, InfoRoute } from "../../routes";
+import { AdminRoute, AuthRoute, GuestRoute, InfoRoute } from "../../routing/routes";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();

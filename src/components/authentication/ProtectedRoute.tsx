@@ -6,16 +6,12 @@ import { ErrorRoute } from "../../routing/routes";
 
 interface ProtectedRouteProps {
   children: ReactNode;
-  user?: User | null;
 }
 
-export const ProtectedRoute: FunctionComponent<ProtectedRouteProps> = ({ user, children }) => {
-  useEffect(() => {
-    console.log("user changed", user?.email);
-  }, [user]);
+export const ProtectedRoute: FunctionComponent<ProtectedRouteProps> = ({ children }) => {
   const currentUser = useCurrentUser();
   console.log("user in protected route", currentUser);
-  if (user?.email !== "martin@ahosrcwedding.com") {
+  if (currentUser?.email !== "martin@ahosrcwedding.com") {
     return <Navigate to={ErrorRoute.path} replace />;
   }
 
