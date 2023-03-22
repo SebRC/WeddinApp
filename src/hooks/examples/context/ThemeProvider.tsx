@@ -26,3 +26,8 @@ export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({ theme, ch
 };
 
 export const useTheme = () => useContext(ThemeContext);
+
+// usage:
+// <ThemProvider theme="dark">
+//    <ThemContextConsumer />
+// </ThemeProvider>
