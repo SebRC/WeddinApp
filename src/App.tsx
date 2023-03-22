@@ -4,7 +4,7 @@ import { LoginPage } from "./components/authentication/LoginPage";
 import { Info } from "./components/info/Info";
 import { Navbar } from "./components/navigation/Navbar";
 import { GuestContainer } from "./guest/GuestContainer";
-import { useCurrentUser } from "./hooks/useCurrentUser";
+import { useCurrentUser } from "./hooks/context/UserProvider";
 import { ErrorPage } from "./components/error/ErrorPage";
 import { GuestTableContainer } from "./components/table/GuestTableContainer";
 

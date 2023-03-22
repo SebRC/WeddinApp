@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { LoadingPage } from "../components/loading/LoadingPage";
 import { getGuest } from "../firebase/firebase";
-import { useCurrentUser } from "../hooks/useCurrentUser";
+import { useCurrentUser } from "../hooks/context/UserProvider";
 import { GuestInfo } from "./GuestInfo";
 import { DEFAULT_GUEST_STATE, Guests } from "./guests";
 
@@ -9,6 +9,7 @@ export const GuestContainer: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
   const user = useCurrentUser();
+  console.log("user", user);
   const debugLocal = false;
 
   useEffect(() => {

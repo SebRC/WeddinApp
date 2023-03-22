@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import styles from "./Navbar.module.css";
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { IconLogout } from "../icons/IconLogout";
-import { useCurrentUser } from "../../hooks/useCurrentUser";
+import { useCurrentUser } from "../../hooks/context/UserProvider";
 import { handleSignOut } from "../../firebase/firebase";
 import { PageLayout } from "../layout/pageLayout/PageLayout";
 
