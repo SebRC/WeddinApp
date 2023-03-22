@@ -8,7 +8,7 @@ import { DEFAULT_GUEST_STATE, Guests } from "./guests";
 export const GuestContainer: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
-  const user = useCurrentUser();
+  const { user } = useCurrentUser();
   const debugLocal = false;
 
   useEffect(() => {

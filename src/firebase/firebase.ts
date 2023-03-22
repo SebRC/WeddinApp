@@ -107,21 +107,4 @@ export interface LoginDetails {
   errorMessage?: string;
 }
 
-// let currentuser:any = null;
-
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/firebase.User
-//     currentuser = user;
-//     // ...
-//   } else {
-//     currentuser = null;
-//   }
-// });
-
-// export const useCurrentUser = () => {
-//   return currentuser;
-// }
-
 export default app;

@@ -20,7 +20,7 @@ export const Navbar: FunctionComponent = () => {
   return (
     <>
       <div className={styles.navbar}>
-        {user && (
+        {user.authed && (
           <>
             <Link
               to={GuestRoute.path}

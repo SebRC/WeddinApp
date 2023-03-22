@@ -7,17 +7,29 @@ import { GuestContainer } from "../guest/GuestContainer";
 
 export const GuestRoute = {
   path: "/guest",
-  element: <GuestContainer />,
+  element: (
+    <ProtectedRoute>
+      <GuestContainer />,
+    </ProtectedRoute>
+  ),
 };
 
 export const AdminRoute = {
   path: "/admin",
-  element: <GuestTableContainer />,
+  element: (
+    <ProtectedRoute>
+      <GuestTableContainer />,
+    </ProtectedRoute>
+  ),
 };
 
 export const InfoRoute = {
   path: "/info",
-  element: <Info />,
+  element: (
+    <ProtectedRoute>
+      <Info />,
+    </ProtectedRoute>
+  ),
 };
 
 export const AuthRoute = {
