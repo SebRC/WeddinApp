@@ -37,9 +37,6 @@ export const Navbar: FunctionComponent = () => {
             >
               Admin
             </Link>
-            <Link to={AuthRoute.path} className={location.pathname.includes(AuthRoute.path) ? `${styles.active}` : ""}>
-              Auth
-            </Link>
           </>
         )}
         <Link to={AuthRoute.path} style={{ float: "right" }} onClick={handleLogout}>

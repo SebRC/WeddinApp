@@ -20,3 +20,22 @@
 .button[disabled] {
   pointer-events: none;
 }
+
+.buttonLoading {
+    animation : shimmer 2s infinite;
+    background: linear-gradient(to right, var(--secondary) 4%, var(--primary-hover) 25%, var(--secondary) 36%);
+    background-size: 1000px 600px;
+    min-height: 600px;
+    width: 100%;
+    opacity: 0.95;
+    height: 10000px;
+ }
+
+ @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }

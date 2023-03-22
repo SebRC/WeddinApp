@@ -12,6 +12,7 @@ interface ButtonProps {
   type?: "default" | "danger";
   onClick: () => void;
   alignSelf?: "auto" | "center" | "flex-start" | "flex-end";
+  loading?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -27,6 +28,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       minHeight = "auto",
       alignSelf = "auto",
       icon,
+      loading = false,
     },
     ref
   ) => {
@@ -34,7 +36,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         onClick={onClick}
         disabled={disabled}
-        className={styles.button}
+        className={`${styles.button} ${loading ? styles.buttonLoading : ""}`}
         ref={ref}
         style={{
           alignSelf: alignSelf,
