@@ -7,25 +7,14 @@ import { AdminRoute, AuthRoute, GuestRoute, InfoRoute } from "./routes";
 
 function App() {
   const user = useCurrentUser();
-  const router = createBrowserRouter(
-    user
-      ? [
-          {
-            path: "/",
-            element: <Navbar />,
-            errorElement: <ErrorPage />,
-            children: [GuestRoute, InfoRoute, AuthRoute, AdminRoute],
-          },
-        ]
-      : [
-          {
-            path: "/",
-            element: <Navbar />,
-            errorElement: <ErrorPage />,
-            children: [AuthRoute],
-          },
-        ]
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Navbar />,
+      errorElement: <ErrorPage />,
+      children: [GuestRoute, InfoRoute, AuthRoute, AdminRoute],
+    },
+  ]);
 
   return <RouterProvider router={router} />;
 }

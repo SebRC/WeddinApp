@@ -18,7 +18,7 @@ export const UserProvider: FunctionComponent<UserProviderProps> = ({ children })
         setCurrentUser(null);
       }
     });
-  }, [auth]);
+  }, [auth, currentUser]);
 
   return <UserContext.Provider value={currentUser}>{children}</UserContext.Provider>;
 };
