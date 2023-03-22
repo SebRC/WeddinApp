@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { Guest } from "../../guest/Guest";
 import { IconCheckmark } from "../icons/IconCheckmark";
 import { IconX } from "../icons/IconX";
@@ -14,9 +14,14 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
   const handleSongsClick = () => {
     const text = guest.songWishes.filter((s) => s).join(", ");
     if (text) {
-      navigator.clipboard.writeText(guest.songWishes.filter((s) => s).join(", "));
+      navigator.clipboard.writeText(filteredSongs);
     }
   };
+
+  const filteredSongs = useMemo(() => {
+    return guest.songWishes.filter((s) => s).join(", ");
+  }, [guest.songWishes]);
+
   return (
     <tr className={styles.row}>
       <td>{guest.name}</td>
@@ -32,7 +37,7 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
         )}
       </td>
       <td onClick={handleSongsClick}>
-        <Tooltip text="Click to copy songs to clipboard">{guest.songWishes.filter((s) => s).join(", ")}</Tooltip>
+        <Tooltip text="Click to copy songs to clipboard">{filteredSongs}</Tooltip>
       </td>
       <td>{guest.foodInfo}</td>
     </tr>

@@ -1,6 +1,8 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { getAllguests } from "../../firebase/firebase";
 import { Guest } from "../../guest/Guest";
+import { ThemeContextConsumer } from "../../hooks/examples/context/ThemeContextConsumer";
+import { ThemeProvider } from "../../hooks/examples/context/ThemeProvider";
 import { LoadingPage } from "../loading/LoadingPage";
 import { GuestTable } from "./GuestTable";
 
@@ -16,5 +18,11 @@ export const GuestTableContainer: FunctionComponent = () => {
       setLoading(false);
     })();
   }, []);
-  return loading ? <LoadingPage /> : <GuestTable guests={guests} />;
+  return loading ? (
+    <LoadingPage />
+  ) : (
+    <ThemeProvider theme="dark">
+      <ThemeContextConsumer />
+    </ThemeProvider>
+  );
 };
