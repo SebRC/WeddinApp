@@ -3,10 +3,12 @@ import { Paper } from "../layout/paper/Paper";
 import { PageLayout } from "../layout/pageLayout/PageLayout";
 import { Title } from "../text/Title";
 import { Button } from "../button/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useRouteError } from "react-router-dom";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 
 export const ErrorPage: FunctionComponent = () => {
+  let error = useRouteError();
+  console.log("error", error);
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate("auth");

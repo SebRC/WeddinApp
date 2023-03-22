@@ -9,7 +9,6 @@ export const GuestContainer: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
   const user = useCurrentUser();
-  console.log("user", user);
   const debugLocal = false;
 
   useEffect(() => {
