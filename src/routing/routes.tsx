@@ -2,6 +2,7 @@ import { LoginPage } from "../components/authentication/LoginPage";
 import { ProtectedRoute } from "../components/authentication/ProtectedRoute";
 import { ErrorPage } from "../components/error/ErrorPage";
 import { Info } from "../components/info/Info";
+import { PageLayout } from "../components/layout/pageLayout/PageLayout";
 import { GuestTableContainer } from "../components/table/GuestTableContainer";
 import { GuestContainer } from "../guest/GuestContainer";
 
@@ -34,7 +35,11 @@ export const InfoRoute = {
 
 export const AuthRoute = {
   path: "/auth",
-  element: <LoginPage />,
+  element: (
+    <PageLayout>
+      <LoginPage />,
+    </PageLayout>
+  ),
 };
 
 export const ErrorRoute = {

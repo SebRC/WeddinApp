@@ -10,8 +10,9 @@ function App() {
       path: "/",
       element: <Navbar />,
       errorElement: <ErrorPage />,
-      children: [GuestRoute, InfoRoute, AuthRoute, AdminRoute],
+      children: [GuestRoute, InfoRoute, AdminRoute],
     },
+    { path: AuthRoute.path, element: AuthRoute.element },
   ]);
 
   return <RouterProvider router={router} />;
