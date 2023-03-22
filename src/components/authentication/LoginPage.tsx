@@ -18,6 +18,7 @@ export const LoginPage: FunctionComponent = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    setLoginText("Logging in");
     setLoading(true);
     const { success, errorCode, errorMessage } = await handleSignIn(email, password);
     if (success) {
