@@ -1,12 +1,9 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { LoginPage } from "./components/authentication/LoginPage";
-import { Info } from "./components/info/Info";
 import { Navbar } from "./components/navigation/Navbar";
-import { GuestContainer } from "./guest/GuestContainer";
 import { useCurrentUser } from "./hooks/context/UserProvider";
 import { ErrorPage } from "./components/error/ErrorPage";
-import { GuestTableContainer } from "./components/table/GuestTableContainer";
+import { AdminRoute, AuthRoute, GuestRoute, InfoRoute } from "./routes";
 
 function App() {
   const user = useCurrentUser();
@@ -17,24 +14,7 @@ function App() {
             path: "/",
             element: <Navbar />,
             errorElement: <ErrorPage />,
-            children: [
-              {
-                path: "/guest",
-                element: <GuestContainer />,
-              },
-              {
-                path: "/info",
-                element: <Info />,
-              },
-              {
-                path: "/admin",
-                element: <GuestTableContainer />,
-              },
-              {
-                path: "/auth",
-                element: <LoginPage />,
-              },
-            ],
+            children: [GuestRoute, InfoRoute, AuthRoute, AdminRoute],
           },
         ]
       : [
@@ -42,12 +22,7 @@ function App() {
             path: "/",
             element: <Navbar />,
             errorElement: <ErrorPage />,
-            children: [
-              {
-                path: "/auth",
-                element: <LoginPage />,
-              },
-            ],
+            children: [AuthRoute],
           },
         ]
   );

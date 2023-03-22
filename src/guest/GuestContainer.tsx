@@ -23,6 +23,6 @@ export const GuestContainer: FunctionComponent = () => {
       setGuest(response);
       setLoading(false);
     })();
-  }, []);
+  }, [user?.uid]);
   return loading ? <LoadingPage /> : <GuestInfo guest={guest} />;
 };

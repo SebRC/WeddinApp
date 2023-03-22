@@ -5,6 +5,7 @@ import { IconLogout } from "../icons/IconLogout";
 import { useCurrentUser } from "../../hooks/context/UserProvider";
 import { handleSignOut } from "../../firebase/firebase";
 import { PageLayout } from "../layout/pageLayout/PageLayout";
+import { AdminRoute, AuthRoute, GuestRoute, InfoRoute } from "../../routes";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ export const Navbar: FunctionComponent = () => {
 
   const handleLogout = async () => {
     await handleSignOut();
-    navigate("/auth");
+    navigate(`/${AuthRoute.path}`);
   };
 
   return (
@@ -21,21 +22,27 @@ export const Navbar: FunctionComponent = () => {
       <div className={styles.navbar}>
         {user && (
           <>
-            <Link to="guest" className={location.pathname.includes("guest") ? `${styles.active}` : ""}>
+            <Link
+              to={GuestRoute.path}
+              className={location.pathname.includes(GuestRoute.path) ? `${styles.active}` : ""}
+            >
               Guest
             </Link>
-            <Link to="info" className={location.pathname.includes("info") ? `${styles.active}` : ""}>
+            <Link to={InfoRoute.path} className={location.pathname.includes(InfoRoute.path) ? `${styles.active}` : ""}>
               Info
             </Link>
-            <Link to="admin" className={location.pathname.includes("admin") ? `${styles.active}` : ""}>
+            <Link
+              to={AdminRoute.path}
+              className={location.pathname.includes(AdminRoute.path) ? `${styles.active}` : ""}
+            >
               Admin
             </Link>
-            <Link to="auth" className={location.pathname.includes("auth") ? `${styles.active}` : ""}>
+            <Link to={AuthRoute.path} className={location.pathname.includes(AuthRoute.path) ? `${styles.active}` : ""}>
               Auth
             </Link>
           </>
         )}
-        <Link to="auth" style={{ float: "right" }} onClick={handleLogout}>
+        <Link to={AuthRoute.path} style={{ float: "right" }} onClick={handleLogout}>
           <IconLogout />
         </Link>
       </div>
