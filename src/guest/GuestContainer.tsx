@@ -8,7 +8,7 @@ import { DEFAULT_GUEST_STATE, Guests } from "./guests";
 export const GuestContainer: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [guest, setGuest] = useState(DEFAULT_GUEST_STATE);
-  const { user } = useCurrentUser();
+  const currentUser = useCurrentUser();
   const debugLocal = false;
 
   useEffect(() => {
@@ -18,11 +18,13 @@ export const GuestContainer: FunctionComponent = () => {
       if (debugLocal) {
         response = Guests[0];
       } else {
-        response = await getGuest(user?.uid ?? "none");
+        response = await getGuest(currentUser.user?.uid ?? "none");
       }
-      setGuest(response);
-      setLoading(false);
+      if (response.name !== "NONE") {
+        setGuest(response);
+        setLoading(false);
+      }
     })();
-  }, [user?.uid]);
+  }, [currentUser]);
   return loading ? <LoadingPage /> : <GuestInfo guest={guest} />;
 };
