@@ -1,9 +1,9 @@
 import { LoginPage } from "../components/authentication/LoginPage";
 import { ProtectedRoute } from "../components/authentication/ProtectedRoute";
 import { ErrorPage } from "../components/error/ErrorPage";
-import { GiftsContainer } from "../components/gifts/GiftsContainer";
 import { Info } from "../components/info/Info";
 import { PageLayout } from "../components/layout/pageLayout/PageLayout";
+import { GiftTableContainer } from "../components/table/gift/GiftTableContainer";
 import { GuestTableContainer } from "../components/table/guest/GuestTableContainer";
 import { GuestContainer } from "../guest/GuestContainer";
 
@@ -11,7 +11,7 @@ export const GuestRoute = {
   path: "/guest",
   element: (
     <ProtectedRoute>
-      <GuestContainer />,
+      <GuestContainer />
     </ProtectedRoute>
   ),
 };
@@ -20,7 +20,7 @@ export const AdminRoute = {
   path: "/admin",
   element: (
     <ProtectedRoute>
-      <GuestTableContainer />,
+      <GuestTableContainer />
     </ProtectedRoute>
   ),
 };
@@ -29,7 +29,7 @@ export const InfoRoute = {
   path: "/info",
   element: (
     <ProtectedRoute>
-      <Info />,
+      <Info />
     </ProtectedRoute>
   ),
 };
@@ -38,7 +38,7 @@ export const GiftsRoute = {
   path: "/gifts",
   element: (
     <ProtectedRoute>
-      <GiftsContainer />,
+      <GiftTableContainer />
     </ProtectedRoute>
   ),
 };
@@ -47,7 +47,7 @@ export const AuthRoute = {
   path: "/auth",
   element: (
     <PageLayout>
-      <LoginPage />,
+      <LoginPage />
     </PageLayout>
   ),
 };

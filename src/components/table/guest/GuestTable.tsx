@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
 import { Guest } from "../../../guest/Guest";
 import styles from "../Table.module.css";
-import { GuestTabelHeader } from "../guest/GuestTableHeader";
 import { GuestTableRow } from "./GuestTableRow";
+import { TableHeader } from "../TableHeader";
 
 interface GuestTableProps {
   guests: Guest[];
@@ -11,7 +11,7 @@ interface GuestTableProps {
 export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
   return (
     <table className={styles.table}>
-      <GuestTabelHeader />
+      <TableHeader headers={["Name", "Attending", "Song wishes", "Food info"]} />
       <tbody>
         {guests.map((g) => {
           return g.guests ? (
