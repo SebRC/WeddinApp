@@ -1,6 +1,5 @@
 import { FunctionComponent, useState } from "react";
 import { setGiftData } from "../../../firebase/firebase";
-import { Guest } from "../../../guest/Guest";
 import { useCurrentGuest } from "../../../hooks/useCurrentGuest";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconX } from "../../icons/IconX";

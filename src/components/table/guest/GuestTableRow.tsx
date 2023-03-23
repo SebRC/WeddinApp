@@ -4,6 +4,7 @@ import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconX } from "../../icons/IconX";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { Tooltip } from "../../tooltip/Tooltip";
+import { TableData } from "../TableData";
 import styles from "../TableRow.module.css";
 
 interface GuestTableRowProps {
@@ -24,8 +25,8 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
 
   return (
     <tr className={styles.row}>
-      <td>{guest.name}</td>
-      <td>
+      <TableData>{guest.name}</TableData>
+      <TableData>
         {guest.attending ? (
           <Flexbox alignItems="center" gap={20}>
             <IconCheckmark /> Yes
@@ -35,11 +36,11 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
             <IconX /> No
           </Flexbox>
         )}
-      </td>
-      <td onClick={handleSongsClick}>
+      </TableData>
+      <TableData onClick={handleSongsClick}>
         <Tooltip text="Click to copy songs to clipboard">{filteredSongs}</Tooltip>
-      </td>
-      <td>{guest.foodInfo}</td>
+      </TableData>
+      <TableData>{guest.foodInfo}</TableData>
     </tr>
   );
 };

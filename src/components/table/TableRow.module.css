@@ -1,6 +1,5 @@
 .row {
     background-color: var(--primary);
-    min-height: 5rem;
 }
 
 .row td {
