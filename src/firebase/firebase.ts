@@ -50,15 +50,6 @@ export const getAllGuests = async (): Promise<Guest[]> => {
   return guests;
 }
 
-export const getAllGifts = async (): Promise<Gift[]> => {
-  const querySnapshot = await getDocs(collection(db, "gifts").withConverter(giftConverter));
-  let gifts: Gift[] = []
-  querySnapshot.forEach((doc) => {
-    gifts.push(doc.data());
-  });
-  return gifts;
-}
-
 export const setGuestData = async (guest: Guest) => {
   const ref = doc(db, "guests", guest.id ?? "undefined").withConverter(guestConverter);
   const updatedGuest: Guest = {name: guest.name, attending: guest.attending, foodInfo: guest.foodInfo, songWishes: guest.songWishes, guestIds: guest.guestIds}
@@ -74,6 +65,23 @@ const fetchGuestsFromMainGuest = async (guestIds: string[]): Promise<Guest[]> =>
   }));
   return guests;
 }
+
+export const getAllGifts = async (): Promise<Gift[]> => {
+  const querySnapshot = await getDocs(collection(db, "gifts").withConverter(giftConverter));
+  let gifts: Gift[] = []
+  querySnapshot.forEach((doc) => {
+    gifts.push(doc.data());
+  });
+  return gifts;
+}
+
+export const setGiftData = async (gift: Gift) => {
+  const ref = doc(db, "gifts", gift.id ?? "undefined").withConverter(giftConverter);
+  const updatedGift: Gift = {name: gift.name, url: gift.url, price: gift.price, reserved: gift.reserved, reservedBy: gift.reservedBy,}
+  await setDoc(ref, updatedGift);
+}
+
+
 
 // Firestore data converter
 const guestConverter = {

@@ -1,5 +1,5 @@
 export interface Gift {
-    id: string;
+    id?: string;
     name: string;
     url: string;
     price?: string;

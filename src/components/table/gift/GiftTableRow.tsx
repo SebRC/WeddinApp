@@ -1,4 +1,5 @@
 import { FunctionComponent, useState } from "react";
+import { setGiftData } from "../../../firebase/firebase";
 import { Guest } from "../../../guest/Guest";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconX } from "../../icons/IconX";
@@ -17,13 +18,19 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift }) => 
     window.open(url, "_blank")?.focus();
   };
 
-  const handleReserveClick = (name: string) => {
+  const handleReserveClick = async (name: string) => {
     if (currentGift.reserved && currentGift.reservedBy !== name) {
       alert(`Gift is already reserved by ${currentGift.reservedBy}`);
     } else if (!currentGift.reserved) {
-      setCurrentGift({ ...gift, reserved: true, reservedBy: "Sebastian Refsbæk Christiansen" });
+      console.log("reserving gift");
+      const updatedGift = { ...gift, reserved: true, reservedBy: name };
+      setCurrentGift(updatedGift);
+      await setGiftData(updatedGift);
     } else {
-      setCurrentGift({ ...gift, reserved: false, reservedBy: undefined });
+      console.log("cancelling reservation");
+      const updatedGift = { ...gift, reserved: false, reservedBy: "" };
+      setCurrentGift(updatedGift);
+      await setGiftData(updatedGift);
     }
   };
   return (
@@ -37,7 +44,7 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift }) => 
         {gift.name}
       </TableData>
       <TableData>{gift.price}</TableData>
-      <TableData width="10%" onClick={() => handleReserveClick("Sebastian Refsbæk Christiansen")}>
+      <TableData width="10%" onClick={async () => await handleReserveClick("Sebastian Refsbæk Christiansen")}>
         {currentGift.reserved ? (
           <Flexbox alignItems="center" gap={20}>
             <IconCheckmark /> Yes
