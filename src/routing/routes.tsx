@@ -1,9 +1,10 @@
 import { LoginPage } from "../components/authentication/LoginPage";
 import { ProtectedRoute } from "../components/authentication/ProtectedRoute";
 import { ErrorPage } from "../components/error/ErrorPage";
+import { GiftsContainer } from "../components/gifts/GiftsContainer";
 import { Info } from "../components/info/Info";
 import { PageLayout } from "../components/layout/pageLayout/PageLayout";
-import { GuestTableContainer } from "../components/table/GuestTableContainer";
+import { GuestTableContainer } from "../components/table/guest/GuestTableContainer";
 import { GuestContainer } from "../guest/GuestContainer";
 
 export const GuestRoute = {
@@ -29,6 +30,15 @@ export const InfoRoute = {
   element: (
     <ProtectedRoute>
       <Info />,
+    </ProtectedRoute>
+  ),
+};
+
+export const GiftsRoute = {
+  path: "/gifts",
+  element: (
+    <ProtectedRoute>
+      <GiftsContainer />,
     </ProtectedRoute>
   ),
 };

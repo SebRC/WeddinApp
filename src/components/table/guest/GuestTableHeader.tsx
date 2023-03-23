@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import styles from "./GuestTableHeader.module.css";
+import styles from "../TableHeader.module.css";
 
 export const GuestTabelHeader: FunctionComponent = () => {
   return (

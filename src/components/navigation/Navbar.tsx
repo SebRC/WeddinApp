@@ -5,7 +5,7 @@ import { IconLogout } from "../icons/IconLogout";
 import { useCurrentUser } from "../../hooks/context/UserProvider";
 import { handleSignOut } from "../../firebase/firebase";
 import { PageLayout } from "../layout/pageLayout/PageLayout";
-import { AdminRoute, AuthRoute, GuestRoute, InfoRoute } from "../../routing/routes";
+import { AdminRoute, AuthRoute, GiftsRoute, GuestRoute, InfoRoute } from "../../routing/routes";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();
@@ -30,6 +30,12 @@ export const Navbar: FunctionComponent = () => {
             </Link>
             <Link to={InfoRoute.path} className={location.pathname.includes(InfoRoute.path) ? `${styles.active}` : ""}>
               Info
+            </Link>
+            <Link
+              to={GiftsRoute.path}
+              className={location.pathname.includes(GiftsRoute.path) ? `${styles.active}` : ""}
+            >
+              Gifts
             </Link>
             <Link
               to={AdminRoute.path}

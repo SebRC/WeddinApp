@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { Guest } from "../../guest/Guest";
-import styles from "./GuestTable.module.css";
-import { GuestTabelHeader } from "./GuestTableHeader";
+import { Guest } from "../../../guest/Guest";
+import styles from "../Table.module.css";
+import { GuestTabelHeader } from "../guest/GuestTableHeader";
 import { GuestTableRow } from "./GuestTableRow";
 
 interface GuestTableProps {
