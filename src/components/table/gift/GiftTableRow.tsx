@@ -25,12 +25,10 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift }) => 
     if (currentGift.reserved && currentGift.reservedBy !== name) {
       alert(`Gift is already reserved by ${currentGift.reservedBy}`);
     } else if (!currentGift.reserved) {
-      console.log("reserving gift");
       const updatedGift = { ...gift, reserved: true, reservedBy: name };
       setCurrentGift(updatedGift);
       await setGiftData(updatedGift);
     } else {
-      console.log("cancelling reservation");
       const updatedGift = { ...gift, reserved: false, reservedBy: "" };
       setCurrentGift(updatedGift);
       await setGiftData(updatedGift);
