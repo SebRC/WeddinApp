@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { Guest } from "../../../guest/Guest";
+import { useCurrentGuest } from "../../../hooks/useCurrentGuest";
 import styles from "../Table.module.css";
 import { TableHeader } from "../TableHeader";
 import { Gift } from "./gift";

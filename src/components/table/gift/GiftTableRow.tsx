@@ -1,6 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { setGiftData } from "../../../firebase/firebase";
 import { Guest } from "../../../guest/Guest";
+import { useCurrentGuest } from "../../../hooks/useCurrentGuest";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconX } from "../../icons/IconX";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
@@ -14,6 +15,8 @@ interface GiftTableRowProps {
 
 export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift }) => {
   const [currentGift, setCurrentGift] = useState(gift);
+  const guest = useCurrentGuest();
+
   const openInNewTab = (url: string) => {
     window.open(url, "_blank")?.focus();
   };
@@ -36,15 +39,15 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift }) => 
   return (
     <tr className={styles.row}>
       <TableData
-        width="30%"
+        width="35%"
         onClick={() => {
           openInNewTab(gift.url);
         }}
       >
         {gift.name}
       </TableData>
-      <TableData>{gift.price}</TableData>
-      <TableData width="10%" onClick={async () => await handleReserveClick("Sebastian Refsbæk Christiansen")}>
+      <TableData width="10%">{gift.price}</TableData>
+      <TableData width="10%" onClick={async () => await handleReserveClick(guest?.name ?? "NONE")}>
         {currentGift.reserved ? (
           <Flexbox alignItems="center" gap={20}>
             <IconCheckmark /> Yes
