@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { getAllguests } from "../../../firebase/firebase";
+import { getAllGuests } from "../../../firebase/firebase";
 import { Guest } from "../../../guest/Guest";
 import { LoadingPage } from "../../loading/LoadingPage";
 import { GuestTable } from "./GuestTable";
@@ -11,7 +11,7 @@ export const GuestTableContainer: FunctionComponent = () => {
   useEffect(() => {
     (async () => {
       setLoading(true);
-      const loadedGuests = await getAllguests();
+      const loadedGuests = await getAllGuests();
       setGuests(loadedGuests);
       setLoading(false);
     })();

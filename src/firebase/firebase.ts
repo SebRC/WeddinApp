@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
+import { Gift } from "../components/table/gift/gift";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -40,13 +41,22 @@ export const getGuest = async (guestId: string): Promise<Guest> => {
     }
 }
 
-export const getAllguests = async (): Promise<Guest[]> => {
+export const getAllGuests = async (): Promise<Guest[]> => {
   const querySnapshot = await getDocs(collection(db, "guests").withConverter(guestConverter));
   let guests: Guest[] = []
   querySnapshot.forEach((doc) => {
     guests.push(doc.data());
   });
   return guests;
+}
+
+export const getAllGifts = async (): Promise<Gift[]> => {
+  const querySnapshot = await getDocs(collection(db, "gifts").withConverter(giftConverter));
+  let gifts: Gift[] = []
+  querySnapshot.forEach((doc) => {
+    gifts.push(doc.data());
+  });
+  return gifts;
 }
 
 export const setGuestData = async (guest: Guest) => {
@@ -78,6 +88,20 @@ const guestConverter = {
   fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Guest => {
       const data = snapshot.data(options);
       return {id: snapshot.id, name: data?.name, attending: data?.attending, songWishes: data?.songWishes, foodInfo: data?.foodInfo, guestIds: data?.guestIds}
+  }
+};
+
+// Firestore data converter
+const giftConverter = {
+  toFirestore: (gift: Gift) => {
+      return {...gift, 
+          reserved: gift.reserved,
+          reservedBy: gift.reservedBy,
+          };
+  },
+  fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Gift => {
+      const data = snapshot.data(options);
+      return {id: snapshot.id, name: data?.name, url: data?.url, price: data?.price, reserved: data?.reserved, reservedBy: data?.reservedBy}
   }
 };
 
