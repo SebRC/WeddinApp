@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import styles from "./TableHeader.module.css";
 
 interface TableHeaderProps {
-  headers: string[];
+  headers: { name: string; width: any }[];
 }
 
 export const TableHeader: FunctionComponent<TableHeaderProps> = ({ headers }) => {
@@ -10,7 +10,11 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({ headers }) =>
     <thead className={styles.header}>
       <tr>
         {headers.map((h, index) => {
-          return <th key={h + index}>{h}</th>;
+          return (
+            <th key={h.name + index} style={{ width: h.width }}>
+              {h.name}
+            </th>
+          );
         })}
       </tr>
     </thead>

@@ -3,6 +3,7 @@
     border-spacing: 0;
     border-radius: var(--border-radius-large);
     box-shadow: var(--box-shadow-large);
+    table-layout:fixed;
 }
 
 .table th:first-of-type {

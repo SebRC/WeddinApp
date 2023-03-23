@@ -11,7 +11,14 @@ interface GuestTableProps {
 export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
   return (
     <table className={styles.table}>
-      <TableHeader headers={["Name", "Attending", "Song wishes", "Food info"]} />
+      <TableHeader
+        headers={[
+          { name: "Navn", width: "20%" },
+          { name: "Kommer", width: "10%" },
+          { name: "Song wishes", width: "40%" },
+          { name: "Food info", width: "30%" },
+        ]}
+      />
       <tbody>
         {guests.map((g) => {
           return g.guests ? (

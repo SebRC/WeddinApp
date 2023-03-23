@@ -22,7 +22,7 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift }) => 
 
   const handleReserveClick = async (name: string) => {
     if (currentGift.reserved && currentGift.reservedBy !== name) {
-      alert(`Gift is already reserved by ${currentGift.reservedBy}`);
+      alert(`Gaven er allerede reserveret af ${currentGift.reservedBy}`);
     } else if (!currentGift.reserved) {
       const updatedGift = { ...gift, reserved: true, reservedBy: name };
       setCurrentGift(updatedGift);
@@ -36,26 +36,25 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift }) => 
   return (
     <tr className={styles.row}>
       <TableData
-        width="35%"
         onClick={() => {
           openInNewTab(gift.url);
         }}
       >
         {gift.name}
       </TableData>
-      <TableData width="10%">{gift.price}</TableData>
-      <TableData width="10%" onClick={async () => await handleReserveClick(guest?.name ?? "NONE")}>
+      <TableData>{gift.price}</TableData>
+      <TableData onClick={async () => await handleReserveClick(guest?.name ?? "NONE")}>
         {currentGift.reserved ? (
-          <Flexbox alignItems="center" gap={20}>
-            <IconCheckmark /> Yes
+          <Flexbox alignItems="center" gap={10}>
+            {currentGift.reservedBy}
+            <IconCheckmark />
           </Flexbox>
         ) : (
           <Flexbox alignItems="center" gap={20}>
-            <IconX /> No
+            <IconX />
           </Flexbox>
         )}
       </TableData>
-      <TableData width="20%">{currentGift.reservedBy}</TableData>
     </tr>
   );
 };

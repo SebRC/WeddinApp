@@ -9,7 +9,3 @@
 .header tr th:first-child {
     padding: 20px;
 }
-
-.header tr th {
-    padding-right: 20px;
-}

@@ -1,6 +1,4 @@
 import { FunctionComponent } from "react";
-import { Guest } from "../../../guest/Guest";
-import { useCurrentGuest } from "../../../hooks/useCurrentGuest";
 import styles from "../Table.module.css";
 import { TableHeader } from "../TableHeader";
 import { Gift } from "./gift";
@@ -13,7 +11,13 @@ interface GiftTableProps {
 export const GiftTable: FunctionComponent<GiftTableProps> = ({ gifts }) => {
   return (
     <table className={styles.table}>
-      <TableHeader headers={["Gift", "Price", "Reserved", "Reserved by"]} />
+      <TableHeader
+        headers={[
+          { name: "Gave", width: "40%" },
+          { name: "Pris", width: "30%" },
+          { name: "Reserveret", width: "30%" },
+        ]}
+      />
       <tbody>
         {gifts.map((g, index) => {
           return <GiftTableRow gift={g} key={g.name + index} />;
