@@ -54,7 +54,7 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
     })();
   }, [currentGift.image]);
   return (
-    <Paper minHeight="auto" gap={20}>
+    <Paper minHeight="auto" gap={10}>
       <div className={styles.title} onClick={handleTitleClick}>
         <Title title={currentGift.name} />
       </div>
