@@ -12,6 +12,7 @@ import { FoodInfoInput } from "../input/FoodInfoInput";
 import { setGuestData } from "../../firebase/firebase";
 import { Button } from "../button/Button";
 import { IconNode } from "../icons/IconNode";
+import { useDebounce } from "../../hooks/debounce/useDebounce";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -25,6 +26,8 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     }),
     foodInfo: guest.foodInfo ?? "",
   });
+
+  const foodInfo = useDebounce(state.foodInfo, 2000);
   const [name, setName] = useState("");
   const [index, setIndex] = useState(1);
   const [expanded, setExpanded] = useState(true);
@@ -65,6 +68,13 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
       clearInterval(interval);
     };
   }, [name]);
+
+  useEffect(() => {
+    console.log("food info updated");
+    if (foodInfo) {
+      updateState(state);
+    }
+  }, [foodInfo]);
 
   const handleBannerClick = () => {
     if (!expanded) {
