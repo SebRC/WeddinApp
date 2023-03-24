@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
+import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, limit, onSnapshot, orderBy, query, setDoc, SnapshotOptions, where } from "firebase/firestore";
 import { Gift } from "../components/gift/gift";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
@@ -24,6 +24,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
+
+export const database = db;
+
+export const listenForGifts = async (action: (gifts: Gift[]) => void) => {
+  const gifts = await getDocs(collection(db, "gifts").withConverter(giftConverter));
+  const unsub = onSnapshot(gifts.query, (s) => {
+    console.log("onSnapshot")
+    let gifts: Gift[] = []
+    s.docs.forEach(d => {
+        const data = d.data()
+        gifts.push(data);
+    })
+    action(gifts)
+  });
+  return unsub;
+}
 
 export const getGuest = async (guestId: string): Promise<Guest> => {
     const docRef = doc(db, "guests", guestId).withConverter(guestConverter);
@@ -84,38 +100,9 @@ export const setGiftData = async (gift: Gift) => {
 
 export const getImage = async (name: string) => {
   // Create a reference to the file we want to download
-const storage = getStorage();
-const imageRef = ref(storage, name);
-console.log(imageRef.name)
-
-// Get the download URL
+  const storage = getStorage();
+  const imageRef = ref(storage, name);
   return await getDownloadURL(imageRef);
-    // .then((url) => {
-    //   // Insert url into an <img> tag to "download"
-    //   console.log("url fetched", url)
-    //   imageUrl = url;
-    // })
-    // .catch((error) => {
-    //   // A full list of error codes is available at
-    //   // https://firebase.google.com/docs/storage/web/handle-errors
-    //   switch (error.code) {
-    //     case 'storage/object-not-found':
-    //       return "NOT FOUND"
-    //     case 'storage/unauthorized':
-    //       // User doesn't have permission to access the object
-    //       return "UNAUTHORIZED"
-    //     case 'storage/canceled':
-    //       return "OPERATION CANCELED"
-
-    //     // ...
-
-    //     case 'storage/unknown':
-    //       // Unknown error occurred, inspect the server response
-    //       break;
-    //   }
-    // });
-    // console.log("returning iamgeurl", imageUrl)
-    // return imageUrl
 }
 
 // Firestore data converter
@@ -135,7 +122,7 @@ const guestConverter = {
 };
 
 // Firestore data converter
-const giftConverter = {
+export const giftConverter = {
   toFirestore: (gift: Gift) => {
       return {...gift, 
           reserved: gift.reserved,

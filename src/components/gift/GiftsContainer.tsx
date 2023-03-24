@@ -1,22 +1,24 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { getAllGifts } from "../../firebase/firebase";
+import { useGifts } from "../../hooks/useGifts";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { LoadingPage } from "../loading/LoadingPage";
 import { Gift } from "./gift";
 import { GiftInfo } from "./GiftInfo";
 
 export const GiftsContainer: FunctionComponent = () => {
-  const [gifts, setGifts] = useState<Gift[]>([]);
+  //   const [gifts, setGifts] = useState<Gift[]>([]);
   const [loading, setLoading] = useState(true);
+  const gifts = useGifts();
 
   useEffect(() => {
     (async () => {
       setLoading(true);
       const loadedGifts = await getAllGifts();
-      setGifts(loadedGifts);
+      //   setGifts(loadedGifts);
       setLoading(false);
     })();
-  }, []);
+  }, [gifts]);
   return loading ? (
     <LoadingPage />
   ) : (
