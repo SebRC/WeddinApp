@@ -9,9 +9,18 @@ interface InputProps {
   value: string;
   type?: "text" | "email" | "password";
   error?: string;
+  disabled?: boolean;
 }
 
-export const Input: FunctionComponent<InputProps> = ({ onChange, id, label, value, type = "text", error = "" }) => {
+export const Input: FunctionComponent<InputProps> = ({
+  onChange,
+  id,
+  label,
+  value,
+  disabled = false,
+  type = "text",
+  error = "",
+}) => {
   return (
     <Flexbox flexDirection="column" alignItems="flex-start" width="100%">
       {label && (
@@ -20,6 +29,7 @@ export const Input: FunctionComponent<InputProps> = ({ onChange, id, label, valu
         </label>
       )}
       <input
+        disabled={disabled}
         autoComplete="off"
         value={value}
         onChange={onChange}
@@ -27,7 +37,7 @@ export const Input: FunctionComponent<InputProps> = ({ onChange, id, label, valu
         id={id}
         className={`${styles.input} ${error ? styles.error : ""}`}
       />
-      {error && error}
+      {error && <label style={{ marginTop: "5px", color: "var(--danger)" }}>{error}</label>}
     </Flexbox>
   );
 };

@@ -15,6 +15,8 @@ export const LoginPage: FunctionComponent = () => {
   const [password, setPassword] = useState(users[1].password);
   const [loading, setLoading] = useState(false);
   const [loginText, setLoginText] = useState("Log in");
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -24,8 +26,17 @@ export const LoginPage: FunctionComponent = () => {
     if (success) {
       navigate("/guest");
     } else {
+      setLoginText("Log in");
       console.log("ERROR:", errorMessage);
       console.log("ERROR CODE:", errorCode);
+      if (errorCode === "auth/wrong-password") {
+        setPasswordError("Forkert kodeord");
+        setEmailError("");
+      }
+      if (errorCode === "auth/user-not-found") {
+        setEmailError("Brugeren findes ikke");
+        setPasswordError("");
+      }
     }
     setLoading(false);
   };
@@ -50,8 +61,22 @@ export const LoginPage: FunctionComponent = () => {
   return (
     <Paper>
       <Flexbox flexDirection="column" gap={20}>
-        <Input label="Email" value={email} type="email" onChange={(e) => setEmail(e.target.value)} />
-        <Input label="Password" value={password} type="password" onChange={(e) => setPassword(e.target.value)} />
+        <Input
+          label="Email"
+          value={email}
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          error={emailError}
+          disabled={loading}
+        />
+        <Input
+          label="Password"
+          value={password}
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          error={passwordError}
+          disabled={loading}
+        />
         <Button text={loginText} onClick={handleLogin} height="3rem" loading={loading} disabled={loading} />
       </Flexbox>
     </Paper>
