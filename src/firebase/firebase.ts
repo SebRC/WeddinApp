@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, limit, onSnapshot, orderBy, query, setDoc, SnapshotOptions, where } from "firebase/firestore";
+import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { Gift } from "../components/gift/gift";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
@@ -26,20 +26,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export const database = db;
-
-export const listenForGifts = async (action: (gifts: Gift[]) => void) => {
-  const gifts = await getDocs(collection(db, "gifts").withConverter(giftConverter));
-  const unsub = onSnapshot(gifts.query, (s) => {
-    console.log("onSnapshot")
-    let gifts: Gift[] = []
-    s.docs.forEach(d => {
-        const data = d.data()
-        gifts.push(data);
-    })
-    action(gifts)
-  });
-  return unsub;
-}
 
 export const getGuest = async (guestId: string): Promise<Guest> => {
     const docRef = doc(db, "guests", guestId).withConverter(guestConverter);

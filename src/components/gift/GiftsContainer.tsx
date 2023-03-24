@@ -9,7 +9,7 @@ export const GiftsContainer: FunctionComponent = () => {
   const [loading, setLoading] = useState(giftsLoading);
   useEffect(() => {
     setLoading(giftsLoading);
-  }, [gifts]);
+  }, [gifts, giftsLoading]);
 
   return loading ? (
     <LoadingPage />

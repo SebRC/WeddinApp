@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useReducer, useState } from "react";
+import { FunctionComponent, useCallback, useEffect, useReducer, useState } from "react";
 import { Checkbox } from "../checkbox/Checkbox";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { ACTION_TYPE } from "./responsePageActionTypes";
@@ -62,13 +62,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     return () => {
       clearInterval(interval);
     };
-  }, [name]);
-
-  useEffect(() => {
-    if (debouncedState) {
-      updateState(state);
-    }
-  }, [debouncedState]);
+  }, [name, index, phrase]);
 
   const handleBannerClick = () => {
     if (!expanded) {
@@ -90,7 +84,13 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     await setGuestData(updatedGuest);
   };
 
-  const { attending: attending, songWishes: wishes } = state;
+  useEffect(() => {
+    if (debouncedState) {
+      updateState(state);
+    }
+  }, [debouncedState]);
+
+  const { attending, songWishes } = state;
   return (
     <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`} onClick={handleBannerClick}>
       <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
@@ -121,7 +121,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             paddingBottom="10px"
             paddingRight="10px"
           >
-            {wishes.map((sw, index) => {
+            {songWishes.map((sw, index) => {
               return (
                 <SongWishInput
                   wish={sw}
