@@ -5,6 +5,7 @@ import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDo
 import { Gift } from "../components/table/gift/gift";
 import { Guest } from "../guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../guest/guests";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -77,11 +78,45 @@ export const getAllGifts = async (): Promise<Gift[]> => {
 
 export const setGiftData = async (gift: Gift) => {
   const ref = doc(db, "gifts", gift.id ?? "undefined").withConverter(giftConverter);
-  const updatedGift: Gift = {name: gift.name, url: gift.url, price: gift.price, reserved: gift.reserved, reservedBy: gift.reservedBy,}
+  const updatedGift: Gift = {name: gift.name, url: gift.url, price: gift.price, reserved: gift.reserved, reservedBy: gift.reservedBy, image: gift.image}
   await setDoc(ref, updatedGift);
 }
 
+export const getImage = async (name: string) => {
+  // Create a reference to the file we want to download
+const storage = getStorage();
+const imageRef = ref(storage, name);
+console.log(imageRef.name)
 
+// Get the download URL
+  return await getDownloadURL(imageRef);
+    // .then((url) => {
+    //   // Insert url into an <img> tag to "download"
+    //   console.log("url fetched", url)
+    //   imageUrl = url;
+    // })
+    // .catch((error) => {
+    //   // A full list of error codes is available at
+    //   // https://firebase.google.com/docs/storage/web/handle-errors
+    //   switch (error.code) {
+    //     case 'storage/object-not-found':
+    //       return "NOT FOUND"
+    //     case 'storage/unauthorized':
+    //       // User doesn't have permission to access the object
+    //       return "UNAUTHORIZED"
+    //     case 'storage/canceled':
+    //       return "OPERATION CANCELED"
+
+    //     // ...
+
+    //     case 'storage/unknown':
+    //       // Unknown error occurred, inspect the server response
+    //       break;
+    //   }
+    // });
+    // console.log("returning iamgeurl", imageUrl)
+    // return imageUrl
+}
 
 // Firestore data converter
 const guestConverter = {
@@ -109,7 +144,7 @@ const giftConverter = {
   },
   fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Gift => {
       const data = snapshot.data(options);
-      return {id: snapshot.id, name: data?.name, url: data?.url, price: data?.price, reserved: data?.reserved, reservedBy: data?.reservedBy}
+      return {id: snapshot.id, name: data?.name, url: data?.url, price: data?.price, reserved: data?.reserved, reservedBy: data?.reservedBy, image: data?.image}
   }
 };
 

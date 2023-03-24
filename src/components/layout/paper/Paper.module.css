@@ -6,4 +6,6 @@
     border-radius: var(--border-radius-large);
     box-shadow: var(--box-shadow-large);
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }

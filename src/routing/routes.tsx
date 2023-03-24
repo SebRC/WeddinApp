@@ -1,6 +1,7 @@
 import { LoginPage } from "../components/authentication/LoginPage";
 import { ProtectedRoute } from "../components/authentication/ProtectedRoute";
 import { ErrorPage } from "../components/error/ErrorPage";
+import { GiftsContainer } from "../components/gift/GiftsContainer";
 import { Info } from "../components/info/Info";
 import { PageLayout } from "../components/layout/pageLayout/PageLayout";
 import { GiftTableContainer } from "../components/table/gift/GiftTableContainer";
@@ -38,7 +39,7 @@ export const GiftsRoute = {
   path: "/gifts",
   element: (
     <ProtectedRoute>
-      <GiftTableContainer />
+      <GiftsContainer />
     </ProtectedRoute>
   ),
 };
