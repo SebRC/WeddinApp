@@ -8,9 +8,10 @@ interface InputProps {
   label?: string;
   value: string;
   type?: "text" | "email" | "password";
+  error?: string;
 }
 
-export const Input: FunctionComponent<InputProps> = ({ onChange, id, label, value, type = "text" }) => {
+export const Input: FunctionComponent<InputProps> = ({ onChange, id, label, value, type = "text", error = "" }) => {
   return (
     <Flexbox flexDirection="column" alignItems="flex-start" width="100%">
       {label && (
@@ -18,7 +19,15 @@ export const Input: FunctionComponent<InputProps> = ({ onChange, id, label, valu
           {label}
         </label>
       )}
-      <input autoComplete="off" value={value} onChange={onChange} type={type} id={id} className={styles.input} />
+      <input
+        autoComplete="off"
+        value={value}
+        onChange={onChange}
+        type={type}
+        id={id}
+        className={`${styles.input} ${error ? styles.error : ""}`}
+      />
+      {error && error}
     </Flexbox>
   );
 };
