@@ -55,12 +55,18 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
   return (
     <Paper minHeight="auto" gap={20}>
       <Title title={currentGift.name} />
-      <Header text={`Pris: ${gift.price}`} />
-      <Header
-        text="Reserveret af:"
-        subHeader={currentGift.reservedBy ? currentGift.reservedBy : "Ikke reserveret endnu"}
-      />
-      {loadingImage ? <LoadingImage /> : <Image url={imageUrl} />}
+      <Flexbox>
+        <Flexbox flexDirection="column" gap={20} width="100%">
+          <Header text={`Pris: ${gift.price}`} />
+          <Header
+            text="Reserveret af:"
+            subHeader={currentGift.reservedBy ? currentGift.reservedBy : "Ikke reserveret endnu"}
+          />
+        </Flexbox>
+        <Flexbox width="100%" justifyContent="flex-end" alignItems="center">
+          {loadingImage ? <LoadingImage size="150px" /> : <Image url={imageUrl} size="150px" />}
+        </Flexbox>
+      </Flexbox>
       <Button text={getButtonText()} onClick={async () => await handleReserveClick(guest?.name ?? "NONE")} />
     </Paper>
   );

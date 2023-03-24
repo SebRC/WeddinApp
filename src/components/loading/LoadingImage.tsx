@@ -1,6 +1,10 @@
 import { FunctionComponent } from "react";
 import styles from "./LoadingImage.module.css";
 
-export const LoadingImage: FunctionComponent = () => {
-  return <div className={styles.loading} />;
+interface LoadingImageProps {
+  size?: string;
+}
+
+export const LoadingImage: FunctionComponent<LoadingImageProps> = ({ size = "50px" }) => {
+  return <div className={styles.loading} style={{ width: size, height: size }} />;
 };
