@@ -27,31 +27,26 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     foodInfo: guest.foodInfo ?? "",
   });
 
-  const foodInfo = useDebounce(state.foodInfo, 2000);
+  const debouncedState = useDebounce(state, 1000);
   const [name, setName] = useState("");
   const [index, setIndex] = useState(1);
   const [expanded, setExpanded] = useState(true);
-  const [editing, setEditing] = useState(false);
   const phrase = `Hej ${guest.name}`;
 
   const handleAttendingChange = () => {
-    setEditing(true);
     guest.attending = !guest.attending;
     dispatch({ type: ACTION_TYPE.COMING_CHANGED, payload: { attending: !attending } });
   };
 
   const handleWishChange = (wish: string, index: number) => {
-    setEditing(true);
     dispatch({ type: ACTION_TYPE.WISHES_CHANGED, payload: { wish: { value: wish, id: index } } });
   };
 
   const handleFoodInfoChange = (foodInfo: string) => {
-    setEditing(true);
     dispatch({ type: ACTION_TYPE.FOOD_INFO_CHANGED, payload: { foodInfo: foodInfo } });
   };
 
   const handleSongWishAdd = () => {
-    setEditing(true);
     const newIndex = state.songWishes.length;
     dispatch({ type: ACTION_TYPE.SONG_WISH_ADDED, payload: { wish: { value: "", id: newIndex } } });
   };
@@ -70,11 +65,10 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   }, [name]);
 
   useEffect(() => {
-    console.log("food info updated");
-    if (foodInfo) {
+    if (debouncedState) {
       updateState(state);
     }
-  }, [foodInfo]);
+  }, [debouncedState]);
 
   const handleBannerClick = () => {
     if (!expanded) {
@@ -83,12 +77,10 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   };
 
   const handleSongRemove = (wish: Wish) => {
-    setEditing(true);
     dispatch({ type: ACTION_TYPE.SONG_WISH_REMOVED, payload: { wish: wish } });
   };
 
   const updateState = async (state: ResponsePageState) => {
-    setEditing(false);
     const updatedGuest: Guest = {
       ...guest,
       attending: state.attending,
@@ -150,7 +142,6 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             />
           </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
-          <Button text="Updater" disabled={!editing} onClick={async () => await updateState(state)} width="100%" />
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>
