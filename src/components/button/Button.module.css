@@ -1,5 +1,4 @@
 .button {
-    background-color: var(--secondary);
     border: none;
     border-radius: var(--border-radius-medium);
     height: 2rem;

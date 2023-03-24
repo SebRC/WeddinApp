@@ -11,6 +11,7 @@ import { LoadingImage } from "../loading/LoadingImage";
 import { Gift } from "../table/gift/gift";
 import { Header } from "../text/Header";
 import { Title } from "../text/Title";
+import styles from "./GiftInfo.module.css";
 
 interface GiftInfoProps {
   gift: Gift;
@@ -22,8 +23,8 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
   const [loadingImage, setLoadingImage] = useState(true);
   const guest = useCurrentGuest();
 
-  const openInNewTab = (url: string) => {
-    window.open(url, "_blank")?.focus();
+  const handleTitleClick = () => {
+    window.open(currentGift.url, "_blank")?.focus();
   };
 
   const handleReserveClick = async (name: string) => {
@@ -54,7 +55,9 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
   }, [currentGift.image]);
   return (
     <Paper minHeight="auto" gap={20}>
-      <Title title={currentGift.name} />
+      <div className={styles.title} onClick={handleTitleClick}>
+        <Title title={currentGift.name} />
+      </div>
       <Flexbox>
         <Flexbox flexDirection="column" gap={20} width="100%">
           <Header text={`Pris: ${gift.price}`} />
