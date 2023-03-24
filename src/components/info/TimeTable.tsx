@@ -26,7 +26,7 @@ export const TimeTable: FunctionComponent = () => {
     <>
       <Header text="Tidsplan" />
       <div className={styles.container}>
-        <Flexbox justifyContent="center" gap={50}>
+        <Flexbox justifyContent="center" gap={50} width="100%">
           {timeTable.map((tti, index) => {
             return <TimeTableItem item={tti} key={`${tti.value}-${index}`} />;
           })}
