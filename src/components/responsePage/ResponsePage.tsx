@@ -29,7 +29,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const [index, setIndex] = useState(1);
   const [expanded, setExpanded] = useState(true);
   const [editing, setEditing] = useState(false);
-  const phrase = `Hello ${guest.name}`;
+  const phrase = `Hej ${guest.name}`;
 
   const handleAttendingChange = () => {
     setEditing(true);
@@ -98,15 +98,14 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
         <Flexbox flexDirection="column" alignItems="flex-start" height="100%" gap={10}>
           <Title title={name} />
           <Checkbox
-            label="Are you coming to our wedding?"
+            label="Kommer du til vores bryllup?"
             id={`${guest.name}-${attending}`}
             checked={attending}
             onChange={handleAttendingChange}
           />
           <Header
-            text="Song wishes"
-            subHeader="🎶 If you have any song wishes, please put them here. We'll make a playlist for the wedding with everyones
-          suggestions 🎶"
+            text="Sang ønsker"
+            subHeader="🎶 Skriv dine sang ønsker her hvis du har nogle, så laver vi en playliste med alles ønsker til brylluppet 🎶"
           />
           <Flexbox
             maxHeight="350px"
@@ -126,7 +125,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
                   wish={sw}
                   id={`${guest.name}-wish-${index}`}
                   key={`${guest.name}-wish-${index}`}
-                  label={`Wish ${index + 1}`}
+                  label={`Ønske ${index + 1}`}
                   onChange={handleWishChange}
                   onSongRemove={() => handleSongRemove(sw)}
                 />
@@ -141,7 +140,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             />
           </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
-          <Button text="Update state" disabled={!editing} onClick={async () => await updateState(state)} width="100%" />
+          <Button text="Updater" disabled={!editing} onClick={async () => await updateState(state)} width="100%" />
         </Flexbox>
       ) : (
         <Title title={guest.name}></Title>

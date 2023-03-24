@@ -12,7 +12,7 @@ export const FoodInfoInput: FunctionComponent<FoodInfoInputProps> = ({ onChange,
   return (
     <Flexbox flexDirection="column" alignItems="flex-start" width="100%">
       <label htmlFor={id} className={styles.label}>
-        Food info(allergies)
+        Mad info(allergier)
       </label>
       <textarea
         value={value}

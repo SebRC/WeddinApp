@@ -26,7 +26,7 @@ export const Navbar: FunctionComponent = () => {
               to={GuestRoute.path}
               className={location.pathname.includes(GuestRoute.path) ? `${styles.active}` : ""}
             >
-              Guest
+              Gæst
             </Link>
             <Link to={InfoRoute.path} className={location.pathname.includes(InfoRoute.path) ? `${styles.active}` : ""}>
               Info
@@ -35,7 +35,7 @@ export const Navbar: FunctionComponent = () => {
               to={GiftsRoute.path}
               className={location.pathname.includes(GiftsRoute.path) ? `${styles.active}` : ""}
             >
-              Gifts
+              Gaver
             </Link>
             <Link
               to={AdminRoute.path}

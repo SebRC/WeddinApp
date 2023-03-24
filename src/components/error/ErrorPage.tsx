@@ -17,8 +17,8 @@ export const ErrorPage: FunctionComponent = () => {
     <PageLayout>
       <Paper>
         <Flexbox flexDirection="column" alignItems="center">
-          <Title title="Woops you're not supposed to be here!" />
-          <Button onClick={handleGoBack} text="Go back" width="5rem" height="2.5rem" />
+          <Title title="Ups! Det er ikke meningen at du skal være her!" />
+          <Button onClick={handleGoBack} text="Gå tilbage" width="6rem" height="2.5rem" />
         </Flexbox>
       </Paper>
     </PageLayout>
