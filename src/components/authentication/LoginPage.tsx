@@ -42,7 +42,7 @@ export const LoginPage: FunctionComponent = () => {
       setLoading(false);
     }
     if (!password) {
-      setPasswordError("Du skal indtaste et kodeord");
+      setPasswordError("Du skal indtaste et kodeordd");
     }
     if (!email) {
       setEmailError("Du skal indtaste en email");
