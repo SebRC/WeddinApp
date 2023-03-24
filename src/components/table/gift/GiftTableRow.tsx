@@ -6,7 +6,7 @@ import { IconX } from "../../icons/IconX";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { TableData } from "../TableData";
 import styles from "../TableRow.module.css";
-import { Gift } from "./gift";
+import { Gift } from "../../gift/gift";
 
 interface GiftTableRowProps {
   gift: Gift;

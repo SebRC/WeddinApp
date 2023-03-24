@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { getAllGifts } from "../../firebase/firebase";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { LoadingPage } from "../loading/LoadingPage";
-import { Gift } from "../table/gift/gift";
+import { Gift } from "./gift";
 import { GiftInfo } from "./GiftInfo";
 
 export const GiftsContainer: FunctionComponent = () => {

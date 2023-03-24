@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styles from "../Table.module.css";
 import { TableHeader } from "../TableHeader";
-import { Gift } from "./gift";
+import { Gift } from "../../gift/gift";
 import { GiftTableRow } from "./GiftTableRow";
 
 interface GiftTableProps {

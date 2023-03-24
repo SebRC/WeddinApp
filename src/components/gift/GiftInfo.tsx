@@ -8,7 +8,7 @@ import { Image } from "../image/Image";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Paper } from "../layout/paper/Paper";
 import { LoadingImage } from "../loading/LoadingImage";
-import { Gift } from "../table/gift/gift";
+import { Gift } from "./gift";
 import { Header } from "../text/Header";
 import { Title } from "../text/Title";
 import styles from "./GiftInfo.module.css";
