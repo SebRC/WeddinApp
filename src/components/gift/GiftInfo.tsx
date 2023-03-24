@@ -2,8 +2,6 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { getImage, setGiftData } from "../../firebase/firebase";
 import { useCurrentGuest } from "../../hooks/useCurrentGuest";
 import { Button } from "../button/Button";
-import { IconCheckmark } from "../icons/IconCheckmark";
-import { IconX } from "../icons/IconX";
 import { Image } from "../image/Image";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Paper } from "../layout/paper/Paper";
@@ -18,53 +16,47 @@ interface GiftInfoProps {
 }
 
 export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
-  const [currentGift, setCurrentGift] = useState(gift);
   const [imageUrl, setImageUrl] = useState("");
   const [loadingImage, setLoadingImage] = useState(true);
   const guest = useCurrentGuest();
 
   const handleTitleClick = () => {
-    window.open(currentGift.url, "_blank")?.focus();
+    window.open(gift.url, "_blank")?.focus();
   };
 
   const handleReserveClick = async (name: string) => {
-    if (currentGift.reserved && currentGift.reservedBy !== name) {
-      alert(`Gaven er allerede reserveret af ${currentGift.reservedBy}`);
-    } else if (!currentGift.reserved) {
+    if (gift.reserved && gift.reservedBy !== name) {
+      alert(`Gaven er allerede reserveret af ${gift.reservedBy}`);
+    } else if (!gift.reserved) {
       const updatedGift = { ...gift, reserved: true, reservedBy: name };
-      setCurrentGift(updatedGift);
       await setGiftData(updatedGift);
     } else {
       const updatedGift = { ...gift, reserved: false, reservedBy: "" };
-      setCurrentGift(updatedGift);
       await setGiftData(updatedGift);
     }
   };
 
   const getButtonText = (): string => {
-    return currentGift.reservedBy === guest?.name ? "Fjern reservation" : "Reserver gave";
+    return gift.reservedBy === guest?.name ? "Fjern reservation" : "Reserver gave";
   };
 
   useEffect(() => {
     (async () => {
       setLoadingImage(true);
-      const url = await getImage(currentGift.image);
+      const url = await getImage(gift.image);
       setImageUrl(url);
       setLoadingImage(false);
     })();
-  }, [currentGift.image]);
+  }, [gift.image]);
   return (
     <Paper minHeight="auto" gap={10}>
       <div className={styles.title} onClick={handleTitleClick}>
-        <Title title={currentGift.name} />
+        <Title title={gift.name} />
       </div>
       <Flexbox>
         <Flexbox flexDirection="column" gap={20} width="100%">
           <Header text={`Pris: ${gift.price}`} />
-          <Header
-            text="Reserveret af:"
-            subHeader={currentGift.reservedBy ? currentGift.reservedBy : "Ikke reserveret endnu"}
-          />
+          <Header text="Reserveret af:" subHeader={gift.reservedBy ? gift.reservedBy : "Ikke reserveret endnu"} />
         </Flexbox>
         <Flexbox width="100%" justifyContent="flex-end" alignItems="center">
           {loadingImage ? <LoadingImage size="150px" /> : <Image url={imageUrl} size="150px" />}

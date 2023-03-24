@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { getGuest } from "../firebase/firebase";
 import { Guest } from "../guest/Guest";
 
-const auth = getAuth();
 
 export const useCurrentGuest = () => {
+  const auth = getAuth();
     useEffect(()=> {
       (async() => {
         onAuthStateChanged(auth, async (user) => {
