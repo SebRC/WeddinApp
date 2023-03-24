@@ -62,7 +62,11 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
           {loadingImage ? <LoadingImage size="150px" /> : <Image url={imageUrl} size="150px" />}
         </Flexbox>
       </Flexbox>
-      <Button text={getButtonText()} onClick={async () => await handleReserveClick(guest?.name ?? "NONE")} />
+      <Button
+        text={getButtonText()}
+        onClick={async () => await handleReserveClick(guest?.name ?? "NONE")}
+        disabled={gift.reserved && gift.reservedBy !== guest?.name}
+      />
     </Paper>
   );
 };

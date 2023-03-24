@@ -1,10 +1,10 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Paper } from "../layout/paper/Paper";
 import { Button } from "../button/Button";
 import { handleSignIn } from "../../firebase/firebase";
 import { Input } from "../input/Input";
 import { useNavigate } from "react-router-dom";
+import { Title } from "../text/Title";
 
 export const LoginPage: FunctionComponent = () => {
   const users = [
@@ -41,30 +41,6 @@ export const LoginPage: FunctionComponent = () => {
       }
       setLoading(false);
     }
-    if (!password) {
-      setPasswordError("Du skal indtaste et kodeordd");
-    }
-    if (!email) {
-      setEmailError("Du skal indtaste en email");
-    }
-  };
-
-  const handlePasswordChange = (value: string) => {
-    setPassword(value);
-    if (!value) {
-      setPasswordError("");
-    } else {
-      setPasswordError("Du skal indtaste et kodeord");
-    }
-  };
-
-  const handleEmailChange = (value: string) => {
-    setEmail(value);
-    if (value) {
-      setEmailError("");
-    } else {
-      setEmailError("Du skal indtaste en email");
-    }
   };
 
   useEffect(() => {
@@ -85,26 +61,27 @@ export const LoginPage: FunctionComponent = () => {
   }, [loginText, loading]);
 
   return (
-    <Paper>
-      <Flexbox flexDirection="column" gap={20}>
-        <Input
-          label="Email"
-          value={email}
-          type="email"
-          onChange={(e) => handleEmailChange(e.target.value)}
-          error={emailError}
-          disabled={loading}
-        />
-        <Input
-          label="Password"
-          value={password}
-          type="password"
-          onChange={(e) => handlePasswordChange(e.target.value)}
-          error={passwordError}
-          disabled={loading}
-        />
-        <Button text={loginText} onClick={handleLogin} height="3rem" loading={loading} disabled={loading} />
-      </Flexbox>
+    <Paper gap={20}>
+      <Title title="Login" />
+      <Input
+        label="Email"
+        value={email}
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        error={emailError}
+        disabled={loading}
+        required
+      />
+      <Input
+        label="Password"
+        value={password}
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        error={passwordError}
+        disabled={loading}
+        required
+      />
+      <Button text={loginText} onClick={handleLogin} height="3rem" loading={loading} disabled={loading} />
     </Paper>
   );
 };

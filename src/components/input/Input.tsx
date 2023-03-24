@@ -10,6 +10,7 @@ interface InputProps {
   type?: "text" | "email" | "password";
   error?: string;
   disabled?: boolean;
+  required?: boolean;
 }
 
 export const Input: FunctionComponent<InputProps> = ({
@@ -20,6 +21,7 @@ export const Input: FunctionComponent<InputProps> = ({
   disabled = false,
   type = "text",
   error = "",
+  required = false,
 }) => {
   return (
     <Flexbox flexDirection="column" alignItems="flex-start" width="100%">
@@ -35,9 +37,13 @@ export const Input: FunctionComponent<InputProps> = ({
         onChange={onChange}
         type={type}
         id={id}
-        className={`${styles.input} ${error ? styles.error : ""}`}
+        className={`${styles.input} ${error || (required && value === "") ? styles.error : ""}`}
       />
-      {error && <label style={{ marginTop: "5px", color: "var(--danger)" }}>{error}</label>}
+      {required && value === "" ? (
+        <label style={{ marginTop: "5px", color: "var(--danger)" }}>Dette felt skal udfyldes</label>
+      ) : (
+        error && <label style={{ marginTop: "5px", color: "var(--danger)" }}>{error}</label>
+      )}
     </Flexbox>
   );
 };
