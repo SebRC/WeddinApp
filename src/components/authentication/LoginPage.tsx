@@ -20,25 +20,51 @@ export const LoginPage: FunctionComponent = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    setLoginText("Logging in");
-    setLoading(true);
-    const { success, errorCode, errorMessage } = await handleSignIn(email, password);
-    if (success) {
-      navigate("/guest");
-    } else {
-      setLoginText("Log in");
-      console.log("ERROR:", errorMessage);
-      console.log("ERROR CODE:", errorCode);
-      if (errorCode === "auth/wrong-password") {
-        setPasswordError("Forkert kodeord");
-        setEmailError("");
+    if (password && email) {
+      setLoginText("Logging in");
+      setLoading(true);
+      const { success, errorCode, errorMessage } = await handleSignIn(email, password);
+      if (success) {
+        navigate("/guest");
+      } else {
+        setLoginText("Log in");
+        console.log("ERROR:", errorMessage);
+        console.log("ERROR CODE:", errorCode);
+        if (errorCode === "auth/wrong-password") {
+          setPasswordError("Forkert kodeord");
+          setEmailError("");
+        }
+        if (errorCode === "auth/user-not-found") {
+          setEmailError("Brugeren findes ikke");
+          setPasswordError("");
+        }
       }
-      if (errorCode === "auth/user-not-found") {
-        setEmailError("Brugeren findes ikke");
-        setPasswordError("");
-      }
+      setLoading(false);
     }
-    setLoading(false);
+    if (!password) {
+      setPasswordError("Du skal indtaste et kodeord");
+    }
+    if (!email) {
+      setEmailError("Du skal indtaste en email");
+    }
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value);
+    if (!value) {
+      setPasswordError("");
+    } else {
+      setPasswordError("Du skal indtaste et kodeord");
+    }
+  };
+
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
+    if (value) {
+      setEmailError("");
+    } else {
+      setEmailError("Du skal indtaste en email");
+    }
   };
 
   useEffect(() => {
@@ -65,7 +91,7 @@ export const LoginPage: FunctionComponent = () => {
           label="Email"
           value={email}
           type="email"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => handleEmailChange(e.target.value)}
           error={emailError}
           disabled={loading}
         />
@@ -73,7 +99,7 @@ export const LoginPage: FunctionComponent = () => {
           label="Password"
           value={password}
           type="password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => handlePasswordChange(e.target.value)}
           error={passwordError}
           disabled={loading}
         />
