@@ -12,7 +12,7 @@ export const Toggle: FunctionComponent<ToggleProps> = ({ text, value, onChange }
   return (
     <Flexbox alignItems="center" gap={10}>
       <label className={styles.switch}>
-        <input type="checkbox" checked={value} onClick={onChange} />
+        <input type="checkbox" checked={value} onChange={onChange} />
         <span className={styles.slider}></span>
       </label>
       {text}
