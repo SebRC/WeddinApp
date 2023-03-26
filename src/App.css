@@ -5,6 +5,7 @@
   --secondary-hover: hsl(30, 56%, 51%);
   --secondary-active: hsl(30, 95%, 50%);
   --danger: hsl(10, 80%, 50%);
+  --checked: hsl(182, 85%, 48%);
 
   --box-shadow-large: 15px 10px;
   --box-shadow-small: 5px 2.5px;
