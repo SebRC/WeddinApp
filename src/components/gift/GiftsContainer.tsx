@@ -9,7 +9,7 @@ import { GiftInfo } from "./GiftInfo";
 export const GiftsContainer: FunctionComponent = () => {
   const { gifts, giftsLoading } = useGifts();
   const [loading, setLoading] = useState(giftsLoading);
-  const [filterGifts, setFilterGifts] = useState(false);
+  const [filterGifts, setFilterGifts] = useState(localStorage.getItem("filterGifts") === "true");
   const [filteredGifts, setFilteredGifts] = useState(gifts);
 
   useEffect(() => {
@@ -18,6 +18,7 @@ export const GiftsContainer: FunctionComponent = () => {
   }, [gifts, giftsLoading]);
 
   const handleFilter = () => {
+    localStorage.setItem("filterGifts", `${!filterGifts}`);
     setFilterGifts(!filterGifts);
     if (!filterGifts) {
       setFilteredGifts(gifts.filter((g) => !g.reserved));
