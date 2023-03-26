@@ -60,8 +60,8 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
           <Header
             text="Reserveret af:"
             subHeader={
-              gift.reservedBy
-                ? `${gift.reservedBy && gift.reservedBy === guest?.name ? `${gift.reservedBy} (Dig)` : gift.reservedBy}`
+              gift.reserved
+                ? `${gift.reservedBy === guest?.name ? `${gift.reservedBy} (Dig)` : gift.reservedBy}`
                 : "Ikke reserveret endnu"
             }
           />
