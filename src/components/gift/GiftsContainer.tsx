@@ -9,21 +9,25 @@ import { GiftInfo } from "./GiftInfo";
 export const GiftsContainer: FunctionComponent = () => {
   const { gifts, giftsLoading } = useGifts();
   const [loading, setLoading] = useState(giftsLoading);
-  const [filterGifts, setFilterGifts] = useState(localStorage.getItem("filterGifts") === "true");
-  const [filteredGifts, setFilteredGifts] = useState(gifts);
+  const [filterGifts, setFilterGifts] = useState(localStorage.getItem("sortGifts") === "true");
+  const [sortedGifts, setSortedGifts] = useState(gifts);
 
   useEffect(() => {
     setLoading(giftsLoading);
-    setFilteredGifts(filterGifts ? gifts.filter((g) => !g.reserved) : gifts);
+    setSortedGifts(
+      filterGifts
+        ? gifts.sort((a, b) => Number(a.reserved) - Number(b.reserved))
+        : gifts.sort((a, b) => Number(b.reserved) - Number(a.reserved))
+    );
   }, [gifts, giftsLoading, filterGifts]);
 
-  const handleFilter = () => {
-    localStorage.setItem("filterGifts", `${!filterGifts}`);
+  const handleSort = () => {
+    localStorage.setItem("sortGifts", `${!filterGifts}`);
     setFilterGifts(!filterGifts);
     if (!filterGifts) {
-      setFilteredGifts(gifts.filter((g) => !g.reserved));
+      setSortedGifts(gifts.sort((a, b) => Number(a.reserved) - Number(b.reserved)));
     } else {
-      setFilteredGifts(gifts);
+      setSortedGifts(gifts.sort((a, b) => Number(b.reserved) - Number(a.reserved)));
     }
   };
 
@@ -32,9 +36,9 @@ export const GiftsContainer: FunctionComponent = () => {
   ) : (
     <Flexbox flexDirection="column" gap={20}>
       <Paper minHeight="auto">
-        <Toggle text="Filtrer reserverede gaver" value={filterGifts} onChange={handleFilter} />
+        <Toggle text="Sortér efter ureserverede gaver" value={filterGifts} onChange={handleSort} />
       </Paper>
-      {filteredGifts.map((g, index) => {
+      {sortedGifts.map((g, index) => {
         return <GiftInfo gift={g} key={g.name + index} />;
       })}
     </Flexbox>

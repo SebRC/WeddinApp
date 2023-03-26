@@ -57,7 +57,14 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
       <Flexbox>
         <Flexbox flexDirection="column" gap={20} width="100%">
           <Header text={`Pris: ${gift.price}`} />
-          <Header text="Reserveret af:" subHeader={gift.reservedBy ? gift.reservedBy : "Ikke reserveret endnu"} />
+          <Header
+            text="Reserveret af:"
+            subHeader={
+              gift.reservedBy
+                ? `${gift.reservedBy && gift.reservedBy === guest?.name ? `${gift.reservedBy} (Dig)` : gift.reservedBy}`
+                : "Ikke reserveret endnu"
+            }
+          />
         </Flexbox>
         <Flexbox width="100%" justifyContent="flex-end" alignItems="center">
           {loadingImage ? <LoadingImage size="150px" /> : <Image url={imageUrl} size="150px" />}
