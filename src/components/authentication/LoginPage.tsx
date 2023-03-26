@@ -27,7 +27,7 @@ export const LoginPage: FunctionComponent = () => {
       if (success) {
         navigate("/guest");
       } else {
-        setLoginText("Log in");
+        setLoginText("Login");
         console.log("ERROR:", errorMessage);
         console.log("ERROR CODE:", errorCode);
         if (errorCode === "auth/wrong-password") {
