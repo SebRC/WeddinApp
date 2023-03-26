@@ -9,7 +9,6 @@ export const useGifts = () => {
     useEffect(() => {
         const giftsCollection = collection(database, "gifts").withConverter(giftConverter);
         const unsub = onSnapshot(giftsCollection, s => {
-            console.log("snapshot changed")
             const newGifts: Gift[] = [];
             s.docs.forEach(d => {
                 const data = d.data()
