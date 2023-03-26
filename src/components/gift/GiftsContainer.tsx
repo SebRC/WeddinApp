@@ -19,8 +19,8 @@ export const GiftsContainer: FunctionComponent = () => {
 
   const handleFilter = () => {
     setFilterGifts(!filterGifts);
-    if (filterGifts) {
-      setFilteredGifts(gifts.filter((g) => g.reservedBy));
+    if (!filterGifts) {
+      setFilteredGifts(gifts.filter((g) => !g.reserved));
     } else {
       setFilteredGifts(gifts);
     }
