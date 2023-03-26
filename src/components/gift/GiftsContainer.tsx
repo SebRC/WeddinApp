@@ -14,7 +14,7 @@ export const GiftsContainer: FunctionComponent = () => {
 
   useEffect(() => {
     setLoading(giftsLoading);
-    setFilteredGifts(gifts);
+    setFilteredGifts(filterGifts ? gifts.filter((g) => !g.reserved) : gifts);
   }, [gifts, giftsLoading]);
 
   const handleFilter = () => {
