@@ -15,7 +15,7 @@ export const GiftsContainer: FunctionComponent = () => {
   useEffect(() => {
     setLoading(giftsLoading);
     setFilteredGifts(filterGifts ? gifts.filter((g) => !g.reserved) : gifts);
-  }, [gifts, giftsLoading]);
+  }, [gifts, giftsLoading, filterGifts]);
 
   const handleFilter = () => {
     localStorage.setItem("filterGifts", `${!filterGifts}`);
