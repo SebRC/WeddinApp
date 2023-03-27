@@ -6,7 +6,7 @@ import { Checkbox } from "../../components/checkbox/Checkbox";
 test("changes state when checkbox is clicked", () => {
   const testId = "testId";
   const value = false;
-  render(<Checkbox value={value} testId={testId} id="id" label="Test" onChange={(e) => {}} />);
+  render(<Checkbox value={value} testId={testId} id="id" label="Test" onChange={() => {}} />);
   expect(screen.getByTestId(testId)).not.toBeChecked();
 
   userEvent.click(screen.getByTestId(testId));

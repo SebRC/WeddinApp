@@ -1,4 +1,5 @@
 import { ChangeEvent, FunctionComponent, useState } from "react";
+import { KeyCodes } from "../../keycode/keyCodes";
 import styles from "./Checkbox.module.css";
 
 interface CheckboxProps {
@@ -6,21 +7,40 @@ interface CheckboxProps {
   label: string;
   id: string;
   testId?: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: () => void;
 }
 
 export const Checkbox: FunctionComponent<CheckboxProps> = ({ value, label, id, testId = id, onChange }) => {
   const [checked, setChecked] = useState(value);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleClick = () => {
     setChecked(!checked);
-    onChange(e);
+    onChange();
+  };
+
+  const handleKeyUp = (key: string) => {
+    if (key === KeyCodes.Enter) {
+      handleClick();
+    }
   };
   return (
     <label htmlFor={id} className={styles.container}>
-      <input type="checkbox" id={id} checked={checked} onChange={handleChange} data-testid={testId && testId} />
+      <input
+        id={id}
+        type="checkbox"
+        checked={checked}
+        data-testid={testId && testId}
+        tabIndex={-1}
+        onClick={handleClick}
+      />
       {label}
-      <span className={styles.checkmark} />
+      <span
+        className={styles.checkmark}
+        onKeyUp={(e) => handleKeyUp(e.key)}
+        tabIndex={0}
+        aria-checked={checked}
+        role="checkbox"
+      />
     </label>
   );
 };

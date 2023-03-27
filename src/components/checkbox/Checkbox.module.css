@@ -6,19 +6,11 @@
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
   
   /* Hide the browser's default checkbox */
   .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+    appearance: none;
   }
   
   /* Create a custom checkbox */
@@ -31,7 +23,7 @@
     background-color: white;
     border-radius: var(--border-radius-medium);
   }
-  
+
   /* On mouse-over, add a grey background color */
   /* .container:hover input ~ .checkmark {
   } */
