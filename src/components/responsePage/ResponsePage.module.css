@@ -15,10 +15,6 @@
     transform: scaleY(0.9);
 }
 
-.collapsed:hover {
-    cursor: pointer;
-}
-
 .closeCardButton {
     position: absolute;
     right: 10px;

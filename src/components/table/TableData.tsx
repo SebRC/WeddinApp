@@ -1,4 +1,5 @@
 import { FunctionComponent, ReactNode } from "react";
+import { KeyCodes } from "../../keycode/keyCodes";
 
 interface TableDataProps {
   width?: any;
@@ -8,7 +9,7 @@ interface TableDataProps {
 
 export const TableData: FunctionComponent<TableDataProps> = ({ width = "auto", onClick, children }) => {
   const handleKeyUp = (key: string) => {
-    if (key === "enter") {
+    if (key === KeyCodes.Enter) {
       onClick?.();
     }
   };

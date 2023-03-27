@@ -13,6 +13,7 @@ import { setGuestData } from "../../firebase/firebase";
 import { Button } from "../button/Button";
 import { IconNode } from "../icons/IconNode";
 import { useDebounce } from "../../hooks/debounce/useDebounce";
+import { KeyCodes } from "../../keycode/keyCodes";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -64,18 +65,6 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     };
   }, [name, index, phrase]);
 
-  const handleBannerClick = () => {
-    if (!expanded) {
-      setExpanded(true);
-    }
-  };
-
-  const handleBannerKeyUp = (key: string) => {
-    if (key === "enter") {
-      handleBannerClick();
-    }
-  };
-
   const handleSongRemove = (wish: Wish) => {
     dispatch({ type: ACTION_TYPE.SONG_WISH_REMOVED, payload: { wish: wish } });
   };
@@ -98,13 +87,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
 
   const { attending, songWishes } = state;
   return (
-    <div
-      className={styles.container + ` ${!expanded ? styles.collapsed : ""}`}
-      onClick={handleBannerClick}
-      onKeyUp={(e) => handleBannerKeyUp(e.key)}
-      tabIndex={0}
-      role="button"
-    >
+    <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`}>
       <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
         <h1>{expanded ? "-" : "+"}</h1>
       </button>
