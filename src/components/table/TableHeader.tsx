@@ -33,13 +33,15 @@ export const TableHeader: FunctionComponent<TableHeaderProps> = ({ headers }) =>
       <tr>
         {headers.map((h, index) => {
           return (
-            <th key={h.name + index} style={{ width: h.width }}>
+            <th
+              key={h.name + index}
+              style={{ width: h.width, cursor: h.sortable ? "pointer" : "default" }}
+              onClick={() => h.onSort?.()}
+            >
               <Flexbox gap={5} alignItems="center">
                 {h.name}
                 {h.sortable && (
-                  <div className={styles.sortableWrapper} onClick={() => h.onSort?.()}>
-                    {getSortIcon(h.sorted ?? SortOrder.Unsorted)}
-                  </div>
+                  <div className={styles.sortableWrapper}>{getSortIcon(h.sorted ?? SortOrder.Unsorted)}</div>
                 )}
               </Flexbox>
             </th>

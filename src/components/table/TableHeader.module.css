@@ -11,7 +11,6 @@
 }
 
 .sortableWrapper{
-   cursor: pointer;
    display: flex;
    height: 20px;
    flex-direction: row;
