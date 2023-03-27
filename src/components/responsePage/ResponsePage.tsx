@@ -13,7 +13,6 @@ import { setGuestData } from "../../firebase/firebase";
 import { Button } from "../button/Button";
 import { IconNode } from "../icons/IconNode";
 import { useDebounce } from "../../hooks/debounce/useDebounce";
-import { KeyCodes } from "../../keycode/keyCodes";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -69,21 +68,25 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     dispatch({ type: ACTION_TYPE.SONG_WISH_REMOVED, payload: { wish: wish } });
   };
 
-  const updateState = async (state: ResponsePageState) => {
-    const updatedGuest: Guest = {
-      ...guest,
-      attending: state.attending,
-      foodInfo: state.foodInfo,
-      songWishes: state.songWishes.map((sw) => sw.value),
-    };
-    await setGuestData(updatedGuest);
-  };
+  const updateState = useCallback(
+    async (state: ResponsePageState) => {
+      const updatedGuest: Guest = {
+        ...guest,
+        attending: state.attending,
+        foodInfo: state.foodInfo,
+        songWishes: state.songWishes.map((sw) => sw.value),
+      };
+      await setGuestData(updatedGuest);
+    },
+    [guest]
+  );
 
   useEffect(() => {
     if (debouncedState) {
-      updateState(state);
+      console.log("updating state");
+      updateState(debouncedState);
     }
-  }, [debouncedState]);
+  }, [debouncedState, updateState]);
 
   const { attending, songWishes } = state;
   return (

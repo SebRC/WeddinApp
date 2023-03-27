@@ -25,6 +25,6 @@ export const GuestContainer: FunctionComponent = () => {
         setLoading(false);
       }
     })();
-  }, [currentUser]);
+  }, [currentUser, debugLocal]);
   return loading ? <LoadingPage /> : <GuestInfo guest={guest} />;
 };

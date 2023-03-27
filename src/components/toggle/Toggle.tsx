@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { KeyCodes } from "../../keycode/keyCodes";
+import { KeyCodes } from "../../keycode/KeyCodes";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Toggle.module.css";
 
