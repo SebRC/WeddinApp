@@ -9,7 +9,7 @@
     width: 100%;
 }
 
-.error {
+.errorOutline {
     outline: var(--error-outline);
 }
 
@@ -20,4 +20,9 @@
 
 .input:focus {
    outline: var(--focus-outline)
+}
+
+.errorParagraph {
+    color: var(--danger);
+    margin: 5px 0px 0px 0px
 }

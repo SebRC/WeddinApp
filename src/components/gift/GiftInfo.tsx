@@ -20,10 +20,6 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
   const [loadingImage, setLoadingImage] = useState(true);
   const guest = useCurrentGuest();
 
-  const handleTitleClick = () => {
-    window.open(gift.url, "_blank")?.focus();
-  };
-
   const handleReserveClick = async (name: string) => {
     if (gift.reserved && gift.reservedBy !== name) {
       alert(`Gaven er allerede reserveret af ${gift.reservedBy}`);
@@ -51,9 +47,9 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
 
   return (
     <Paper minHeight="auto" gap={10}>
-      <div className={styles.title} onClick={handleTitleClick}>
+      <a href={gift.url} target="_blank" className={styles.title} rel="noreferrer">
         <Title title={gift.name} />
-      </div>
+      </a>
       <Flexbox>
         <Flexbox flexDirection="column" gap={20} width="100%">
           <Header text={`Pris: ${gift.price}`} />

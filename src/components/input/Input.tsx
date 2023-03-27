@@ -37,12 +37,12 @@ export const Input: FunctionComponent<InputProps> = ({
         onChange={onChange}
         type={type}
         id={id}
-        className={`${styles.input} ${error || (required && value === "") ? styles.error : ""}`}
+        className={`${styles.input} ${error || (required && value === "") ? styles.errorOutline : ""}`}
       />
       {required && value === "" ? (
-        <label style={{ marginTop: "5px", color: "var(--danger)" }}>Dette felt skal udfyldes</label>
+        <p className={styles.errorParagraph}>Dette felt skal udfyldes</p>
       ) : (
-        error && <label style={{ marginTop: "5px", color: "var(--danger)" }}>{error}</label>
+        error && <p className={styles.errorParagraph}>{error}</p>
       )}
     </Flexbox>
   );

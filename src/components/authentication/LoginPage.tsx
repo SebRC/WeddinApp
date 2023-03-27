@@ -38,6 +38,10 @@ export const LoginPage: FunctionComponent = () => {
           setEmailError("Brugeren findes ikke");
           setPasswordError("");
         }
+        if (errorCode === "auth/invalid-email") {
+          setEmailError("ugyldig email");
+          setPasswordError("");
+        }
       }
       setLoading(false);
     }
