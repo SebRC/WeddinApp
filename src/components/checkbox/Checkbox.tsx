@@ -1,19 +1,26 @@
-import { FunctionComponent } from "react";
+import { ChangeEvent, FunctionComponent, useState } from "react";
 import styles from "./Checkbox.module.css";
 
 interface CheckboxProps {
-  checked: boolean;
+  value: boolean;
   label: string;
   id: string;
-  onChange: () => void;
+  testId?: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export const Checkbox: FunctionComponent<CheckboxProps> = ({ checked, label, id, onChange }) => {
+export const Checkbox: FunctionComponent<CheckboxProps> = ({ value, label, id, testId = id, onChange }) => {
+  const [checked, setChecked] = useState(value);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setChecked(!checked);
+    onChange(e);
+  };
   return (
     <label htmlFor={id} className={styles.container}>
-      <input type="checkbox" id={id} checked={checked} onChange={onChange} />
+      <input type="checkbox" id={id} checked={checked} onChange={handleChange} data-testid={testId && testId} />
       {label}
-      <span className={styles.checkmark}></span>
+      <span className={styles.checkmark} />
     </label>
   );
 };

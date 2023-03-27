@@ -102,7 +102,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           <Checkbox
             label="Kommer du til vores bryllup?"
             id={`${guest.name}-${attending}`}
-            checked={attending}
+            value={attending}
             onChange={handleAttendingChange}
           />
           <Header
