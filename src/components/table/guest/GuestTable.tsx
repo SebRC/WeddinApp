@@ -39,7 +39,6 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
   };
 
   const handleSearch = (value: string) => {
-    console.log("value", value);
     setSearchValue(value);
     if (!value) {
       handleSort(sortOrder);

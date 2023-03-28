@@ -6,6 +6,7 @@ import { useCurrentUser } from "../../hooks/context/UserProvider";
 import { handleSignOut } from "../../firebase/firebase";
 import { PageLayout } from "../layout/pageLayout/PageLayout";
 import { AdminRoute, AuthRoute, GiftsRoute, GuestRoute, InfoRoute } from "../../routing/routes";
+import { Roles } from "../authentication/Roles";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();
@@ -37,12 +38,14 @@ export const Navbar: FunctionComponent = () => {
             >
               Gaver
             </Link>
-            <Link
-              to={AdminRoute.path}
-              className={location.pathname.includes(AdminRoute.path) ? `${styles.active}` : ""}
-            >
-              Admin
-            </Link>
+            {user?.role === Roles.Admin && (
+              <Link
+                to={AdminRoute.path}
+                className={location.pathname.includes(AdminRoute.path) ? `${styles.active}` : ""}
+              >
+                Admin
+              </Link>
+            )}
           </>
         )}
         <Link to={AuthRoute.path} style={{ float: "right" }} onClick={handleLogout}>

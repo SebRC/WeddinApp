@@ -84,7 +84,6 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
 
   useEffect(() => {
     if (debouncedState) {
-      console.log("updating state");
       updateState(debouncedState);
     }
   }, [debouncedState, updateState]);

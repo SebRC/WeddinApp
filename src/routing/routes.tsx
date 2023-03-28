@@ -6,6 +6,7 @@ import { Info } from "../components/info/Info";
 import { PageLayout } from "../components/layout/pageLayout/PageLayout";
 import { GuestTableContainer } from "../components/table/guest/GuestTableContainer";
 import { GuestContainer } from "../components/guest/GuestContainer";
+import { Roles } from "../components/authentication/Roles";
 
 export const GuestRoute = {
   path: "/guest",
@@ -19,7 +20,7 @@ export const GuestRoute = {
 export const AdminRoute = {
   path: "/admin",
   element: (
-    <ProtectedRoute>
+    <ProtectedRoute requiredRole={Roles.Admin}>
       <GuestTableContainer />
     </ProtectedRoute>
   ),
