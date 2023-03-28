@@ -1,9 +1,10 @@
-import { ChangeEventHandler, FunctionComponent } from "react";
+import { ChangeEventHandler, FunctionComponent, KeyboardEventHandler } from "react";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Input.module.css";
 
 interface InputProps {
   onChange: ChangeEventHandler<HTMLInputElement>;
+  onKeyUp?: KeyboardEventHandler<HTMLInputElement>;
   id?: string;
   label?: string;
   value: string;
@@ -15,6 +16,7 @@ interface InputProps {
 
 export const Input: FunctionComponent<InputProps> = ({
   onChange,
+  onKeyUp,
   id,
   label,
   value,
@@ -35,6 +37,9 @@ export const Input: FunctionComponent<InputProps> = ({
         autoComplete="off"
         value={value}
         onChange={onChange}
+        onKeyUp={(e) => {
+          onKeyUp?.(e);
+        }}
         type={type}
         id={id}
         className={`${styles.input} ${error || (required && value === "") ? styles.errorOutline : ""}`}

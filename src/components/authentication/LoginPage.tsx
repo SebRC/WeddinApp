@@ -5,6 +5,7 @@ import { handleSignIn } from "../../firebase/firebase";
 import { Input } from "../input/Input";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../text/Title";
+import { KeyCodes } from "../../keycode/KeyCodes";
 
 export const LoginPage: FunctionComponent = () => {
   const users = [
@@ -47,6 +48,22 @@ export const LoginPage: FunctionComponent = () => {
     }
   };
 
+  const handlePasswordKeyUp = async (key: string) => {
+    if (key === KeyCodes.Enter) {
+      await handleLogin();
+    }
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value);
+    setPasswordError("");
+  };
+
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
+    setEmailError("");
+  };
+
   useEffect(() => {
     if (loading) {
       const index = loginText.length;
@@ -71,7 +88,7 @@ export const LoginPage: FunctionComponent = () => {
         label="Email"
         value={email}
         type="email"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => handleEmailChange(e.target.value)}
         error={emailError}
         disabled={loading}
         required
@@ -80,7 +97,8 @@ export const LoginPage: FunctionComponent = () => {
         label="Password"
         value={password}
         type="password"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => handlePasswordChange(e.target.value)}
+        onKeyUp={async (e) => await handlePasswordKeyUp(e.key)}
         error={passwordError}
         disabled={loading}
         required
