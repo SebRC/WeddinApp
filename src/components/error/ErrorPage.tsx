@@ -5,14 +5,22 @@ import { Title } from "../text/Title";
 import { Button } from "../button/Button";
 import { useNavigate, useRouteError } from "react-router-dom";
 import { Flexbox } from "../layout/flexbox/Flexbox";
+import { useCurrentUser } from "../../hooks/context/UserProvider";
 
 export const ErrorPage: FunctionComponent = () => {
   let error = useRouteError();
   console.log("error", error);
+  const user = useCurrentUser();
   const navigate = useNavigate();
+
   const handleGoBack = () => {
-    navigate("auth");
+    if (!user.authed) {
+      navigate("/auth");
+    } else {
+      navigate("/guest");
+    }
   };
+
   return (
     <PageLayout>
       <Paper>
