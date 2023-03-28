@@ -14,7 +14,7 @@ export const TableData: FunctionComponent<TableDataProps> = ({ width = "auto", o
     }
   };
   return (
-    <td style={{ width: width }}>
+    <td style={{ width: width, paddingRight: "10px" }}>
       {onClick ? (
         <div role="button" onClick={onClick} onKeyUp={(e) => handleKeyUp(e.key)} tabIndex={0}>
           {children}
