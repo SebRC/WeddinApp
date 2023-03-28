@@ -6,4 +6,5 @@ export interface Guest {
     foodInfo?: string;
     songWishes: string[];
     attending: boolean;
+    role?: string;
 }

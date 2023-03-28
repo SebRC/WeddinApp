@@ -55,7 +55,7 @@ export const getAllGuests = async (): Promise<Guest[]> => {
 
 export const setGuestData = async (guest: Guest) => {
   const ref = doc(db, "guests", guest.id ?? "undefined").withConverter(guestConverter);
-  const updatedGuest: Guest = {name: guest.name, attending: guest.attending, foodInfo: guest.foodInfo, songWishes: guest.songWishes, guestIds: guest.guestIds}
+  const updatedGuest: Guest = {name: guest.name, attending: guest.attending, foodInfo: guest.foodInfo, songWishes: guest.songWishes, guestIds: guest.guestIds, role: guest.role}
   await setDoc(ref, updatedGuest);
 }
 
@@ -103,7 +103,8 @@ const guestConverter = {
   },
   fromFirestore: (snapshot: DocumentSnapshot, options: SnapshotOptions): Guest => {
       const data = snapshot.data(options);
-      return {id: snapshot.id, name: data?.name, attending: data?.attending, songWishes: data?.songWishes, foodInfo: data?.foodInfo, guestIds: data?.guestIds}
+      console.table(data)
+      return {id: snapshot.id, name: data?.name, attending: data?.attending, songWishes: data?.songWishes, foodInfo: data?.foodInfo, guestIds: data?.guestIds, role: data?.role}
   }
 };
 
