@@ -64,8 +64,8 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
               sorted: sortOrder,
               onSort: () => handleSort(getNextSortOrder()),
             },
-            { name: "Song wishes", width: "40%" },
-            { name: "Food info", width: "30%" },
+            { name: "Sang ønske", width: "40%" },
+            { name: "Mad info", width: "30%" },
           ]}
         />
         <tbody>
