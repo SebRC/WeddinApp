@@ -93,10 +93,10 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const { attending, songWishes } = state;
   return (
     <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`}>
-      <Flexbox justifyContent="space-between">
+      <Flexbox justifyContent="space-between" marginBottom="12px">
         <Title title={name} />
         <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
-          <h1>{expanded ? <IconCollapse fill="black" /> : <IconExpand fill="black" />}</h1>
+          {expanded ? <IconCollapse fill="black" /> : <IconExpand fill="black" />}
         </button>
       </Flexbox>
       {expanded && (
