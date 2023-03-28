@@ -28,11 +28,11 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
       <TableData>
         {guest.attending ? (
           <Flexbox alignItems="center" gap={20}>
-            <IconCheckmark /> Yes
+            <IconCheckmark /> Ja
           </Flexbox>
         ) : (
           <Flexbox alignItems="center" gap={20}>
-            <IconX /> No
+            <IconX /> Nej
           </Flexbox>
         )}
       </TableData>
