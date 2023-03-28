@@ -33,7 +33,6 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const [name, setName] = useState("");
   const [index, setIndex] = useState(1);
   const [expanded, setExpanded] = useState(true);
-  const phrase = `Hej ${guest.name}`;
 
   const handleAttendingChange = () => {
     guest.attending = !guest.attending;
@@ -55,8 +54,8 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (index <= phrase.length) {
-        setName(phrase.slice(0, index));
+      if (index <= guest.name.length) {
+        setName(guest.name.slice(0, index));
         setIndex((i) => i + 1);
       }
     }, 100);
@@ -64,7 +63,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
     return () => {
       clearInterval(interval);
     };
-  }, [name, index, phrase]);
+  }, [name, index, guest.name]);
 
   const handleSongRemove = (wish: Wish) => {
     dispatch({ type: ACTION_TYPE.SONG_WISH_REMOVED, payload: { wish: wish } });
@@ -93,14 +92,14 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const { attending, songWishes } = state;
   return (
     <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`}>
-      <Flexbox justifyContent="space-between" marginBottom="12px">
+      <Flexbox justifyContent="space-between">
         <Title title={name} />
         <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
           {expanded ? <IconCollapse fill="black" /> : <IconExpand fill="black" />}
         </button>
       </Flexbox>
       {expanded && (
-        <Flexbox flexDirection="column" alignItems="flex-start" height="100%" gap={10}>
+        <Flexbox flexDirection="column" alignItems="flex-start" height="100%" gap={10} marginTop="12px">
           <Checkbox
             label="Kommer du til vores bryllup?"
             id={`${guest.name}-${attending}`}
