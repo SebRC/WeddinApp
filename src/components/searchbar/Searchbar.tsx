@@ -13,7 +13,7 @@ export const Searchbar: FunctionComponent<SearchbarProps> = ({ value, placeholde
   return (
     <Flexbox alignItems="center" gap={20}>
       <input className={styles.searchbar} placeholder={placeholder} onChange={(e) => onSearch(e)} value={value} />
-      <div style={{ position: "absolute", right: "20px", backgroundColor: "white" }}>
+      <div className={styles.searchIcon}>
         <IconSearch fill="black" />
       </div>
     </Flexbox>

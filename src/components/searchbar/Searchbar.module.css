@@ -12,3 +12,10 @@
 .searchbar:focus {
    outline: var(--focus-outline)
 }
+
+.searchIcon {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    padding: 5px 20px 5px 2px;
+}
