@@ -9,20 +9,6 @@
     width: 100%;
 }
 
-.errorOutline {
-    outline: var(--error-outline);
-}
-
-.label {
-    font-size: 1.5em;
-    margin-bottom: 5px;
-}
-
 .searchbar:focus {
    outline: var(--focus-outline)
-}
-
-.errorParagraph {
-    color: var(--danger);
-    margin: 5px 0px 0px 0px
 }
