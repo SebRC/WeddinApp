@@ -41,13 +41,3 @@
     border-top-right-radius: 10px;
     border-bottom: solid 6px var(--secondary-hover);
 }
-
-.logout {
-    background-image: url(/Users/sebastianchristiansen/Desktop/Projects/wedding-app/public/logout.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border: solid 2px red;
-}

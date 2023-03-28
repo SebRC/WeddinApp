@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import { Paper } from "../layout/paper/Paper";
-import { PageLayout } from "../layout/pageLayout/PageLayout";
 import { Title } from "../text/Title";
 import { Button } from "../button/Button";
 import { useNavigate, useRouteError } from "react-router-dom";
