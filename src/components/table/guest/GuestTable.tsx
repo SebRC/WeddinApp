@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { Guest } from "../../../guest/Guest";
+import { Guest } from "../../guest/Guest";
 import styles from "../Table.module.css";
 import { GuestTableRow } from "./GuestTableRow";
 import { TableHeader } from "../TableHeader";

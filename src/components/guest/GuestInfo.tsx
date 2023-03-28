@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { Flexbox } from "../components/layout/flexbox/Flexbox";
-import { LoadingPage } from "../components/loading/LoadingPage";
-import { ResponsePage } from "../components/responsePage/ResponsePage";
+import { Flexbox } from "../layout/flexbox/Flexbox";
+import { LoadingPage } from "../loading/LoadingPage";
+import { ResponsePage } from "../responsePage/ResponsePage";
 import { Guest } from "./Guest";
 
 interface GuestInfoProps {

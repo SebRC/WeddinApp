@@ -16,19 +16,13 @@
 }
 
 .closeCardButton {
-    position: absolute;
-    right: 10px;
-    top: 10px;
     background-color: transparent;
     width: 50px;
     height: 50px;
     border: none;
+    cursor: pointer;
 }
 
 .closeCardButton h1 {
     margin: 0px;
-}
-
-.closeCardButton:hover {
-    cursor: pointer;
 }

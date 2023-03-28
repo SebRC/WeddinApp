@@ -5,7 +5,7 @@ import { ACTION_TYPE } from "./responsePageActionTypes";
 import { responsePageReducer, ResponsePageState, Wish } from "./responsePageReducer";
 import { SongWishInput } from "../input/SongWishInput";
 import styles from "./ResponsePage.module.css";
-import { Guest } from "../../guest/Guest";
+import { Guest } from "../guest/Guest";
 import { Title } from "../text/Title";
 import { Header } from "../text/Header";
 import { FoodInfoInput } from "../input/FoodInfoInput";
@@ -13,6 +13,8 @@ import { setGuestData } from "../../firebase/firebase";
 import { Button } from "../button/Button";
 import { IconNode } from "../icons/IconNode";
 import { useDebounce } from "../../hooks/debounce/useDebounce";
+import { IconCollapse } from "../icons/IconCollapse";
+import { IconExpand } from "../icons/IconExpand";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -91,12 +93,14 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const { attending, songWishes } = state;
   return (
     <div className={styles.container + ` ${!expanded ? styles.collapsed : ""}`}>
-      <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
-        <h1>{expanded ? "-" : "+"}</h1>
-      </button>
-      {expanded ? (
+      <Flexbox justifyContent="space-between">
+        <Title title={name} />
+        <button className={styles.closeCardButton} onClick={() => setExpanded(!expanded)}>
+          <h1>{expanded ? <IconCollapse fill="black" /> : <IconExpand fill="black" />}</h1>
+        </button>
+      </Flexbox>
+      {expanded && (
         <Flexbox flexDirection="column" alignItems="flex-start" height="100%" gap={10}>
-          <Title title={name} />
           <Checkbox
             label="Kommer du til vores bryllup?"
             id={`${guest.name}-${attending}`}
@@ -141,8 +145,6 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
           </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
         </Flexbox>
-      ) : (
-        <Title title={guest.name}></Title>
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { LoadingPage } from "../components/loading/LoadingPage";
-import { getGuest } from "../firebase/firebase";
-import { useCurrentUser } from "../hooks/context/UserProvider";
+import { LoadingPage } from "../loading/LoadingPage";
+import { getGuest } from "../../firebase/firebase";
+import { useCurrentUser } from "../../hooks/context/UserProvider";
 import { GuestInfo } from "./GuestInfo";
 import { DEFAULT_GUEST_STATE, Guests } from "./guests";
 

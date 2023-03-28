@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { getAllGuests } from "../../../firebase/firebase";
-import { Guest } from "../../../guest/Guest";
+import { Guest } from "../../guest/Guest";
 import { LoadingPage } from "../../loading/LoadingPage";
 import { GuestTable } from "./GuestTable";
 

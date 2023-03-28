@@ -5,7 +5,7 @@ import { GiftsContainer } from "../components/gift/GiftsContainer";
 import { Info } from "../components/info/Info";
 import { PageLayout } from "../components/layout/pageLayout/PageLayout";
 import { GuestTableContainer } from "../components/table/guest/GuestTableContainer";
-import { GuestContainer } from "../guest/GuestContainer";
+import { GuestContainer } from "../components/guest/GuestContainer";
 
 export const GuestRoute = {
   path: "/guest",

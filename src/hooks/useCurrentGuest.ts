@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { getGuest } from "../firebase/firebase";
-import { Guest } from "../guest/Guest";
+import { Guest } from "../components/guest/Guest";
 
 
 export const useCurrentGuest = () => {

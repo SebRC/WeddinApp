@@ -3,8 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { Gift } from "../components/gift/gift";
-import { Guest } from "../guest/Guest";
-import { DEFAULT_GUEST_STATE } from "../guest/guests";
+import { Guest } from "../components/guest/Guest";
+import { DEFAULT_GUEST_STATE } from "../components/guest/guests";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
