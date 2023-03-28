@@ -64,6 +64,7 @@ export const Flexbox: FunctionComponent<FlexboxProps> = ({
     <div
       style={{
         display: "flex",
+        position: "relative",
         flexDirection: flexDirection,
         justifyContent: justifyContent,
         alignItems: alignItems,
