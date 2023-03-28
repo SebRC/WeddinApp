@@ -115,12 +115,10 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             minHeight="100px"
             width="100%"
             flexDirection="column"
-            gap={20}
             overflow="scroll"
-            justifyContent="normal"
-            alignItems="normal"
             paddingBottom="10px"
             paddingRight="10px"
+            gap={20}
           >
             {songWishes.map((sw, index) => {
               return (
