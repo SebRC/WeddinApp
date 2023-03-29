@@ -18,7 +18,7 @@
 }
 
 .App {
-  background-image: url(/Users/sebastianchristiansen/Desktop/Projects/wedding-app/public/background-image.jpg);
+  background-image: url(../public/background-image.jpg);
   min-height: 100vh;
   height: 100%;
   background-attachment: fixed;
