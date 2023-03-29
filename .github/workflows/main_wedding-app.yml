@@ -58,6 +58,3 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D6B723A4E9F4D3BA14244557D073011 }}
           package: .
-
-      - name: Delete zip file
-        run: rm node-app.zip 
