@@ -57,4 +57,4 @@ jobs:
           app-name: 'wedding-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D6B723A4E9F4D3BA14244557D073011 }}
-          package: .
+          package: node-app
