@@ -60,4 +60,4 @@ jobs:
           package: node-app.zip
 
       - name: Delete zip file
-      - run: rm node-app.zip 
+        run: rm node-app.zip 
