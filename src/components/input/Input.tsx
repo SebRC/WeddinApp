@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FunctionComponent, KeyboardEventHandler } from "react";
+import { ChangeEvent, ChangeEventHandler, FunctionComponent, KeyboardEventHandler, useState } from "react";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Input.module.css";
 
@@ -12,6 +12,7 @@ interface InputProps {
   error?: string;
   disabled?: boolean;
   required?: boolean;
+  placeholder?: string;
 }
 
 export const Input: FunctionComponent<InputProps> = ({
@@ -24,7 +25,19 @@ export const Input: FunctionComponent<InputProps> = ({
   type = "text",
   error = "",
   required = false,
+  placeholder = "",
 }) => {
+  const [edited, setEdited] = useState(false);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEdited(true);
+    onChange(event);
+  };
+
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    setEdited(true);
+    onKeyUp?.(event);
+  };
   return (
     <Flexbox flexDirection="column" alignItems="flex-start" width="100%">
       {label && (
@@ -36,15 +49,16 @@ export const Input: FunctionComponent<InputProps> = ({
         disabled={disabled}
         autoComplete="off"
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         onKeyUp={(e) => {
-          onKeyUp?.(e);
+          onKeyUp && handleKeyUp(e);
         }}
         type={type}
         id={id}
-        className={`${styles.input} ${error || (required && value === "") ? styles.errorOutline : ""}`}
+        className={`${styles.input} ${error || (required && edited && value === "") ? styles.errorOutline : ""}`}
+        placeholder={placeholder}
       />
-      {required && value === "" ? (
+      {required && edited && value === "" ? (
         <p className={styles.errorParagraph}>Dette felt skal udfyldes</p>
       ) : (
         error && <p className={styles.errorParagraph}>{error}</p>

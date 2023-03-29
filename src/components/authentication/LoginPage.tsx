@@ -8,12 +8,8 @@ import { Title } from "../text/Title";
 import { KeyCodes } from "../../keycode/KeyCodes";
 
 export const LoginPage: FunctionComponent = () => {
-  const users = [
-    { email: "larke@ahosrcwedding.com", password: "Laerke" },
-    { email: "martin@ahosrcwedding.com", password: "Martin" },
-  ];
-  const [email, setEmail] = useState(users[1].email);
-  const [password, setPassword] = useState(users[1].password);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [loginText, setLoginText] = useState("Log in");
   const [passwordError, setPasswordError] = useState("");
@@ -91,6 +87,7 @@ export const LoginPage: FunctionComponent = () => {
         onChange={(e) => handleEmailChange(e.target.value)}
         error={emailError}
         disabled={loading}
+        placeholder="Email"
         required
       />
       <Input
@@ -101,6 +98,7 @@ export const LoginPage: FunctionComponent = () => {
         onKeyUp={async (e) => await handlePasswordKeyUp(e.key)}
         error={passwordError}
         disabled={loading}
+        placeholder="Kodeord"
         required
       />
       <Button text={loginText} onClick={handleLogin} height="3rem" loading={loading} disabled={loading} />
