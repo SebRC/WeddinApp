@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactNode } from "react";
-import { KeyCodes } from "../../keycode/KeyCodes1";
+import { KeyCodes } from "../../keycode/KeyCodes";
 
 interface TableDataProps {
   width?: any;

@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { KeyCodes } from "../../keycode/KeyCodes1";
+import { KeyCodes } from "../../keycode/KeyCodes";
 import styles from "./Checkbox.module.css";
 
 interface CheckboxProps {

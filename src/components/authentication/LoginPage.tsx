@@ -5,7 +5,7 @@ import { handleSignIn } from "../../firebase/firebase";
 import { Input } from "../input/Input";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../text/Title";
-import { KeyCodes } from "../../keycode/KeyCodes1";
+import { KeyCodes } from "../../keycode/KeyCodes";
 
 export const LoginPage: FunctionComponent = () => {
   const [email, setEmail] = useState("");
