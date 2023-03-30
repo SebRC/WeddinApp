@@ -11,15 +11,15 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyD6GJjKU7xxhQfkhzfNDoKnJOMBEgzhYBs",
-    authDomain: "aho-src-wedding.firebaseapp.com",
-    databaseURL: "https://aho-src-wedding-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "aho-src-wedding",
-    storageBucket: "aho-src-wedding.appspot.com",
-    messagingSenderId: "895350012191",
-    appId: "1:895350012191:web:5035792562b94668d0d82a"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
-  
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
