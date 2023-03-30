@@ -18,12 +18,7 @@
 }
 
 .App {
-  background-image: url(../public/background-image.jpg);
-  min-height: 100vh;
   height: 100%;
-  background-attachment: fixed;
-  background-size: cover;
-  padding-bottom: 20px;
 }
 
 .App-logo {
