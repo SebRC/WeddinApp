@@ -110,7 +110,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             subHeader="🎶 Skriv dine sang ønsker her hvis du har nogle, så laver vi en playliste med alles ønsker til brylluppet 🎶"
           />
           <Flexbox
-            maxHeight="350px"
+            maxHeight="360px"
             minHeight="100px"
             width="100%"
             flexDirection="column"
@@ -137,6 +137,8 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
               width="3rem"
               alignSelf="flex-end"
               height="3rem"
+              minHeight="3rem"
+              minWidth="3rem"
             />
           </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />
