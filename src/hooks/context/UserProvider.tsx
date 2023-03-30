@@ -22,7 +22,10 @@ export const UserProvider: FunctionComponent<UserProviderProps> = ({ children })
       if (user) {
         setCurrentUser(user);
         setAuthed(true);
-        const userRole = user?.email === "seb-chris@live.dk" ? Roles.Admin.toString() : Roles.Guest.toString();
+        const userRole =
+          user?.email === "seb-chris@live.dk" || user?.email === "amalieholde@outlook.dk"
+            ? Roles.Admin.toString()
+            : Roles.Guest.toString();
         setRole(userRole);
         localStorage.setItem("authed", "true");
         localStorage.setItem("role", userRole);
