@@ -18,10 +18,9 @@ export const Toggle: FunctionComponent<ToggleProps> = ({ text, value, onChange }
   return (
     <Flexbox alignItems="center" gap={10}>
       <label className={styles.switch}>
-        <input type="checkbox" tabIndex={-1} checked={value} />
+        <input type="checkbox" tabIndex={-1} checked={value} onChange={onChange} />
         <span
           className={styles.slider}
-          onChange={onChange}
           onKeyUp={(e) => handleKeyUp(e.key)}
           tabIndex={0}
           aria-checked={value}

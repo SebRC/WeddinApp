@@ -134,9 +134,9 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
             <Button
               icon={<IconNode fill="black" />}
               onClick={handleSongWishAdd}
-              minWidth="3rem"
+              width="3rem"
               alignSelf="flex-end"
-              minHeight="3rem"
+              height="3rem"
             />
           </Flexbox>
           <FoodInfoInput value={state.foodInfo} id={`${guest.name}-food-info`} onChange={handleFoodInfoChange} />

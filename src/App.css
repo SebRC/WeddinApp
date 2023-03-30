@@ -7,8 +7,8 @@
   --danger: hsl(10, 80%, 50%);
   --checked: hsl(182, 85%, 48%);
 
-  --box-shadow-large: 15px 10px;
-  --box-shadow-small: 5px 2.5px;
+  --box-shadow-large: 15px 10px black;
+  --box-shadow-small: 5px 2.5px black;
 
   --focus-outline: solid 1px var(--secondary);
   --error-outline: solid 2px var(--danger);

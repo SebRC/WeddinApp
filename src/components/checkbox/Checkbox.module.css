@@ -11,6 +11,7 @@
   /* Hide the browser's default checkbox */
   .container input {
     appearance: none;
+    position: absolute;
   }
   
   /* Create a custom checkbox */
