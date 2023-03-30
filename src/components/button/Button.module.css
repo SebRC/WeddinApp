@@ -6,7 +6,8 @@
     box-shadow: var(--box-shadow-small);
     font-size: 1rem;
     font-weight: bold;
-}
+    color: black;
+;}
 
 .button:hover {
     cursor: pointer;
@@ -18,6 +19,7 @@
 
 .button[disabled] {
   pointer-events: none;
+  color: rgba(16, 16, 16, 0.3);
 }
 
 .buttonLoading {
