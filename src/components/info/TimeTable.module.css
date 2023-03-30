@@ -1,19 +1,24 @@
 .connector {
     background-color: var(--secondary-active);
-    width: 100%;
     height: 4px;
-    margin: 0px 10px 0px 10px;
     border-radius: var(--border-radius-medium);
+    width: 100%;
+    flex: stretch;
+}
+
+.container {
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    gap: 50px;
+    padding: 0px 10px 0px 10px;
 }
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .connector {
-      width: 65vmax;
+    .container {
+        justify-content: normal;
     }
-}
-
-.container {
-    overflow-x: scroll;
-    width: 100%;
 }
