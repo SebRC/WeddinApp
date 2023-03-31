@@ -10,14 +10,12 @@ interface TimeTableItemProps {
 
 export const TimeTableItem: FunctionComponent<TimeTableItemProps> = ({ item }) => {
   return (
-    <Flexbox flexDirection="column" alignItems="flex-start" justifyContent="center">
-      <div style={{ alignSelf: "center" }}>
-        <Header text={item.icon} />
-      </div>
-      <div style={{ alignSelf: "center" }}>
-        <Header text={item.time} />
-      </div>
+    <Flexbox flexDirection="row">
       <div className={styles.pin} />
+      <Flexbox flexDirection="row" width="100%" justifyContent="space-between" gap={20}>
+        <Header text={`${item.time}: ${item.value}`} />
+        <Header text={item.icon}></Header>
+      </Flexbox>
     </Flexbox>
   );
 };

@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import { Header } from "../text/Header";
 import { TimeTableItem } from "./TimeTableItem";
 import styles from "./TimeTable.module.css";
+import { Flexbox } from "../layout/flexbox/Flexbox";
 
 export interface TimeTableListItem {
   time: string;
@@ -24,12 +25,14 @@ export const TimeTable: FunctionComponent = () => {
   return (
     <>
       <Header text="Tidsplan" />
-      <div className={styles.container}>
-        {timeTable.map((tti, index) => {
-          return <TimeTableItem item={tti} key={`${tti.value}-${index}`} />;
-        })}
-      </div>
-      <div className={styles.connector} />
+      <Flexbox height="100%">
+        <div className={styles.connector} />
+        <Flexbox flexDirection="column" gap={20}>
+          {timeTable.map((tti, index) => {
+            return <TimeTableItem item={tti} key={`${tti.value}-${index}`} />;
+          })}
+        </Flexbox>
+      </Flexbox>
     </>
   );
 };

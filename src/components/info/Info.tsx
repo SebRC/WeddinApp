@@ -6,7 +6,7 @@ import { Location } from "./Location";
 
 export const Info: FunctionComponent = () => {
   return (
-    <Paper>
+    <Paper gap={10}>
       <Title title="Info" subtitle="Her kan du finde nyttige information om den store dag." />
       <Location />
       <DateAndTime />

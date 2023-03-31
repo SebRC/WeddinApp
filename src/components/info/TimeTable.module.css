@@ -1,24 +1,5 @@
 .connector {
     background-color: var(--secondary-active);
-    height: 4px;
     border-radius: var(--border-radius-medium);
-    width: 100%;
-    flex: stretch;
-}
-
-.container {
-    overflow-x: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    gap: 50px;
-    padding: 0px 10px 0px 10px;
-}
-
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .container {
-        justify-content: normal;
-    }
+    width: 5px;
 }
