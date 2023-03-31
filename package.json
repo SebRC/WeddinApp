@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint .  --ext .tsx"
+    "lint": "eslint .  --ext .tsx",
+    "generate-translations": "dotnet src/translations/translationGeneration/Generator.dll"
   },
   "eslintConfig": {
     "extends": [

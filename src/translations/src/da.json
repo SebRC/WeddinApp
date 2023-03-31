@@ -1,0 +1,7 @@
+{
+    "loggingIn": "Logger ind",
+    "login": "Log ind",
+    "wrongPassword": "Forkert kodeord",
+    "emailDoesNotExist": "Email findes ikke",
+    "invalidEmail": "Ugyldig email"
+}
