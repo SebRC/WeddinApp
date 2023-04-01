@@ -6,5 +6,13 @@
     "invalidEmail": "Ugyldig email",
     "email": "Email",
     "password": "Kodeord",
+    "errorPageMessage": "Ups! Det er ikke meningen at du skal være her!",
+    "goBack": "Gå tilbage",
+    "giftAlreadyReserved": "Gaven er allerede reserveret af {name}",
+    "removeReservation": "Fjern reservation",
+    "reserveGift": "Reserver gave",
+    "reservedBy": "Reserveret af:",
+    "reservedByYou": "{name} (Dig)",
+    "notReservedYet": "Ikke reserveret endnu",
     "giftPrice": "Pris: {price}"
 }

@@ -6,5 +6,13 @@
     "invalidEmail": "Invalid email",
     "email": "Email",
     "password": "Password",
+    "errorPageMessage": "Woops! You're not supposed to be here!",
+    "goBack": "Go back",
+    "giftAlreadyReserved": "Gift is already reserved by {name}",
+    "removeReservation": "Remove reservation",
+    "reserveGift": "Reserve gift",
+    "reservedBy": "Reserved by:",
+    "reservedByYou": "{name} (You)",
+    "notReservedYet": "Not reserved yet",
     "giftPrice": "Price: {price}"
 }
