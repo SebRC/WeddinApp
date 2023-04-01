@@ -5,6 +5,6 @@
     "emailDoesNotExist": "Email findes ikke",
     "invalidEmail": "Ugyldig email",
     "email": "Email",
-    "password": "Password",
+    "password": "Kodeord",
     "giftPrice": "Pris: {price}"
 }

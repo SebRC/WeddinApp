@@ -3,5 +3,8 @@
     "login": "Log in",
     "wrongPassword": "Wrong password",
     "emailDoesNotExist": "Email does not exist",
-    "invalidEmail": "Invalid email"
+    "invalidEmail": "Invalid email",
+    "email": "Email",
+    "password": "Password",
+    "giftPrice": "Price: {price}"
 }

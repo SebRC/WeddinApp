@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { UserProvider } from "./hooks/context/UserProvider";
+import { LanguageProvider } from "./hooks/context/LanguageProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
@@ -11,9 +12,11 @@ root.render(
   <React.StrictMode>
     <meta name="viewport" content="width=device-width, inital-scale=1"></meta>
     <div className="App">
-      <UserProvider>
-        <App />
-      </UserProvider>
+      <LanguageProvider>
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </LanguageProvider>
     </div>
   </React.StrictMode>
 );
