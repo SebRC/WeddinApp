@@ -14,5 +14,14 @@
     "reservedBy": "Reserved by:",
     "reservedByYou": "{name} (You)",
     "notReservedYet": "Not reserved yet",
-    "giftPrice": "Price: {price}"
+    "giftPrice": "Price: {price}",
+    "sortByUnreservedGifts": "Sort by unreserved gifts",
+    "when": "When",
+    "weddingDateDescription": "We've picked Saturday the 27th of July 2024 to celebrate our love.",
+    "info": "Info",
+    "usefulInformationAboutTheBigDay": "Here you can find useful information about the big day.",
+    "where": "Where",
+    "addressInformation": "The address is Gemmas Allé 100, 2770 Kastrup. The street has free car parking.",
+    "timeTable": "Timetable",
+    "timeTableItem": "{time}: {value}"
 }
