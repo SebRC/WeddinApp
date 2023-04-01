@@ -24,7 +24,7 @@
     "addressInformation": "The address is Gemmas Allé 100, 2770 Kastrup. The street has free car parking.",
     "timeTable": "Timetable",
     "timeTableItem": "{time}: {value}",
-    "foodInfo": "Food info(allergies)",
+    "foodInfo": "Food info",
     "thisFieldIsRequired": "This field is required",
     "guest": "Guest",
     "gifts": "Gifts",
@@ -32,5 +32,10 @@
     "areYouAttending": "Are you attending our wedding?",
     "songWishes": "Song wishes",
     "songWishesDescription": "🎶 Put your song wishes here and we'll compile everyones wishes into a playlist for the wedding 🎶",
-    "wish": "Wish {index}"
+    "wish": "Wish {index}",
+    "search": "Search",
+    "name": "Name",
+    "attending": "Attending",
+    "yes": "Yes",
+    "no": "No"
 }

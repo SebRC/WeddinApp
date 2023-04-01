@@ -24,7 +24,7 @@
     "addressInformation": "Adressen er Gemmas Allé 100, 2770 Kastrup. Der er gratis parkering på vejen.",
     "timeTable": "Tidsplan",
     "timeTableItem": "{time}: {value}",
-    "foodInfo": "Mad info(allergier)",
+    "foodInfo": "Mad info",
     "thisFieldIsRequired": "Dette felt skal udfyldes",
     "guest": "Gæst",
     "gifts": "Gaver",
@@ -32,5 +32,10 @@
     "areYouAttending": "Kommer du til vores bryllup?",
     "songWishes": "Sang ønsker",
     "songWishesDescription": "🎶 Skriv dine sang ønsker her hvis du har nogle, så laver vi en playliste med alles ønsker til brylluppet 🎶",
-    "wish": "Ønske {index}"
+    "wish": "Ønske {index}",
+    "search": "Søg",
+    "name": "Navn",
+    "attending": "Kommer",
+    "yes": "Ja",
+    "no": "Nej"
 }

@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { useTranslator } from "../../translations/useTranslator";
 import { IconSearch } from "../icons/IconSearch";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Searchbar.module.css";
@@ -9,12 +10,13 @@ interface SearchbarProps {
   onSearch: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export const Searchbar: FunctionComponent<SearchbarProps> = ({ value, placeholder = "Søg", onSearch }) => {
+export const Searchbar: FunctionComponent<SearchbarProps> = ({ value, placeholder, onSearch }) => {
+  const translator = useTranslator();
   return (
     <Flexbox alignItems="center" gap={20}>
       <input
         className={styles.searchbar}
-        placeholder={placeholder}
+        placeholder={placeholder ?? translator.search()}
         onChange={(e) => onSearch(e)}
         value={value}
         type="search"
