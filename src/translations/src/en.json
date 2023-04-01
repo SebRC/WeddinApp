@@ -23,5 +23,10 @@
     "where": "Where",
     "addressInformation": "The address is Gemmas Allé 100, 2770 Kastrup. The street has free car parking.",
     "timeTable": "Timetable",
-    "timeTableItem": "{time}: {value}"
+    "timeTableItem": "{time}: {value}",
+    "foodInfo": "Food info(allergies)",
+    "thisFieldIsRequired": "This field is required",
+    "guest": "Guest",
+    "gifts": "Gifts",
+    "admin": "Admin"
 }

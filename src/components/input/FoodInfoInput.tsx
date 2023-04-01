@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { useTranslator } from "../../translations/useTranslator";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./FoodInfoInput.module.css";
 
@@ -9,10 +10,11 @@ interface FoodInfoInputProps {
 }
 
 export const FoodInfoInput: FunctionComponent<FoodInfoInputProps> = ({ onChange, value, id }) => {
+  const translator = useTranslator();
   return (
     <Flexbox flexDirection="column" alignItems="flex-start" width="100%">
       <label htmlFor={id} className={styles.label}>
-        Mad info(allergier)
+        {translator.foodInfo()}
       </label>
       <textarea
         value={value}
