@@ -4,5 +4,7 @@
     "wrongPassword": "Forkert kodeord",
     "emailDoesNotExist": "Email findes ikke",
     "invalidEmail": "Ugyldig email",
+    "email": "Email",
+    "password": "Password",
     "giftPrice": "Pris: {price}"
 }

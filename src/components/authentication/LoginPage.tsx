@@ -6,37 +6,39 @@ import { Input } from "../input/Input";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../text/Title";
 import { KeyCodes } from "../../keycode/KeyCodes";
+import { useTranslator } from "../../translations/useTranslator";
 
 export const LoginPage: FunctionComponent = () => {
+  const translator = useTranslator();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [loginText, setLoginText] = useState("Log in");
+  const [loginText, setLoginText] = useState(translator.login());
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     if (password && email) {
-      setLoginText("Logging in");
+      setLoginText(translator.loggingIn());
       setLoading(true);
       const { success, errorCode, errorMessage } = await handleSignIn(email, password);
       if (success) {
         navigate("/guest");
       } else {
-        setLoginText("Login");
+        setLoginText(translator.login());
         console.log("ERROR:", errorMessage);
         console.log("ERROR CODE:", errorCode);
         if (errorCode === "auth/wrong-password") {
-          setPasswordError("Forkert kodeord");
+          setPasswordError(translator.wrongPassword());
           setEmailError("");
         }
         if (errorCode === "auth/user-not-found") {
-          setEmailError("Brugeren findes ikke");
+          setEmailError(translator.emailDoesNotExist());
           setPasswordError("");
         }
         if (errorCode === "auth/invalid-email") {
-          setEmailError("ugyldig email");
+          setEmailError(translator.invalidEmail());
           setPasswordError("");
         }
       }
@@ -65,7 +67,7 @@ export const LoginPage: FunctionComponent = () => {
       const index = loginText.length;
       const interval = setInterval(() => {
         if (index < 10 || index > 12) {
-          setLoginText("Logging in");
+          setLoginText(translator.loggingIn());
         }
         if (index >= 10 && index <= 12) {
           setLoginText((prev) => prev + ".");
@@ -75,30 +77,30 @@ export const LoginPage: FunctionComponent = () => {
         clearInterval(interval);
       };
     }
-  }, [loginText, loading]);
+  }, [loginText, loading, translator]);
 
   return (
     <Paper gap={20}>
-      <Title title="Login" />
+      <Title title={translator.login()} />
       <Input
-        label="Email"
+        label={translator.email()}
         value={email}
         type="email"
         onChange={(e) => handleEmailChange(e.target.value)}
         error={emailError}
         disabled={loading}
-        placeholder="Email"
+        placeholder={translator.email()}
         required
       />
       <Input
-        label="Password"
+        label={translator.password()}
         value={password}
         type="password"
         onChange={(e) => handlePasswordChange(e.target.value)}
         onKeyUp={async (e) => await handlePasswordKeyUp(e.key)}
         error={passwordError}
         disabled={loading}
-        placeholder="Kodeord"
+        placeholder={translator.password()}
         required
       />
       <Button text={loginText} onClick={handleLogin} height="3rem" loading={loading} disabled={loading} />
