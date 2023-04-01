@@ -28,5 +28,9 @@
     "thisFieldIsRequired": "Dette felt skal udfyldes",
     "guest": "Gæst",
     "gifts": "Gaver",
-    "admin": "Admin"
+    "admin": "Admin",
+    "areYouAttending": "Kommer du til vores bryllup?",
+    "songWishes": "Sang ønsker",
+    "songWishesDescription": "🎶 Skriv dine sang ønsker her hvis du har nogle, så laver vi en playliste med alles ønsker til brylluppet 🎶",
+    "wish": "Ønske {index}"
 }

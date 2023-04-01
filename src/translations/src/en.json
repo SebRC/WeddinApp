@@ -28,5 +28,9 @@
     "thisFieldIsRequired": "This field is required",
     "guest": "Guest",
     "gifts": "Gifts",
-    "admin": "Admin"
+    "admin": "Admin",
+    "areYouAttending": "Are you attending our wedding?",
+    "songWishes": "Song wishes",
+    "songWishesDescription": "🎶 Put your song wishes here and we'll compile everyones wishes into a playlist for the wedding 🎶",
+    "wish": "Wish {index}"
 }
