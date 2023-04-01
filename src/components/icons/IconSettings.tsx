@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { IconProps, IconSize } from "./iconProps";
+import { IconProps } from "./iconProps";
 
 export const IconSettings: FunctionComponent<IconProps> = ({ fill = "white", size = 18 }) => {
   return (

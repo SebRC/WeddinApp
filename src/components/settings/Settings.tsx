@@ -1,8 +1,10 @@
 import { FunctionComponent } from "react";
 import { useLanguage } from "../../hooks/context/LanguageProvider";
 import { useTranslator } from "../../translations/useTranslator";
-import { Button } from "../button/Button";
+import { IconDanish } from "../icons/language/IconDanish";
+import { IconEnglish } from "../icons/language/IconEnglish";
 import { Paper } from "../layout/paper/Paper";
+import { Select } from "../select/Select";
 import { Header } from "../text/Header";
 import { Title } from "../text/Title";
 
@@ -10,20 +12,24 @@ export const Settings: FunctionComponent = () => {
   const { language, dispatch } = useLanguage();
   const translator = useTranslator();
 
-  const handleSetLanguage = () => {
-    if (language === "da") {
-      dispatch?.("en");
-    } else {
-      dispatch?.("da");
-    }
-    console.log(language);
+  const handleSetLanguage = (newLanguage: string) => {
+    dispatch?.(newLanguage);
   };
+
+  const options = [
+    { option: "Dansk", value: "da", icon: <IconDanish /> },
+    { option: "English", value: "en", icon: <IconEnglish /> },
+  ];
 
   return (
     <Paper gap={20}>
       <Title title={translator.settings()} subtitle={translator.settingsDesciption()} />
       <Header text={translator.language()} subHeader={translator.languageDescription()} />
-      <Button text="Change language" onClick={handleSetLanguage} height="3rem" />
+      <Select
+        options={options}
+        value={options.find((o) => o.value === language) ?? options[0]}
+        onChange={handleSetLanguage}
+      />
     </Paper>
   );
 };
