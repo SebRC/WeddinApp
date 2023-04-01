@@ -45,20 +45,16 @@ export const GiftsRoute = {
   ),
 };
 
+export const SettingsRoute = {
+  path: "/settings",
+  element: <Settings />,
+};
+
 export const AuthRoute = {
   path: "/auth",
   element: (
     <PageLayout>
       <LoginPage />
-    </PageLayout>
-  ),
-};
-
-export const SettingsRoute = {
-  path: "/settings",
-  element: (
-    <PageLayout>
-      <Settings />
     </PageLayout>
   ),
 };

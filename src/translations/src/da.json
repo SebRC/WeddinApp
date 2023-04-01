@@ -37,5 +37,9 @@
     "name": "Navn",
     "attending": "Kommer",
     "yes": "Ja",
-    "no": "Nej"
+    "no": "Nej",
+    "settings": "Indstillinger",
+    "settingsDesciption": "Indstillinger for applikationen",
+    "language": "Sprog",
+    "languageDescription": "Indstil sproget for aplikationen"
 }
