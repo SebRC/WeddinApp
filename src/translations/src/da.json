@@ -3,5 +3,6 @@
     "login": "Log ind",
     "wrongPassword": "Forkert kodeord",
     "emailDoesNotExist": "Email findes ikke",
-    "invalidEmail": "Ugyldig email"
+    "invalidEmail": "Ugyldig email",
+    "giftPrice": "Pris: {price}"
 }
