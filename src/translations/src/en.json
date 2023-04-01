@@ -41,5 +41,9 @@
     "settings": "Settings",
     "settingsDesciption": "Settings for the application",
     "language": "Language",
-    "languageDescription": "Set the language for the application"
+    "languageDescription": "Set the language for the application",
+
+
+    "danish": "Danish",
+    "english": "English"
 }

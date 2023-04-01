@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useLanguage } from "../hooks/context/LanguageProvider";
 import { translator as translatorDanish } from "./generated/da"
 import { translator as translatorEnglish } from "./generated/en"
 
 export const useTranslator = () => {
     const userLanguage = useLanguage();
-    const [translator, setTranslator] = useState(translatorDanish);
-
-    useEffect(() => {
+    
+    const getTranslatorForLanguage = useCallback(() => {
         if(userLanguage.language === "da") {
-            console.log("language to danish");
-            setTranslator(translatorDanish)
+            return translatorDanish;
         } else if (userLanguage.language === "en") {
-            console.log("language to english");
-            setTranslator(translatorEnglish)
+            return translatorEnglish
         }
+        return translatorDanish;
+        
     }, [userLanguage.language])
+    const [translator, setTranslator] = useState(getTranslatorForLanguage());
+    
+    useEffect(() => {
+        setTranslator(getTranslatorForLanguage())
+    }, [userLanguage.language, getTranslatorForLanguage])
 
     return translator;
 }

@@ -13,16 +13,17 @@ export const Settings: FunctionComponent = () => {
   const translator = useTranslator();
 
   const handleSetLanguage = (newLanguage: string) => {
+    console.log(newLanguage);
     dispatch?.(newLanguage);
   };
 
   const options = [
-    { option: "Dansk", value: "da", icon: <IconDanish /> },
-    { option: "English", value: "en", icon: <IconEnglish /> },
+    { option: translator.danish(), value: "da", icon: <IconDanish /> },
+    { option: translator.english(), value: "en", icon: <IconEnglish /> },
   ];
 
   return (
-    <Paper gap={20}>
+    <Paper gap={20} minHeight="auto">
       <Title title={translator.settings()} subtitle={translator.settingsDesciption()} />
       <Header text={translator.language()} subHeader={translator.languageDescription()} />
       <Select
