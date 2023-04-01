@@ -5,14 +5,12 @@ import { IconLogout } from "../icons/IconLogout";
 import { useCurrentUser } from "../../hooks/context/UserProvider";
 import { handleSignOut } from "../../firebase/firebase";
 import { PageLayout } from "../layout/pageLayout/PageLayout";
-import { AdminRoute, AuthRoute, GiftsRoute, GuestRoute, InfoRoute } from "../../routing/routes";
+import { AdminRoute, AuthRoute, GiftsRoute, GuestRoute, InfoRoute, SettingsRoute } from "../../routing/routes";
 import { Roles } from "../authentication/Roles";
-import { Button } from "../button/Button";
-import { useLanguage } from "../../hooks/context/LanguageProvider";
 import { useTranslator } from "../../translations/useTranslator";
+import { IconSettings } from "../icons/IconSettings";
 
 export const Navbar: FunctionComponent = () => {
-  const { language, dispatch } = useLanguage();
   const location = useLocation();
   const user = useCurrentUser();
   const navigate = useNavigate();
@@ -21,15 +19,6 @@ export const Navbar: FunctionComponent = () => {
   const handleLogout = async () => {
     await handleSignOut();
     navigate(AuthRoute.path);
-  };
-
-  const handleSetLanguage = () => {
-    if (language === "da") {
-      dispatch?.("en");
-    } else {
-      dispatch?.("da");
-    }
-    console.log(language);
   };
 
   return (
@@ -62,10 +51,15 @@ export const Navbar: FunctionComponent = () => {
             )}
           </>
         )}
-        <Button text="Change language" onClick={handleSetLanguage} height="3rem" />
-
         <Link to={AuthRoute.path} style={{ float: "right" }} onClick={handleLogout}>
           <IconLogout />
+        </Link>
+        <Link
+          to={SettingsRoute.path}
+          style={{ float: "right" }}
+          className={location.pathname.includes(SettingsRoute.path) ? `${styles.active}` : ""}
+        >
+          <IconSettings />
         </Link>
       </div>
       <PageLayout>
