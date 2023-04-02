@@ -12,7 +12,6 @@ export const LanguageProvider: FunctionComponent<LanguageProviderProps> = ({ chi
   const [language, setLanguage] = useState(localStorage.getItem("language") ?? "da");
 
   useEffect(() => {
-    console.log("language effect triggered");
     localStorage.setItem("language", language);
   }, [language]);
 

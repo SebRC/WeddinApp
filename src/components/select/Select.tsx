@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { KeyCodes } from "../../keycode/KeyCodes";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Select.module.css";
@@ -32,6 +32,10 @@ export const Select: FunctionComponent<SelectProps> = ({ options, value, width =
       handleOptionChange(option);
     }
   };
+
+  useEffect(() => {
+    setSelectedOption(options.find((o) => o.value === selectedOption.value) ?? options[0]);
+  }, [options, selectedOption.value]);
 
   return (
     <>
