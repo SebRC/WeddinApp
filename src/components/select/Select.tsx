@@ -7,17 +7,18 @@ import { SelectOption } from "./SelectOption";
 interface SelectProps {
   options: SelectOption[];
   value: SelectOption;
+  width?: string;
   onChange: (value: string) => void;
 }
 
-export const Select: FunctionComponent<SelectProps> = ({ options, value, onChange }) => {
+export const Select: FunctionComponent<SelectProps> = ({ options, value, width = "auto", onChange }) => {
   const [open, setOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(value);
 
   const handleOptionChange = (option: SelectOption) => {
+    onChange(option.value);
     setSelectedOption(option);
     setOpen(false);
-    onChange(option.value);
   };
 
   const handleSelectKeyUp = (key: string) => {
@@ -31,6 +32,7 @@ export const Select: FunctionComponent<SelectProps> = ({ options, value, onChang
       handleOptionChange(option);
     }
   };
+
   return (
     <>
       <div
@@ -39,6 +41,7 @@ export const Select: FunctionComponent<SelectProps> = ({ options, value, onChang
         onKeyUp={(e) => handleSelectKeyUp(e.key)}
         role="menu"
         tabIndex={0}
+        style={{ width: width }}
       >
         <Flexbox gap={20}>
           {selectedOption.icon && selectedOption.icon}
@@ -46,12 +49,12 @@ export const Select: FunctionComponent<SelectProps> = ({ options, value, onChang
         </Flexbox>
       </div>
       {open && (
-        <div className={styles.optionContainer}>
+        <div className={styles.optionContainer} style={{ width: width }}>
           {options.map((o, index) => {
             return (
               <div
                 role="option"
-                aria-selected={o.option === selectedOption.option}
+                aria-selected={o.value === selectedOption.value}
                 onClick={() => handleOptionChange(o)}
                 onKeyUp={(e) => handleOptionKeyUp(e.key, o)}
                 tabIndex={0}
