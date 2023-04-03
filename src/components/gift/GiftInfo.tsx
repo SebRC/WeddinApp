@@ -24,7 +24,7 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
 
   const handleReserveClick = async (name: string) => {
     if (gift.reserved && gift.reservedBy !== name) {
-      alert(translator.giftAlreadyReserved(gift.reservedBy));
+      alert(translator.giftAlreadyReserved(gift.reservedBy ?? ""));
     } else if (!gift.reserved) {
       const updatedGift = { ...gift, reserved: true, reservedBy: name };
       await setGiftData(updatedGift);
@@ -54,12 +54,14 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
       </a>
       <Flexbox>
         <Flexbox flexDirection="column" gap={20} width="100%">
-          <Header text={translator.giftPrice(gift.price)} />
+          <Header text={translator.giftPrice(`${gift.price}`)} />
           <Header
             text={translator.reservedBy()}
             subHeader={
               gift.reserved
-                ? `${gift.reservedBy === guest?.name ? translator.reservedByYou(gift.reservedBy) : gift.reservedBy}`
+                ? `${
+                    gift.reservedBy === guest?.name ? translator.reservedByYou(gift.reservedBy ?? "") : gift.reservedBy
+                  }`
                 : translator.notReservedYet()
             }
           />

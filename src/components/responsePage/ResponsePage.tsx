@@ -124,7 +124,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
                   wish={sw}
                   id={`${guest.name}-wish-${index}`}
                   key={`${guest.name}-wish-${index}`}
-                  label={translator.wish(index + 1)}
+                  label={translator.wish(`${index + 1}`)}
                   onChange={handleWishChange}
                   onSongRemove={() => handleSongRemove(sw)}
                 />
