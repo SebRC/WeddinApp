@@ -10,9 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
-      timeout-minutes: 15
       - uses: actions/checkout@v2
 
       - name: Set up Node.js version
