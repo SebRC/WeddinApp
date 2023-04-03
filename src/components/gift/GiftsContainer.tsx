@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { useGifts } from "../../hooks/useGifts";
+import { useTranslator } from "../../translations/useTranslator";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Paper } from "../layout/paper/Paper";
 import { LoadingPage } from "../loading/LoadingPage";
@@ -11,6 +12,7 @@ export const GiftsContainer: FunctionComponent = () => {
   const [loading, setLoading] = useState(giftsLoading);
   const [filterGifts, setFilterGifts] = useState(localStorage.getItem("sortGifts") === "true");
   const [sortedGifts, setSortedGifts] = useState(gifts);
+  const translator = useTranslator();
 
   useEffect(() => {
     setLoading(giftsLoading);
@@ -36,7 +38,7 @@ export const GiftsContainer: FunctionComponent = () => {
   ) : (
     <Flexbox flexDirection="column" gap={20}>
       <Paper minHeight="auto">
-        <Toggle text="Sortér efter ureserverede gaver" value={filterGifts} onChange={handleSort} />
+        <Toggle text={translator.sortByUnreservedGifts()} value={filterGifts} onChange={handleSort} />
       </Paper>
       {sortedGifts.map((g, index) => {
         return <GiftInfo gift={g} key={g.name + index} />;

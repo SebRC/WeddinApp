@@ -1,11 +1,13 @@
 import { FunctionComponent } from "react";
+import { useTranslator } from "../../translations/useTranslator";
 import { Header } from "../text/Header";
 import styles from "./Location.module.css";
 
 export const Location: FunctionComponent = () => {
+  const translator = useTranslator();
   return (
     <>
-      <Header text="Hvor" subHeader="Adressen er Gemmas Allé 100, 2770 Kastrup. Der er gratis parkering på vejen." />
+      <Header text={translator.where()} subHeader={translator.addressInformation()} />
       <iframe
         title="wedding-location"
         className={styles.location}

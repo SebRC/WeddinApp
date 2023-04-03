@@ -32,6 +32,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({ value, label, id, t
         data-testid={testId && testId}
         tabIndex={-1}
         onClick={handleClick}
+        onChange={handleClick}
       />
       {label}
       <span

@@ -10,6 +10,7 @@ import { Gift } from "./gift";
 import { Header } from "../text/Header";
 import { Title } from "../text/Title";
 import styles from "./GiftInfo.module.css";
+import { useTranslator } from "../../translations/useTranslator";
 
 interface GiftInfoProps {
   gift: Gift;
@@ -19,10 +20,11 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [loadingImage, setLoadingImage] = useState(true);
   const guest = useCurrentGuest();
+  const translator = useTranslator();
 
   const handleReserveClick = async (name: string) => {
     if (gift.reserved && gift.reservedBy !== name) {
-      alert(`Gaven er allerede reserveret af ${gift.reservedBy}`);
+      alert(translator.giftAlreadyReserved(gift.reservedBy ?? ""));
     } else if (!gift.reserved) {
       const updatedGift = { ...gift, reserved: true, reservedBy: name };
       await setGiftData(updatedGift);
@@ -33,7 +35,7 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
   };
 
   const getButtonText = (): string => {
-    return gift.reservedBy === guest?.name ? "Fjern reservation" : "Reserver gave";
+    return gift.reservedBy === guest?.name ? translator.removeReservation() : translator.reserveGift();
   };
 
   useEffect(() => {
@@ -52,13 +54,15 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
       </a>
       <Flexbox>
         <Flexbox flexDirection="column" gap={20} width="100%">
-          <Header text={`Pris: ${gift.price}`} />
+          <Header text={translator.giftPrice(`${gift.price}`)} />
           <Header
-            text="Reserveret af:"
+            text={translator.reservedBy()}
             subHeader={
               gift.reserved
-                ? `${gift.reservedBy === guest?.name ? `${gift.reservedBy} (Dig)` : gift.reservedBy}`
-                : "Ikke reserveret endnu"
+                ? `${
+                    gift.reservedBy === guest?.name ? translator.reservedByYou(gift.reservedBy ?? "") : gift.reservedBy
+                  }`
+                : translator.notReservedYet()
             }
           />
         </Flexbox>

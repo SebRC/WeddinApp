@@ -7,6 +7,7 @@ import { SortOrder } from "../sortOrder";
 import { Paper } from "../../layout/paper/Paper";
 import { Searchbar } from "../../searchbar/Searchbar";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
+import { useTranslator } from "../../../translations/useTranslator";
 
 interface GuestTableProps {
   guests: Guest[];
@@ -16,6 +17,7 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
   const [sortedGuests, setSortedGuests] = useState(guests.slice());
   const [sortOrder, setSortOrder] = useState(SortOrder.Unsorted);
   const [searchValue, setSearchValue] = useState("");
+  const translator = useTranslator();
 
   const getNextSortOrder = () => {
     if (sortOrder === SortOrder.Unsorted) {
@@ -55,16 +57,16 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
       <table className={styles.table}>
         <TableHeader
           headers={[
-            { name: "Navn", width: "20%" },
+            { name: translator.name(), width: "20%" },
             {
-              name: "Kommer",
+              name: translator.attending(),
               width: "10%",
               sortable: true,
               sorted: sortOrder,
               onSort: () => handleSort(getNextSortOrder()),
             },
-            { name: "Sang ønske", width: "40%" },
-            { name: "Mad info", width: "30%" },
+            { name: translator.songWishes(), width: "40%" },
+            { name: translator.foodInfo(), width: "30%" },
           ]}
         />
         <tbody>

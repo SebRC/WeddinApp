@@ -1,4 +1,5 @@
 import { ChangeEvent, ChangeEventHandler, FunctionComponent, KeyboardEventHandler, useState } from "react";
+import { useTranslator } from "../../translations/useTranslator";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Input.module.css";
 
@@ -28,6 +29,7 @@ export const Input: FunctionComponent<InputProps> = ({
   placeholder = "",
 }) => {
   const [edited, setEdited] = useState(false);
+  const translator = useTranslator();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEdited(true);
@@ -59,7 +61,7 @@ export const Input: FunctionComponent<InputProps> = ({
         placeholder={placeholder}
       />
       {required && edited && value === "" ? (
-        <p className={styles.errorParagraph}>Dette felt skal udfyldes</p>
+        <p className={styles.errorParagraph}>{translator.thisFieldIsRequired()}</p>
       ) : (
         error && <p className={styles.errorParagraph}>{error}</p>
       )}

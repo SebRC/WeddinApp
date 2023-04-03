@@ -3,6 +3,7 @@ import { Header } from "../text/Header";
 import { TimeTableItem } from "./TimeTableItem";
 import styles from "./TimeTable.module.css";
 import { Flexbox } from "../layout/flexbox/Flexbox";
+import { useTranslator } from "../../translations/useTranslator";
 
 export interface TimeTableListItem {
   time: string;
@@ -22,9 +23,10 @@ const timeTable: TimeTableListItem[] = [
 ];
 
 export const TimeTable: FunctionComponent = () => {
+  const translator = useTranslator();
   return (
     <>
-      <Header text="Tidsplan" />
+      <Header text={translator.timeTable()} />
       <Flexbox height="100%">
         <div className={styles.connector} />
         <Flexbox flexDirection="column" gap={20}>

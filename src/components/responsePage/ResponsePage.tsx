@@ -15,6 +15,7 @@ import { IconNode } from "../icons/IconNode";
 import { useDebounce } from "../../hooks/debounce/useDebounce";
 import { IconCollapse } from "../icons/IconCollapse";
 import { IconExpand } from "../icons/IconExpand";
+import { useTranslator } from "../../translations/useTranslator";
 
 interface ResponsePageProps {
   guest: Guest;
@@ -33,6 +34,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
   const [name, setName] = useState("");
   const [index, setIndex] = useState(1);
   const [expanded, setExpanded] = useState(true);
+  const translator = useTranslator();
 
   const handleAttendingChange = () => {
     guest.attending = !guest.attending;
@@ -100,15 +102,12 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
       {expanded && (
         <Flexbox flexDirection="column" alignItems="flex-start" height="100%" gap={10} marginTop="12px">
           <Checkbox
-            label="Kommer du til vores bryllup?"
+            label={translator.areYouAttending()}
             id={`${guest.name}-${attending}`}
             value={attending}
             onChange={handleAttendingChange}
           />
-          <Header
-            text="Sang ønsker"
-            subHeader="🎶 Skriv dine sang ønsker her hvis du har nogle, så laver vi en playliste med alles ønsker til brylluppet 🎶"
-          />
+          <Header text={translator.songWishes()} subHeader={translator.songWishesDescription()} />
           <Flexbox
             maxHeight="360px"
             minHeight="100px"
@@ -125,7 +124,7 @@ export const ResponsePage: FunctionComponent<ResponsePageProps> = ({ guest }) =>
                   wish={sw}
                   id={`${guest.name}-wish-${index}`}
                   key={`${guest.name}-wish-${index}`}
-                  label={`Ønske ${index + 1}`}
+                  label={translator.wish(`${index + 1}`)}
                   onChange={handleWishChange}
                   onSongRemove={() => handleSongRemove(sw)}
                 />

@@ -1,4 +1,5 @@
 import { FunctionComponent, useMemo } from "react";
+import { useTranslator } from "../../../translations/useTranslator";
 import { Guest } from "../../guest/Guest";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconX } from "../../icons/IconX";
@@ -11,6 +12,7 @@ interface GuestTableRowProps {
 }
 
 export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) => {
+  const translator = useTranslator();
   const handleSongsClick = () => {
     const text = guest.songWishes.filter((s) => s).join(", ");
     if (text) {
@@ -28,11 +30,11 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
       <TableData>
         {guest.attending ? (
           <Flexbox alignItems="center" gap={20}>
-            <IconCheckmark /> Ja
+            <IconCheckmark /> {translator.yes()}
           </Flexbox>
         ) : (
           <Flexbox alignItems="center" gap={20}>
-            <IconX /> Nej
+            <IconX /> {translator.no()}
           </Flexbox>
         )}
       </TableData>

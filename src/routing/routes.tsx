@@ -7,6 +7,7 @@ import { PageLayout } from "../components/layout/pageLayout/PageLayout";
 import { GuestTableContainer } from "../components/table/guest/GuestTableContainer";
 import { GuestContainer } from "../components/guest/GuestContainer";
 import { Roles } from "../components/authentication/Roles";
+import { Settings } from "../components/settings/Settings";
 
 export const GuestRoute = {
   path: "/guest",
@@ -42,6 +43,11 @@ export const GiftsRoute = {
       <GiftsContainer />
     </ProtectedRoute>
   ),
+};
+
+export const SettingsRoute = {
+  path: "/settings",
+  element: <Settings />,
 };
 
 export const AuthRoute = {
