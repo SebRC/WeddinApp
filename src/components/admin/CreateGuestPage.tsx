@@ -1,4 +1,5 @@
 import { FunctionComponent, useState } from "react";
+import { createGuest } from "../../firebase/firebase";
 import { useTranslator } from "../../translations/useTranslator";
 import { Button } from "../button/Button";
 import { Checkbox } from "../checkbox/Checkbox";
@@ -59,7 +60,10 @@ export const CreateGuestPage: FunctionComponent = () => {
         text="Add a plus one"
       />
 
-      <Button onClick={() => {}} text="Create guest" />
+      <Button
+        onClick={async () => await createGuest({ name: mainGuestName, guestNames: plusOnes })}
+        text="Create guest"
+      />
     </Flexbox>
   );
 };
