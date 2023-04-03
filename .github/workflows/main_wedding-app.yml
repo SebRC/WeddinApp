@@ -29,8 +29,10 @@ jobs:
       - name: yarn install, build, and test
         run: |
           yarn
+          yarn generate-translations
           yarn build --if-present
           yarn test --if-present
+
       - run: |
           zip -r node-app.zip .
       - name: Upload artifact for deployment job
