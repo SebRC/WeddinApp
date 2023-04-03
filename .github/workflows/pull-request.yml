@@ -29,5 +29,5 @@ jobs:
         run: |
           yarn
           yarn generate-translations
-          yarn build --if-present
-          yarn test --if-present
+          yarn build
+          yarn test
