@@ -20,6 +20,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
+      
+      - name: Set up dotnet version
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.x'
 
       - name: yarn install, build, and test
         run: |
