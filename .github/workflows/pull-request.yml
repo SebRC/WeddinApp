@@ -27,7 +27,7 @@ jobs:
 
       - name: yarn install, build, and test
         run: |
-          yarn
+          npm install
           yarn generate-translations
-          yarn build
-          yarn test
+          npm run build --if-present
+          npm run test --if-present
