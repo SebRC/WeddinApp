@@ -42,6 +42,10 @@
   "settingsDesciption": "Settings for the application",
   "language": "Language",
   "languageDescription": "Set the language for the application",
+  "guestName": "Guest name",
+  "plusOnes": "Plus ones",
+  "plusOnesDescription": "Add the guests which are accompanying the guest you're creating",
   "danish": "Danish",
-  "english": "English"
+  "english": "English",
+  "plusX": "Plus {index}"
 }

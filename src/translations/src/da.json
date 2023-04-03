@@ -42,6 +42,10 @@
     "settingsDesciption": "Indstillinger for applikationen",
     "language": "Sprog",
     "languageDescription": "Indstil sproget for aplikationen",
+    "guestName": "Gæst navn",
+    "plusOnes": "Plus ones",
+    "plusOnesDescription": "Tilføj de gæster som følger med den gæest du er ved at oprette",
+    "plusX": "Plus {index}",
     "danish": "Dansk",
     "english": "Engelsk"
 }

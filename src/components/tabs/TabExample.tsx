@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
+import { CreateGuestPage } from "../admin/CreateGuestPage";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Paper } from "../layout/paper/Paper";
 import { GuestTableContainer } from "../table/guest/GuestTableContainer";
@@ -24,7 +25,7 @@ export const TabExample: FunctionComponent<TabExampleProps> = () => {
           <GuestTableContainer />
         </TabContent>
         <TabContent id="create" activeTab={activeTab}>
-          <div>Tab 2</div>
+          <CreateGuestPage />
         </TabContent>
       </div>
     </Paper>

@@ -32,3 +32,7 @@
   min-width: 25rem;
   min-height: 95%;
 }
+
+.content {
+  padding-top: 10px;
+}
