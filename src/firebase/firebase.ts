@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { addDoc, collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { Gift } from "../components/gift/gift";
 import { Guest } from "../components/guest/Guest";
@@ -59,11 +59,16 @@ export const setGuestData = async (guest: Guest) => {
   await setDoc(ref, updatedGuest);
 }
 
-export const createGuest = async (data: {name: string, guestNames: string[]}) => {
+export const createUser = async (email: string, password: string) => {
+  const auth = getAuth();
+  const userCred = await createUserWithEmailAndPassword(auth, email, password);
+  return userCred.user.uid;
+}
+
+export const createGuest = async (data: {name: string, id: string, guestNames: string[]}) => {
   const guestIds = getGuestIds(data.guestNames);
   var guest: Guest = {name: data.name, guestIds: guestIds, attending: false, songWishes: [], foodInfo: ""};
-  const docRef = await addDoc(collection(db, "guests"), guest);
-  console.log("Document written with ID: ", docRef.id);
+  await setDoc(doc(db, "guests", data.id), guest);
   data.guestNames.forEach(async (gn) => {
     const plusOne: Guest = {name: gn, guestIds: [], attending: false, songWishes: [], foodInfo: ""};
     await setDoc(doc(db, "guests", getGuestId(gn)), plusOne);

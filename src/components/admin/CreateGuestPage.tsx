@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { createGuest } from "../../firebase/firebase";
+import { createGuest, createUser } from "../../firebase/firebase";
 import { useTranslator } from "../../translations/useTranslator";
 import { Button } from "../button/Button";
 import { Checkbox } from "../checkbox/Checkbox";
@@ -10,6 +10,8 @@ import { Header } from "../text/Header";
 export const CreateGuestPage: FunctionComponent = () => {
   const translator = useTranslator();
   const [mainGuestName, setMainGuestName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [plusOnes, setPlusOnes] = useState<string[]>([]);
 
   const handlePlusOneChange = (value: string, index: number) => {
@@ -28,6 +30,13 @@ export const CreateGuestPage: FunctionComponent = () => {
     });
     setPlusOnes(newValues);
   };
+
+  const handleCreateGuest = async () => {
+    if (email && password) {
+      const uid = await createUser(email, password);
+      await createGuest({ name: mainGuestName, id: uid, guestNames: plusOnes });
+    }
+  };
   return (
     <Flexbox flexDirection="column" gap={20}>
       <Input
@@ -38,6 +47,25 @@ export const CreateGuestPage: FunctionComponent = () => {
         value={mainGuestName}
         label={translator.guestName()}
         placeholder={translator.name()}
+      />
+      <Header text={"Email og kodeord"} subHeader="Hvilken email og kodeord skal brugeren have" />
+      <Input
+        required
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+        value={email}
+        label={translator.email()}
+        placeholder={translator.email()}
+      />
+      <Input
+        required
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+        value={password}
+        label={translator.password()}
+        placeholder={translator.password()}
       />
       {/* <Checkbox label={translator.mainGuest()} id="main-guest-checkbox" onChange={() => {}} value={false} /> */}
       <Header text={translator.plusOnes()} subHeader={translator.plusOnesDescription()} />
@@ -60,10 +88,7 @@ export const CreateGuestPage: FunctionComponent = () => {
         text="Add a plus one"
       />
 
-      <Button
-        onClick={async () => await createGuest({ name: mainGuestName, guestNames: plusOnes })}
-        text="Create guest"
-      />
+      <Button onClick={async () => await handleCreateGuest()} text="Create guest" />
     </Flexbox>
   );
 };
