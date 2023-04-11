@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
+import { collection, deleteDoc, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { Gift } from "../components/gift/gift";
 import { Guest } from "../components/guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../components/guest/guests";
@@ -79,6 +79,22 @@ export const createGuest = async (data: {name: string, id: string, guestNames: s
     const plusOne: Guest = {name: gn, guestIds: [], attending: false, songWishes: [], foodInfo: ""};
     await setDoc(doc(db, "guests", getGuestId(gn)), plusOne);
   });
+}
+
+export const deleteUser = async (userId: string) => {
+  const deleteWeddingGuest = httpsCallable(functions, 'delete-wedding-guest');
+  const result:any = await deleteWeddingGuest({ userId: userId});
+  const data = result.data;
+  return {success: data.success, userId: data.userId, errorCode: data.errorCode, errorMessage: data.errorMessage}
+}
+
+export const deleteGuest = async (guest: Guest) => {
+  await deleteDoc(doc(db, "guests", guest.id ?? ""));
+  if(guest.guestIds) {
+    guest.guestIds.map(async (g) => {
+      await deleteDoc(doc(db, "guests", g))
+    })
+  }
 }
 
 const getGuestIds = (guestNames: string[]) => {

@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { deleteGuest, deleteUser } from "../../firebase/firebase";
 import { useTranslator } from "../../translations/useTranslator";
 import { Guest } from "../guest/Guest";
 import { Flexbox } from "../layout/flexbox/Flexbox";
@@ -14,7 +15,12 @@ interface DeleteGuestModalProps {
 export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ guest, onCancel }) => {
   const translator = useTranslator();
 
-  const handleDeleteGuest = async () => {};
+  const handleDeleteGuest = async () => {
+    const result = await deleteUser(guest.id ?? "");
+    if (result.success) {
+      await deleteGuest(guest);
+    }
+  };
 
   const getPlusOnes = () => {
     return guest.guestIds ? (
