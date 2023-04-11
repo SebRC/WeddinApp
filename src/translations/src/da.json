@@ -3,6 +3,7 @@
     "login": "Log ind",
     "wrongPassword": "Forkert kodeord",
     "emailDoesNotExist": "Email findes ikke",
+    "emailAlreadyExists": "Email findes allerede",
     "invalidEmail": "Ugyldig email",
     "email": "Email",
     "password": "Kodeord",

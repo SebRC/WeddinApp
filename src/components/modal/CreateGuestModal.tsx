@@ -43,12 +43,13 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
     if (email && password) {
       const result = await createUser(email, password);
       if (!result.success) {
+        console.log(result.errorCode);
         if (result.errorCode === "auth/invalid-password") {
           setPasswordError(translator.invalidPassword());
           setEmailError("");
         }
-        if (result.errorCode === "auth/user-not-found") {
-          setEmailError(translator.emailDoesNotExist());
+        if (result.errorCode === "auth/email-already-exists") {
+          setEmailError(translator.emailAlreadyExists());
           setPasswordError("");
         }
         if (result.errorCode === "auth/invalid-email") {

@@ -4,6 +4,7 @@
   "wrongPassword": "Wrong password",
   "emailDoesNotExist": "Email does not exist",
   "invalidEmail": "Invalid email",
+  "emailAlreadyExists": "Email alrady exists",
   "email": "Email",
   "password": "Password",
   "errorPageMessage": "Woops! You're not supposed to be here!",
