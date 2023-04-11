@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
-import { TabExample } from "../tabs/TabExample";
+import { GuestTableContainer } from "../table/guest/GuestTableContainer";
 
 export const AdminPage: FunctionComponent = () => {
-  return <TabExample />;
+  return <GuestTableContainer />;
 };

@@ -8,7 +8,6 @@ import { Searchbar } from "../../searchbar/Searchbar";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
-import { Modal } from "../../modal/Modal";
 import { CreateGuestModal } from "../../modal/CreateGuestModal";
 
 interface GuestTableProps {
@@ -56,7 +55,7 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
     <Flexbox flexDirection="column" gap={20}>
       <Flexbox minHeight="auto" gap={20}>
         <Searchbar value={searchValue} onSearch={(e) => handleSearch(e.target.value.toLowerCase())} />
-        <Button onClick={() => setShowModal(true)} text="Create guest" />
+        <Button onClick={() => setShowModal(true)} text="Create guest" height="3rem" />
       </Flexbox>
       <table className={styles.table}>
         <TableHeader
@@ -88,7 +87,7 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
           })}
         </tbody>
       </table>
-      {showModal && <CreateGuestModal onRequestClose={() => setShowModal(false)} />}
+      {showModal && <CreateGuestModal onCancel={() => setShowModal(false)} />}
     </Flexbox>
   );
 };

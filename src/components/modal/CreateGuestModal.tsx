@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { createUser, createGuest } from "../../firebase/firebase";
 import { useTranslator } from "../../translations/useTranslator";
 import { Button } from "../button/Button";
@@ -8,10 +8,10 @@ import { Header } from "../text/Header";
 import { Modal } from "./Modal";
 
 interface CreateGuestModalProps {
-  onRequestClose: () => void;
+  onCancel: () => void;
 }
 
-export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onRequestClose }) => {
+export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onCancel }) => {
   const translator = useTranslator();
   const [mainGuestName, setMainGuestName] = useState("Charlotte Christiansen");
   const [email, setEmail] = useState("charlotte@ahosrcwedding.com");
@@ -40,11 +40,13 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onR
       const result = await createUser(email, password);
       if (result.userId) {
         await createGuest({ name: mainGuestName, id: result.userId, guestNames: plusOnes });
+        onCancel();
       }
     }
   };
+
   return (
-    <Modal onRequestClose={onRequestClose}>
+    <Modal onConfirm={async () => await handleCreateGuest()} onCancel={onCancel}>
       <Flexbox flexDirection="column" gap={20}>
         <Input
           required
@@ -83,7 +85,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onR
                 value={po}
                 onChange={(e) => handlePlusOneChange(e.target.value, index)}
               />
-              <Button text="Delete" onClick={() => handlePlusOneRemove(index)} />
+              <Button text="Delete" onClick={() => handlePlusOneRemove(index)} alignSelf="flex-end" height="3rem" />
             </Flexbox>
           );
         })}
@@ -93,7 +95,6 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onR
           }}
           text="Add a plus one"
         />
-        <Button onClick={async () => await handleCreateGuest()} text="Create guest" />
       </Flexbox>
     </Modal>
   );
