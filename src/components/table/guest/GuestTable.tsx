@@ -75,15 +75,15 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
         <table className={styles.table}>
           <TableHeader
             headers={[
-              { name: translator.name(), width: "20%" },
+              { name: translator.name(), width: "25%" },
               {
                 name: translator.attending(),
-                width: "10%",
+                width: "15%",
                 sortable: true,
                 sorted: sortOrder,
                 onSort: () => handleSort(getNextSortOrder()),
               },
-              { name: translator.songWishes(), width: "40%" },
+              { name: translator.songWishes(), width: "30%" },
               { name: translator.foodInfo(), width: "30%" },
             ]}
           />

@@ -3,7 +3,6 @@ import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
 import { Guest } from "../../guest/Guest";
 import { IconCopy } from "../../icons/IconCopy";
-import { IconTrash } from "../../icons/IconTrash";
 import { DeleteGuestModal } from "../../modal/DeleteGuestModal";
 import { Header } from "../../text/Header";
 import { Flexbox } from "../flexbox/Flexbox";
