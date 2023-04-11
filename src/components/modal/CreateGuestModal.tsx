@@ -57,7 +57,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
           label={translator.guestName()}
           placeholder={translator.name()}
         />
-        <Header text={"Email og kodeord"} subHeader="Hvilken email og kodeord skal brugeren have" />
+        <Header text={translator.emailAndPassword()} subHeader={translator.emailAndPasswordDescription()} />
         <Input
           required
           onChange={(e) => {
@@ -85,7 +85,12 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
                 value={po}
                 onChange={(e) => handlePlusOneChange(e.target.value, index)}
               />
-              <Button text="Delete" onClick={() => handlePlusOneRemove(index)} alignSelf="flex-end" height="3rem" />
+              <Button
+                text={translator.delete()}
+                onClick={() => handlePlusOneRemove(index)}
+                alignSelf="flex-end"
+                height="3rem"
+              />
             </Flexbox>
           );
         })}
@@ -93,7 +98,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
           onClick={() => {
             setPlusOnes((prev) => [...prev, ""]);
           }}
-          text="Add a plus one"
+          text={translator.addAPlusOne()}
         />
       </Flexbox>
     </Modal>

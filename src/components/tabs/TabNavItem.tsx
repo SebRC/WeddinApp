@@ -18,7 +18,6 @@ export const TabNavItem: FunctionComponent<TabNavItemProps> = ({ id, title, acti
     <Flexbox flexDirection="column">
       <div onClick={handleClick} className={styles.tab} onKeyUp={() => {}} role="button" tabIndex={0}>
         {title}
-        {/* <Text text={title} fontColor={FontColor.White} bold={activeTab === id} fontSize={FontSize.Small} /> */}
       </div>
       {activeTab === id && <div className={styles.activeTab} />}
     </Flexbox>

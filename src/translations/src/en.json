@@ -47,5 +47,13 @@
   "plusOnesDescription": "Add the guests which are accompanying the guest you're creating",
   "danish": "Danish",
   "english": "English",
-  "plusX": "Plus {index}"
+  "plusX": "Plus {index}",
+  "delete": "Delete",
+  "createGuest": "Create guest",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "deleteGuestDescription": "You're about to delete the following guest and their plus ones. Are you sure you want to continue?",
+  "emailAndPassword": "Email and password",
+  "emailAndPasswordDescription": "Set the users email and password",
+  "addAPlusOne": "Add a plus one"
 }

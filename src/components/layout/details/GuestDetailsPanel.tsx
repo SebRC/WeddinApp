@@ -20,7 +20,7 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
       <Header text={translator.attending()} subHeader={guest.attending ? translator.yes() : translator.no()} />
       <Header text={translator.songWishes()} subHeader={guest.songWishes.join(", ")} />
       <Header text={translator.foodInfo()} subHeader={guest.foodInfo} />
-      <Button text="delete" onClick={() => setShowModal(true)} />
+      <Button text={translator.delete()} onClick={() => setShowModal(true)} />
       {showModal && <DeleteGuestModal guest={guest} onCancel={() => setShowModal(false)} />}
     </DetailsPanel>
   );
