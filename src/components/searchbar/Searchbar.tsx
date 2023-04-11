@@ -13,7 +13,7 @@ interface SearchbarProps {
 export const Searchbar: FunctionComponent<SearchbarProps> = ({ value, placeholder, onSearch }) => {
   const translator = useTranslator();
   return (
-    <Flexbox alignItems="center" gap={20}>
+    <Flexbox alignItems="center" gap={20} width="100%">
       <input
         className={styles.searchbar}
         placeholder={placeholder ?? translator.search()}
