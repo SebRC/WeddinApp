@@ -64,8 +64,6 @@ export const setGuestData = async (guest: Guest) => {
 
 export const createUser = async (email: string, password: string) => {
     const createGuestForWedding = httpsCallable(functions, 'create-wedding-guest');
-    console.log("Email", email);
-    console.log("Password", password);
     const result:any = await createGuestForWedding({ email: email , password: password});
     const data = result.data;
     return {success: data.success, userId: data.userId, errorCode: data.errorCode, errorMessage: data.errorMessage}
@@ -140,7 +138,7 @@ export const getImage = async (name: string) => {
 }
 
 // Firestore data converter
-const guestConverter = {
+export const guestConverter = {
   toFirestore: (guest: Guest) => {
       return {...guest, 
           attending: guest.attending,

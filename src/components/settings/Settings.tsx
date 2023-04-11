@@ -13,7 +13,6 @@ export const Settings: FunctionComponent = () => {
   const translator = useTranslator();
 
   const handleSetLanguage = (newLanguage: string) => {
-    console.log(newLanguage);
     dispatch?.(newLanguage);
   };
 

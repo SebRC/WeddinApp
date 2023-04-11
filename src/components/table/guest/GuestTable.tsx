@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Guest } from "../../guest/Guest";
 import styles from "../Table.module.css";
 import { GuestTableRow } from "./GuestTableRow";
@@ -22,6 +22,10 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedGuest, setSelectedGuest] = useState<Guest | null>(null);
   const translator = useTranslator();
+
+  useEffect(() => {
+    setSortedGuests(guests);
+  }, [guests]);
 
   const getNextSortOrder = () => {
     if (sortOrder === SortOrder.Unsorted) {
