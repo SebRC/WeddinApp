@@ -56,5 +56,6 @@
     "emailAndPassword": "Email og kodeord",
     "emailAndPasswordDescription": "Indstil brugerens email og kodeord",
     "addAPlusOne": "Tilføj en plus one",
-    "invalidPassword": "Kodeordet skal være mindst 6 karakterer"
+    "invalidPassword": "Kodeordet skal være mindst 6 karakterer",
+    "noPlusOnes": "Denne gæst har ingen plus ones"
 }

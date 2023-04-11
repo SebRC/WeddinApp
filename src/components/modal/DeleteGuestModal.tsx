@@ -22,7 +22,7 @@ export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ gue
         return <div>{`• ${g.charAt(0).toUpperCase()}${g.slice(1)}`}</div>;
       })
     ) : (
-      <p></p>
+      <p>{translator.noPlusOnes()}</p>
     );
   };
 
@@ -31,12 +31,10 @@ export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ gue
       <Flexbox flexDirection="column" gap={20}>
         {translator.deleteGuestDescription()}
         <Title title={guest.name} />
-        {guest.guestIds && (
-          <Flexbox flexDirection="column" gap={10}>
-            <Header text={translator.plusOnes()} />
-            {getPlusOnes()}
-          </Flexbox>
-        )}
+        <Flexbox flexDirection="column">
+          <Header text={translator.plusOnes()} />
+          {getPlusOnes()}
+        </Flexbox>
       </Flexbox>
     </Modal>
   );
