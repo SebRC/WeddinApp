@@ -52,7 +52,11 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
         text={translator.foodInfo()}
         subHeader={guest.foodInfo === "" ? translator.noFoodInfo() : guest.foodInfo}
       />
-      <Button text={translator.delete()} onClick={() => setShowModal(true)} />
+      {guest.name.split(" ")[0].toLowerCase() !== guest.id ? (
+        <Button text={translator.delete()} onClick={() => setShowModal(true)} />
+      ) : (
+        <Header text={translator.thisGuestIsAplusOne()} />
+      )}
       {showModal && <DeleteGuestModal guest={guest} onCancel={() => setShowModal(false)} onDelete={handleDelete} />}
     </DetailsPanel>
   );
