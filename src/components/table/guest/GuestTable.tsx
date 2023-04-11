@@ -10,7 +10,6 @@ import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
 import { CreateGuestModal } from "../../modal/CreateGuestModal";
 import { GuestDetailsPanel } from "../../layout/details/GuestDetailsPanel";
-import { IconNothingFound } from "../../illustrations/IconNothingFound";
 import { NothingFound } from "../../illustrations/NothingFound";
 
 interface GuestTableProps {
