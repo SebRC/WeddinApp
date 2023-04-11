@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { deleteGuest, deleteUser } from "../../firebase/firebase";
 import { useTranslator } from "../../translations/useTranslator";
 import { Guest } from "../guest/Guest";
@@ -10,16 +10,21 @@ import { Modal } from "./Modal";
 interface DeleteGuestModalProps {
   guest: Guest;
   onCancel: () => void;
+  onDelete: () => void;
 }
 
-export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ guest, onCancel }) => {
+export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ guest, onCancel, onDelete }) => {
   const translator = useTranslator();
+  const [loading, setLoading] = useState(false);
 
   const handleDeleteGuest = async () => {
+    setLoading(true);
     const result = await deleteUser(guest.id ?? "");
     if (result.success) {
       await deleteGuest(guest);
+      onDelete();
     }
+    setLoading(false);
   };
 
   const getPlusOnes = () => {
@@ -33,7 +38,7 @@ export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ gue
   };
 
   return (
-    <Modal onConfirm={async () => await handleDeleteGuest()} onCancel={onCancel}>
+    <Modal onConfirm={async () => await handleDeleteGuest()} onCancel={onCancel} loading={loading}>
       <Flexbox flexDirection="column" gap={20}>
         {translator.deleteGuestDescription()}
         <Title title={guest.name} />
