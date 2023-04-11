@@ -1,6 +1,5 @@
-import React, { FunctionComponent, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { CreateGuestPage } from "../admin/CreateGuestPage";
-import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Paper } from "../layout/paper/Paper";
 import { GuestTableContainer } from "../table/guest/GuestTableContainer";
 import { TabContent } from "./TabContent";

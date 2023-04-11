@@ -1,0 +1,6 @@
+.panel {
+    background-color: var(--primary);
+    border-radius: var(--border-radius-large);
+    padding: 20px;
+    width: 30%;
+}

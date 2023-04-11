@@ -9,6 +9,8 @@ import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
 import { CreateGuestModal } from "../../modal/CreateGuestModal";
+import { DetailsPanel } from "../../layout/details/DetailsPanel";
+import { GuestDetailsPanel } from "../../layout/details/GuestDetailsPanel";
 
 interface GuestTableProps {
   guests: Guest[];
@@ -19,6 +21,7 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
   const [sortOrder, setSortOrder] = useState(SortOrder.Unsorted);
   const [searchValue, setSearchValue] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [selectedGuest, setSelectedGuest] = useState<Guest | null>(null);
   const translator = useTranslator();
 
   const getNextSortOrder = () => {
@@ -51,42 +54,65 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
       setSortedGuests(filteredGuests);
     }
   };
+
+  const handleRowClick = (id: string, index: number) => {
+    if (selectedGuest && id === selectedGuest.id) {
+      setSelectedGuest(null);
+    } else {
+      setSelectedGuest(sortedGuests[index]);
+    }
+  };
   return (
     <Flexbox flexDirection="column" gap={20}>
       <Flexbox minHeight="auto" gap={20}>
         <Searchbar value={searchValue} onSearch={(e) => handleSearch(e.target.value.toLowerCase())} />
         <Button onClick={() => setShowModal(true)} text="Create guest" height="3rem" />
       </Flexbox>
-      <table className={styles.table}>
-        <TableHeader
-          headers={[
-            { name: translator.name(), width: "20%" },
-            {
-              name: translator.attending(),
-              width: "10%",
-              sortable: true,
-              sorted: sortOrder,
-              onSort: () => handleSort(getNextSortOrder()),
-            },
-            { name: translator.songWishes(), width: "40%" },
-            { name: translator.foodInfo(), width: "30%" },
-          ]}
-        />
-        <tbody>
-          {sortedGuests.map((g) => {
-            return g.guests ? (
-              g.guests
-                .map((gg, index) => {
-                  return <GuestTableRow guest={gg} key={`${gg.id}-${index}`} />;
-                })
-                .concat(<GuestTableRow guest={g} key={`${g.id}`} />)
-                .reverse()
-            ) : (
-              <GuestTableRow guest={g} key={`${g.id}`} />
-            );
-          })}
-        </tbody>
-      </table>
+      <Flexbox gap={30}>
+        <table className={styles.table}>
+          <TableHeader
+            headers={[
+              { name: translator.name(), width: "20%" },
+              {
+                name: translator.attending(),
+                width: "10%",
+                sortable: true,
+                sorted: sortOrder,
+                onSort: () => handleSort(getNextSortOrder()),
+              },
+              { name: translator.songWishes(), width: "40%" },
+              { name: translator.foodInfo(), width: "30%" },
+            ]}
+          />
+          <tbody>
+            {sortedGuests.map((g, mainGuestIndex) => {
+              return g.guests ? (
+                g.guests
+                  .map((gg, index) => {
+                    return (
+                      <GuestTableRow
+                        guest={gg}
+                        key={`${gg.id}-${index}`}
+                        onClick={() => handleRowClick(gg.id ?? "", index)}
+                      />
+                    );
+                  })
+                  .concat(
+                    <GuestTableRow
+                      guest={g}
+                      key={`${g.id}`}
+                      onClick={() => handleRowClick(g.id ?? "", mainGuestIndex)}
+                    />
+                  )
+                  .reverse()
+              ) : (
+                <GuestTableRow guest={g} key={`${g.id}`} onClick={() => handleRowClick(g.id ?? "", mainGuestIndex)} />
+              );
+            })}
+          </tbody>
+        </table>
+        {selectedGuest && <GuestDetailsPanel guest={selectedGuest} onDelete={() => {}} />}
+      </Flexbox>
       {showModal && <CreateGuestModal onCancel={() => setShowModal(false)} />}
     </Flexbox>
   );

@@ -9,9 +9,10 @@ import styles from "../TableRow.module.css";
 
 interface GuestTableRowProps {
   guest: Guest;
+  onClick?: () => void;
 }
 
-export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) => {
+export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, onClick }) => {
   const translator = useTranslator();
   const handleSongsClick = () => {
     const text = guest.songWishes.filter((s) => s).join(", ");
@@ -25,7 +26,7 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
   }, [guest.songWishes]);
 
   return (
-    <tr className={styles.row}>
+    <tr className={styles.row} onClick={onClick}>
       <TableData>{guest.name}</TableData>
       <TableData>
         {guest.attending ? (
