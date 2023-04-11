@@ -5,7 +5,7 @@ export const IconX: FunctionComponent<IconProps> = ({ fill = "white", size = Ico
   return (
     <svg width={size} height={size} viewBox="0 0 488 488" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d_0_1)">
-        <circle cx="244" cy="240" r="225" stroke={fill} stroke-width="30" shape-rendering="crispEdges" />
+        <circle cx="244" cy="240" r="225" stroke={fill} strokeWidth="30" shapeRendering="crispEdges" />
       </g>
       <path
         d="M115.858 141.438C108.047 133.627 108.047 120.964 115.858 113.153L117.153 111.858C124.964 104.047 137.627 104.047 145.438 111.858L371.153 337.574C378.964 345.384 378.964 358.047 371.153 365.858L369.858 367.153C362.047 374.964 349.384 374.964 341.574 367.153L115.858 141.438Z"
@@ -23,9 +23,9 @@ export const IconX: FunctionComponent<IconProps> = ({ fill = "white", size = Ico
           width="488"
           height="488"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
