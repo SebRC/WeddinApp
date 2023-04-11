@@ -10,6 +10,8 @@ import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
 import { CreateGuestModal } from "../../modal/CreateGuestModal";
 import { GuestDetailsPanel } from "../../layout/details/GuestDetailsPanel";
+import { IconNothingFound } from "../../illustrations/IconNothingFound";
+import { NothingFound } from "../../illustrations/NothingFound";
 
 interface GuestTableProps {
   guests: Guest[];
@@ -116,6 +118,7 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
         </table>
         {selectedGuest && <GuestDetailsPanel guest={selectedGuest} onDelete={() => setSelectedGuest(null)} />}
       </Flexbox>
+      {sortedGuests.length === 0 && <NothingFound />}
       {showModal && <CreateGuestModal onCancel={() => setShowModal(false)} />}
     </Flexbox>
   );

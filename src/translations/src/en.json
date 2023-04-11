@@ -61,5 +61,6 @@
   "noPlusOnes": "This guest has no plus ones",
   "noSongWishes": "No song wishes",
   "noFoodInfo": "No food info",
-  "thisGuestIsAplusOne": "This guest is a plus one. You can delete them by deleting the guest they are accompanying."
+  "thisGuestIsAplusOne": "This guest is a plus one. You can delete them by deleting the guest they are accompanying.",
+  "nothingFound": "Woops. Nothing matched you search criteria"
 }

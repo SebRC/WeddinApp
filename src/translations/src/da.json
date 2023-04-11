@@ -61,5 +61,6 @@
     "noPlusOnes": "Denne gæst har ingen plus ones",
     "noSongWishes": "Ingen sang ønsker",
     "noFoodInfo": "Ingen mad info",
-    "thisGuestIsAplusOne": "Denne gæst er en plus one. Du kan slette dem ved at slette den gæst de er tilknyttet."
+    "thisGuestIsAplusOne": "Denne gæst er en plus one. Du kan slette dem ved at slette den gæst de er tilknyttet.",
+    "nothingFound": "Ups. Der var intet der matchede dine søgekriterier"
 }
