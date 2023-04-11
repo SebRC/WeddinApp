@@ -2,6 +2,7 @@ import { FunctionComponent, useState } from "react";
 import { createUser, createGuest } from "../../firebase/firebase";
 import { useTranslator } from "../../translations/useTranslator";
 import { Button } from "../button/Button";
+import { IconTrash } from "../icons/IconTrash";
 import { Input } from "../input/Input";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Header } from "../text/Header";
@@ -40,21 +41,25 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
 
   const handleCreateGuest = async () => {
     setLoading(true);
-    if (email && password) {
+    if (
+      email &&
+      password &&
+      mainGuestName &&
+      plusOnes.every((po) => {
+        return po.length > 0;
+      })
+    ) {
       const result = await createUser(email, password);
       if (!result.success) {
         console.log(result.errorCode);
         if (result.errorCode === "auth/invalid-password") {
           setPasswordError(translator.invalidPassword());
-          setEmailError("");
         }
         if (result.errorCode === "auth/email-already-exists") {
           setEmailError(translator.emailAlreadyExists());
-          setPasswordError("");
         }
         if (result.errorCode === "auth/invalid-email") {
           setEmailError(translator.invalidEmail());
-          setPasswordError("");
         }
       }
 
@@ -116,16 +121,18 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
           return (
             <Flexbox gap={20}>
               <Input
+                required
                 label={translator.plusX(`${index + 1}`)}
                 value={po}
                 onChange={(e) => handlePlusOneChange(e.target.value, index)}
               />
               <Button
-                text={translator.delete()}
+                width="3rem"
+                icon={<IconTrash fill="black" />}
                 onClick={() => handlePlusOneRemove(index)}
-                alignSelf="flex-end"
                 height="3rem"
                 loading={loading}
+                alignSelf={po.length === 0 ? "center" : "flex-end"}
               />
             </Flexbox>
           );
