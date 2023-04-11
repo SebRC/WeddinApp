@@ -2,16 +2,15 @@ import { FunctionComponent, useState } from "react";
 import { createGuest, createUser } from "../../firebase/firebase";
 import { useTranslator } from "../../translations/useTranslator";
 import { Button } from "../button/Button";
-import { Checkbox } from "../checkbox/Checkbox";
 import { Input } from "../input/Input";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { Header } from "../text/Header";
 
 export const CreateGuestPage: FunctionComponent = () => {
   const translator = useTranslator();
-  const [mainGuestName, setMainGuestName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [mainGuestName, setMainGuestName] = useState("Charlotte Christiansen");
+  const [email, setEmail] = useState("charlotte@ahosrcwedding.com");
+  const [password, setPassword] = useState("Charlotte");
   const [plusOnes, setPlusOnes] = useState<string[]>([]);
 
   const handlePlusOneChange = (value: string, index: number) => {
@@ -33,8 +32,10 @@ export const CreateGuestPage: FunctionComponent = () => {
 
   const handleCreateGuest = async () => {
     if (email && password) {
-      const uid = await createUser(email, password);
-      await createGuest({ name: mainGuestName, id: uid, guestNames: plusOnes });
+      const result = await createUser(email, password);
+      if (result.userId) {
+        await createGuest({ name: mainGuestName, id: result.userId, guestNames: plusOnes });
+      }
     }
   };
   return (

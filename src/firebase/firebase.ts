@@ -1,11 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { addDoc, collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { Gift } from "../components/gift/gift";
 import { Guest } from "../components/guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../components/guest/guests";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getFunctions, httpsCallable } from "firebase/functions";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,6 +23,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+const functions = getFunctions(app, "europe-west3");
 
 const db = getFirestore(app);
 
@@ -60,9 +63,12 @@ export const setGuestData = async (guest: Guest) => {
 }
 
 export const createUser = async (email: string, password: string) => {
-  const auth = getAuth();
-  const userCred = await createUserWithEmailAndPassword(auth, email, password);
-  return userCred.user.uid;
+    const createGuestForWedding = httpsCallable(functions, 'create-wedding-guest');
+    console.log("Email", email);
+    console.log("Password", password);
+    const result:any = await createGuestForWedding({ email: email , password: password});
+    const data = result.data;
+    return {success: data.success, userId: data.userId, errorCode: data.errorCode, errorMessage: data.errorMessage}
 }
 
 export const createGuest = async (data: {name: string, id: string, guestNames: string[]}) => {
