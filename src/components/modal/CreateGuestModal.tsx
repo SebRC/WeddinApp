@@ -17,6 +17,9 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
   const [email, setEmail] = useState("charlotte@ahosrcwedding.com");
   const [password, setPassword] = useState("Charlotte");
   const [plusOnes, setPlusOnes] = useState<string[]>([]);
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handlePlusOneChange = (value: string, index: number) => {
     const newValues = plusOnes.map((po, i) => {
@@ -36,17 +39,45 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
   };
 
   const handleCreateGuest = async () => {
+    setLoading(true);
     if (email && password) {
       const result = await createUser(email, password);
+      console.table(result);
+      if (!result.success) {
+        if (result.errorCode === "auth/invalid-password") {
+          setPasswordError(translator.invalidPassword());
+          setEmailError("");
+        }
+        if (result.errorCode === "auth/user-not-found") {
+          setEmailError(translator.emailDoesNotExist());
+          setPasswordError("");
+        }
+        if (result.errorCode === "auth/invalid-email") {
+          setEmailError(translator.invalidEmail());
+          setPasswordError("");
+        }
+      }
+
       if (result.userId) {
         await createGuest({ name: mainGuestName, id: result.userId, guestNames: plusOnes });
         onCancel();
       }
     }
+    setLoading(false);
+  };
+
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
+    setEmailError("");
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value);
+    setPasswordError("");
   };
 
   return (
-    <Modal onConfirm={async () => await handleCreateGuest()} onCancel={onCancel}>
+    <Modal onConfirm={async () => await handleCreateGuest()} onCancel={onCancel} loading={loading}>
       <Flexbox flexDirection="column" gap={20}>
         <Input
           required
@@ -61,20 +92,24 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
         <Input
           required
           onChange={(e) => {
-            setEmail(e.target.value);
+            handleEmailChange(e.target.value);
           }}
           value={email}
           label={translator.email()}
           placeholder={translator.email()}
+          type="email"
+          error={emailError}
         />
         <Input
           required
           onChange={(e) => {
-            setPassword(e.target.value);
+            handlePasswordChange(e.target.value);
           }}
           value={password}
           label={translator.password()}
           placeholder={translator.password()}
+          type="password"
+          error={passwordError}
         />
         <Header text={translator.plusOnes()} subHeader={translator.plusOnesDescription()} />
         {plusOnes.map((po, index) => {
@@ -90,6 +125,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
                 onClick={() => handlePlusOneRemove(index)}
                 alignSelf="flex-end"
                 height="3rem"
+                loading={loading}
               />
             </Flexbox>
           );
@@ -99,6 +135,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
             setPlusOnes((prev) => [...prev, ""]);
           }}
           text={translator.addAPlusOne()}
+          loading={loading}
         />
       </Flexbox>
     </Modal>

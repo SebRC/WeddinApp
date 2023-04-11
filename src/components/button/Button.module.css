@@ -24,12 +24,13 @@
 
 .buttonLoading {
     animation : shimmer 2s infinite;
-    background: linear-gradient(to right, var(--secondary) 4%, var(--primary-hover) 25%, var(--secondary) 36%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2) 4%, var(--primary-hover) 25%, rgba(255, 255, 255, 0.2) 36%);
     background-size: 1000px 600px;
     min-height: 600px;
     width: 100%;
     opacity: 0.95;
     height: 10000px;
+    pointer-events: none;
  }
 
  @keyframes shimmer {

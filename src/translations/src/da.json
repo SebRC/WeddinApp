@@ -55,5 +55,6 @@
     "deleteGuestDescription": "Du skal til at slette den følgende gæst og deres plus ones. Er du sikker på at du vil slette dem?",
     "emailAndPassword": "Email og kodeord",
     "emailAndPasswordDescription": "Indstil brugerens email og kodeord",
-    "addAPlusOne": "Tilføj en plus one"
+    "addAPlusOne": "Tilføj en plus one",
+    "invalidPassword": "Kodeordet skal være mindst 6 karakterer"
 }

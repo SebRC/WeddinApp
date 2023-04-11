@@ -55,5 +55,6 @@
   "deleteGuestDescription": "You're about to delete the following guest and their plus ones. Are you sure you want to continue?",
   "emailAndPassword": "Email and password",
   "emailAndPasswordDescription": "Set the users email and password",
-  "addAPlusOne": "Add a plus one"
+  "addAPlusOne": "Add a plus one",
+  "invalidPassword": "The password must be at least 6 characters"
 }
