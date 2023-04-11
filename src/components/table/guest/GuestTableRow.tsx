@@ -14,13 +14,6 @@ interface GuestTableRowProps {
 
 export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, onClick }) => {
   const translator = useTranslator();
-  const handleSongsClick = () => {
-    const text = guest.songWishes.filter((s) => s).join(", ");
-    if (text) {
-      navigator.clipboard.writeText(filteredSongs);
-    }
-  };
-
   const filteredSongs = useMemo(() => {
     return guest.songWishes.filter((s) => s).join(", ");
   }, [guest.songWishes]);
@@ -39,7 +32,7 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, on
           </Flexbox>
         )}
       </TableData>
-      <TableData onClick={handleSongsClick}>{filteredSongs}</TableData>
+      <TableData>{filteredSongs}</TableData>
       <TableData>{guest.foodInfo}</TableData>
     </tr>
   );

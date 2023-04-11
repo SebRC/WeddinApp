@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export const Header: FunctionComponent<HeaderProps> = ({ text, subHeader }) => {
   return (
-    <Flexbox flexDirection="column" gap={5}>
+    <Flexbox flexDirection="column">
       <h3 className={styles.header}>{text}</h3>
       {subHeader && <p className={styles.subHeader}>{subHeader}</p>}
     </Flexbox>

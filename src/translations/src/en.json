@@ -57,5 +57,7 @@
   "emailAndPasswordDescription": "Set the users email and password",
   "addAPlusOne": "Add a plus one",
   "invalidPassword": "The password must be at least 6 characters",
-  "noPlusOnes": "This guest has no plus ones"
+  "noPlusOnes": "This guest has no plus ones",
+  "noSongWishes": "No song wishes",
+  "noFoodInfo": "No food info"
 }
