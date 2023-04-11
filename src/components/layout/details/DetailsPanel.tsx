@@ -1,5 +1,4 @@
 import { FunctionComponent, ReactNode } from "react";
-import { Header } from "../../text/Header";
 import { Title } from "../../text/Title";
 import { Flexbox } from "../flexbox/Flexbox";
 import styles from "./DetailsPanel.module.css";

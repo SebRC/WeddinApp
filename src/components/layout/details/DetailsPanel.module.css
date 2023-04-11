@@ -3,4 +3,5 @@
     border-radius: var(--border-radius-large);
     padding: 20px;
     width: 30%;
+    box-shadow: var(--box-shadow-large);
 }
