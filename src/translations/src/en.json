@@ -43,7 +43,6 @@
   "settingsDesciption": "Settings for the application",
   "language": "Language",
   "languageDescription": "Set the language for the application",
-  "guestName": "Guest name",
   "plusOnes": "Plus ones",
   "plusOnesDescription": "Add the guests which are accompanying the guest you're creating",
   "danish": "Danish",
@@ -62,5 +61,6 @@
   "noSongWishes": "No song wishes",
   "noFoodInfo": "No food info",
   "thisGuestIsAplusOne": "This guest is a plus one. You can delete them by deleting the guest they are accompanying.",
-  "nothingFound": "Woops. Nothing matched you search criteria"
+  "nothingFound": "Woops. Nothing matched you search criteria",
+  "clickToCopySongs": "Click to copy songs"
 }

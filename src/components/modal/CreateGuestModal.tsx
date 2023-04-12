@@ -14,9 +14,9 @@ interface CreateGuestModalProps {
 
 export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onCancel }) => {
   const translator = useTranslator();
-  const [mainGuestName, setMainGuestName] = useState("Charlotte Christiansen");
-  const [email, setEmail] = useState("charlotte@ahosrcwedding.com");
-  const [password, setPassword] = useState("Charlotte");
+  const [mainGuestName, setMainGuestName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [plusOnes, setPlusOnes] = useState<string[]>([]);
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -90,7 +90,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
             setMainGuestName(e.target.value);
           }}
           value={mainGuestName}
-          label={translator.guestName()}
+          label={translator.name()}
           placeholder={translator.name()}
         />
         <Header text={translator.emailAndPassword()} subHeader={translator.emailAndPasswordDescription()} />

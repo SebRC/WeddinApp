@@ -5,29 +5,32 @@
 }
 
 .tooltipText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 5px 10px 5px 10px;
     visibility: hidden;
     background-color: var(--secondary);
-    box-shadow: var(--box-shadow-small);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius-medium);
     position: absolute;
     z-index: 1;
     font-size: 1rem;
-    top: 100%;
-    left: 50%;
-    margin-left: -145px;
-    text-align: left;
+    bottom: 100%;
+    left: 25%;
+    margin-bottom: 10px;
+    min-width: 150px;
+    min-height: 40px;
 }
 
 .tooltipText::after {
-    content: " ";
+    content: "";
     position: absolute;
-    bottom: 100%; 
-    left: 10%;
-    margin-left: -5px;
+    top: 100%; 
+    left: 50%;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent var(--secondary) transparent;
+    border-color: var(--secondary) transparent transparent transparent;
   }
 
 .tooltip:hover .tooltipText {

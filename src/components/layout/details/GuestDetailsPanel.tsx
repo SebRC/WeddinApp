@@ -1,10 +1,11 @@
-import { FunctionComponent, useMemo, useState } from "react";
+import { FunctionComponent, useEffect, useMemo, useState } from "react";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
 import { Guest } from "../../guest/Guest";
 import { IconCopy } from "../../icons/IconCopy";
 import { DeleteGuestModal } from "../../modal/DeleteGuestModal";
 import { Header } from "../../text/Header";
+import { Tooltip } from "../../tooltip/Tooltip";
 import { Flexbox } from "../flexbox/Flexbox";
 import { DetailsPanel } from "./DetailsPanel";
 
@@ -32,14 +33,12 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
   const filteredSongs = useMemo(() => {
     return guest.songWishes.filter((s) => s).join(", ");
   }, [guest.songWishes]);
+
   return (
     <DetailsPanel title={guest.name}>
       <Header text={translator.attending()} subHeader={guest.attending ? translator.yes() : translator.no()} />
       <Flexbox flexDirection="column" gap={10}>
-        <Flexbox gap={10} justifyContent="space-between">
-          <Header text={translator.songWishes()} />
-          <Button width="3rem" onClick={handleSongsClick} icon={<IconCopy fill="var(--secondary)" />} />
-        </Flexbox>
+        <Header text={translator.songWishes()} />
         {guest.songWishes.length !== 0 ? (
           guest.songWishes.map((s, index) => {
             return <div key={`${s}-${index}`}>• {s}</div>;
@@ -47,6 +46,9 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
         ) : (
           <>{translator.noSongWishes()}</>
         )}
+        <Tooltip text={translator.clickToCopySongs()}>
+          <Button onClick={handleSongsClick} icon={<IconCopy fill="var(--secondary)" />} width="100%" />
+        </Tooltip>
       </Flexbox>
       <Header
         text={translator.foodInfo()}

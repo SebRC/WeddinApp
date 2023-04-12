@@ -43,7 +43,6 @@
     "settingsDesciption": "Indstillinger for applikationen",
     "language": "Sprog",
     "languageDescription": "Indstil sproget for aplikationen",
-    "guestName": "Gæst navn",
     "plusOnes": "Plus ones",
     "plusOnesDescription": "Tilføj de gæster som følger med den gæst du er ved at oprette",
     "plusX": "Plus {index}",
@@ -62,5 +61,6 @@
     "noSongWishes": "Ingen sang ønsker",
     "noFoodInfo": "Ingen mad info",
     "thisGuestIsAplusOne": "Denne gæst er en plus one. Du kan slette dem ved at slette den gæst de er tilknyttet.",
-    "nothingFound": "Ups. Der var intet der matchede dine søgekriterier"
+    "nothingFound": "Ups. Der var intet der matchede dine søgekriterier",
+    "clickToCopySongs": "Klik for at kopiere sange"
 }
