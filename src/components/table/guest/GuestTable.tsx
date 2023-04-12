@@ -115,7 +115,7 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
             })}
           </tbody>
         </table>
-        {selectedGuest && <GuestDetailsPanel guest={selectedGuest} onDelete={() => setSelectedGuest(null)} />}
+        {selectedGuest && <GuestDetailsPanel guest={selectedGuest} onClose={() => setSelectedGuest(null)} />}
       </Flexbox>
       {sortedGuests.length === 0 && <NothingFound />}
       {showModal && <CreateGuestModal onCancel={() => setShowModal(false)} />}

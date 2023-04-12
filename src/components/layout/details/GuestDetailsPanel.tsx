@@ -11,15 +11,15 @@ import { DetailsPanel } from "./DetailsPanel";
 
 interface GuestDetailsPanelProps {
   guest: Guest;
-  onDelete: () => void;
+  onClose: () => void;
 }
 
-export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ guest, onDelete }) => {
+export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ guest, onClose }) => {
   const [showModal, setShowModal] = useState(false);
   const translator = useTranslator();
 
   const handleDelete = () => {
-    onDelete();
+    onClose();
     setShowModal(false);
   };
 
@@ -35,7 +35,7 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
   }, [guest.songWishes]);
 
   return (
-    <DetailsPanel title={guest.name} onClose={onDelete}>
+    <DetailsPanel title={guest.name} onClose={onClose}>
       <Header text={translator.attending()} subHeader={guest.attending ? translator.yes() : translator.no()} />
       <Flexbox flexDirection="column" gap={10}>
         <Header text={translator.songWishes()} />
