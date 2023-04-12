@@ -1,0 +1,11 @@
+.close {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    font-size: 3rem;
+    padding: 0px;
+    cursor: pointer;
+    float: right;
+    margin-top: -20px;
+    margin-right: -5px;
+}

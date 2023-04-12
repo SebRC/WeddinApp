@@ -35,7 +35,7 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
   }, [guest.songWishes]);
 
   return (
-    <DetailsPanel title={guest.name}>
+    <DetailsPanel title={guest.name} onClose={onDelete}>
       <Header text={translator.attending()} subHeader={guest.attending ? translator.yes() : translator.no()} />
       <Flexbox flexDirection="column" gap={10}>
         <Header text={translator.songWishes()} />
