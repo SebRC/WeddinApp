@@ -1,6 +1,7 @@
 import { FunctionComponent, ReactNode } from "react";
 import { useTranslator } from "../../translations/useTranslator";
 import { Button } from "../button/Button";
+import { CloseButton } from "../button/CloseButton";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Modal.module.css";
 
@@ -16,6 +17,7 @@ export const Modal: FunctionComponent<ModalProps> = ({ onConfirm, onCancel, load
   return (
     <div className={styles.background}>
       <div className={styles.modal}>
+        <CloseButton onClick={onCancel} />
         {children}
         <Flexbox marginTop="20px" gap={20}>
           <Button onClick={onCancel} text={translator.cancel()} type="danger" loading={loading} />
