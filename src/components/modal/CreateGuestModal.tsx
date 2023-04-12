@@ -14,7 +14,7 @@ interface CreateGuestModalProps {
 
 export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onCancel }) => {
   const translator = useTranslator();
-  const [mainGuestName, setMainGuestName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [plusOnes, setPlusOnes] = useState<string[]>([]);
@@ -44,7 +44,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
     if (
       email &&
       password &&
-      mainGuestName &&
+      name &&
       plusOnes.every((po) => {
         return po.length > 0;
       })
@@ -64,7 +64,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
       }
 
       if (result.userId) {
-        await createGuest({ name: mainGuestName, id: result.userId, guestNames: plusOnes });
+        await createGuest({ name: name, id: result.userId, guestNames: plusOnes });
         onCancel();
       }
     }
@@ -92,9 +92,9 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
         <Input
           required
           onChange={(e) => {
-            setMainGuestName(e.target.value);
+            setName(e.target.value);
           }}
-          value={mainGuestName}
+          value={name}
           label={translator.name()}
           placeholder={translator.name()}
         />
