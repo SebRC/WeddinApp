@@ -20,7 +20,6 @@ export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ gue
   const handleDeleteGuest = async () => {
     setLoading(true);
     const result = await deleteUser(guest.id ?? "");
-    console.log(result.errorCode);
     if (result.success) {
       await deleteGuest(guest);
       onDelete();
