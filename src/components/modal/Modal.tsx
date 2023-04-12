@@ -3,6 +3,7 @@ import { useTranslator } from "../../translations/useTranslator";
 import { Button } from "../button/Button";
 import { CloseButton } from "../button/CloseButton";
 import { Flexbox } from "../layout/flexbox/Flexbox";
+import { Separator } from "../layout/separator/Separator";
 import { Title } from "../text/Title";
 import styles from "./Modal.module.css";
 
@@ -19,14 +20,23 @@ export const Modal: FunctionComponent<ModalProps> = ({ onConfirm, onCancel, titl
   return (
     <div className={styles.background}>
       <div className={styles.modal}>
-        <Flexbox justifyContent="space-between" alignItems="flex-start">
+        <Flexbox
+          justifyContent="space-between"
+          alignItems="flex-start"
+          marginTop="20px"
+          marginRight="20px"
+          marginBottom="20px"
+          marginLeft="20px"
+        >
           <Title title={title} />
           <CloseButton onClick={onCancel} />
         </Flexbox>
-        <div className={styles.separator} />
-        {children}
-        <div className={styles.separator} />
-        <Flexbox marginTop="20px" gap={20}>
+        <Separator noMargin />
+        <Flexbox marginTop="20px" marginRight="20px" marginBottom="20px" marginLeft="20px">
+          {children}
+        </Flexbox>
+        <Separator noMargin />
+        <Flexbox gap={20} marginTop="20px" marginRight="20px" marginBottom="20px" marginLeft="20px">
           <Button onClick={onCancel} text={translator.cancel()} type="danger" loading={loading} />
           <Button onClick={onConfirm} text={translator.confirm()} loading={loading} />
         </Flexbox>

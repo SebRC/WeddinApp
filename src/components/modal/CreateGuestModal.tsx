@@ -87,7 +87,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
       loading={loading}
       title={translator.createGuest()}
     >
-      <Flexbox flexDirection="column" gap={20}>
+      <Flexbox flexDirection="column" gap={20} width="100%">
         <Input
           required
           onChange={(e) => {

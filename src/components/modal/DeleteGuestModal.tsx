@@ -44,7 +44,7 @@ export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ gue
       loading={loading}
       title={translator.deleteGuest()}
     >
-      <Flexbox flexDirection="column" gap={20}>
+      <Flexbox flexDirection="column" gap={20} width="100%">
         {translator.deleteGuestDescription()}
         <Title title={guest.name} />
         <Flexbox flexDirection="column">
