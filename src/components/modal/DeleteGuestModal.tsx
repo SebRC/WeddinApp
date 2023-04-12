@@ -39,7 +39,12 @@ export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ gue
   };
 
   return (
-    <Modal onConfirm={async () => await handleDeleteGuest()} onCancel={onCancel} loading={loading}>
+    <Modal
+      onConfirm={async () => await handleDeleteGuest()}
+      onCancel={onCancel}
+      loading={loading}
+      title={translator.deleteGuest()}
+    >
       <Flexbox flexDirection="column" gap={20}>
         {translator.deleteGuestDescription()}
         <Title title={guest.name} />

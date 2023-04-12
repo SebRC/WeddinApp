@@ -50,6 +50,7 @@
     "english": "Engelsk",
     "delete": "Slet",
     "createGuest": "Opret gæst",
+    "deleteGuest": "Slet gæst",
     "cancel": "Afbryd",
     "confirm": "Bekræft",
     "deleteGuestDescription": "Du skal til at slette den følgende gæst og deres plus ones. Er du sikker på at du vil slette dem?",

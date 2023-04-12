@@ -82,7 +82,12 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
   };
 
   return (
-    <Modal onConfirm={async () => await handleCreateGuest()} onCancel={onCancel} loading={loading}>
+    <Modal
+      onConfirm={async () => await handleCreateGuest()}
+      onCancel={onCancel}
+      loading={loading}
+      title={translator.createGuest()}
+    >
       <Flexbox flexDirection="column" gap={20}>
         <Input
           required

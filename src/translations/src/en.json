@@ -50,6 +50,7 @@
   "plusX": "Plus {index}",
   "delete": "Delete",
   "createGuest": "Create guest",
+  "deleteGuest": "Delete guest",
   "cancel": "Cancel",
   "confirm": "Confirm",
   "deleteGuestDescription": "You're about to delete the following guest and their plus ones. Are you sure you want to continue?",
