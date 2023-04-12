@@ -51,7 +51,6 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
     ) {
       const result = await createUser(email, password);
       if (!result.success) {
-        console.log(result.errorCode);
         if (result.errorCode === "auth/invalid-password") {
           setPasswordError(translator.invalidPassword());
         }
