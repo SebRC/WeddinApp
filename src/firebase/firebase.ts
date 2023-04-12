@@ -63,8 +63,8 @@ export const setGuestData = async (guest: Guest) => {
 }
 
 export const createUser = async (email: string, password: string) => {
-    const createGuestForWedding = httpsCallable(functions, 'create-wedding-guest');
-    const result:any = await createGuestForWedding({ email: email , password: password});
+    const createWeddingGuest = httpsCallable(functions, 'create-wedding-guest');
+    const result:any = await createWeddingGuest({ email: email , password: password});
     const data = result.data;
     return {success: data.success, userId: data.userId, errorCode: data.errorCode, errorMessage: data.errorMessage}
 }
