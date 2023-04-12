@@ -123,7 +123,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
         <Header text={translator.plusOnes()} subHeader={translator.plusOnesDescription()} />
         {plusOnes.map((po, index) => {
           return (
-            <Flexbox gap={20}>
+            <Flexbox gap={20} key={`${po}-${index}`}>
               <Input
                 required
                 label={translator.plusX(`${index + 1}`)}
