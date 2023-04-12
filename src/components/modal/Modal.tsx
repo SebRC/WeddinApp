@@ -3,7 +3,6 @@ import { useTranslator } from "../../translations/useTranslator";
 import { Button } from "../button/Button";
 import { CloseButton } from "../button/CloseButton";
 import { Flexbox } from "../layout/flexbox/Flexbox";
-import { Header } from "../text/Header";
 import { Title } from "../text/Title";
 import styles from "./Modal.module.css";
 
