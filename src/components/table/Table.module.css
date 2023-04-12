@@ -4,6 +4,7 @@
     border-radius: var(--border-radius-large);
     box-shadow: var(--box-shadow-large);
     table-layout:fixed;
+    background-color: var(--primary);
 }
 
 .table th:first-of-type {

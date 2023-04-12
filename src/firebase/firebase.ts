@@ -1,11 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { collection, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
+import { collection, deleteDoc, doc, DocumentSnapshot, getDoc, getDocs, getFirestore, setDoc, SnapshotOptions } from "firebase/firestore";
 import { Gift } from "../components/gift/gift";
 import { Guest } from "../components/guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../components/guest/guests";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getFunctions, httpsCallable } from "firebase/functions";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,6 +23,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+const functions = getFunctions(app, "europe-west3");
 
 const db = getFirestore(app);
 
@@ -59,6 +62,49 @@ export const setGuestData = async (guest: Guest) => {
   await setDoc(ref, updatedGuest);
 }
 
+export const createUser = async (email: string, password: string) => {
+    const createWeddingGuest = httpsCallable(functions, 'create-wedding-guest');
+    const result:any = await createWeddingGuest({ email: email , password: password});
+    const data = result.data;
+    return {success: data.success, userId: data.userId, errorCode: data.errorCode, errorMessage: data.errorMessage}
+}
+
+export const createGuest = async (data: {name: string, id: string, guestNames: string[]}) => {
+  const guestIds = getGuestIds(data.guestNames);
+  var guest: Guest = {name: data.name, guestIds: guestIds, attending: false, songWishes: [], foodInfo: ""};
+  await setDoc(doc(db, "guests", data.id), guest);
+  data.guestNames.forEach(async (gn) => {
+    const plusOne: Guest = {name: gn, guestIds: [], attending: false, songWishes: [], foodInfo: ""};
+    await setDoc(doc(db, "guests", getGuestId(gn)), plusOne);
+  });
+}
+
+export const deleteUser = async (userId: string) => {
+  const deleteWeddingGuest = httpsCallable(functions, 'delete-wedding-guest');
+  const result:any = await deleteWeddingGuest({ userId: userId});
+  const data = result.data;
+  return {success: data.success, userId: data.userId, errorCode: data.errorCode, errorMessage: data.errorMessage}
+}
+
+export const deleteGuest = async (guest: Guest) => {
+  await deleteDoc(doc(db, "guests", guest.id ?? ""));
+  if(guest.guestIds) {
+    guest.guestIds.map(async (g) => {
+      await deleteDoc(doc(db, "guests", g))
+    })
+  }
+}
+
+const getGuestIds = (guestNames: string[]) => {
+  return guestNames.map(gn => {
+    return getGuestId(gn);
+  })
+}
+
+const getGuestId = (guestName: string) => {
+    return guestName.split(" ")[0].toLowerCase();
+}
+
 const fetchGuestsFromMainGuest = async (guestIds: string[]): Promise<Guest[]> => {
   let guests: Guest[] = [];
   await Promise.all(guestIds.map(async (g) => {
@@ -92,7 +138,7 @@ export const getImage = async (name: string) => {
 }
 
 // Firestore data converter
-const guestConverter = {
+export const guestConverter = {
   toFirestore: (guest: Guest) => {
       return {...guest, 
           attending: guest.attending,

@@ -5,7 +5,7 @@ export const IconCheckmark: FunctionComponent<IconProps> = ({ fill = "white", si
   return (
     <svg width={size} height={size} viewBox="0 0 488 488" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d_0_1)">
-        <circle cx="244" cy="240" r="225" stroke={fill} stroke-width="30" shape-rendering="crispEdges" />
+        <circle cx="244" cy="240" r="225" stroke={fill} strokeWidth="30" shapeRendering="crispEdges" />
       </g>
       <path
         d="M114.89 235.685C109.173 226.234 112.2 213.938 121.651 208.221C131.102 202.503 143.398 205.53 149.115 214.981L219.767 331.774C225.484 341.225 222.458 353.521 213.007 359.239C203.556 364.956 191.259 361.929 185.542 352.478L114.89 235.685Z"
@@ -23,9 +23,9 @@ export const IconCheckmark: FunctionComponent<IconProps> = ({ fill = "white", si
           width="488"
           height="488"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

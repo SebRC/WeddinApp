@@ -4,10 +4,10 @@ import { ErrorPage } from "../components/error/ErrorPage";
 import { GiftsContainer } from "../components/gift/GiftsContainer";
 import { Info } from "../components/info/Info";
 import { PageLayout } from "../components/layout/pageLayout/PageLayout";
-import { GuestTableContainer } from "../components/table/guest/GuestTableContainer";
 import { GuestContainer } from "../components/guest/GuestContainer";
 import { Roles } from "../components/authentication/Roles";
 import { Settings } from "../components/settings/Settings";
+import { AdminPage } from "../components/admin/AdminPage";
 
 export const GuestRoute = {
   path: "/guest",
@@ -22,7 +22,7 @@ export const AdminRoute = {
   path: "/admin",
   element: (
     <ProtectedRoute requiredRole={Roles.Admin}>
-      <GuestTableContainer />
+      <AdminPage />
     </ProtectedRoute>
   ),
 };

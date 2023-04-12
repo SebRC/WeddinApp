@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Gift } from "../components/gift/gift";
 import { database, giftConverter } from "../firebase/firebase";
 
-
 export const useGifts = () => {
     const [gifts, setGifts] = useState<Gift[]>([]);
     useEffect(() => {

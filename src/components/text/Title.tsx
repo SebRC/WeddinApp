@@ -9,7 +9,7 @@ interface TitleProps {
 
 export const Title: FunctionComponent<TitleProps> = ({ title, subtitle }) => {
   return (
-    <Flexbox flexDirection="column" gap={5}>
+    <Flexbox flexDirection="column">
       <h1 className={styles.title}>{title}</h1>
       {subtitle && <p className={styles.subTitle}>{subtitle}</p>}
     </Flexbox>

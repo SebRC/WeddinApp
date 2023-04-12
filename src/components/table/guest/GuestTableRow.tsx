@@ -9,23 +9,17 @@ import styles from "../TableRow.module.css";
 
 interface GuestTableRowProps {
   guest: Guest;
+  onClick?: () => void;
 }
 
-export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) => {
+export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, onClick }) => {
   const translator = useTranslator();
-  const handleSongsClick = () => {
-    const text = guest.songWishes.filter((s) => s).join(", ");
-    if (text) {
-      navigator.clipboard.writeText(filteredSongs);
-    }
-  };
-
   const filteredSongs = useMemo(() => {
     return guest.songWishes.filter((s) => s).join(", ");
   }, [guest.songWishes]);
 
   return (
-    <tr className={styles.row}>
+    <tr className={styles.row} onClick={onClick}>
       <TableData>{guest.name}</TableData>
       <TableData>
         {guest.attending ? (
@@ -38,7 +32,7 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest }) 
           </Flexbox>
         )}
       </TableData>
-      <TableData onClick={handleSongsClick}>{filteredSongs}</TableData>
+      <TableData>{filteredSongs}</TableData>
       <TableData>{guest.foodInfo}</TableData>
     </tr>
   );
