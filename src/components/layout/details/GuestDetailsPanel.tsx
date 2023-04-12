@@ -36,6 +36,10 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
     return guest.songWishes.filter((s) => s).join(", ");
   }, [guest.songWishes]);
 
+  const isMainGuest = () => {
+    return guest.name.split(" ")[0].toLowerCase() !== guest.id;
+  };
+
   return (
     <DetailsPanel title={guest.name} onClose={onClose}>
       <Flexbox flexDirection="column" gap={10}>
@@ -62,7 +66,7 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
         text={translator.foodInfo()}
         subHeader={guest.foodInfo === "" ? translator.noFoodInfo() : guest.foodInfo}
       />
-      {guest.name.split(" ")[0].toLowerCase() !== guest.id ? (
+      {isMainGuest() ? (
         <Button text={translator.delete()} onClick={() => setShowModal(true)} />
       ) : (
         <Header text={translator.thisGuestIsAplusOne()} />
