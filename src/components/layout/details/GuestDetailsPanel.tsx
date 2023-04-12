@@ -2,7 +2,9 @@ import { FunctionComponent, useMemo, useState } from "react";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
 import { Guest } from "../../guest/Guest";
+import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconCopy } from "../../icons/IconCopy";
+import { IconX } from "../../icons/IconX";
 import { DeleteGuestModal } from "../../modal/DeleteGuestModal";
 import { Header } from "../../text/Header";
 import { Tooltip } from "../../tooltip/Tooltip";
@@ -36,7 +38,13 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
 
   return (
     <DetailsPanel title={guest.name} onClose={onClose}>
-      <Header text={translator.attending()} subHeader={guest.attending ? translator.yes() : translator.no()} />
+      <Flexbox flexDirection="column" gap={10}>
+        <Header text={translator.attending()} />
+        <Flexbox gap={20}>
+          {guest.attending ? <IconCheckmark /> : <IconX />}
+          {guest.attending ? translator.yes() : translator.no()}
+        </Flexbox>
+      </Flexbox>
       <Flexbox flexDirection="column" gap={10}>
         <Header text={translator.songWishes()} />
         {guest.songWishes.length !== 0 && guest.songWishes.every((s) => s.trim() !== "") ? (
