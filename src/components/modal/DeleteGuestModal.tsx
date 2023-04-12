@@ -29,7 +29,7 @@ export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ gue
   };
 
   const getPlusOnes = () => {
-    return guest.guestIds ? (
+    return guest.guestIds?.length !== 0 ? (
       guest.guestIds?.map((g, index) => {
         return <div key={`${g}-${index}`}>{`• ${g.charAt(0).toUpperCase()}${g.slice(1)}`}</div>;
       })
