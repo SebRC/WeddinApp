@@ -1,12 +1,12 @@
 import { FunctionComponent, useState } from "react";
-import { createUser, createGuest } from "../../firebase/firebase";
-import { useTranslator } from "../../translations/useTranslator";
-import { Button } from "../button/Button";
-import { IconTrash } from "../icons/IconTrash";
-import { Input } from "../input/Input";
-import { Flexbox } from "../layout/flexbox/Flexbox";
-import { Header } from "../text/Header";
-import { Modal } from "./Modal";
+import { createUser, createGuest } from "../../../firebase/firebase";
+import { useTranslator } from "../../../translations/useTranslator";
+import { Button } from "../../button/Button";
+import { IconTrash } from "../../icons/IconTrash";
+import { Input } from "../../input/Input";
+import { Flexbox } from "../../layout/flexbox/Flexbox";
+import { Header } from "../../text/Header";
+import { Modal } from "../Modal";
 
 interface CreateGuestModalProps {
   onCancel: () => void;

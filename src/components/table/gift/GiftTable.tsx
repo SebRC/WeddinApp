@@ -8,7 +8,7 @@ import { Searchbar } from "../../searchbar/Searchbar";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
-import { CreateGuestModal } from "../../modal/CreateGuestModal";
+import { CreateGuestModal } from "../../modal/guest/CreateGuestModal";
 import { GuestDetailsPanel } from "../../layout/details/GuestDetailsPanel";
 import { NothingFound } from "../../illustrations/NothingFound";
 import { Gift } from "../../gift/gift";

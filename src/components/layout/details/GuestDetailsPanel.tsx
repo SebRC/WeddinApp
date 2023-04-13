@@ -5,7 +5,7 @@ import { Guest } from "../../guest/Guest";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconCopy } from "../../icons/IconCopy";
 import { IconX } from "../../icons/IconX";
-import { DeleteGuestModal } from "../../modal/DeleteGuestModal";
+import { DeleteGuestModal } from "../../modal/guest/DeleteGuestModal";
 import { Header } from "../../text/Header";
 import { Tooltip } from "../../tooltip/Tooltip";
 import { Flexbox } from "../flexbox/Flexbox";
