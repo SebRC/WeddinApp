@@ -7,7 +7,7 @@ import { PageLayout } from "../components/layout/pageLayout/PageLayout";
 import { GuestContainer } from "../components/guest/GuestContainer";
 import { Roles } from "../components/authentication/Roles";
 import { Settings } from "../components/settings/Settings";
-import { AdminPage } from "../components/admin/AdminPage";
+import { AdminTabs } from "../components/tabs/AdminTabs";
 
 export const GuestRoute = {
   path: "/guest",
@@ -22,7 +22,7 @@ export const AdminRoute = {
   path: "/admin",
   element: (
     <ProtectedRoute requiredRole={Roles.Admin}>
-      <AdminPage />
+      <AdminTabs />
     </ProtectedRoute>
   ),
 };
