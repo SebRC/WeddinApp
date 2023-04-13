@@ -1,31 +1,21 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent } from "react";
+import { Header } from "../../text/Header";
 import styles from "./Progressbar.module.css";
 
 interface ProgressbarProps {
   progress: number;
+  text?: string;
 }
 
-export const Progressbar: FunctionComponent<ProgressbarProps> = ({ progress }) => {
-  const [percentage, setPercentage] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (percentage < 100) {
-        setPercentage((prev) => prev + 1);
-      } else {
-        setPercentage(0);
-      }
-    }, 100);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [percentage]);
-
+export const Progressbar: FunctionComponent<ProgressbarProps> = ({ progress, text }) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.bar} style={{ width: `${percentage}%` }}>
-        <div className={styles.text}>{`${percentage}%`}</div>
+    <>
+      {text && <Header text={text} />}
+      <div className={styles.container}>
+        <div className={styles.bar} style={{ width: `${progress}%` }}>
+          <div className={styles.text}>{`${progress}%`}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

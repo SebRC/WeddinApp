@@ -125,17 +125,9 @@ export const createGift = async (
     "state_changed",
     (snapshot) => {
       const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-
-      // update progress
       handleProgress(percent);
     },
-    (err) => console.log(err),
-    () => {
-      // download url
-      getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-        console.log(url);
-      });
-    }
+    (err) => console.log(err)
   );
   var gift: Gift = {
     name: data.name,
