@@ -1,5 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { useTranslator } from "../../../../translations/useTranslator";
+import { Button } from "../../../button/Button";
 import { Gift } from "../../../gift/gift";
 import { IconCheckmark } from "../../../icons/IconCheckmark";
 import { IconX } from "../../../icons/IconX";
@@ -42,6 +43,7 @@ export const GiftDetailsPanel: FunctionComponent<GiftDetailsPanelProps> = ({ gif
         </a>
       </Flexbox>
       <Header text={translator.price()} subHeader={gift.price} />
+      <Button text={translator.delete()} onClick={() => setShowModal(true)} />
       {showModal && <DeleteGiftModal gift={gift} onCancel={() => setShowModal(false)} onDelete={handleDelete} />}
     </DetailsPanel>
   );

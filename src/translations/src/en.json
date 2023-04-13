@@ -70,5 +70,7 @@
   "createGift": "Create gift",
   "link": "Link",
   "price": "Price",
-  "image": "Image"
+  "image": "Image",
+  "deleteGift": "Delete gift",
+  "deleteGiftDescription": "Are you sure you want to delete this gift?"
 }

@@ -3,7 +3,7 @@ import { deleteUser } from "../../../firebase/firebase";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Gift } from "../../gift/gift";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
-import { Title } from "../../text/Title";
+import { Header } from "../../text/Header";
 import { Modal } from "../Modal";
 
 interface DeleteGiftModallProps {
@@ -31,11 +31,11 @@ export const DeleteGiftModal: FunctionComponent<DeleteGiftModallProps> = ({ gift
       onConfirm={async () => await handleDeleteGift()}
       onCancel={onCancel}
       loading={loading}
-      title={translator.deleteGuest()}
+      title={translator.deleteGift()}
     >
       <Flexbox flexDirection="column" gap={20} width="100%">
-        {translator.deleteGuestDescription()}
-        <Title title={gift.name} />
+        <Header text={gift.name} />
+        {translator.deleteGiftDescription()}
       </Flexbox>
     </Modal>
   );

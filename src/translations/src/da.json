@@ -70,5 +70,7 @@
     "createGift": "Opret gave",
     "link": "Link",
     "price": "Pris",
-    "image": "Billede"
+    "image": "Billede",
+    "deleteGift": "Slet gave",
+    "deleteGiftDescription": "Er du sikker på at du vil slette denne gave?"
 }
