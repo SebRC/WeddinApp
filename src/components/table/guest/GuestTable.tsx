@@ -9,7 +9,7 @@ import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
 import { CreateGuestModal } from "../../modal/guest/CreateGuestModal";
-import { GuestDetailsPanel } from "../../layout/details/GuestDetailsPanel";
+import { GuestDetailsPanel } from "../../layout/details/guest/GuestDetailsPanel";
 import { NothingFound } from "../../illustrations/NothingFound";
 import { FileInput } from "../../input/file/FileInput";
 

@@ -1,15 +1,15 @@
 import { FunctionComponent, useMemo, useState } from "react";
-import { useTranslator } from "../../../translations/useTranslator";
-import { Button } from "../../button/Button";
-import { Guest } from "../../guest/Guest";
-import { IconCheckmark } from "../../icons/IconCheckmark";
-import { IconCopy } from "../../icons/IconCopy";
-import { IconX } from "../../icons/IconX";
-import { DeleteGuestModal } from "../../modal/guest/DeleteGuestModal";
-import { Header } from "../../text/Header";
-import { Tooltip } from "../../tooltip/Tooltip";
-import { Flexbox } from "../flexbox/Flexbox";
-import { DetailsPanel } from "./DetailsPanel";
+import { useTranslator } from "../../../../translations/useTranslator";
+import { Button } from "../../../button/Button";
+import { Guest } from "../../../guest/Guest";
+import { IconCheckmark } from "../../../icons/IconCheckmark";
+import { IconCopy } from "../../../icons/IconCopy";
+import { IconX } from "../../../icons/IconX";
+import { DeleteGuestModal } from "../../../modal/guest/DeleteGuestModal";
+import { Header } from "../../../text/Header";
+import { Tooltip } from "../../../tooltip/Tooltip";
+import { Flexbox } from "../../flexbox/Flexbox";
+import { DetailsPanel } from "../DetailsPanel";
 
 interface GuestDetailsPanelProps {
   guest: Guest;
