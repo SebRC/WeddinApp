@@ -1,4 +1,5 @@
 import { FunctionComponent, useState } from "react";
+import { IconUpload } from "../../icons/IconUpload";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
 import styles from "./FileInput.module.css";
 export const FileInput: FunctionComponent = () => {
@@ -19,6 +20,7 @@ export const FileInput: FunctionComponent = () => {
         />
         <label htmlFor="file" className={styles.label}>
           Select file
+          <IconUpload fill="black" />
         </label>
       </div>
     </Flexbox>
