@@ -3,7 +3,7 @@ import { KeyCodes } from "../../keycode/KeyCodes";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Tabs.module.css";
 
-interface TabNavItemProps {
+export interface TabNavItemProps {
   id: string;
   title: string;
   activeTab: string;
