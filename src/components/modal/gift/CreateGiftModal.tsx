@@ -16,6 +16,10 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
   const [link, setLink] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState<File>();
+  const [nameError, setNameError] = useState("");
+  const [linkError, setLinkError] = useState("");
+  const [priceError, setPriceError] = useState("");
+  const [fileError, setFileError] = useState("");
   const [loading, setLoading] = useState(false);
   const [percentage, setPercentage] = useState(0);
 
@@ -28,15 +32,28 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
     if (name && link && price && file) {
       await createGift(file, { name: name, price: price, link: link }, handleProgress);
       onCancel();
+    } else {
+      const emptyFieldErrorMessafe = translator.thisFieldIsRequired();
+      setNameError(name ? "" : emptyFieldErrorMessafe);
+      setLinkError(link ? "" : emptyFieldErrorMessafe);
+      setPriceError(price ? "" : emptyFieldErrorMessafe);
+      setFileError(file ? "" : emptyFieldErrorMessafe);
     }
     setLoading(false);
   };
 
+  const handleNameChange = (value: string) => {
+    setNameError("");
+    setName(value);
+  };
+
   const handleLinkChange = (value: string) => {
+    setLinkError("");
     setLink(value);
   };
 
   const handlePriceChange = (value: string) => {
+    setPriceError("");
     setPrice(value);
   };
 
@@ -55,10 +72,11 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
     >
       <Input
         required
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => handleNameChange(e.target.value)}
         value={name}
         label={translator.name()}
         placeholder={translator.name()}
+        error={nameError}
       />
       <Input
         required
@@ -66,6 +84,7 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
         value={link}
         label={translator.link()}
         placeholder={translator.link()}
+        error={linkError}
       />
       <Input
         required
@@ -73,8 +92,9 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
         value={price}
         label={translator.price()}
         placeholder={translator.price()}
+        error={priceError}
       />
-      <FileInput accept="image/*" label={translator.image()} onChange={handleFileChange} />
+      <FileInput accept="image/*" label={translator.image()} onChange={handleFileChange} error={fileError} />
       {loading && <Progressbar progress={percentage} />}
     </Modal>
   );

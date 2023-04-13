@@ -3,13 +3,16 @@ import { useTranslator } from "../../../translations/useTranslator";
 import { IconUpload } from "../../icons/IconUpload";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
 import styles from "./FileInput.module.css";
+import inputStyles from "../Input.module.css";
+
 interface FileInputProps {
   accept: "image/*" | "audio/*" | "video/*";
   label?: string;
+  error?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-export const FileInput: FunctionComponent<FileInputProps> = ({ accept, label, onChange }) => {
+export const FileInput: FunctionComponent<FileInputProps> = ({ accept, label, error, onChange }) => {
   const [file, setFile] = useState<File>();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -38,6 +41,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({ accept, label, on
           </div>
         </form>
       </Flexbox>
+      {error && <p className={inputStyles.errorParagraph}>{error}</p>}
     </Flexbox>
   );
 };
