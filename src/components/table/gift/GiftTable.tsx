@@ -11,6 +11,7 @@ import { NothingFound } from "../../illustrations/NothingFound";
 import { Gift } from "../../gift/gift";
 import { CreateGiftModal } from "../../modal/gift/CreateGiftModal";
 import { GiftDetailsPanel } from "../../layout/details/gift/GiftDetailsPanel";
+import { Paper } from "../../layout/paper/Paper";
 
 interface GiftTableProps {
   gifts: Gift[];
@@ -68,34 +69,40 @@ export const GiftTable: FunctionComponent<GiftTableProps> = ({ gifts }) => {
   };
   return (
     <Flexbox flexDirection="column" gap={20}>
-      <Flexbox minHeight="auto" gap={20}>
-        <Searchbar value={searchValue} onSearch={(e) => handleSearch(e.target.value.toLowerCase())} />
-        <Button onClick={() => setShowModal(true)} text={translator.createGift()} height="3rem" width="10%" />
-      </Flexbox>
+      <Paper minHeight="auto">
+        <Flexbox gap={20}>
+          <Searchbar value={searchValue} onSearch={(e) => handleSearch(e.target.value.toLowerCase())} />
+          <Button onClick={() => setShowModal(true)} text={translator.createGift()} height="3rem" width="10%" />
+        </Flexbox>
+      </Paper>
       <Flexbox gap={30}>
-        <table className={styles.table}>
-          <TableHeader
-            headers={[
-              { name: translator.name(), width: "50%" },
-              {
-                name: translator.reserved(),
-                width: "15%",
-                sortable: true,
-                sorted: sortOrder,
-                onSort: () => handleSort(getNextSortOrder()),
-              },
-              { name: translator.reservedBy(), width: "35%" },
-            ]}
-          />
-          <tbody>
-            {sortedGifts.map((g, index) => {
-              return <GiftTableRow gift={g} key={`${g.id}`} onClick={() => handleRowClick(g.id ?? "", index)} />;
-            })}
-          </tbody>
-        </table>
+        {sortedGifts.length !== 0 ? (
+          <table className={styles.table}>
+            <TableHeader
+              headers={[
+                { name: translator.name(), width: "50%" },
+                {
+                  name: translator.reserved(),
+                  width: "15%",
+                  sortable: true,
+                  sorted: sortOrder,
+                  onSort: () => handleSort(getNextSortOrder()),
+                },
+                { name: translator.reservedBy(), width: "35%" },
+              ]}
+            />
+            <tbody>
+              {sortedGifts.map((g, index) => {
+                return <GiftTableRow gift={g} key={`${g.id}`} onClick={() => handleRowClick(g.id ?? "", index)} />;
+              })}
+            </tbody>
+          </table>
+        ) : (
+          <NothingFound />
+        )}
+
         {selectedGift && <GiftDetailsPanel gift={selectedGift} onClose={() => setSelectedGift(null)} />}
       </Flexbox>
-      {sortedGifts.length === 0 && <NothingFound />}
       {showModal && <CreateGiftModal onCancel={() => setShowModal(false)} />}
     </Flexbox>
   );
