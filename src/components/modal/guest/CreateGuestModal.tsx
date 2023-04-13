@@ -18,6 +18,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [plusOnes, setPlusOnes] = useState<string[]>([]);
+  const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -66,6 +67,12 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
         await createGuest({ name: name, id: result.userId, guestNames: plusOnes });
         onCancel();
       }
+    } else {
+      const emptyFieldErrorMessafe = translator.thisFieldIsRequired();
+
+      setNameError(name ? "" : emptyFieldErrorMessafe);
+      setEmailError(email ? "" : emptyFieldErrorMessafe);
+      setPasswordError(password ? "" : emptyFieldErrorMessafe);
     }
     setLoading(false);
   };
@@ -96,6 +103,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
           value={name}
           label={translator.name()}
           placeholder={translator.name()}
+          error={nameError}
         />
         <Header text={translator.emailAndPassword()} subHeader={translator.emailAndPasswordDescription()} />
         <Input
