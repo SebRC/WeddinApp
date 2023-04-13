@@ -73,5 +73,8 @@
     "price": "Pris",
     "image": "Billede",
     "deleteGift": "Slet gave",
-    "deleteGiftDescription": "Er du sikker på at du vil slette denne gave?"
+    "deleteGiftDescription": "Er du sikker på at du vil slette denne gave?",
+    "cantDeleteYourOwnUser": "Du kan ikke slette din egen bruger",
+    "userInfo": "Bruger information",
+    "userInfoDescription": "Information om den nuværende bruger"
 }

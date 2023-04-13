@@ -1,4 +1,5 @@
 import { FunctionComponent, useMemo } from "react";
+import { KeyCodes } from "../../../keycode/KeyCodes";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Guest } from "../../guest/Guest";
 import { IconCheckmark } from "../../icons/IconCheckmark";
@@ -18,8 +19,14 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, on
     return guest.songWishes.filter((s) => s).join(", ");
   }, [guest.songWishes]);
 
+  const handleKeyUp = (key: string) => {
+    if (key === KeyCodes.Enter) {
+      onClick?.();
+    }
+  };
+
   return (
-    <tr className={styles.row} onClick={onClick}>
+    <tr className={styles.row} onClick={onClick} tabIndex={0} onKeyUp={(e) => handleKeyUp(e.key)}>
       <TableData>{guest.name}</TableData>
       <TableData>
         {guest.attending ? (

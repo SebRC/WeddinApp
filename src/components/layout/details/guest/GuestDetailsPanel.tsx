@@ -1,4 +1,6 @@
 import { FunctionComponent, useMemo, useState } from "react";
+import { useCurrentUser } from "../../../../hooks/context/UserProvider";
+import { useCurrentGuest } from "../../../../hooks/useCurrentGuest";
 import { useTranslator } from "../../../../translations/useTranslator";
 import { Button } from "../../../button/Button";
 import { Guest } from "../../../guest/Guest";
@@ -19,6 +21,7 @@ interface GuestDetailsPanelProps {
 export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ guest, onClose }) => {
   const [showModal, setShowModal] = useState(false);
   const translator = useTranslator();
+  const user = useCurrentUser();
 
   const handleDelete = () => {
     onClose();
@@ -66,8 +69,10 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
         text={translator.foodInfo()}
         subHeader={guest.foodInfo === "" ? translator.noFoodInfo() : guest.foodInfo}
       />
-      {isMainGuest() ? (
+      {isMainGuest() && guest.id !== user.user?.uid ? (
         <Button text={translator.delete()} onClick={() => setShowModal(true)} />
+      ) : guest.id === user.user?.uid ? (
+        <Header text={translator.cantDeleteYourOwnUser()} />
       ) : (
         <Header text={translator.thisGuestIsAplusOne()} />
       )}
