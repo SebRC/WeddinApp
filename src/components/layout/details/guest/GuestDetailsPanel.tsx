@@ -1,6 +1,5 @@
 import { FunctionComponent, useMemo, useState } from "react";
 import { useCurrentUser } from "../../../../hooks/context/UserProvider";
-import { useCurrentGuest } from "../../../../hooks/useCurrentGuest";
 import { useTranslator } from "../../../../translations/useTranslator";
 import { Button } from "../../../button/Button";
 import { Guest } from "../../../guest/Guest";
