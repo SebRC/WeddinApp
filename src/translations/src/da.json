@@ -12,7 +12,8 @@
     "giftAlreadyReserved": "Gaven er allerede reserveret af {name}",
     "removeReservation": "Fjern reservation",
     "reserveGift": "Reserver gave",
-    "reservedBy": "Reserveret af:",
+    "reserved": "Reserveret",
+    "reservedBy": "Reserveret af",
     "reservedByYou": "{name} (Dig)",
     "notReservedYet": "Ikke reserveret endnu",
     "giftPrice": "Pris: {price}",
@@ -65,5 +66,6 @@
     "nothingFound": "Ups. Der var intet der matchede dine søgekriterier",
     "clickToCopySongs": "Klik for at kopiere sange",
     "noFileChosen": "Ingen fil valgt",
-    "selectFile": "Vælg fil"
+    "selectFile": "Vælg fil",
+    "createGift": "Opret gave"
 }

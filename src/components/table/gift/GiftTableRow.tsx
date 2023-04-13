@@ -29,7 +29,7 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift, onCli
           </Flexbox>
         )}
       </TableData>
-      <TableData>{gift.reservedBy}</TableData>
+      <TableData>{gift.reservedBy ? gift.reservedBy : translator.notReservedYet()}</TableData>
     </tr>
   );
 };

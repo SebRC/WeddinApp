@@ -12,7 +12,8 @@
   "giftAlreadyReserved": "Gift is already reserved by {name}",
   "removeReservation": "Remove reservation",
   "reserveGift": "Reserve gift",
-  "reservedBy": "Reserved by:",
+  "reserved": "Reserved",
+  "reservedBy": "Reserved by",
   "reservedByYou": "{name} (You)",
   "notReservedYet": "Not reserved yet",
   "giftPrice": "Price: {price}",
@@ -65,5 +66,6 @@
   "nothingFound": "Woops. Nothing matched you search criteria",
   "clickToCopySongs": "Click to copy songs",
   "noFileChosen": "No file chosen",
-  "selectFile": "Select file"
+  "selectFile": "Select file",
+  "createGift": "Create gift"
 }

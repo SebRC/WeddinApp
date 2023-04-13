@@ -71,7 +71,7 @@ export const GiftTable: FunctionComponent<GiftTableProps> = ({ gifts }) => {
     <Flexbox flexDirection="column" gap={20}>
       <Flexbox minHeight="auto" gap={20}>
         <Searchbar value={searchValue} onSearch={(e) => handleSearch(e.target.value.toLowerCase())} />
-        <Button onClick={() => setShowModal(true)} text={translator.createGuest()} height="3rem" width="10%" />
+        <Button onClick={() => setShowModal(true)} text={translator.createGift()} height="3rem" width="10%" />
       </Flexbox>
       <Flexbox gap={30}>
         <table className={styles.table}>
@@ -79,7 +79,7 @@ export const GiftTable: FunctionComponent<GiftTableProps> = ({ gifts }) => {
             headers={[
               { name: translator.name(), width: "50%" },
               {
-                name: translator.reservedBy(),
+                name: translator.reserved(),
                 width: "15%",
                 sortable: true,
                 sorted: sortOrder,
