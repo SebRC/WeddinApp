@@ -1,8 +1,10 @@
 import { ChangeEvent, FunctionComponent, useState } from "react";
+import { createGift } from "../../../firebase/firebase";
 import { useTranslator } from "../../../translations/useTranslator";
 import { FileInput } from "../../input/file/FileInput";
 import { Input } from "../../input/Input";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
+import { Header } from "../../text/Header";
 import { Modal } from "../Modal";
 
 interface CreateGiftModalProps {
@@ -16,15 +18,16 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
   const [price, setPrice] = useState("");
   const [file, setFile] = useState<File>();
   const [loading, setLoading] = useState(false);
+  const [percentage, setPercentage] = useState(0);
 
-  const handleCreateGift = async () => {
+  const handleProgress = (progress: number) => {
+    setPercentage(progress);
+  };
+
+  const handleConfirm = async () => {
     setLoading(true);
-    if (name) {
-      // const result = await createUser(email, password);
-      // if (result.userId) {
-      //   await createGuest({ name: name, id: result.userId, guestNames: plusOnes });
-      //   onCancel();
-      // }
+    if (name && link && price && file) {
+      await createGift(file, { name: name, price: price, link: link }, handleProgress);
     }
     setLoading(false);
   };
@@ -45,7 +48,7 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
 
   return (
     <Modal
-      onConfirm={async () => await handleCreateGift()}
+      onConfirm={async () => await handleConfirm()}
       onCancel={onCancel}
       loading={loading}
       title={translator.createGift()}
@@ -72,6 +75,7 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
         placeholder={translator.price()}
       />
       <FileInput accept="image/*" label={translator.image()} onChange={handleFileChange} />
+      {loading && <Header text={`Progress: ${percentage}%`} />}
     </Modal>
   );
 };

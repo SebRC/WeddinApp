@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import {
+  addDoc,
   collection,
   deleteDoc,
   doc,
@@ -112,11 +113,11 @@ export const deleteGuest = async (guest: Guest) => {
   }
 };
 
-export const createGift = (file: File, handleProgress: (percent: number) => void) => {
-  if (!file) {
-    alert("Please choose a file first!");
-  }
-
+export const createGift = async (
+  file: File,
+  data: { name: string; link: string; price: string },
+  handleProgress: (percent: number) => void
+) => {
   const storageRef = ref(storage, file.name);
   const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -136,6 +137,15 @@ export const createGift = (file: File, handleProgress: (percent: number) => void
       });
     }
   );
+  var gift: Gift = {
+    name: data.name,
+    url: data.link,
+    price: data.price,
+    reserved: false,
+    reservedBy: "",
+    image: file.name,
+  };
+  await addDoc(collection(db, "gifts"), gift);
 };
 
 const getGuestIds = (guestNames: string[]) => {

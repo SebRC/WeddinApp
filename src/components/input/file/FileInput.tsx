@@ -1,10 +1,7 @@
 import { ChangeEvent, ChangeEventHandler, FunctionComponent, useState } from "react";
-import { createGift } from "../../../firebase/firebase";
 import { useTranslator } from "../../../translations/useTranslator";
-import { Button } from "../../button/Button";
 import { IconUpload } from "../../icons/IconUpload";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
-import { Header } from "../../text/Header";
 import styles from "./FileInput.module.css";
 interface FileInputProps {
   accept: "image/*" | "audio/*" | "video/*";
@@ -14,22 +11,11 @@ interface FileInputProps {
 
 export const FileInput: FunctionComponent<FileInputProps> = ({ accept, label, onChange }) => {
   const [file, setFile] = useState<File>();
-  const [percentage, setPercentage] = useState(0);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
       onChange(e);
-    }
-  };
-
-  const handleProgress = (progress: number) => {
-    setPercentage(progress);
-  };
-
-  const handleUpload = () => {
-    if (file) {
-      createGift(file, handleProgress);
     }
   };
 
@@ -48,8 +34,6 @@ export const FileInput: FunctionComponent<FileInputProps> = ({ accept, label, on
           </label>
         </div>
       </Flexbox>
-      <Header text={`Progress: ${percentage}%`} />
-      <Button onClick={handleUpload} text="start upload" />
     </Flexbox>
   );
 };
