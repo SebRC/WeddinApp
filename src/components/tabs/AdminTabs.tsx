@@ -2,6 +2,7 @@ import { FunctionComponent, useState } from "react";
 import { useTranslator } from "../../translations/useTranslator";
 import { FileInput } from "../input/file/FileInput";
 import { Paper } from "../layout/paper/Paper";
+import { GiftTableContainer } from "../table/gift/GiftTableContainer";
 import { GuestTableContainer } from "../table/guest/GuestTableContainer";
 import { TabContent } from "./TabContent";
 import { TabNavItem } from "./TabNavItem";
@@ -28,6 +29,7 @@ export const AdminTabs: FunctionComponent<AdminTabsProps> = () => {
         <GuestTableContainer />
       </TabContent>
       <TabContent id="gifts" activeTab={activeTab}>
+        <GiftTableContainer />
         <FileInput />
       </TabContent>
     </>
