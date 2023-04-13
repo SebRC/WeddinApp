@@ -15,15 +15,12 @@ export const AdminTabs: FunctionComponent<AdminTabsProps> = () => {
   const translator = useTranslator();
   return (
     <>
-      <Paper minHeight="auto">
+      <Paper minHeight="auto" padding="10px 20px 10px 20px">
         <div className={styles.tabs}>
           <TabNavItem title={translator.guest()} id="guests" activeTab={activeTab} setActiveTab={setActiveTab} />
           <TabNavItem title={translator.admin()} id="gifts" activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
       </Paper>
-      <div
-        style={{ height: "2px", width: "100%", backgroundColor: "black", borderRadius: "var(--border-radius-large)" }}
-      ></div>
       <TabContent id="guests" activeTab={activeTab}>
         <GuestTableContainer />
       </TabContent>
