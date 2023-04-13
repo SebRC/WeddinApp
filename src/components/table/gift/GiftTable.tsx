@@ -12,6 +12,7 @@ import { CreateGuestModal } from "../../modal/guest/CreateGuestModal";
 import { GuestDetailsPanel } from "../../layout/details/GuestDetailsPanel";
 import { NothingFound } from "../../illustrations/NothingFound";
 import { Gift } from "../../gift/gift";
+import { CreateGiftModal } from "../../modal/gift/CreateGiftModal";
 
 interface GiftTableProps {
   gifts: Gift[];
@@ -97,7 +98,7 @@ export const GiftTable: FunctionComponent<GiftTableProps> = ({ gifts }) => {
         {/* {selectedGift && <GuestDetailsPanel guest={selectedGift} onClose={() => setSelectedGift(null)} />} */}
       </Flexbox>
       {sortedGifts.length === 0 && <NothingFound />}
-      {/* {showModal && <CreateGuestModal onCancel={() => setShowModal(false)} />} */}
+      {showModal && <CreateGiftModal onCancel={() => setShowModal(false)} />}
     </Flexbox>
   );
 };
