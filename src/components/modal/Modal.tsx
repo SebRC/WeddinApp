@@ -32,7 +32,14 @@ export const Modal: FunctionComponent<ModalProps> = ({ onConfirm, onCancel, titl
           <CloseButton onClick={onCancel} />
         </Flexbox>
         <Separator noMargin />
-        <Flexbox marginTop="20px" marginRight="20px" marginBottom="20px" marginLeft="20px">
+        <Flexbox
+          marginTop="20px"
+          marginRight="20px"
+          marginBottom="20px"
+          marginLeft="20px"
+          flexDirection="column"
+          gap={20}
+        >
           {children}
         </Flexbox>
         <Separator noMargin />

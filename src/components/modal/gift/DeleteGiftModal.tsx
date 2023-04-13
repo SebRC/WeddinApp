@@ -16,7 +16,7 @@ export const DeleteGiftModal: FunctionComponent<DeleteGiftModallProps> = ({ gift
   const translator = useTranslator();
   const [loading, setLoading] = useState(false);
 
-  const handleDeleteGuest = async () => {
+  const handleDeleteGift = async () => {
     setLoading(true);
     const result = await deleteUser(gift.id ?? "");
     if (result.success) {
@@ -28,7 +28,7 @@ export const DeleteGiftModal: FunctionComponent<DeleteGiftModallProps> = ({ gift
 
   return (
     <Modal
-      onConfirm={async () => await handleDeleteGuest()}
+      onConfirm={async () => await handleDeleteGift()}
       onCancel={onCancel}
       loading={loading}
       title={translator.deleteGuest()}

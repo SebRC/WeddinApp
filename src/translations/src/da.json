@@ -67,5 +67,8 @@
     "clickToCopySongs": "Klik for at kopiere sange",
     "noFileChosen": "Ingen fil valgt",
     "selectFile": "Vælg fil",
-    "createGift": "Opret gave"
+    "createGift": "Opret gave",
+    "link": "Link",
+    "price": "Pris",
+    "image": "Billede"
 }

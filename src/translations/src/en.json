@@ -67,5 +67,8 @@
   "clickToCopySongs": "Click to copy songs",
   "noFileChosen": "No file chosen",
   "selectFile": "Select file",
-  "createGift": "Create gift"
+  "createGift": "Create gift",
+  "link": "Link",
+  "price": "Price",
+  "image": "Image"
 }

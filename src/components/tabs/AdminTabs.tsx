@@ -30,7 +30,6 @@ export const AdminTabs: FunctionComponent<AdminTabsProps> = () => {
       </TabContent>
       <TabContent id="gifts" activeTab={activeTab}>
         <GiftTableContainer />
-        <FileInput />
       </TabContent>
     </>
   );
