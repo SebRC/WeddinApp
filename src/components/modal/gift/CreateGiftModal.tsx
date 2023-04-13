@@ -3,6 +3,7 @@ import { createGift } from "../../../firebase/firebase";
 import { useTranslator } from "../../../translations/useTranslator";
 import { FileInput } from "../../input/file/FileInput";
 import { Input } from "../../input/Input";
+import { Progressbar } from "../../loading/progress/Progressbar";
 import { Header } from "../../text/Header";
 import { Modal } from "../Modal";
 
@@ -74,6 +75,7 @@ export const CreateGiftModal: FunctionComponent<CreateGiftModalProps> = ({ onCan
         placeholder={translator.price()}
       />
       <FileInput accept="image/*" label={translator.image()} onChange={handleFileChange} />
+      <Progressbar progress={0} />
       {loading && <Header text={`Progress: ${percentage}%`} />}
     </Modal>
   );
