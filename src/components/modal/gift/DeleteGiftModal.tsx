@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { deleteUser } from "../../../firebase/firebase";
+import { deleteGift } from "../../../firebase/firebase";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Gift } from "../../gift/gift";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
@@ -18,11 +18,8 @@ export const DeleteGiftModal: FunctionComponent<DeleteGiftModallProps> = ({ gift
 
   const handleDeleteGift = async () => {
     setLoading(true);
-    const result = await deleteUser(gift.id ?? "");
-    if (result.success) {
-      // await deleteGuest(gift);
-      onDelete();
-    }
+    await deleteGift(gift);
+    onDelete();
     setLoading(false);
   };
 

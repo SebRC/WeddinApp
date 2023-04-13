@@ -16,7 +16,7 @@ import {
 import { Gift } from "../components/gift/gift";
 import { Guest } from "../components/guest/Guest";
 import { DEFAULT_GUEST_STATE } from "../components/guest/guests";
-import { getStorage, ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { getStorage, ref, getDownloadURL, uploadBytesResumable, deleteObject } from "firebase/storage";
 import { getFunctions, httpsCallable } from "firebase/functions";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -146,6 +146,18 @@ export const createGift = async (
     image: file.name,
   };
   await addDoc(collection(db, "gifts"), gift);
+};
+
+export const deleteGift = async (gift: Gift) => {
+  await deleteDoc(doc(db, "gifts", gift.id ?? ""));
+  try {
+    console.table(gift);
+    const imageRef = ref(storage, gift.image);
+    console.log(imageRef.name);
+    await deleteObject(imageRef);
+  } catch (error: any) {
+    console.log(`An error occurred when deleting ${gift.image}: ${error.code}`);
+  }
 };
 
 const getGuestIds = (guestNames: string[]) => {

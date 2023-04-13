@@ -1,6 +1,5 @@
 import { FunctionComponent, useState } from "react";
 import { useTranslator } from "../../translations/useTranslator";
-import { FileInput } from "../input/file/FileInput";
 import { Paper } from "../layout/paper/Paper";
 import { GiftTableContainer } from "../table/gift/GiftTableContainer";
 import { GuestTableContainer } from "../table/guest/GuestTableContainer";

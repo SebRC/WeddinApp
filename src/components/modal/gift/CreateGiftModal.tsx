@@ -3,7 +3,6 @@ import { createGift } from "../../../firebase/firebase";
 import { useTranslator } from "../../../translations/useTranslator";
 import { FileInput } from "../../input/file/FileInput";
 import { Input } from "../../input/Input";
-import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { Header } from "../../text/Header";
 import { Modal } from "../Modal";
 

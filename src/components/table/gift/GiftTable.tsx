@@ -1,5 +1,4 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { Guest } from "../../guest/Guest";
 import styles from "../Table.module.css";
 import { GiftTableRow } from "./GiftTableRow";
 import { TableHeader } from "../TableHeader";
@@ -8,8 +7,6 @@ import { Searchbar } from "../../searchbar/Searchbar";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Button } from "../../button/Button";
-import { CreateGuestModal } from "../../modal/guest/CreateGuestModal";
-import { GuestDetailsPanel } from "../../layout/details/guest/GuestDetailsPanel";
 import { NothingFound } from "../../illustrations/NothingFound";
 import { Gift } from "../../gift/gift";
 import { CreateGiftModal } from "../../modal/gift/CreateGiftModal";
