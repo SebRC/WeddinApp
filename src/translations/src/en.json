@@ -63,5 +63,7 @@
   "noFoodInfo": "No food info",
   "thisGuestIsAplusOne": "This guest is a plus one. You can delete them by deleting the guest they are accompanying.",
   "nothingFound": "Woops. Nothing matched you search criteria",
-  "clickToCopySongs": "Click to copy songs"
+  "clickToCopySongs": "Click to copy songs",
+  "noFileChosen": "No file chosen",
+  "selectFile": "Select file"
 }

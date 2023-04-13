@@ -63,5 +63,7 @@
     "noFoodInfo": "Ingen mad info",
     "thisGuestIsAplusOne": "Denne gæst er en plus one. Du kan slette dem ved at slette den gæst de er tilknyttet.",
     "nothingFound": "Ups. Der var intet der matchede dine søgekriterier",
-    "clickToCopySongs": "Klik for at kopiere sange"
+    "clickToCopySongs": "Klik for at kopiere sange",
+    "noFileChosen": "Ingen fil valgt",
+    "selectFile": "Vælg fil"
 }
