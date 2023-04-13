@@ -25,14 +25,18 @@ export const FileInput: FunctionComponent<FileInputProps> = ({ accept, label, on
     <Flexbox flexDirection="column">
       {label && <label className={styles.label}>{label}</label>}
       <Flexbox>
-        <div className={styles.fileText}>{file ? file.name : translator.noFileChosen()}</div>
-        <div className={styles.container}>
-          <input id="file" type="file" accept={accept} className={styles.file} onChange={handleChange} />
-          <label htmlFor="file" className={styles.button}>
-            {translator.selectFile()}
-            <IconUpload fill="black" />
+        <form className={styles.button}>
+          <label htmlFor="file" className={styles.fileText}>
+            {file ? file.name : translator.noFileChosen()}
           </label>
-        </div>
+          <div className={styles.container}>
+            <input id="file" type="file" accept={accept} className={styles.file} onChange={handleChange} />
+            <label htmlFor="file" className={styles.buttonLabel}>
+              {translator.selectFile()}
+              <IconUpload fill="black" />
+            </label>
+          </div>
+        </form>
       </Flexbox>
     </Flexbox>
   );
