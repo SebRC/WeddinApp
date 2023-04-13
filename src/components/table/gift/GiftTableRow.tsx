@@ -1,23 +1,20 @@
-import { FunctionComponent, useMemo } from "react";
+import { FunctionComponent } from "react";
 import { KeyCodes } from "../../../keycode/KeyCodes";
 import { useTranslator } from "../../../translations/useTranslator";
-import { Guest } from "../../guest/Guest";
+import { Gift } from "../../gift/gift";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconX } from "../../icons/IconX";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
 import { TableData } from "../TableData";
 import styles from "../TableRow.module.css";
 
-interface GuestTableRowProps {
-  guest: Guest;
+interface GiftTableRowProps {
+  gift: Gift;
   onClick?: () => void;
 }
 
-export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, onClick }) => {
+export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift, onClick }) => {
   const translator = useTranslator();
-  const filteredSongs = useMemo(() => {
-    return guest.songWishes.filter((s) => s).join(", ");
-  }, [guest.songWishes]);
 
   const handleKeyUp = (key: string) => {
     if (key === KeyCodes.Enter) {
@@ -26,10 +23,10 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, on
   };
 
   return (
-    <tr className={styles.row} onClick={onClick} tabIndex={0} onKeyUp={(e) => handleKeyUp(e.key)}>
-      <TableData>{guest.name}</TableData>
+    <tr className={styles.row} onClick={onClick} onKeyUp={(e) => handleKeyUp(e.key)} tabIndex={0}>
+      <TableData>{gift.name}</TableData>
       <TableData>
-        {guest.attending ? (
+        {gift.reserved ? (
           <Flexbox alignItems="center" gap={20}>
             <IconCheckmark /> {translator.yes()}
           </Flexbox>
@@ -39,8 +36,7 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, on
           </Flexbox>
         )}
       </TableData>
-      <TableData>{filteredSongs}</TableData>
-      <TableData>{guest.foodInfo}</TableData>
+      <TableData>{gift.reservedBy ? gift.reservedBy : translator.notReservedYet()}</TableData>
     </tr>
   );
 };

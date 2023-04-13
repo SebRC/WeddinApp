@@ -1,15 +1,16 @@
 import { FunctionComponent, useMemo, useState } from "react";
-import { useTranslator } from "../../../translations/useTranslator";
-import { Button } from "../../button/Button";
-import { Guest } from "../../guest/Guest";
-import { IconCheckmark } from "../../icons/IconCheckmark";
-import { IconCopy } from "../../icons/IconCopy";
-import { IconX } from "../../icons/IconX";
-import { DeleteGuestModal } from "../../modal/DeleteGuestModal";
-import { Header } from "../../text/Header";
-import { Tooltip } from "../../tooltip/Tooltip";
-import { Flexbox } from "../flexbox/Flexbox";
-import { DetailsPanel } from "./DetailsPanel";
+import { useCurrentUser } from "../../../../hooks/context/UserProvider";
+import { useTranslator } from "../../../../translations/useTranslator";
+import { Button } from "../../../button/Button";
+import { Guest } from "../../../guest/Guest";
+import { IconCheckmark } from "../../../icons/IconCheckmark";
+import { IconCopy } from "../../../icons/IconCopy";
+import { IconX } from "../../../icons/IconX";
+import { DeleteGuestModal } from "../../../modal/guest/DeleteGuestModal";
+import { Header } from "../../../text/Header";
+import { Tooltip } from "../../../tooltip/Tooltip";
+import { Flexbox } from "../../flexbox/Flexbox";
+import { DetailsPanel } from "../DetailsPanel";
 
 interface GuestDetailsPanelProps {
   guest: Guest;
@@ -19,6 +20,7 @@ interface GuestDetailsPanelProps {
 export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ guest, onClose }) => {
   const [showModal, setShowModal] = useState(false);
   const translator = useTranslator();
+  const user = useCurrentUser();
 
   const handleDelete = () => {
     onClose();
@@ -66,8 +68,10 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
         text={translator.foodInfo()}
         subHeader={guest.foodInfo === "" ? translator.noFoodInfo() : guest.foodInfo}
       />
-      {isMainGuest() ? (
+      {isMainGuest() && guest.id !== user.user?.uid ? (
         <Button text={translator.delete()} onClick={() => setShowModal(true)} />
+      ) : guest.id === user.user?.uid ? (
+        <Header text={translator.cantDeleteYourOwnUser()} />
       ) : (
         <Header text={translator.thisGuestIsAplusOne()} />
       )}

@@ -1,0 +1,57 @@
+.file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+}
+
+.container {
+  width: 200px;
+  height: 3rem;
+  border-top-right-radius: var(--border-radius-medium);
+  border-bottom-right-radius: var(--border-radius-medium);
+  background-color: var(--secondary);
+  box-shadow: var(--box-shadow-small);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonLabel {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button:active {
+  transform: scale(0.99);
+}
+
+.fileText {
+  height: 3rem;
+  font-size: 1.5rem;
+  background-color: white;
+  border-top-left-radius: var(--border-radius-medium);
+  border-bottom-left-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-small);
+  padding-left: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.label {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}

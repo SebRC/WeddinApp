@@ -1,11 +1,11 @@
 import { FunctionComponent, useState } from "react";
-import { deleteGuest, deleteUser } from "../../firebase/firebase";
-import { useTranslator } from "../../translations/useTranslator";
-import { Guest } from "../guest/Guest";
-import { Flexbox } from "../layout/flexbox/Flexbox";
-import { Header } from "../text/Header";
-import { Title } from "../text/Title";
-import { Modal } from "./Modal";
+import { deleteGuest, deleteUser } from "../../../firebase/firebase";
+import { useTranslator } from "../../../translations/useTranslator";
+import { Guest } from "../../guest/Guest";
+import { Flexbox } from "../../layout/flexbox/Flexbox";
+import { Header } from "../../text/Header";
+import { Title } from "../../text/Title";
+import { Modal } from "./../Modal";
 
 interface DeleteGuestModalProps {
   guest: Guest;
@@ -45,8 +45,8 @@ export const DeleteGuestModal: FunctionComponent<DeleteGuestModalProps> = ({ gue
       title={translator.deleteGuest()}
     >
       <Flexbox flexDirection="column" gap={20} width="100%">
-        {translator.deleteGuestDescription()}
         <Title title={guest.name} />
+        {translator.deleteGuestDescription()}
         <Flexbox flexDirection="column">
           <Header text={translator.plusOnes()} />
           {getPlusOnes()}

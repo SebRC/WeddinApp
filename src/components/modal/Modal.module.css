@@ -9,11 +9,11 @@
 }
 
 .modal {
-background-color: var(--primary);
-margin: 10% auto;
-width: 80%;
-border-radius: var(--border-radius-large);
-box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.5);
-overflow-y: scroll;
-max-height: 80%;
+    background-color: var(--primary);
+    margin: 10% auto;
+    width: 80%;
+    border-radius: var(--border-radius-large);
+    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.5);
+    overflow-y: scroll;
+    max-height: 80%;
 }
