@@ -9,7 +9,6 @@ import { AdminRoute, AuthRoute, GiftsRoute, GuestRoute, InfoRoute, SettingsRoute
 import { Roles } from "../authentication/Roles";
 import { useTranslator } from "../../translations/useTranslator";
 import { IconSettings } from "../icons/IconSettings";
-import { Flexbox } from "../layout/flexbox/Flexbox";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();
@@ -26,7 +25,7 @@ export const Navbar: FunctionComponent = () => {
     <>
       <div className={styles.navbar}>
         {user.authed && (
-          <>
+          <div>
             <Link
               to={GuestRoute.path}
               className={location.pathname.includes(GuestRoute.path) ? `${styles.active}` : ""}
@@ -50,9 +49,9 @@ export const Navbar: FunctionComponent = () => {
                 {translator.admin()}
               </Link>
             )}
-          </>
+          </div>
         )}
-        <Flexbox style={{ float: "right" }}>
+        <div>
           <Link
             to={SettingsRoute.path}
             className={location.pathname.includes(SettingsRoute.path) ? `${styles.active}` : ""}
@@ -62,7 +61,7 @@ export const Navbar: FunctionComponent = () => {
           <Link to={AuthRoute.path} onClick={handleLogout}>
             <IconLogout />
           </Link>
-        </Flexbox>
+        </div>
       </div>
       <PageLayout>
         <Outlet />
