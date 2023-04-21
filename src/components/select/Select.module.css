@@ -6,7 +6,7 @@
   font-size: 1.25rem;
   cursor: pointer;
   line-height: 1.1;
-  background-color: var(--secondary);
+  background-color: var(--accent);
   display: flex;
   grid-template-areas: "select";
   align-items: center;
@@ -32,7 +32,7 @@
   padding: 10px 10px 10px 10px;
   font-size: 1.25rem;
   cursor: pointer;
-  background-color: var(--secondary);
+  background-color: var(--accent);
   overflow-y: scroll;
 }
 .optionWrapper {
