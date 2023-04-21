@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { KeyCodes } from "../../keycode/KeyCodes";
+import { KeyCode } from "../../keycode/KeyCode";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Tabs.module.css";
 
@@ -16,7 +16,7 @@ export const TabNavItem: FunctionComponent<TabNavItemProps> = ({ id, title, acti
   };
 
   const handleKeyUp = (key: string) => {
-    if (key === KeyCodes.Enter) {
+    if (key === KeyCode.Enter) {
       setActiveTab(id);
     }
   };

@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { KeyCodes } from "../../keycode/KeyCodes";
+import { KeyCode } from "../../keycode/KeyCode";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Toggle.module.css";
 
@@ -11,7 +11,7 @@ interface ToggleProps {
 
 export const Toggle: FunctionComponent<ToggleProps> = ({ text, value, onChange }) => {
   const handleKeyUp = (key: string) => {
-    if (key === KeyCodes.Enter) {
+    if (key === KeyCode.Enter) {
       onChange();
     }
   };

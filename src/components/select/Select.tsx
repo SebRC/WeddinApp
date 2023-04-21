@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { KeyCodes } from "../../keycode/KeyCodes";
+import { KeyCode } from "../../keycode/KeyCode";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import styles from "./Select.module.css";
 import { SelectOption } from "./SelectOption";
@@ -22,13 +22,13 @@ export const Select: FunctionComponent<SelectProps> = ({ options, value, width =
   };
 
   const handleSelectKeyUp = (key: string) => {
-    if (key === KeyCodes.Enter) {
+    if (key === KeyCode.Enter) {
       setOpen(!open);
     }
   };
 
   const handleOptionKeyUp = (key: string, option: SelectOption) => {
-    if (key === KeyCodes.Enter) {
+    if (key === KeyCode.Enter) {
       handleOptionChange(option);
     }
   };
