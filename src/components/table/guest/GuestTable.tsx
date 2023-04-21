@@ -67,14 +67,13 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests }) => {
       setSelectedGuest(sortedGuests[index]);
     }
   };
+
   return (
     <Flexbox flexDirection="column" gap={20}>
-      <Paper minHeight="auto">
-        <Flexbox gap={20}>
-          <Searchbar value={searchValue} onSearch={(e) => handleSearch(e.target.value.toLowerCase())} />
-          <Button onClick={() => setShowModal(true)} text={translator.createGuest()} height="3rem" width="10%" />
-        </Flexbox>
-      </Paper>
+      <Flexbox gap={20}>
+        <Searchbar value={searchValue} onSearch={(e) => handleSearch(e.target.value.toLowerCase())} />
+        <Button onClick={() => setShowModal(true)} text={translator.createGuest()} height="3rem" width="10%" />
+      </Flexbox>
       <Flexbox gap={30}>
         {sortedGuests.length !== 0 ? (
           <table className={styles.table}>

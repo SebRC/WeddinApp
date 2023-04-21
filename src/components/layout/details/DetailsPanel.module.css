@@ -1,7 +1,7 @@
 .panel {
-  background-color: var(--primary);
+  background-color: var(--secondary);
   border-radius: var(--border-radius-large);
   padding: 20px;
   width: 50%;
-  box-shadow: var(--box-shadow-large);
+  box-shadow: var(--box-shadow-subtle);
 }

@@ -1,38 +1,38 @@
 .tooltip {
-    position: relative;
-    display: inline-block;
-    width: 100%;
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
 
 .tooltipText {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 10px 5px 10px;
-    visibility: hidden;
-    background-color: var(--secondary);
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    border-radius: var(--border-radius-medium);
-    position: absolute;
-    z-index: 1;
-    font-size: 1rem;
-    bottom: 100%;
-    left: 25%;
-    margin-bottom: 10px;
-    min-width: 150px;
-    min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px 5px 10px;
+  visibility: hidden;
+  background-color: var(--accent);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius-medium);
+  position: absolute;
+  z-index: 1;
+  font-size: 1rem;
+  bottom: 100%;
+  left: 25%;
+  margin-bottom: 10px;
+  min-width: 150px;
+  min-height: 40px;
 }
 
 .tooltipText::after {
-    content: "";
-    position: absolute;
-    top: 100%; 
-    left: 50%;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--secondary) transparent transparent transparent;
-  }
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--accent) transparent transparent transparent;
+}
 
 .tooltip:hover .tooltipText {
-    visibility: visible;
+  visibility: visible;
 }

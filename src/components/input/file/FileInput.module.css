@@ -10,7 +10,7 @@
   border-top-right-radius: var(--border-radius-medium);
   border-bottom-right-radius: var(--border-radius-medium);
   background-color: var(--secondary);
-  box-shadow: var(--box-shadow-small);
+  box-shadow: var(--box-shadow-subtle);
   color: black;
   font-weight: bold;
   cursor: pointer;
@@ -43,7 +43,7 @@
   background-color: white;
   border-top-left-radius: var(--border-radius-medium);
   border-bottom-left-radius: var(--border-radius-medium);
-  box-shadow: var(--box-shadow-small);
+  box-shadow: var(--box-shadow-subtle);
   padding-left: 10px;
   width: 100%;
   display: flex;

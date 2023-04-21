@@ -1,4 +1,5 @@
 import { forwardRef, ReactNode } from "react";
+import { Color } from "../../design/color/Color";
 import styles from "./Button.module.css";
 
 interface ButtonProps {
@@ -42,7 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           alignSelf: alignSelf,
           width: width,
           height: height,
-          backgroundColor: type === "default" ? "var(--secondary)" : "var(--danger)",
+          backgroundColor: type === "default" ? Color.Accent : Color.Danger,
           minWidth: minWidth,
           minHeight: minHeight,
         }}
