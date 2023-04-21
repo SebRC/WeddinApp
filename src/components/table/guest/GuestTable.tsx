@@ -12,6 +12,7 @@ import { CreateGuestModal } from "../../modal/guest/CreateGuestModal";
 import { GuestDetailsPanel } from "../../layout/details/guest/GuestDetailsPanel";
 import { NothingFound } from "../../illustrations/NothingFound";
 import { LoadingPage } from "../../loading/LoadingPage";
+import { Color } from "../../../design/color/Color";
 
 interface GuestTableProps {
   guests: Guest[];
@@ -76,7 +77,7 @@ export const GuestTable: FunctionComponent<GuestTableProps> = ({ guests, loading
         <Button onClick={() => setShowModal(true)} text={translator.createGuest()} height="3rem" width="10%" />
       </Flexbox>
       {loading ? (
-        <LoadingPage />
+        <LoadingPage color={Color.Secondary} />
       ) : (
         <Flexbox gap={30}>
           {sortedGuests.length !== 0 ? (

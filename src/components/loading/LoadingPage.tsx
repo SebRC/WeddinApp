@@ -1,11 +1,17 @@
 import { FunctionComponent } from "react";
-import { Flexbox } from "../layout/flexbox/Flexbox";
+import { Color } from "../../design/color/Color";
 import styles from "./LoadingPage.module.css";
+interface LoadingPageProps {
+  color?: Color;
+}
 
-export const LoadingPage: FunctionComponent = () => {
+export const LoadingPage: FunctionComponent<LoadingPageProps> = ({ color = Color.Primary }) => {
   return (
-    <Flexbox>
-      <div className={styles.loadingPage}></div>
-    </Flexbox>
+    <div
+      className={styles.loadingPage}
+      style={{
+        background: `linear-gradient(to right, ${color} 4%, white 25%, ${color} 36%)`,
+      }}
+    />
   );
 };

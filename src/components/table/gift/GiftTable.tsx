@@ -12,6 +12,7 @@ import { Gift } from "../../gift/gift";
 import { CreateGiftModal } from "../../modal/gift/CreateGiftModal";
 import { GiftDetailsPanel } from "../../layout/details/gift/GiftDetailsPanel";
 import { LoadingPage } from "../../loading/LoadingPage";
+import { Color } from "../../../design/color/Color";
 
 interface GiftTableProps {
   gifts: Gift[];
@@ -75,7 +76,7 @@ export const GiftTable: FunctionComponent<GiftTableProps> = ({ gifts, loading })
         <Button onClick={() => setShowModal(true)} text={translator.createGift()} height="3rem" width="10%" />
       </Flexbox>
       {loading ? (
-        <LoadingPage />
+        <LoadingPage color={Color.Secondary} />
       ) : (
         <Flexbox gap={30}>
           {sortedGifts.length !== 0 ? (
