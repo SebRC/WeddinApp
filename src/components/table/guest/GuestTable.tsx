@@ -11,7 +11,6 @@ import { Button } from "../../button/Button";
 import { CreateGuestModal } from "../../modal/guest/CreateGuestModal";
 import { GuestDetailsPanel } from "../../layout/details/guest/GuestDetailsPanel";
 import { NothingFound } from "../../illustrations/NothingFound";
-import { Paper } from "../../layout/paper/Paper";
 
 interface GuestTableProps {
   guests: Guest[];

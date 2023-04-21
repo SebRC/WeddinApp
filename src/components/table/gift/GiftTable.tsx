@@ -11,7 +11,6 @@ import { NothingFound } from "../../illustrations/NothingFound";
 import { Gift } from "../../gift/gift";
 import { CreateGiftModal } from "../../modal/gift/CreateGiftModal";
 import { GiftDetailsPanel } from "../../layout/details/gift/GiftDetailsPanel";
-import { Paper } from "../../layout/paper/Paper";
 
 interface GiftTableProps {
   gifts: Gift[];
