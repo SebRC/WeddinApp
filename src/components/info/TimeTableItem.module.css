@@ -1,5 +1,5 @@
 .pin {
-  background-color: white;
+  background-color: var(--accent);
   width: 30px;
   height: 5px;
   border-bottom-right-radius: 5px;
