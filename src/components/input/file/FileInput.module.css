@@ -55,3 +55,10 @@
   font-size: 1.5em;
   margin-bottom: 5px;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .fileText {
+    font-size: 1rem;
+  }
+}
