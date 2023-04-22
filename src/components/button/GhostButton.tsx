@@ -8,7 +8,7 @@ interface GhostButtonProps {
 
 export const GhostButton: FunctionComponent<GhostButtonProps> = ({ onClick, children }) => {
   return (
-    <button className={styles.close} onClick={onClick}>
+    <button className={styles.ghost} onClick={onClick}>
       {children}
     </button>
   );
