@@ -25,6 +25,10 @@ a {
   display: none;
 }
 
+.menu {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   .navbar {
     display: none;
@@ -48,7 +52,6 @@ a {
   .menu {
     display: flex;
     flex-direction: column;
-    top: 0;
     position: fixed;
     z-index: 3;
     width: 100%;
@@ -56,6 +59,11 @@ a {
     border-bottom-right-radius: var(--border-radius-medium);
     border-bottom-left-radius: var(--border-radius-medium);
     padding: 10px;
+    transition: top 0.5s ease-in-out;
+  }
+
+  a {
+    padding: 0px 10px 10px 5px;
   }
 }
 

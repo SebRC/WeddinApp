@@ -19,6 +19,7 @@ import { IconGift } from "../icons/IconGift";
 import { IconInfo } from "../icons/IconInfo";
 import { IconAdmin } from "../icons/IconAdmin";
 import { IconSize } from "../icons/iconProps";
+import { CloseButton } from "../button/CloseButton";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();
@@ -86,61 +87,59 @@ export const Navbar: FunctionComponent = () => {
           <IconHamburger />
         </div>
       </div>
-      {showMenu && (
-        <div className={styles.menu}>
-          <Flexbox justifyContent="space-between">
-            <Flexbox flexDirection="column" width="50%">
+      <div className={styles.menu} style={{ top: showMenu ? "0" : "-500px" }}>
+        <Flexbox justifyContent="space-between">
+          <Flexbox flexDirection="column" width="50%">
+            <NavLink
+              to={GuestRoute.path}
+              active={location.pathname.includes(GuestRoute.path)}
+              onClick={() => setShowMenu(false)}
+              title={translator.guest()}
+              icon={<IconGuest size={IconSize.Medium} />}
+            />
+            <NavLink
+              to={InfoRoute.path}
+              active={location.pathname.includes(InfoRoute.path)}
+              onClick={() => setShowMenu(false)}
+              title={translator.info()}
+              icon={<IconInfo size={IconSize.Medium} />}
+            />
+            <NavLink
+              to={GiftsRoute.path}
+              active={location.pathname.includes(GiftsRoute.path)}
+              onClick={() => setShowMenu(false)}
+              title={translator.gifts()}
+              icon={<IconGift size={IconSize.Medium} />}
+            />
+            {user?.role === Roles.Admin && (
               <NavLink
-                to={GuestRoute.path}
-                active={location.pathname.includes(GuestRoute.path)}
+                to={AdminRoute.path}
+                active={location.pathname.includes(AdminRoute.path)}
                 onClick={() => setShowMenu(false)}
-                title={translator.guest()}
-                icon={<IconGuest size={IconSize.Medium} />}
+                title={translator.admin()}
+                icon={<IconAdmin size={IconSize.Medium} />}
               />
-              <NavLink
-                to={InfoRoute.path}
-                active={location.pathname.includes(InfoRoute.path)}
-                onClick={() => setShowMenu(false)}
-                title={translator.info()}
-                icon={<IconInfo size={IconSize.Medium} />}
-              />
-              <NavLink
-                to={GiftsRoute.path}
-                active={location.pathname.includes(GiftsRoute.path)}
-                onClick={() => setShowMenu(false)}
-                title={translator.gifts()}
-                icon={<IconGift size={IconSize.Medium} />}
-              />
-              {user?.role === Roles.Admin && (
-                <NavLink
-                  to={AdminRoute.path}
-                  active={location.pathname.includes(AdminRoute.path)}
-                  onClick={() => setShowMenu(false)}
-                  title={translator.admin()}
-                  icon={<IconAdmin size={IconSize.Medium} />}
-                />
-              )}
-              <NavLink
-                to={SettingsRoute.path}
-                active={location.pathname.includes(SettingsRoute.path)}
-                onClick={() => setShowMenu(false)}
-                title={translator.settings()}
-                icon={<IconSettings size={IconSize.Medium} />}
-              />
-              <NavLink
-                to={AuthRoute.path}
-                onClick={handleLogout}
-                title={translator.login()}
-                active={false}
-                icon={<IconLogout size={IconSize.Medium} />}
-              />
-            </Flexbox>
-            <div onClick={() => setShowMenu(false)} role="button" onKeyUp={() => {}} tabIndex={0}>
-              <IconHamburger />
-            </div>
+            )}
+            <NavLink
+              to={SettingsRoute.path}
+              active={location.pathname.includes(SettingsRoute.path)}
+              onClick={() => setShowMenu(false)}
+              title={translator.settings()}
+              icon={<IconSettings size={IconSize.Medium} />}
+            />
+            <NavLink
+              to={AuthRoute.path}
+              onClick={handleLogout}
+              title={translator.login()}
+              active={false}
+              icon={<IconLogout size={IconSize.Medium} />}
+            />
           </Flexbox>
-        </div>
-      )}
+          <div onClick={() => setShowMenu(false)} role="button" onKeyUp={() => {}} tabIndex={0}>
+            <IconHamburger />
+          </div>
+        </Flexbox>
+      </div>
       <PageLayout>
         <Outlet />
       </PageLayout>
