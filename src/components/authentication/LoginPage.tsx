@@ -5,7 +5,7 @@ import { handleSignIn } from "../../firebase/firebase";
 import { Input } from "../input/Input";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../text/Title";
-import { KeyCodes } from "../../keycode/KeyCodes";
+import { KeyCode } from "../../keycode/KeyCode";
 import { useTranslator } from "../../translations/useTranslator";
 
 export const LoginPage: FunctionComponent = () => {
@@ -47,7 +47,7 @@ export const LoginPage: FunctionComponent = () => {
   };
 
   const handlePasswordKeyUp = async (key: string) => {
-    if (key === KeyCodes.Enter) {
+    if (key === KeyCode.Enter) {
       await handleLogin();
     }
   };

@@ -1,14 +1,15 @@
 :root {
-  --primary: hsl(350, 100%, 88%);
-  --primary-hover: hsl(350, 100%, 95%);
-  --secondary: rgb(254, 198, 66);
-  --secondary-hover: hsl(30, 56%, 51%);
+  --primary: hsl(0, 100%, 96%);
+  --primary-hover: hsl(0, 31%, 95%);
+  --secondary: hsl(170, 50%, 79%);
+  --secondary-hover: hsl(170, 36%, 59%);
   --secondary-active: hsl(30, 95%, 50%);
+  --tertiary: hsl(210, 69%, 66%);
+  --accent: hsl(33, 88%, 70%);
   --danger: hsl(10, 87%, 61%);
   --checked: hsl(182, 85%, 48%);
 
-  --box-shadow-large: 15px 10px black;
-  --box-shadow-small: 5px 2.5px black;
+  --box-shadow-subtle: 2px 2px 8px rgba(0, 0, 0, 0.2);
 
   --focus-outline: solid 1px var(--secondary);
   --error-outline: solid 2px var(--danger);
@@ -17,18 +18,20 @@
   --border-radius-medium: 5px;
 }
 
+body {
+  background-color: var(--secondary);
+  overflow-x: hidden;
+}
+
 .App {
   height: 100%;
-  background-image: url(../public/background-image.jpg);
-  background-attachment: fixed;
-  background-size: cover;
+  background-color: var(--secondary);
 }
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .App {
-      background-size: auto;
-
+    background-size: auto;
   }
 }
 

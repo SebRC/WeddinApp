@@ -1,7 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { useGifts } from "../../../hooks/useGifts";
 import { Gift } from "../../gift/gift";
-import { LoadingPage } from "../../loading/LoadingPage";
 import { GiftTable } from "./GiftTable";
 
 export const GiftTableContainer: FunctionComponent = () => {
@@ -14,5 +13,5 @@ export const GiftTableContainer: FunctionComponent = () => {
     setSortedGifts(gifts);
   }, [giftsLoading, gifts]);
 
-  return loading ? <LoadingPage /> : <GiftTable gifts={sortedGifts} />;
+  return <GiftTable gifts={sortedGifts} loading={loading} />;
 };

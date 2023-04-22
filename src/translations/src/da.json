@@ -1,6 +1,7 @@
 {
     "loggingIn": "Logger ind",
     "login": "Log ind",
+    "logout": "Log ud",
     "wrongPassword": "Forkert kodeord",
     "emailDoesNotExist": "Email findes ikke",
     "emailAlreadyExists": "Email findes allerede",
@@ -21,7 +22,7 @@
     "when": "Hvornår",
     "weddingDateDescription": "Vi har valgt lørdag den 27. juli 2024 kl. 14:30 til at fejre vores kærlighed.",
     "info": "Info",
-    "usefulInformationAboutTheBigDay": "Her kan du finde nyttige information om den store dag.",
+    "usefulInformationAboutTheBigDay": "Her kan du finde nyttige informationer om den store dag.",
     "where": "Hvor",
     "addressInformation": "Adressen er Gemmas Allé 100, 2770 Kastrup. Der er gratis parkering på vejen.",
     "timeTable": "Tidsplan",

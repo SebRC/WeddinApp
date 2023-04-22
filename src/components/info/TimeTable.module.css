@@ -1,5 +1,5 @@
 .connector {
-    background-color: var(--secondary-active);
-    border-radius: var(--border-radius-medium);
-    width: 5px;
+  background-color: var(--accent);
+  border-radius: var(--border-radius-medium);
+  width: 5px;
 }

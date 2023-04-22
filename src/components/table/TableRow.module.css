@@ -1,10 +1,11 @@
 .row {
-  background-color: var(--primary);
+  background-color: var(--secondary);
+  cursor: pointer;
 }
 
 .row td {
   padding: 20px 20px 20px 0px;
-  border-bottom: 1px solid var(--primary-hover);
+  border-bottom: 1px solid var(--secondary-hover);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -16,6 +17,5 @@
 }
 
 .row:hover {
-  background-color: var(--primary-hover);
-  cursor: pointer;
+  background-color: var(--secondary-hover);
 }

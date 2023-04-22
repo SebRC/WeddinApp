@@ -1,5 +1,5 @@
 import { FunctionComponent, useMemo } from "react";
-import { KeyCodes } from "../../../keycode/KeyCodes";
+import { KeyCode } from "../../../keycode/KeyCode";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Guest } from "../../guest/Guest";
 import { IconCheckmark } from "../../icons/IconCheckmark";
@@ -20,7 +20,7 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, on
   }, [guest.songWishes]);
 
   const handleKeyUp = (key: string) => {
-    if (key === KeyCodes.Enter) {
+    if (key === KeyCode.Enter) {
       onClick?.();
     }
   };

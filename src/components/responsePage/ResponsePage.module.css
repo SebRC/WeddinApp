@@ -1,24 +1,21 @@
 .container {
-    background-color: var(--primary);
-    border-radius: var(--border-radius-large);
-    padding: 20px;
-    box-shadow: var(--box-shadow-large);
-    position: relative;
-    transition:transform 0.5s ease-out;
-    transform: scaleY(1);
-    transform-origin:top;
-    align-items: center;
-    width: 100%;
+  background-color: var(--primary);
+  border-radius: var(--border-radius-large);
+  padding: 20px;
+  box-shadow: var(--box-shadow-subtle);
+  position: relative;
+  align-items: center;
+  width: 100%;
 }
 
 .collapsed {
-    transform: scaleY(0.9);
+  max-height: 150px;
 }
 
 .closeCardButton {
-    background-color: transparent;
-    width: 50px;
-    height: 50px;
-    border: none;
-    cursor: pointer;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
 }

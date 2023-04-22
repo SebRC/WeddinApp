@@ -1,7 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { useGuests } from "../../../hooks/useGuests";
 import { Guest } from "../../guest/Guest";
-import { LoadingPage } from "../../loading/LoadingPage";
 import { GuestTable } from "./GuestTable";
 
 export const GuestTableContainer: FunctionComponent = () => {
@@ -14,5 +13,5 @@ export const GuestTableContainer: FunctionComponent = () => {
     setSortedGuests(guests);
   }, [guestsLoading, guests]);
 
-  return loading ? <LoadingPage /> : <GuestTable guests={sortedGuests} />;
+  return <GuestTable guests={sortedGuests} loading={loading} />;
 };

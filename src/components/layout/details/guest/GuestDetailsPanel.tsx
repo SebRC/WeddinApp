@@ -1,4 +1,5 @@
 import { FunctionComponent, useMemo, useState } from "react";
+import { Color } from "../../../../design/color/Color";
 import { useCurrentUser } from "../../../../hooks/context/UserProvider";
 import { useTranslator } from "../../../../translations/useTranslator";
 import { Button } from "../../../button/Button";
@@ -61,7 +62,7 @@ export const GuestDetailsPanel: FunctionComponent<GuestDetailsPanelProps> = ({ g
           <>{translator.noSongWishes()}</>
         )}
         <Tooltip text={translator.clickToCopySongs()}>
-          <Button onClick={handleSongsClick} icon={<IconCopy fill="var(--secondary)" />} width="100%" />
+          <Button onClick={handleSongsClick} icon={<IconCopy fill={Color.Accent} />} width="100%" />
         </Tooltip>
       </Flexbox>
       <Header

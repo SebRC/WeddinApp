@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { KeyCodes } from "../../../keycode/KeyCodes";
+import { KeyCode } from "../../../keycode/KeyCode";
 import { useTranslator } from "../../../translations/useTranslator";
 import { Gift } from "../../gift/gift";
 import { IconCheckmark } from "../../icons/IconCheckmark";
@@ -17,7 +17,7 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift, onCli
   const translator = useTranslator();
 
   const handleKeyUp = (key: string) => {
-    if (key === KeyCodes.Enter) {
+    if (key === KeyCode.Enter) {
       onClick?.();
     }
   };

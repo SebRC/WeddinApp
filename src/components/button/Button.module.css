@@ -1,20 +1,20 @@
 .button {
-    border: none;
-    border-radius: var(--border-radius-medium);
-    height: 2rem;
-    width: 100%;
-    box-shadow: var(--box-shadow-small);
-    font-size: 1rem;
-    font-weight: bold;
-    color: black;
+  border: none;
+  border-radius: var(--border-radius-medium);
+  height: 2rem;
+  width: 100%;
+  box-shadow: var(--box-shadow-subtle);
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
 }
 
 .button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .button:active {
-    transform: scale(0.99);
+  transform: scale(0.99);
 }
 
 .button[disabled] {
@@ -23,21 +23,26 @@
 }
 
 .buttonLoading {
-    animation : shimmer 2s infinite;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.2) 4%, var(--primary-hover) 25%, rgba(255, 255, 255, 0.2) 36%);
-    background-size: 1000px 600px;
-    min-height: 600px;
-    width: 100%;
-    opacity: 0.95;
-    height: 10000px;
-    pointer-events: none;
- }
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.2) 4%,
+    var(--primary-hover) 25%,
+    rgba(255, 255, 255, 0.2) 36%
+  );
+  background-size: 1000px 600px;
+  min-height: 600px;
+  width: 100%;
+  opacity: 0.95;
+  height: 10000px;
+  pointer-events: none;
+}
 
- @keyframes shimmer {
-    0% {
-      background-position: -1000px 0;
-    }
-    100% {
-      background-position: 1000px 0;
-    }
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
   }
+  100% {
+    background-position: 1000px 0;
+  }
+}

@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { KeyCodes } from "../../keycode/KeyCodes";
+import { KeyCode } from "../../keycode/KeyCode";
 import styles from "./Checkbox.module.css";
 
 interface CheckboxProps {
@@ -19,7 +19,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({ value, label, id, t
   };
 
   const handleKeyUp = (key: string) => {
-    if (key === KeyCodes.Enter) {
+    if (key === KeyCode.Enter) {
       handleClick();
     }
   };

@@ -1,36 +1,35 @@
 .header {
-    background-color: var(--primary-hover);
+  background-color: var(--secondary-hover);
 }
 
 .header tr th {
-    text-align: left;
+  text-align: left;
 }
 
 .header tr th:first-child {
-    padding: 20px;
+  padding: 20px;
 }
 
-.sortableWrapper{
-   display: flex;
-   height: 20px;
-   flex-direction: row;
+.sortableWrapper {
+  display: flex;
+  height: 20px;
+  flex-direction: row;
 }
 
-.sortableUp{
-    width: 0; 
-    height: 0; 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 8px solid gray;
-    align-self: flex-start;
+.sortableUp {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid gray;
+  align-self: flex-start;
 }
 
 .sortableDown {
-    width: 0; 
-    height: 0; 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 8px solid gray;
-    align-self: flex-end;
-
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid gray;
+  align-self: flex-end;
 }
