@@ -37,28 +37,23 @@ export const Navbar: FunctionComponent = () => {
       <div className={styles.navbar}>
         {user.authed && (
           <div>
-            <Link
+            <NavLink
               to={GuestRoute.path}
-              className={location.pathname.includes(GuestRoute.path) ? `${styles.active}` : ""}
-            >
-              {translator.guest()}
-            </Link>
-            <Link to={InfoRoute.path} className={location.pathname.includes(InfoRoute.path) ? `${styles.active}` : ""}>
-              {translator.info()}
-            </Link>
-            <Link
+              active={location.pathname.includes(GuestRoute.path)}
+              text={translator.guest()}
+            />
+            <NavLink to={InfoRoute.path} active={location.pathname.includes(InfoRoute.path)} text={translator.info()} />
+            <NavLink
               to={GiftsRoute.path}
-              className={location.pathname.includes(GiftsRoute.path) ? `${styles.active}` : ""}
-            >
-              {translator.gifts()}
-            </Link>
+              active={location.pathname.includes(GiftsRoute.path)}
+              text={translator.gifts()}
+            />
             {user?.role === Roles.Admin && (
-              <Link
+              <NavLink
                 to={AdminRoute.path}
-                className={location.pathname.includes(AdminRoute.path) ? `${styles.active}` : ""}
-              >
-                {translator.admin()}
-              </Link>
+                active={location.pathname.includes(AdminRoute.path)}
+                text={translator.admin()}
+              />
             )}
           </div>
         )}
@@ -86,21 +81,21 @@ export const Navbar: FunctionComponent = () => {
               to={GuestRoute.path}
               active={location.pathname.includes(GuestRoute.path)}
               onClick={() => setShowMenu(false)}
-              title={translator.guest()}
+              text={translator.guest()}
               icon={<IconGuest size={IconSize.Medium} />}
             />
             <NavLink
               to={InfoRoute.path}
               active={location.pathname.includes(InfoRoute.path)}
               onClick={() => setShowMenu(false)}
-              title={translator.info()}
+              text={translator.info()}
               icon={<IconInfo size={IconSize.Medium} />}
             />
             <NavLink
               to={GiftsRoute.path}
               active={location.pathname.includes(GiftsRoute.path)}
               onClick={() => setShowMenu(false)}
-              title={translator.gifts()}
+              text={translator.gifts()}
               icon={<IconGift size={IconSize.Medium} />}
             />
             {user?.role === Roles.Admin && (
@@ -108,7 +103,7 @@ export const Navbar: FunctionComponent = () => {
                 to={AdminRoute.path}
                 active={location.pathname.includes(AdminRoute.path)}
                 onClick={() => setShowMenu(false)}
-                title={translator.admin()}
+                text={translator.admin()}
                 icon={<IconAdmin size={IconSize.Medium} />}
               />
             )}
@@ -116,13 +111,13 @@ export const Navbar: FunctionComponent = () => {
               to={SettingsRoute.path}
               active={location.pathname.includes(SettingsRoute.path)}
               onClick={() => setShowMenu(false)}
-              title={translator.settings()}
+              text={translator.settings()}
               icon={<IconSettings size={IconSize.Medium} />}
             />
             <NavLink
               to={AuthRoute.path}
               onClick={handleLogout}
-              title={translator.logout()}
+              text={translator.logout()}
               active={false}
               icon={<IconLogout size={IconSize.Medium} />}
             />

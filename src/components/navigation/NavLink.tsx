@@ -6,17 +6,17 @@ import styles from "./Navbar.module.css";
 interface NavLinkProps {
   to: string;
   active: boolean;
-  onClick: () => void;
-  title?: string;
+  onClick?: () => void;
+  text?: string;
   icon?: ReactNode;
 }
 
-export const NavLink: FunctionComponent<NavLinkProps> = ({ to, active, onClick, title, icon }) => {
+export const NavLink: FunctionComponent<NavLinkProps> = ({ to, active, onClick, text, icon }) => {
   return (
     <Link to={to} className={active ? `${styles.active}` : ""} onClick={onClick}>
       <Flexbox gap={10}>
         {icon}
-        {title}
+        {text}
       </Flexbox>
     </Link>
   );
