@@ -63,6 +63,7 @@ export const Select: FunctionComponent<SelectProps> = ({ options, value, width =
                 onKeyUp={(e) => handleOptionKeyUp(e.key, o)}
                 tabIndex={0}
                 className={styles.optionWrapper}
+                key={`${o}-${index}`}
               >
                 <Flexbox gap={20} width="100%" key={`${o.option}-${index}`}>
                   {o.icon && o.icon}
