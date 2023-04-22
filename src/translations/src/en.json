@@ -1,6 +1,7 @@
 {
   "loggingIn": "Logging in",
   "login": "Log in",
+  "logout": "Log out",
   "wrongPassword": "Wrong password",
   "emailDoesNotExist": "Email does not exist",
   "invalidEmail": "Invalid email",

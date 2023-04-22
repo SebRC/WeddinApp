@@ -122,7 +122,7 @@ export const Navbar: FunctionComponent = () => {
             <NavLink
               to={AuthRoute.path}
               onClick={handleLogout}
-              title={translator.login()}
+              title={translator.logout()}
               active={false}
               icon={<IconLogout size={IconSize.Medium} />}
             />

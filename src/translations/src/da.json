@@ -1,6 +1,7 @@
 {
     "loggingIn": "Logger ind",
     "login": "Log ind",
+    "logout": "Log ud",
     "wrongPassword": "Forkert kodeord",
     "emailDoesNotExist": "Email findes ikke",
     "emailAlreadyExists": "Email findes allerede",
