@@ -9,8 +9,6 @@ import { AdminRoute, AuthRoute, GiftsRoute, GuestRoute, InfoRoute, SettingsRoute
 import { Roles } from "../authentication/Roles";
 import { useTranslator } from "../../translations/useTranslator";
 import { IconSettings } from "../icons/IconSettings";
-import { IconCopy } from "../icons/IconCopy";
-import { Color } from "../../design/color/Color";
 import { IconHamburger } from "../icons/IconHamburger";
 import { Flexbox } from "../layout/flexbox/Flexbox";
 import { NavLink } from "./NavLink";
@@ -19,7 +17,7 @@ import { IconGift } from "../icons/IconGift";
 import { IconInfo } from "../icons/IconInfo";
 import { IconAdmin } from "../icons/IconAdmin";
 import { IconSize } from "../icons/iconProps";
-import { CloseButton } from "../button/CloseButton";
+import { GhostButton } from "../button/GhostButton";
 
 export const Navbar: FunctionComponent = () => {
   const location = useLocation();
@@ -77,18 +75,12 @@ export const Navbar: FunctionComponent = () => {
         </div>
       </div>
       <div className={styles.mobileNavbar}>
-        <div
-          className={styles.menuIcon}
-          role="button"
-          onClick={() => setShowMenu(!showMenu)}
-          onKeyUp={() => {}}
-          tabIndex={0}
-        >
+        <GhostButton onClick={() => setShowMenu(true)}>
           <IconHamburger />
-        </div>
+        </GhostButton>
       </div>
       <div className={styles.menu} style={{ top: showMenu ? "0" : "-500px" }}>
-        <Flexbox justifyContent="space-between">
+        <Flexbox justifyContent="space-between" alignItems="flex-start">
           <Flexbox flexDirection="column" width="50%">
             <NavLink
               to={GuestRoute.path}
@@ -135,9 +127,9 @@ export const Navbar: FunctionComponent = () => {
               icon={<IconLogout size={IconSize.Medium} />}
             />
           </Flexbox>
-          <div onClick={() => setShowMenu(false)} role="button" onKeyUp={() => {}} tabIndex={0}>
+          <GhostButton onClick={() => setShowMenu(false)}>
             <IconHamburger />
-          </div>
+          </GhostButton>
         </Flexbox>
       </div>
       <PageLayout>

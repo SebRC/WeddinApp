@@ -21,10 +21,6 @@ a {
   display: none;
 }
 
-.menuIcon {
-  display: none;
-}
-
 .menu {
   display: none;
 }
@@ -32,10 +28,6 @@ a {
 @media only screen and (max-width: 768px) {
   .navbar {
     display: none;
-  }
-
-  .menuIcon {
-    display: flex;
   }
 
   .mobileNavbar {
