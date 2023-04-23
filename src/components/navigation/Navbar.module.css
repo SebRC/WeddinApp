@@ -2,7 +2,7 @@
   overflow: hidden;
   top: 0;
   width: 100%;
-  padding: 0px 0px 10px 10px;
+  padding: 10px 0px 10px 10px;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -15,6 +15,10 @@ a {
   text-decoration: none;
   font-size: 1.2rem;
   margin: 5px 2.5px 0px 2.5px;
+}
+
+a {
+  padding: 0px 10px 10px 5px;
 }
 
 .mobileNavbar {
@@ -55,10 +59,6 @@ a {
     box-shadow: var(--box-shadow-subtle);
     padding: 10px;
     transition: 0.5s ease-in-out;
-  }
-
-  a {
-    padding: 0px 10px 10px 5px;
   }
 }
 
