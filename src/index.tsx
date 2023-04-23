@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
 root.render(
   <React.StrictMode>
-    <meta name="viewport" content="width=device-width, inital-scale=1, viewport-fit-cover"></meta>
+    <meta name="viewport" content="width=device-width, inital-scale=1, viewport-fit=cover"></meta>
     <div className="App">
       <LanguageProvider>
         <UserProvider>
