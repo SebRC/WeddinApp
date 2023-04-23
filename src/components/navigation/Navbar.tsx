@@ -69,12 +69,18 @@ export const Navbar: FunctionComponent = () => {
           </Link>
         </div>
       </div>
-      <div className={styles.mobileNavbar}>
-        <GhostButton onClick={() => setShowMenu(true)}>
+      <div className={styles.mobileNavbar} style={{ boxShadow: showMenu ? "none" : "var(--box-shadow-subtle)" }}>
+        <GhostButton onClick={() => setShowMenu(!showMenu)}>
           <IconHamburger />
         </GhostButton>
       </div>
-      <div className={styles.menu} style={{ top: showMenu ? "0" : "-500px" }}>
+      <div
+        className={styles.menu}
+        style={{
+          top: showMenu ? "0" : "-500px",
+          right: showMenu ? "0" : "-500px",
+        }}
+      >
         <Flexbox justifyContent="space-between" alignItems="flex-start">
           <Flexbox flexDirection="column" width="50%">
             <NavLink
@@ -122,9 +128,6 @@ export const Navbar: FunctionComponent = () => {
               icon={<IconLogout size={IconSize.Medium} />}
             />
           </Flexbox>
-          <GhostButton onClick={() => setShowMenu(false)}>
-            <IconHamburger />
-          </GhostButton>
         </Flexbox>
       </div>
       <PageLayout>

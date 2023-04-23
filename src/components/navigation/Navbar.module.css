@@ -32,13 +32,15 @@ a {
 
   .mobileNavbar {
     overflow: hidden;
-    top: 0;
-    width: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
     padding: 10px;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-end;
+    display: block;
+    background-color: var(--accent);
+    border-bottom-right-radius: var(--border-radius-medium);
+    border-bottom-left-radius: var(--border-radius-medium);
+    z-index: 4;
   }
 
   .menu {
@@ -50,8 +52,9 @@ a {
     background-color: var(--accent);
     border-bottom-right-radius: var(--border-radius-medium);
     border-bottom-left-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-subtle);
     padding: 10px;
-    transition: top 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
   }
 
   a {
