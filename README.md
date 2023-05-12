@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# WeddingApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A small project used for managing guests, gift reservations and other miscellaneous things related to a wedding. Built with plain React and CSS. Uses firestore as a database.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Guest management
+Guests can manage their own info by logging in to the application. Here they can change their attending status, request song wishes and provide info about food allergies.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![guest-management](https://github.com/SebRC/WeddingApp/assets/31308148/65b8cef3-7505-4d7b-a645-9cb4f85f2cc7)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Administrators of the application can create and delete guests through the admin interface.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![guest-management-admin](https://github.com/SebRC/WeddingApp/assets/31308148/eb720380-9b09-4473-a932-5dba2b9d094b)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Gift management
+Gifts can be reserved by guests.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![gift-reservation](https://github.com/SebRC/WeddingApp/assets/31308148/3c5e1fcf-0878-4972-b928-92053646dcf5)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Adminstrators of the application can create and delete gifts through the admin interface.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![gift-management-admin](https://github.com/SebRC/WeddingApp/assets/31308148/ca9da45c-5168-4f50-9160-5c2831174a00)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Language switching
+Users can switch the language of the application on the fly.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![settings](https://github.com/SebRC/WeddingApp/assets/31308148/3edc5ff3-2273-4321-bb7d-89f307781d43)
