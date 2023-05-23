@@ -5,6 +5,7 @@ import { Guest } from "../../guest/Guest";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconX } from "../../icons/IconX";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
+import { Text } from "../../text/Text";
 import { TableData } from "../TableData";
 import styles from "../TableRow.module.css";
 
@@ -39,8 +40,12 @@ export const GuestTableRow: FunctionComponent<GuestTableRowProps> = ({ guest, on
           </Flexbox>
         )}
       </TableData>
-      <TableData>{filteredSongs}</TableData>
-      <TableData>{guest.foodInfo}</TableData>
+      <TableData>
+        <Text text={filteredSongs ? filteredSongs : translator.noSongWishes()} italic={!filteredSongs} />
+      </TableData>
+      <TableData>
+        <Text text={guest.foodInfo ? guest.foodInfo : translator.noFoodInfo()} italic={!guest.foodInfo} />
+      </TableData>
     </tr>
   );
 };

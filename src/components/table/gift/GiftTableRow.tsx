@@ -5,6 +5,7 @@ import { Gift } from "../../gift/gift";
 import { IconCheckmark } from "../../icons/IconCheckmark";
 import { IconX } from "../../icons/IconX";
 import { Flexbox } from "../../layout/flexbox/Flexbox";
+import { Text } from "../../text/Text";
 import { TableData } from "../TableData";
 import styles from "../TableRow.module.css";
 
@@ -36,7 +37,9 @@ export const GiftTableRow: FunctionComponent<GiftTableRowProps> = ({ gift, onCli
           </Flexbox>
         )}
       </TableData>
-      <TableData>{gift.reservedBy ? gift.reservedBy : translator.notReservedYet()}</TableData>
+      <TableData>
+        <Text text={gift.reservedBy ? gift.reservedBy : translator.notReservedYet()} italic={!gift.reserved} />
+      </TableData>
     </tr>
   );
 };
