@@ -16,11 +16,7 @@ export const GiftsContainer: FunctionComponent = () => {
 
   useEffect(() => {
     setLoading(giftsLoading);
-    setSortedGifts(
-      filterGifts
-        ? gifts.sort((a, b) => Number(a.reserved) - Number(b.reserved))
-        : gifts.sort((a, b) => Number(b.reserved) - Number(a.reserved))
-    );
+    setSortedGifts(filterGifts ? gifts.sort((a, b) => Number(a.reserved) - Number(b.reserved)) : gifts);
   }, [gifts, giftsLoading, filterGifts]);
 
   const handleSort = () => {
