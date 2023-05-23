@@ -11,6 +11,7 @@ import { Header } from "../text/Header";
 import { Title } from "../text/Title";
 import styles from "./GiftInfo.module.css";
 import { useTranslator } from "../../translations/useTranslator";
+import { Link } from "../link/Link";
 
 interface GiftInfoProps {
   gift: Gift;
@@ -49,9 +50,9 @@ export const GiftInfo: FunctionComponent<GiftInfoProps> = ({ gift }) => {
 
   return (
     <Paper minHeight="auto" gap={10}>
-      <a href={gift.url} target="_blank" className={styles.title} rel="noreferrer">
+      <Link url={gift.url}>
         <Title title={gift.name} />
-      </a>
+      </Link>
       <Flexbox>
         <Flexbox flexDirection="column" gap={20} width="100%">
           <Header text={translator.giftPrice(`${gift.price}`)} />
