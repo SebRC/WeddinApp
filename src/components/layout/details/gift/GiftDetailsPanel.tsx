@@ -6,6 +6,7 @@ import { Gift } from "../../../gift/gift";
 import { IconCheckmark } from "../../../icons/IconCheckmark";
 import { IconX } from "../../../icons/IconX";
 import { Image } from "../../../image/Image";
+import { Link } from "../../../link/Link";
 import { LoadingImage } from "../../../loading/LoadingImage";
 import { DeleteGiftModal } from "../../../modal/gift/DeleteGiftModal";
 import { Header } from "../../../text/Header";
@@ -55,9 +56,7 @@ export const GiftDetailsPanel: FunctionComponent<GiftDetailsPanelProps> = ({ gif
       />
       <Flexbox flexDirection="column">
         <Header text={translator.link()} />
-        <a href={gift.url} target="_blank" rel="noreferrer">
-          {gift.name}
-        </a>
+        <Link url={gift.url}>{gift.name}</Link>
       </Flexbox>
       <Header text={translator.price()} subHeader={gift.price} />
       <Button text={translator.delete()} onClick={() => setShowModal(true)} />

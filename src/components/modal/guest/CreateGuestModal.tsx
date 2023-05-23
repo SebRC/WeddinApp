@@ -12,21 +12,26 @@ interface CreateGuestModalProps {
   onCancel: () => void;
 }
 
+interface PlusOne {
+  value: string;
+  id: number;
+}
+
 export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onCancel }) => {
   const translator = useTranslator();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [plusOnes, setPlusOnes] = useState<string[]>([]);
+  const [plusOnes, setPlusOnes] = useState<PlusOne[]>([]);
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handlePlusOneChange = (value: string, index: number) => {
-    const newValues = plusOnes.map((po, i) => {
-      if (i === index) {
-        return value;
+  const handlePlusOneChange = (plusOne: PlusOne) => {
+    const newValues = plusOnes.map((po) => {
+      if (po.id === plusOne.id) {
+        return { value: plusOne.value, id: po.id };
       }
       return po;
     });
@@ -47,7 +52,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
       password &&
       name &&
       plusOnes.every((po) => {
-        return po.length > 0;
+        return po.value.length > 0;
       })
     ) {
       const result = await createUser(email, password);
@@ -64,7 +69,7 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
       }
 
       if (result.userId) {
-        await createGuest({ name: name, id: result.userId, guestNames: plusOnes });
+        await createGuest({ name: name, id: result.userId, guestNames: plusOnes.map((po) => po.value) });
         onCancel();
       }
     } else {
@@ -135,8 +140,8 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
               <Input
                 required
                 label={translator.plusX(`${index + 1}`)}
-                value={po}
-                onChange={(e) => handlePlusOneChange(e.target.value, index)}
+                value={po.value}
+                onChange={(e) => handlePlusOneChange({ value: e.target.value, id: po.id })}
               />
               <Button
                 width="3rem"
@@ -144,14 +149,14 @@ export const CreateGuestModal: FunctionComponent<CreateGuestModalProps> = ({ onC
                 onClick={() => handlePlusOneRemove(index)}
                 height="3rem"
                 loading={loading}
-                alignSelf={po.length === 0 ? "center" : "flex-end"}
+                alignSelf={po.value.length === 0 ? "center" : "flex-end"}
               />
             </Flexbox>
           );
         })}
         <Button
           onClick={() => {
-            setPlusOnes((prev) => [...prev, ""]);
+            setPlusOnes((prev) => [...prev, { value: "", id: plusOnes.length + 1 }]);
           }}
           text={translator.addAPlusOne()}
           loading={loading}
