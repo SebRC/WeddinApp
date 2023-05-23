@@ -9,7 +9,6 @@ import { LoadingImage } from "../loading/LoadingImage";
 import { Gift } from "./gift";
 import { Header } from "../text/Header";
 import { Title } from "../text/Title";
-import styles from "./GiftInfo.module.css";
 import { useTranslator } from "../../translations/useTranslator";
 import { Link } from "../link/Link";
 
